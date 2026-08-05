@@ -14,7 +14,7 @@ export default function Home() {
           FleetCore
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" render={<Link href="/login" />}>
+          <Button variant="ghost" nativeButton={false} render={<Link href="/login" />}>
             Log in
           </Button>
           <ThemeToggle />
@@ -29,7 +29,7 @@ export default function Home() {
           Manage vehicles, registrations, insurance, inspections, maintenance
           and documents from one dashboard.
         </p>
-        <Button size="lg" className="mt-2" render={<Link href="/signup" />}>
+        <Button size="lg" className="mt-2" nativeButton={false} render={<Link href="/signup" />}>
           Get started
         </Button>
       </main>

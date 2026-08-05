@@ -1,6 +1,7 @@
-import { redirect } from "next/navigation";
+import { Bell, Receipt, Truck, Wrench } from "lucide-react";
+import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
+import { StatCard } from "@/components/dashboard/stat-card";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,35 +15,36 @@ import { getCurrentProfile } from "@/lib/supabase/queries";
 export default async function DashboardPage() {
   const profile = await getCurrentProfile();
 
-  if (!profile) {
-    redirect("/login");
-  }
-
   return (
-    <div className="flex flex-1 flex-col gap-6 p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Welcome{profile.full_name ? `, ${profile.full_name}` : ""}
-          </h1>
-          <p className="text-muted-foreground">{profile.companyName}</p>
-        </div>
-        <form action="/auth/signout" method="post">
-          <Button type="submit" variant="outline">
-            Sign out
-          </Button>
-        </form>
+    <div className="flex flex-col gap-6">
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}
+        </h1>
+        <p className="text-muted-foreground">
+          Here&apos;s what&apos;s happening with your fleet.
+        </p>
       </div>
 
-      <Card className="max-w-sm">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard title="Vehicles" value={0} icon={Truck} hint="No vehicles yet" />
+        <StatCard title="Expiring soon" value={0} icon={Bell} hint="Next 30 days" />
+        <StatCard title="Open maintenance" value={0} icon={Wrench} hint="No open jobs" />
+        <StatCard title="Expenses this month" value="$0" icon={Receipt} />
+      </div>
+
+      <Card>
         <CardHeader>
-          <CardTitle>Your account</CardTitle>
-          <CardDescription>{profile.email}</CardDescription>
+          <CardTitle>Add your first vehicle</CardTitle>
+          <CardDescription>
+            Vehicle records, documents and maintenance schedules are coming
+            in the next phase.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <Badge variant="secondary" className="capitalize">
-            {profile.role.replace("_", " ")}
-          </Badge>
+          <Button nativeButton={false} render={<Link href="/dashboard/vehicles" />}>
+            Go to Vehicles
+          </Button>
         </CardContent>
       </Card>
     </div>
