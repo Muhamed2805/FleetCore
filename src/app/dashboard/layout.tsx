@@ -1,10 +1,14 @@
 import { redirect } from "next/navigation";
 
 import { MobileNav } from "@/components/dashboard/mobile-nav";
+import { NotificationsBell } from "@/components/dashboard/notifications-bell";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { UserMenu } from "@/components/dashboard/user-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { getCurrentProfile } from "@/lib/supabase/queries";
+import {
+  getCurrentProfile,
+  getNotificationsSummary,
+} from "@/lib/supabase/queries";
 
 export default async function DashboardLayout({
   children,
@@ -16,6 +20,8 @@ export default async function DashboardLayout({
   if (!profile) {
     redirect("/login");
   }
+
+  const { notifications, unreadCount } = await getNotificationsSummary();
 
   return (
     <div className="flex min-h-screen">
@@ -29,6 +35,10 @@ export default async function DashboardLayout({
             </span>
           </div>
           <div className="flex items-center gap-2">
+            <NotificationsBell
+              initialNotifications={notifications}
+              initialUnreadCount={unreadCount}
+            />
             <ThemeToggle />
             <UserMenu
               fullName={profile.full_name}

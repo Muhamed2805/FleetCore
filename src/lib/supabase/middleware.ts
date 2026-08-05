@@ -1,7 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/signup", "/auth"];
+// /api routes manage their own auth (session cookies for user-triggered
+// routes, a bearer secret for the cron route) rather than the
+// redirect-to-/login gate below.
+const PUBLIC_PATHS = ["/login", "/signup", "/auth", "/api"];
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });

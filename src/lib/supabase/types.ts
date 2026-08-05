@@ -15,6 +15,20 @@ export type DocumentCategory =
   | "insurance"
   | "inspection"
   | "other";
+export type NotificationCategory = "registration" | "insurance" | "inspection";
+
+type NotificationRow = {
+  id: string;
+  company_id: string;
+  recipient_id: string;
+  vehicle_id: string;
+  category: NotificationCategory;
+  threshold_days: number;
+  due_date: string;
+  is_read: boolean;
+  email_sent_at: string | null;
+  created_at: string;
+};
 
 export type Database = {
   public: {
@@ -188,9 +202,79 @@ export type Database = {
           },
         ];
       };
+      reminder_settings: {
+        Row: {
+          company_id: string;
+          thresholds_days: number[];
+          email_enabled: boolean;
+          updated_at: string;
+        };
+        Insert: {
+          company_id: string;
+          thresholds_days?: number[];
+          email_enabled?: boolean;
+          updated_at?: string;
+        };
+        Update: {
+          company_id?: string;
+          thresholds_days?: number[];
+          email_enabled?: boolean;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "reminder_settings_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: true;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      notifications: {
+        Row: NotificationRow;
+        Insert: {
+          id?: string;
+          company_id: string;
+          recipient_id: string;
+          vehicle_id: string;
+          category: NotificationCategory;
+          threshold_days: number;
+          due_date: string;
+          is_read?: boolean;
+          email_sent_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          recipient_id?: string;
+          vehicle_id?: string;
+          category?: NotificationCategory;
+          threshold_days?: number;
+          due_date?: string;
+          is_read?: boolean;
+          email_sent_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "notifications_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      generate_due_reminders: {
+        Args: Record<string, never>;
+        Returns: NotificationRow[];
+      };
+    };
     Enums: {
       user_role: UserRole;
       vehicle_type: VehicleType;
