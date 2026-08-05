@@ -31,6 +31,54 @@ export const getCurrentProfile = cache(async function getCurrentProfile() {
   return { ...profile, email: user.email, companyName: company?.name ?? null };
 });
 
+export type SearchItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  group: "Vehicles" | "Maintenance";
+  href: string;
+};
+
+export const getSearchIndex = cache(async function getSearchIndex(): Promise<
+  SearchItem[]
+> {
+  const supabase = await createClient();
+
+  const [{ data: vehicles }, { data: maintenanceRecords }] = await Promise.all([
+    supabase
+      .from("vehicles")
+      .select("id, make, model, license_plate"),
+    supabase
+      .from("maintenance_records")
+      .select("id, title, vehicle_id"),
+  ]);
+
+  const vehicleById = new Map((vehicles ?? []).map((v) => [v.id, v]));
+
+  const vehicleItems: SearchItem[] = (vehicles ?? []).map((vehicle) => ({
+    id: vehicle.id,
+    title: `${vehicle.make} ${vehicle.model}`,
+    subtitle: vehicle.license_plate,
+    group: "Vehicles",
+    href: `/dashboard/vehicles/${vehicle.id}`,
+  }));
+
+  const maintenanceItems: SearchItem[] = (maintenanceRecords ?? []).map(
+    (record) => {
+      const vehicle = vehicleById.get(record.vehicle_id);
+      return {
+        id: record.id,
+        title: record.title,
+        subtitle: vehicle ? `${vehicle.make} ${vehicle.model}` : "",
+        group: "Maintenance",
+        href: "/dashboard/maintenance",
+      };
+    }
+  );
+
+  return [...vehicleItems, ...maintenanceItems];
+});
+
 export async function getNotificationsSummary() {
   const supabase = await createClient();
   const {
