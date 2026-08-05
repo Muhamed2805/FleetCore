@@ -20,7 +20,7 @@ commit history.
 - [x] Phase 4 — Vehicles CRUD + document uploads
 - [x] Phase 5 — Reminders (email + in-app, customizable thresholds)
 - [x] Phase 6 — Maintenance, service history, expense tracking
-- [ ] Phase 7 — KPI dashboard, charts, calendar view, advanced search
+- [x] Phase 7 — KPI dashboard, charts, calendar view, advanced search
 - [ ] Phase 8 — AI-powered data extraction from documents
 - [ ] Phase 9 — Polish, accessibility, deploy
 
