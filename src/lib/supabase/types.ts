@@ -3,6 +3,18 @@
 //   npx supabase gen types typescript --linked > src/lib/supabase/types.ts
 
 export type UserRole = "admin" | "fleet_manager" | "mechanic" | "driver";
+export type VehicleType =
+  | "car"
+  | "van"
+  | "truck"
+  | "construction_machinery"
+  | "forklift";
+export type VehicleStatus = "active" | "maintenance" | "inactive" | "sold";
+export type DocumentCategory =
+  | "registration"
+  | "insurance"
+  | "inspection"
+  | "other";
 
 export type Database = {
   public: {
@@ -57,11 +69,133 @@ export type Database = {
           },
         ];
       };
+      vehicles: {
+        Row: {
+          id: string;
+          company_id: string;
+          type: VehicleType;
+          status: VehicleStatus;
+          make: string;
+          model: string;
+          year: number | null;
+          license_plate: string;
+          vin: string | null;
+          assigned_driver_id: string | null;
+          odometer: number | null;
+          registration_expiry: string | null;
+          insurance_expiry: string | null;
+          inspection_expiry: string | null;
+          notes: string | null;
+          created_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          type: VehicleType;
+          status?: VehicleStatus;
+          make: string;
+          model: string;
+          year?: number | null;
+          license_plate: string;
+          vin?: string | null;
+          assigned_driver_id?: string | null;
+          odometer?: number | null;
+          registration_expiry?: string | null;
+          insurance_expiry?: string | null;
+          inspection_expiry?: string | null;
+          notes?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          type?: VehicleType;
+          status?: VehicleStatus;
+          make?: string;
+          model?: string;
+          year?: number | null;
+          license_plate?: string;
+          vin?: string | null;
+          assigned_driver_id?: string | null;
+          odometer?: number | null;
+          registration_expiry?: string | null;
+          insurance_expiry?: string | null;
+          inspection_expiry?: string | null;
+          notes?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "vehicles_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "vehicles_assigned_driver_id_fkey";
+            columns: ["assigned_driver_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      vehicle_documents: {
+        Row: {
+          id: string;
+          company_id: string;
+          vehicle_id: string;
+          category: DocumentCategory;
+          file_path: string;
+          file_name: string;
+          uploaded_by: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          vehicle_id: string;
+          category?: DocumentCategory;
+          file_path: string;
+          file_name: string;
+          uploaded_by?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          vehicle_id?: string;
+          category?: DocumentCategory;
+          file_path?: string;
+          file_name?: string;
+          uploaded_by?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_documents_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
     Enums: {
       user_role: UserRole;
+      vehicle_type: VehicleType;
+      vehicle_status: VehicleStatus;
+      document_category: DocumentCategory;
     };
   };
 };
