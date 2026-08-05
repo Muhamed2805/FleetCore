@@ -114,8 +114,11 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                   key={key}
                   type="button"
                   onClick={() => setSelectedDate(key)}
+                  aria-current={isToday ? "date" : undefined}
+                  aria-pressed={isSelected}
+                  aria-label={`${date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}${dayEvents.length ? `, ${dayEvents.length} event${dayEvents.length === 1 ? "" : "s"}` : ""}`}
                   className={cn(
-                    "flex min-h-20 flex-col items-start gap-1 rounded-md border p-1.5 text-left text-xs transition-colors hover:bg-muted",
+                    "flex min-h-20 flex-col items-start gap-1 rounded-md border p-1.5 text-left text-xs transition-colors outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50",
                     !isCurrentMonth && "text-muted-foreground/50",
                     isSelected && "border-primary",
                     !isSelected && "border-transparent"

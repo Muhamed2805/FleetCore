@@ -1,4 +1,5 @@
 import { Bell, Receipt, Truck, Wrench } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { StatCard } from "@/components/dashboard/stat-card";
@@ -16,6 +17,8 @@ import { formatCurrency } from "@/lib/expenses";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 import type { VehicleType } from "@/lib/supabase/types";
+
+export const metadata: Metadata = { title: "Overview" };
 
 function monthKey(date: Date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;

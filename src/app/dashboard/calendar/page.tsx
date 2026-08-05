@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { CalendarView } from "@/components/calendar/calendar-view";
 import type { CalendarEvent } from "@/lib/calendar";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = { title: "Calendar" };
 
 export default async function CalendarPage() {
   const profile = await getCurrentProfile();

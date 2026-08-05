@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { CheckRemindersButton } from "@/components/reminders/check-reminders-button";
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/card";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = { title: "Reminders" };
 
 export default async function RemindersPage() {
   const profile = await getCurrentProfile();
@@ -56,7 +59,7 @@ export default async function RemindersPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Reminders</h1>
           <p className="text-muted-foreground">

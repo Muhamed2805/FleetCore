@@ -72,7 +72,7 @@ export function FleetCompositionChart({
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(row.type)}
                   onBlur={() => setHovered(null)}
-                  className="outline-none"
+                  className="cursor-pointer outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
                 >
                   <text
                     x={LABEL_WIDTH - 12}
