@@ -14,9 +14,15 @@ import { DeleteVehicleDialog } from "@/components/vehicles/delete-vehicle-dialog
 import { ExpiryBadge } from "@/components/vehicles/expiry-badge";
 import { VehicleDocuments } from "@/components/vehicles/vehicle-documents";
 import { VehicleFormDialog } from "@/components/vehicles/vehicle-form-dialog";
+import { formatCurrency } from "@/lib/expenses";
+import {
+  maintenanceStatusBadgeVariant,
+  maintenanceStatusLabels,
+} from "@/lib/maintenance";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 import {
+  formatDate,
   vehicleStatusBadgeVariant,
   vehicleStatusLabels,
   vehicleTypeLabels,
@@ -35,7 +41,7 @@ export default async function VehicleDetailPage({
 
   const supabase = await createClient();
 
-  const [{ data: vehicle }, { data: documents }, { data: drivers }] =
+  const [{ data: vehicle }, { data: documents }, { data: drivers }, { data: maintenanceRecords }] =
     await Promise.all([
       supabase.from("vehicles").select("*").eq("id", id).single(),
       supabase
@@ -44,6 +50,11 @@ export default async function VehicleDetailPage({
         .eq("vehicle_id", id)
         .order("created_at", { ascending: false }),
       supabase.from("profiles").select("id, full_name").eq("role", "driver"),
+      supabase
+        .from("maintenance_records")
+        .select("*")
+        .eq("vehicle_id", id)
+        .order("created_at", { ascending: false }),
     ]);
 
   if (!vehicle) {
@@ -178,6 +189,51 @@ export default async function VehicleDetailPage({
         documents={documentsWithUrl}
         canManage={canManage}
       />
+
+      <Card>
+        <CardHeader className="flex-row items-center justify-between space-y-0">
+          <CardTitle className="text-sm text-muted-foreground">
+            Maintenance history
+          </CardTitle>
+          <Button
+            variant="ghost"
+            size="sm"
+            nativeButton={false}
+            render={<Link href="/dashboard/maintenance" />}
+          >
+            View all
+          </Button>
+        </CardHeader>
+        <CardContent>
+          {!maintenanceRecords?.length ? (
+            <p className="text-sm text-muted-foreground">
+              No maintenance recorded yet.
+            </p>
+          ) : (
+            <ul className="flex flex-col divide-y">
+              {maintenanceRecords.map((record) => (
+                <li
+                  key={record.id}
+                  className="flex items-center justify-between gap-3 py-3"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium">{record.title}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {formatDate(record.completed_date ?? record.scheduled_date)}
+                      {record.cost != null
+                        ? ` · ${formatCurrency(record.cost)}`
+                        : ""}
+                    </span>
+                  </div>
+                  <Badge variant={maintenanceStatusBadgeVariant[record.status]}>
+                    {maintenanceStatusLabels[record.status]}
+                  </Badge>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

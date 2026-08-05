@@ -108,7 +108,11 @@ export function VehiclesTable({
           onValueChange={(value) => setTypeFilter(value ?? "all")}
         >
           <SelectTrigger className="sm:w-48">
-            <SelectValue />
+            <SelectValue>
+              {(value: string | null) =>
+                value && value !== "all" ? vehicleTypeLabels[value as keyof typeof vehicleTypeLabels] : "All types"
+              }
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All types</SelectItem>
@@ -124,7 +128,11 @@ export function VehiclesTable({
           onValueChange={(value) => setStatusFilter(value ?? "all")}
         >
           <SelectTrigger className="sm:w-48">
-            <SelectValue />
+            <SelectValue>
+              {(value: string | null) =>
+                value && value !== "all" ? vehicleStatusLabels[value as keyof typeof vehicleStatusLabels] : "All statuses"
+              }
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All statuses</SelectItem>

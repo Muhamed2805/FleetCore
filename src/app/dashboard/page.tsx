@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/expenses";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 
@@ -17,9 +18,24 @@ export default async function DashboardPage() {
   const profile = await getCurrentProfile();
   const supabase = await createClient();
 
-  const { data: vehicles } = await supabase
-    .from("vehicles")
-    .select("registration_expiry, insurance_expiry, inspection_expiry");
+  const startOfMonth = new Date();
+  startOfMonth.setDate(1);
+  const startOfMonthStr = startOfMonth.toISOString().slice(0, 10);
+
+  const [{ data: vehicles }, { count: openMaintenanceCount }, { data: expenses }] =
+    await Promise.all([
+      supabase
+        .from("vehicles")
+        .select("registration_expiry, insurance_expiry, inspection_expiry"),
+      supabase
+        .from("maintenance_records")
+        .select("*", { count: "exact", head: true })
+        .in("status", ["scheduled", "in_progress"]),
+      supabase
+        .from("expenses")
+        .select("amount")
+        .gte("expense_date", startOfMonthStr),
+    ]);
 
   const in30Days = new Date();
   in30Days.setDate(in30Days.getDate() + 30);
@@ -31,6 +47,11 @@ export default async function DashboardPage() {
       vehicle.inspection_expiry,
     ].some((date) => date && new Date(date) <= in30Days)
   ).length;
+
+  const expensesThisMonth = (expenses ?? []).reduce(
+    (sum, expense) => sum + expense.amount,
+    0
+  );
 
   return (
     <div className="flex flex-col gap-6">
@@ -56,8 +77,17 @@ export default async function DashboardPage() {
           icon={Bell}
           hint="Next 30 days"
         />
-        <StatCard title="Open maintenance" value={0} icon={Wrench} hint="No open jobs" />
-        <StatCard title="Expenses this month" value="$0" icon={Receipt} />
+        <StatCard
+          title="Open maintenance"
+          value={openMaintenanceCount ?? 0}
+          icon={Wrench}
+          hint={openMaintenanceCount ? undefined : "No open jobs"}
+        />
+        <StatCard
+          title="Expenses this month"
+          value={formatCurrency(expensesThisMonth)}
+          icon={Receipt}
+        />
       </div>
 
       {!vehicles?.length ? (

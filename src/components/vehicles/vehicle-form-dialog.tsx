@@ -89,6 +89,7 @@ export function VehicleFormDialog({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isEdit = Boolean(vehicle);
+  const driversById = new Map(drivers.map((driver) => [driver.id, driver]));
 
   function set<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -172,7 +173,11 @@ export function VehicleFormDialog({
                 onValueChange={(value) => set("type", value as VehicleType)}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue />
+                  <SelectValue>
+                    {(value: VehicleType | null) =>
+                      value ? vehicleTypeLabels[value] : "Select type"
+                    }
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {Object.entries(vehicleTypeLabels).map(([value, label]) => (
@@ -192,7 +197,11 @@ export function VehicleFormDialog({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue />
+                  <SelectValue>
+                    {(value: VehicleStatus | null) =>
+                      value ? vehicleStatusLabels[value] : "Select status"
+                    }
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {Object.entries(vehicleStatusLabels).map(
@@ -283,7 +292,11 @@ export function VehicleFormDialog({
               }
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Unassigned" />
+                <SelectValue>
+                  {(value: string | null) =>
+                    value ? (driversById.get(value)?.full_name ?? "Unnamed") : "Unassigned"
+                  }
+                </SelectValue>
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">Unassigned</SelectItem>

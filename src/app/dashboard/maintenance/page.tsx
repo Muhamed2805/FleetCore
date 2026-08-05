@@ -1,13 +1,42 @@
-import { Wrench } from "lucide-react";
+import { redirect } from "next/navigation";
 
-import { ComingSoon } from "@/components/dashboard/coming-soon";
+import { MaintenanceTable } from "@/components/maintenance/maintenance-table";
+import { getCurrentProfile } from "@/lib/supabase/queries";
+import { createClient } from "@/lib/supabase/server";
 
-export default function MaintenancePage() {
+export default async function MaintenancePage() {
+  const profile = await getCurrentProfile();
+  if (!profile) {
+    redirect("/login");
+  }
+
+  const supabase = await createClient();
+
+  const [{ data: records }, { data: vehicles }, { data: staff }] =
+    await Promise.all([
+      supabase
+        .from("maintenance_records")
+        .select("*")
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("vehicles")
+        .select("id, make, model, license_plate")
+        .order("make"),
+      supabase.from("profiles").select("id, full_name"),
+    ]);
+
+  const canManage =
+    profile.role === "admin" ||
+    profile.role === "fleet_manager" ||
+    profile.role === "mechanic";
+
   return (
-    <ComingSoon
-      icon={Wrench}
-      title="Maintenance"
-      description="Maintenance schedules and service history for your fleet. Coming in a later phase."
+    <MaintenanceTable
+      records={records ?? []}
+      vehicles={vehicles ?? []}
+      staff={staff ?? []}
+      companyId={profile.company_id}
+      canManage={canManage}
     />
   );
 }

@@ -136,7 +136,11 @@ export function VehicleDocuments({
                 }
               >
                 <SelectTrigger className="w-full sm:w-40">
-                  <SelectValue />
+                  <SelectValue>
+                    {(value: DocumentCategory | null) =>
+                      value ? categoryLabels[value] : "Category"
+                    }
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {Object.entries(categoryLabels).map(([value, label]) => (
