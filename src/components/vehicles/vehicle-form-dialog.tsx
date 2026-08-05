@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { DocumentScanButton } from "@/components/ui/document-scan-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -23,6 +24,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  extractVehicleRegistration,
+  type ExtractedVehicleRegistration,
+} from "@/lib/extraction";
 import { createClient } from "@/lib/supabase/client";
 import type {
   Database,
@@ -95,6 +100,19 @@ export function VehicleFormDialog({
     setValues((prev) => ({ ...prev, [key]: value }));
   }
 
+  function handleExtracted(extracted: ExtractedVehicleRegistration) {
+    setValues((prev) => ({
+      ...prev,
+      make: extracted.make ?? prev.make,
+      model: extracted.model ?? prev.model,
+      year: extracted.year != null ? String(extracted.year) : prev.year,
+      vin: extracted.vin ?? prev.vin,
+      license_plate: extracted.license_plate ?? prev.license_plate,
+      registration_expiry:
+        extracted.registration_expiry ?? prev.registration_expiry,
+    }));
+  }
+
   function handleOpenChange(next: boolean) {
     setOpen(next);
     if (next) {
@@ -165,6 +183,14 @@ export function VehicleFormDialog({
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {!isEdit ? (
+            <DocumentScanButton
+              label="Scan registration document"
+              action={extractVehicleRegistration}
+              onExtracted={handleExtracted}
+            />
+          ) : null}
+
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <Label>Type</Label>

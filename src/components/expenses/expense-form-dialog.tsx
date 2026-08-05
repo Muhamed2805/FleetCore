@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { DocumentScanButton } from "@/components/ui/document-scan-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -24,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { expenseCategoryLabels } from "@/lib/expenses";
+import { extractInvoice, type ExtractedInvoice } from "@/lib/extraction";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, ExpenseCategory } from "@/lib/supabase/types";
 
@@ -78,6 +80,16 @@ export function ExpenseFormDialog({
 
   function set<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function handleExtracted(extracted: ExtractedInvoice) {
+    setValues((prev) => ({
+      ...prev,
+      category: extracted.category ?? prev.category,
+      amount: extracted.amount != null ? String(extracted.amount) : prev.amount,
+      expense_date: extracted.invoice_date ?? prev.expense_date,
+      description: extracted.description ?? prev.description,
+    }));
   }
 
   function handleOpenChange(next: boolean) {
@@ -137,6 +149,14 @@ export function ExpenseFormDialog({
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {!isEdit ? (
+            <DocumentScanButton
+              label="Scan receipt or invoice"
+              action={extractInvoice}
+              onExtracted={handleExtracted}
+            />
+          ) : null}
+
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <Label>Category</Label>
