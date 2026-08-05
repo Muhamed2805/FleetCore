@@ -21,7 +21,7 @@ commit history.
 - [x] Phase 5 — Reminders (email + in-app, customizable thresholds)
 - [x] Phase 6 — Maintenance, service history, expense tracking
 - [x] Phase 7 — KPI dashboard, charts, calendar view, advanced search
-- [ ] Phase 8 — AI-powered data extraction from documents
+- [x] Phase 8 — AI-powered data extraction from documents
 - [ ] Phase 9 — Polish, accessibility, deploy
 
 ## Tech stack
@@ -55,6 +55,14 @@ Every signup creates a new company and its first user as `admin`. Roles are
 `admin`, `fleet_manager`, `mechanic`, `driver` (see
 `supabase/migrations/20260805210300_init_auth_schema.sql`). Inviting
 teammates into an existing company is a later phase.
+
+### AI document extraction
+
+The "Scan registration document" / "Scan receipt or invoice" buttons on the
+Add Vehicle and Add Expense forms send an uploaded image or PDF to Claude
+(structured outputs, so the response always matches the expected schema) and
+prefill the form. Requires `ANTHROPIC_API_KEY`; without it the button shows
+a clear "not configured" message instead of failing silently.
 
 ### Reminders
 
