@@ -17,7 +17,7 @@ commit history.
 - [x] Phase 1 — Scaffold (Next.js, Tailwind, shadcn/ui, dark/light mode)
 - [x] Phase 2 — Supabase (auth, schema, RLS, role-based access)
 - [x] Phase 3 — Dashboard shell (layout, sidebar, navigation)
-- [ ] Phase 4 — Vehicles CRUD + document uploads
+- [x] Phase 4 — Vehicles CRUD + document uploads
 - [ ] Phase 5 — Reminders (email + in-app, customizable thresholds)
 - [ ] Phase 6 — Maintenance, service history, expense tracking
 - [ ] Phase 7 — KPI dashboard, charts, calendar view, advanced search
