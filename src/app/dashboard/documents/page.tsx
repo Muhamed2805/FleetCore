@@ -1,6 +1,9 @@
 import { FileText } from "lucide-react";
+import type { Metadata } from "next";
 
 import { ComingSoon } from "@/components/dashboard/coming-soon";
+
+export const metadata: Metadata = { title: "Documents" };
 
 export default function DocumentsPage() {
   return (

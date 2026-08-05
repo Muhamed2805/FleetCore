@@ -22,7 +22,7 @@ commit history.
 - [x] Phase 6 — Maintenance, service history, expense tracking
 - [x] Phase 7 — KPI dashboard, charts, calendar view, advanced search
 - [x] Phase 8 — AI-powered data extraction from documents
-- [ ] Phase 9 — Polish, accessibility, deploy
+- [x] Phase 9 — Polish, responsive, accessibility (deploy prep TBD)
 
 ## Tech stack
 

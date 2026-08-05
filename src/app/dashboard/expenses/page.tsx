@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { ExpensesTable } from "@/components/expenses/expenses-table";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = { title: "Expenses" };
 
 export default async function ExpensesPage() {
   const profile = await getCurrentProfile();

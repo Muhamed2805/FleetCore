@@ -42,7 +42,16 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
     <>
       <Button
         variant="outline"
-        className="w-56 justify-start text-muted-foreground sm:w-64"
+        size="icon"
+        className="text-muted-foreground sm:hidden"
+        onClick={() => setOpen(true)}
+      >
+        <Search className="size-4" />
+        <span className="sr-only">Search</span>
+      </Button>
+      <Button
+        variant="outline"
+        className="hidden w-56 justify-start text-muted-foreground sm:flex sm:w-64"
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />

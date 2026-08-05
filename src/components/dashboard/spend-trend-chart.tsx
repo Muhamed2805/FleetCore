@@ -82,7 +82,7 @@ export function SpendTrendChart({
                 onMouseLeave={() => setHovered(null)}
                 onFocus={() => setHovered(index)}
                 onBlur={() => setHovered(null)}
-                className="outline-none"
+                className="cursor-pointer outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
               >
                 <rect
                   x={x}

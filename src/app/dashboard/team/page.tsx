@@ -1,6 +1,9 @@
 import { Users } from "lucide-react";
+import type { Metadata } from "next";
 
 import { ComingSoon } from "@/components/dashboard/coming-soon";
+
+export const metadata: Metadata = { title: "Team" };
 
 export default function TeamPage() {
   return (

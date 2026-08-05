@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { VehiclesTable } from "@/components/vehicles/vehicles-table";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = { title: "Vehicles" };
 
 export default async function VehiclesPage() {
   const profile = await getCurrentProfile();

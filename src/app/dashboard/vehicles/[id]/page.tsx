@@ -97,10 +97,10 @@ export default async function VehicleDetailPage({
         </Button>
       </div>
 
-      <div className="flex items-start justify-between">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-semibold tracking-tight">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-2xl font-semibold tracking-tight break-words">
               {vehicle.make} {vehicle.model}
             </h1>
             <Badge variant={vehicleStatusBadgeVariant[vehicle.status]}>

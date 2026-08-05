@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { MaintenanceTable } from "@/components/maintenance/maintenance-table";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
+
+export const metadata: Metadata = { title: "Maintenance" };
 
 export default async function MaintenancePage() {
   const profile = await getCurrentProfile();
