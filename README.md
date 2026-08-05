@@ -18,7 +18,7 @@ commit history.
 - [x] Phase 2 — Supabase (auth, schema, RLS, role-based access)
 - [x] Phase 3 — Dashboard shell (layout, sidebar, navigation)
 - [x] Phase 4 — Vehicles CRUD + document uploads
-- [ ] Phase 5 — Reminders (email + in-app, customizable thresholds)
+- [x] Phase 5 — Reminders (email + in-app, customizable thresholds)
 - [ ] Phase 6 — Maintenance, service history, expense tracking
 - [ ] Phase 7 — KPI dashboard, charts, calendar view, advanced search
 - [ ] Phase 8 — AI-powered data extraction from documents
@@ -55,3 +55,14 @@ Every signup creates a new company and its first user as `admin`. Roles are
 `admin`, `fleet_manager`, `mechanic`, `driver` (see
 `supabase/migrations/20260805210300_init_auth_schema.sql`). Inviting
 teammates into an existing company is a later phase.
+
+### Reminders
+
+Each company has customizable day-thresholds (default 30/15/7/1) that
+trigger an in-app notification, and optionally an email, before a
+vehicle's registration/insurance/inspection expires. `POST
+/api/reminders/cron` (with `Authorization: Bearer $CRON_SECRET`) scans
+every company and is meant to be hit by a scheduler once deployed (Phase
+9); until then, trigger it manually or use the "Check now" button on the
+Reminders page, which scans just your own company. Emails go out via
+Resend and are skipped (logged only) until `RESEND_API_KEY` is set.
