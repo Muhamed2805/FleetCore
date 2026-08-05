@@ -16,6 +16,26 @@ export type DocumentCategory =
   | "inspection"
   | "other";
 export type NotificationCategory = "registration" | "insurance" | "inspection";
+export type MaintenanceStatus =
+  | "scheduled"
+  | "in_progress"
+  | "completed"
+  | "cancelled";
+export type MaintenanceType =
+  | "oil_change"
+  | "tire_rotation"
+  | "brake_service"
+  | "inspection"
+  | "repair"
+  | "other";
+export type ExpenseCategory =
+  | "fuel"
+  | "toll"
+  | "fine"
+  | "parking"
+  | "registration_fee"
+  | "insurance_premium"
+  | "other";
 
 type NotificationRow = {
   id: string;
@@ -267,6 +287,112 @@ export type Database = {
           },
         ];
       };
+      maintenance_records: {
+        Row: {
+          id: string;
+          company_id: string;
+          vehicle_id: string;
+          type: MaintenanceType;
+          status: MaintenanceStatus;
+          title: string;
+          description: string | null;
+          scheduled_date: string | null;
+          completed_date: string | null;
+          odometer: number | null;
+          cost: number | null;
+          performed_by: string | null;
+          created_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          vehicle_id: string;
+          type?: MaintenanceType;
+          status?: MaintenanceStatus;
+          title: string;
+          description?: string | null;
+          scheduled_date?: string | null;
+          completed_date?: string | null;
+          odometer?: number | null;
+          cost?: number | null;
+          performed_by?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          vehicle_id?: string;
+          type?: MaintenanceType;
+          status?: MaintenanceStatus;
+          title?: string;
+          description?: string | null;
+          scheduled_date?: string | null;
+          completed_date?: string | null;
+          odometer?: number | null;
+          cost?: number | null;
+          performed_by?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "maintenance_records_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      expenses: {
+        Row: {
+          id: string;
+          company_id: string;
+          vehicle_id: string | null;
+          category: ExpenseCategory;
+          amount: number;
+          expense_date: string;
+          description: string | null;
+          created_by: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          vehicle_id?: string | null;
+          category?: ExpenseCategory;
+          amount: number;
+          expense_date?: string;
+          description?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          vehicle_id?: string | null;
+          category?: ExpenseCategory;
+          amount?: number;
+          expense_date?: string;
+          description?: string | null;
+          created_by?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "expenses_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -280,6 +406,9 @@ export type Database = {
       vehicle_type: VehicleType;
       vehicle_status: VehicleStatus;
       document_category: DocumentCategory;
+      maintenance_status: MaintenanceStatus;
+      maintenance_type: MaintenanceType;
+      expense_category: ExpenseCategory;
     };
   };
 };
