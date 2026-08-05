@@ -15,7 +15,7 @@ The project is being built incrementally, phase by phase. See progress in
 commit history.
 
 - [x] Phase 1 — Scaffold (Next.js, Tailwind, shadcn/ui, dark/light mode)
-- [ ] Phase 2 — Supabase (auth, schema, RLS, role-based access)
+- [x] Phase 2 — Supabase (auth, schema, RLS, role-based access)
 - [ ] Phase 3 — Dashboard shell (layout, sidebar, navigation)
 - [ ] Phase 4 — Vehicles CRUD + document uploads
 - [ ] Phase 5 — Reminders (email + in-app, customizable thresholds)
@@ -33,9 +33,25 @@ commit history.
 
 ## Getting started
 
+1. Create a [Supabase](https://supabase.com) project.
+2. Copy `.env.example` to `.env.local` and fill in the project URL and anon
+   key from Project Settings > API.
+3. Apply the database schema: link the project with the Supabase CLI
+   (`npx supabase link --project-ref <ref>`) then run
+   `npx supabase db push`, or paste the contents of
+   `supabase/migrations/*.sql` into the SQL editor in the dashboard.
+4. Install and run:
+
 ```bash
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Roles
+
+Every signup creates a new company and its first user as `admin`. Roles are
+`admin`, `fleet_manager`, `mechanic`, `driver` (see
+`supabase/migrations/20260805210300_init_auth_schema.sql`). Inviting
+teammates into an existing company is a later phase.
