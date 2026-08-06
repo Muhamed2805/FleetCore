@@ -35,9 +35,14 @@ export type ExpenseCategory =
   | "parking"
   | "registration_fee"
   | "insurance_premium"
+  | "repair"
   | "other";
 export type DamageSeverity = "minor" | "moderate" | "severe";
-export type DamageReportStatus = "reported" | "in_repair" | "resolved";
+export type DamageReportStatus =
+  | "reported"
+  | "scheduled"
+  | "in_repair"
+  | "resolved";
 
 type NotificationRow = {
   id: string;

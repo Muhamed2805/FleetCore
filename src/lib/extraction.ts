@@ -43,6 +43,7 @@ const invoiceSchema = z.object({
       "parking",
       "registration_fee",
       "insurance_premium",
+      "repair",
       "other",
     ])
     .nullable(),
@@ -160,7 +161,7 @@ export async function extractInvoice(
             block,
             {
               type: "text",
-              text: "This is an invoice or receipt for a fleet expense (fuel, tolls, fines, parking, registration fees, insurance, or other). Extract the vendor name, total amount, invoice date, the best-matching category, and a one-line description. Use null for any field that isn't present or legible.",
+              text: "This is an invoice or receipt for a fleet expense (fuel, tolls, fines, parking, registration fees, insurance, repairs, or other). Extract the vendor name, total amount, invoice date, the best-matching category, and a one-line description. Use null for any field that isn't present or legible.",
             },
           ],
         },

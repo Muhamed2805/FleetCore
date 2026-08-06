@@ -7,6 +7,7 @@ export const expenseCategoryLabels: Record<ExpenseCategory, string> = {
   parking: "Parking",
   registration_fee: "Registration fee",
   insurance_premium: "Insurance premium",
+  repair: "Repair",
   other: "Other",
 };
 

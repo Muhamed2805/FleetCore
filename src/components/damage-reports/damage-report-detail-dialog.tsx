@@ -111,11 +111,13 @@ export function DamageReportDetailDialog({
 
   async function linkExpense(expense: Expense) {
     const supabase = createClient();
+    const shouldAdvance =
+      report.status === "reported" || report.status === "scheduled";
     await supabase
       .from("damage_reports")
       .update({
         expense_id: expense.id,
-        status: report.status === "reported" ? "in_repair" : report.status,
+        status: shouldAdvance ? "in_repair" : report.status,
       })
       .eq("id", report.id);
     router.refresh();
@@ -247,7 +249,7 @@ export function DamageReportDetailDialog({
                 companyId={companyId}
                 vehicles={vehicles}
                 defaultVehicleId={report.vehicle_id}
-                defaultCategory="other"
+                defaultCategory="repair"
                 defaultDescription={
                   report.vehicle
                     ? `Damage repair — ${report.vehicle.make} ${report.vehicle.model}`
