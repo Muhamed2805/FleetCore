@@ -36,6 +36,8 @@ export type ExpenseCategory =
   | "registration_fee"
   | "insurance_premium"
   | "other";
+export type DamageSeverity = "minor" | "moderate" | "severe";
+export type DamageReportStatus = "reported" | "in_repair" | "resolved";
 
 type NotificationRow = {
   id: string;
@@ -393,6 +395,101 @@ export type Database = {
           },
         ];
       };
+      damage_reports: {
+        Row: {
+          id: string;
+          company_id: string;
+          vehicle_id: string;
+          severity: DamageSeverity;
+          status: DamageReportStatus;
+          description: string | null;
+          expense_id: string | null;
+          reported_by: string | null;
+          reported_at: string;
+          resolved_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          vehicle_id: string;
+          severity?: DamageSeverity;
+          status?: DamageReportStatus;
+          description?: string | null;
+          expense_id?: string | null;
+          reported_by?: string | null;
+          reported_at?: string;
+          resolved_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          vehicle_id?: string;
+          severity?: DamageSeverity;
+          status?: DamageReportStatus;
+          description?: string | null;
+          expense_id?: string | null;
+          reported_by?: string | null;
+          reported_at?: string;
+          resolved_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "damage_reports_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "damage_reports_expense_id_fkey";
+            columns: ["expense_id"];
+            isOneToOne: false;
+            referencedRelation: "expenses";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      damage_report_photos: {
+        Row: {
+          id: string;
+          company_id: string;
+          damage_report_id: string;
+          file_path: string;
+          uploaded_by: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          damage_report_id: string;
+          file_path: string;
+          uploaded_by?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          damage_report_id?: string;
+          file_path?: string;
+          uploaded_by?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "damage_report_photos_damage_report_id_fkey";
+            columns: ["damage_report_id"];
+            isOneToOne: false;
+            referencedRelation: "damage_reports";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -409,6 +506,8 @@ export type Database = {
       maintenance_status: MaintenanceStatus;
       maintenance_type: MaintenanceType;
       expense_category: ExpenseCategory;
+      damage_severity: DamageSeverity;
+      damage_report_status: DamageReportStatus;
     };
   };
 };

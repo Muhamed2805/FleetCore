@@ -23,6 +23,7 @@ commit history.
 - [x] Phase 7 — KPI dashboard, charts, calendar view, advanced search
 - [x] Phase 8 — AI-powered data extraction from documents
 - [x] Phase 9 — Polish, responsive, accessibility (deploy prep TBD)
+- [x] Phase 10 — Damage reports (photos, severity/status workflow, linked repair expenses)
 
 ## Tech stack
 
@@ -63,6 +64,15 @@ Add Vehicle and Add Expense forms send an uploaded image or PDF to Claude
 (structured outputs, so the response always matches the expected schema) and
 prefill the form. Requires `ANTHROPIC_API_KEY`; without it the button shows
 a clear "not configured" message instead of failing silently.
+
+### Damage reports
+
+Any company member — including drivers, who are usually the ones holding the
+vehicle when damage happens — can log a damage report with photos and a
+severity level from the vehicle page or the Damage reports section.
+Admins, fleet managers and mechanics can then update its status
+(reported → in repair → resolved) and link it to a repair expense with one
+click, so the photo, the cost and the vehicle's history stay connected.
 
 ### Reminders
 
