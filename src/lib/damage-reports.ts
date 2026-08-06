@@ -17,6 +17,7 @@ export const damageSeverityBadgeVariant: Record<
 
 export const damageStatusLabels: Record<DamageReportStatus, string> = {
   reported: "Reported",
+  scheduled: "Scheduled",
   in_repair: "In repair",
   resolved: "Resolved",
 };
@@ -26,6 +27,7 @@ export const damageStatusBadgeVariant: Record<
   "default" | "secondary" | "destructive" | "outline"
 > = {
   reported: "secondary",
+  scheduled: "outline",
   in_repair: "default",
   resolved: "outline",
 };
