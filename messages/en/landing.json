@@ -1,0 +1,12 @@
+{
+  "header": {
+    "brand": "FleetCore",
+    "logIn": "Log in"
+  },
+  "hero": {
+    "badge": "Phase 2 — auth & multi-tenancy",
+    "title": "Fleet Management & Maintenance Platform",
+    "description": "Manage vehicles, registrations, insurance, inspections, maintenance and documents from one dashboard.",
+    "getStarted": "Get started"
+  }
+}

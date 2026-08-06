@@ -1,0 +1,40 @@
+{
+  "page": {
+    "title": "Herinneringen",
+    "description": "E-mail- en in-app-herinneringen voordat registraties, verzekeringen en keuringen verlopen."
+  },
+  "settings": {
+    "title": "Instellingen",
+    "description": "Kies wanneer je team een herinnering krijgt voordat de registratie, verzekering of keuring van een voertuig verloopt.",
+    "remindBefore": "Herinneren voor vervaldatum",
+    "thresholdDaysLabel": "{days, plural, one {# dag} other {# dagen}}",
+    "customDaysLabel": "Aangepast (dagen gescheiden door komma's)",
+    "customDaysPlaceholder": "bv. 60, 45",
+    "emailToggle": "Ook e-mailherinneringen versturen",
+    "save": "Instellingen opslaan",
+    "saved": "Opgeslagen."
+  },
+  "checkButton": {
+    "checking": "Controleren…",
+    "checkNow": "Nu controleren",
+    "noneDue": "Geen nieuwe herinneringen nodig.",
+    "created": "{count, plural, one {# nieuwe herinnering aangemaakt.} other {# nieuwe herinneringen aangemaakt.}}"
+  },
+  "list": {
+    "empty": {
+      "title": "Nog geen herinneringen",
+      "description": "Hier verschijnen herinneringen zodra voertuigdocumenten hun vervaldatum naderen."
+    },
+    "unknownVehicle": "Voertuig",
+    "expiresOn": "Verloopt {date}",
+    "dayReminder": "Herinnering {days} dagen vooraf",
+    "emailed": "gemaild",
+    "readBadge": "Gelezen",
+    "markAsRead": "Als gelezen markeren",
+    "categories": {
+      "registration": "Registratie",
+      "insurance": "Verzekering",
+      "inspection": "Keuring"
+    }
+  }
+}

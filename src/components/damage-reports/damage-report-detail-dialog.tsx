@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState, type ReactElement } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -23,13 +23,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "@/i18n/navigation";
 import {
   damageSeverityBadgeVariant,
-  damageSeverityLabels,
   damageStatusBadgeVariant,
-  damageStatusLabels,
+  getDamageSeverityLabels,
+  getDamageStatusLabels,
 } from "@/lib/damage-reports";
-import { expenseCategoryLabels, formatCurrency } from "@/lib/expenses";
+import { getExpenseCategoryLabels, formatCurrency } from "@/lib/expenses";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, DamageReportStatus } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -63,10 +64,17 @@ export function DamageReportDetailDialog({
   canManage: boolean;
   trigger: ReactElement;
 }) {
+  const t = useTranslations("damageReports");
+  const tCommon = useTranslations("common");
+  const tExpenses = useTranslations("expenses");
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
+
+  const severityLabels = getDamageSeverityLabels(t);
+  const statusLabels = getDamageStatusLabels(t);
+  const expenseCategoryLabels = getExpenseCategoryLabels(tExpenses);
 
   async function updateStatus(status: DamageReportStatus) {
     setIsUpdating(true);
@@ -140,18 +148,24 @@ export function DamageReportDetailDialog({
           <DialogTitle>
             {report.vehicle
               ? `${report.vehicle.make} ${report.vehicle.model}`
-              : "Damage report"}
+              : t("detail.titleFallback")}
           </DialogTitle>
           <DialogDescription>
-            Reported {formatDate(report.reported_at)}
-            {report.reportedByName ? ` by ${report.reportedByName}` : ""}.
+            {report.reportedByName
+              ? t("detail.reportedOnBy", {
+                  date: formatDate(report.reported_at),
+                  name: report.reportedByName,
+                })
+              : t("detail.reportedOn", {
+                  date: formatDate(report.reported_at),
+                })}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant={damageSeverityBadgeVariant[report.severity]}>
-              {damageSeverityLabels[report.severity]}
+              {severityLabels[report.severity]}
             </Badge>
             {canManage ? (
               <Select
@@ -163,12 +177,12 @@ export function DamageReportDetailDialog({
                 <SelectTrigger className="h-7 w-36" disabled={isUpdating}>
                   <SelectValue>
                     {(value: DamageReportStatus | null) =>
-                      value ? damageStatusLabels[value] : "Status"
+                      value ? statusLabels[value] : t("detail.statusPlaceholder")
                     }
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.entries(damageStatusLabels).map(([value, label]) => (
+                  {Object.entries(statusLabels).map(([value, label]) => (
                     <SelectItem key={value} value={value}>
                       {label}
                     </SelectItem>
@@ -177,7 +191,7 @@ export function DamageReportDetailDialog({
               </Select>
             ) : (
               <Badge variant={damageStatusBadgeVariant[report.status]}>
-                {damageStatusLabels[report.status]}
+                {statusLabels[report.status]}
               </Badge>
             )}
           </div>
@@ -188,11 +202,11 @@ export function DamageReportDetailDialog({
 
           <div>
             <h3 className="mb-2 text-sm font-medium text-muted-foreground">
-              Photos
+              {t("detail.photosTitle")}
             </h3>
             {report.photos.length === 0 ? (
               <p className="text-sm text-muted-foreground">
-                No photos attached.
+                {t("detail.noPhotos")}
               </p>
             ) : (
               <div className="grid grid-cols-3 gap-2">
@@ -220,7 +234,7 @@ export function DamageReportDetailDialog({
 
           <div>
             <h3 className="mb-2 text-sm font-medium text-muted-foreground">
-              Repair expense
+              {t("detail.repairExpenseTitle")}
             </h3>
             {report.expense ? (
               <div className="flex items-center justify-between rounded-lg border p-3 text-sm">
@@ -240,7 +254,7 @@ export function DamageReportDetailDialog({
                     disabled={isUpdating}
                     onClick={unlinkExpense}
                   >
-                    Unlink
+                    {tCommon("actions.unlink")}
                   </Button>
                 ) : null}
               </div>
@@ -252,15 +266,20 @@ export function DamageReportDetailDialog({
                 defaultCategory="repair"
                 defaultDescription={
                   report.vehicle
-                    ? `Damage repair — ${report.vehicle.make} ${report.vehicle.model}`
-                    : "Damage repair"
+                    ? t("detail.repairExpenseDescription", {
+                        make: report.vehicle.make,
+                        model: report.vehicle.model,
+                      })
+                    : t("detail.repairExpenseDescriptionFallback")
                 }
                 onCreated={linkExpense}
-                trigger={<Button variant="outline">Add repair expense</Button>}
+                trigger={
+                  <Button variant="outline">{t("detail.addRepairExpense")}</Button>
+                }
               />
             ) : (
               <p className="text-sm text-muted-foreground">
-                No repair expense linked yet.
+                {t("detail.noRepairExpense")}
               </p>
             )}
           </div>
@@ -269,13 +288,13 @@ export function DamageReportDetailDialog({
 
           {canManage ? (
             <ConfirmDeleteDialog
-              title="Delete this damage report?"
-              description="This removes the report and its photos. This can't be undone."
+              title={t("detail.deleteTitle")}
+              description={t("detail.deleteDescription")}
               onConfirm={handleDelete}
               trigger={
                 <Button variant="outline" className="self-start text-destructive">
                   <Trash2 className="size-4" />
-                  Delete report
+                  {t("detail.deleteButton")}
                 </Button>
               }
             />

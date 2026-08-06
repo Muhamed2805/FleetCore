@@ -1,0 +1,68 @@
+{
+  "enums": {
+    "expenseCategory": {
+      "fuel": "Bränsle",
+      "toll": "Vägtull",
+      "fine": "Böter",
+      "parking": "Parkering",
+      "registrationFee": "Registreringsavgift",
+      "insurancePremium": "Försäkringspremie",
+      "repair": "Reparation",
+      "other": "Övrigt"
+    }
+  },
+  "form": {
+    "editTitle": "Redigera utgift",
+    "addTitle": "Lägg till utgift",
+    "dialogDescription": "Håll koll på bränsle, vägtullar, böter och andra flottkostnader.",
+    "scanLabel": "Skanna kvitto eller faktura",
+    "category": {
+      "label": "Kategori",
+      "placeholder": "Välj kategori"
+    },
+    "amount": {
+      "label": "Belopp"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "vehicle": {
+      "label": "Fordon",
+      "noVehicle": "Inget fordon"
+    },
+    "description": {
+      "label": "Beskrivning"
+    },
+    "errors": {
+      "invalidAmount": "Ange ett giltigt belopp."
+    },
+    "submit": {
+      "add": "Lägg till utgift"
+    }
+  },
+  "table": {
+    "heading": "Utgifter",
+    "summary": "{count, plural, one {# utgift} other {# utgifter}} · {total} totalt",
+    "addButton": "Lägg till utgift",
+    "filters": {
+      "allCategories": "Alla kategorier"
+    },
+    "emptyState": {
+      "noExpensesTitle": "Inga utgifter än",
+      "noMatchTitle": "Inga utgifter matchar det här filtret",
+      "trackCosts": "Håll koll på bränsle, vägtullar, böter och andra flottkostnader.",
+      "tryDifferentCategory": "Prova en annan kategori."
+    },
+    "columns": {
+      "date": "Datum",
+      "category": "Kategori",
+      "vehicle": "Fordon",
+      "description": "Beskrivning",
+      "amount": "Belopp"
+    },
+    "deleteDialog": {
+      "title": "Ta bort den här utgiften?",
+      "description": "Det här går inte att ångra."
+    }
+  }
+}

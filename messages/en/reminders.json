@@ -1,0 +1,40 @@
+{
+  "page": {
+    "title": "Reminders",
+    "description": "Email and in-app reminders before registrations, insurance and inspections expire."
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Choose when your team gets reminded before a vehicle's registration, insurance or inspection expires.",
+    "remindBefore": "Remind before expiration",
+    "thresholdDaysLabel": "{days, plural, one {# day} other {# days}}",
+    "customDaysLabel": "Custom (comma-separated days)",
+    "customDaysPlaceholder": "e.g. 60, 45",
+    "emailToggle": "Also send email reminders",
+    "save": "Save settings",
+    "saved": "Saved."
+  },
+  "checkButton": {
+    "checking": "Checking…",
+    "checkNow": "Check now",
+    "noneDue": "No new reminders due.",
+    "created": "{count, plural, one {# new reminder created.} other {# new reminders created.}}"
+  },
+  "list": {
+    "empty": {
+      "title": "No reminders yet",
+      "description": "You'll see reminders here as vehicle documents approach their expiration dates."
+    },
+    "unknownVehicle": "Vehicle",
+    "expiresOn": "Expires {date}",
+    "dayReminder": "{days}-day reminder",
+    "emailed": "emailed",
+    "readBadge": "Read",
+    "markAsRead": "Mark as read",
+    "categories": {
+      "registration": "Registration",
+      "insurance": "Insurance",
+      "inspection": "Inspection"
+    }
+  }
+}

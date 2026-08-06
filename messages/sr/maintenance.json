@@ -1,0 +1,95 @@
+{
+  "enums": {
+    "maintenanceType": {
+      "oilChange": "Zamena ulja",
+      "tireRotation": "Rotacija guma",
+      "brakeService": "Servis kočnica",
+      "inspection": "Tehnički pregled",
+      "repair": "Popravka",
+      "other": "Ostalo"
+    },
+    "maintenanceStatus": {
+      "scheduled": "Zakazano",
+      "inProgress": "U toku",
+      "completed": "Završeno",
+      "cancelled": "Otkazano"
+    }
+  },
+  "form": {
+    "editTitle": "Izmeni održavanje",
+    "addTitle": "Dodaj održavanje",
+    "editDescription": "Ažurirajte ovaj nalog za održavanje.",
+    "addDescription": "Zakažite održavanje ili evidentirajte završen posao.",
+    "vehicle": {
+      "label": "Vozilo",
+      "placeholder": "Izaberite vozilo"
+    },
+    "title": {
+      "label": "Naslov",
+      "placeholder": "npr. Zamenjene prednje kočione pločice"
+    },
+    "type": {
+      "label": "Tip",
+      "placeholder": "Izaberite tip"
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Izaberite status"
+    },
+    "scheduledDate": {
+      "label": "Zakazani datum"
+    },
+    "completedDate": {
+      "label": "Datum završetka"
+    },
+    "odometer": {
+      "label": "Kilometraža"
+    },
+    "cost": {
+      "label": "Trošak"
+    },
+    "performedBy": {
+      "label": "Izvršio",
+      "unassigned": "Nedodeljeno",
+      "unnamed": "Bez imena"
+    },
+    "description": {
+      "label": "Opis"
+    },
+    "errors": {
+      "vehicleAndTitleRequired": "Vozilo i naslov su obavezni."
+    },
+    "submit": {
+      "add": "Dodaj održavanje"
+    }
+  },
+  "table": {
+    "heading": "Održavanje",
+    "jobCount": "{count, plural, one {# nalog za održavanje.} few {# naloga za održavanje.} many {# naloga za održavanje.} other {# naloga za održavanje.}}",
+    "addButton": "Dodaj održavanje",
+    "filters": {
+      "allStatuses": "Svi statusi",
+      "allVehicles": "Sva vozila"
+    },
+    "emptyState": {
+      "noJobsTitle": "Još nema naloga za održavanje",
+      "noMatchTitle": "Nijedan nalog ne odgovara filterima",
+      "addVehicleFirst": "Prvo dodajte vozilo, a zatim zakažite održavanje za njega.",
+      "scheduleOrLog": "Zakažite održavanje ili evidentirajte završen posao.",
+      "tryDifferentFilter": "Pokušajte sa drugačijim filterom."
+    },
+    "columns": {
+      "job": "Posao",
+      "vehicle": "Vozilo",
+      "status": "Status",
+      "scheduled": "Zakazano",
+      "completed": "Završeno",
+      "cost": "Trošak",
+      "performedBy": "Izvršio"
+    },
+    "deleteDialog": {
+      "title": "Obrisati {title}?",
+      "description": "Ovo se ne može poništiti."
+    }
+  }
+}

@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent, type ReactElement } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,7 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { expenseCategoryLabels } from "@/lib/expenses";
+import { getExpenseCategoryLabels } from "@/lib/expenses";
 import { extractInvoice, type ExtractedInvoice } from "@/lib/extraction";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, ExpenseCategory } from "@/lib/supabase/types";
@@ -78,6 +79,9 @@ export function ExpenseFormDialog({
   trigger: ReactElement;
 }) {
   const router = useRouter();
+  const t = useTranslations("expenses");
+  const tCommon = useTranslations("common");
+  const expenseCategoryLabels = getExpenseCategoryLabels(t);
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<FormValues>(() => {
     const base = toFormValues(expense, defaultVehicleId);
@@ -130,7 +134,7 @@ export function ExpenseFormDialog({
 
     const amount = Number(values.amount);
     if (!values.amount || Number.isNaN(amount) || amount <= 0) {
-      setError("Enter a valid amount.");
+      setError(t("form.errors.invalidAmount"));
       return;
     }
 
@@ -179,15 +183,15 @@ export function ExpenseFormDialog({
       <DialogTrigger render={trigger} />
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit expense" : "Add expense"}</DialogTitle>
-          <DialogDescription>
-            Track fuel, tolls, fines and other fleet costs.
-          </DialogDescription>
+          <DialogTitle>
+            {isEdit ? t("form.editTitle") : t("form.addTitle")}
+          </DialogTitle>
+          <DialogDescription>{t("form.dialogDescription")}</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {!isEdit ? (
             <DocumentScanButton
-              label="Scan receipt or invoice"
+              label={t("form.scanLabel")}
               action={extractInvoice}
               onExtracted={handleExtracted}
             />
@@ -195,7 +199,7 @@ export function ExpenseFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label>Category</Label>
+              <Label>{t("form.category.label")}</Label>
               <Select
                 value={values.category}
                 onValueChange={(value) =>
@@ -205,7 +209,9 @@ export function ExpenseFormDialog({
                 <SelectTrigger className="w-full">
                   <SelectValue>
                     {(value: ExpenseCategory | null) =>
-                      value ? expenseCategoryLabels[value] : "Select category"
+                      value
+                        ? expenseCategoryLabels[value]
+                        : t("form.category.placeholder")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -221,7 +227,7 @@ export function ExpenseFormDialog({
               </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="amount">Amount</Label>
+              <Label htmlFor="amount">{t("form.amount.label")}</Label>
               <Input
                 id="amount"
                 type="number"
@@ -234,7 +240,7 @@ export function ExpenseFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="expense_date">Date</Label>
+            <Label htmlFor="expense_date">{t("form.date.label")}</Label>
             <Input
               id="expense_date"
               type="date"
@@ -245,7 +251,7 @@ export function ExpenseFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Vehicle</Label>
+            <Label>{t("form.vehicle.label")}</Label>
             <Select
               value={values.vehicle_id || "none"}
               onValueChange={(value) =>
@@ -258,12 +264,12 @@ export function ExpenseFormDialog({
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
                       ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
-                      : "No vehicle";
+                      : t("form.vehicle.noVehicle");
                   }}
                 </SelectValue>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">No vehicle</SelectItem>
+                <SelectItem value="none">{t("form.vehicle.noVehicle")}</SelectItem>
                 {vehicles.map((vehicle) => (
                   <SelectItem key={vehicle.id} value={vehicle.id}>
                     {vehicle.make} {vehicle.model} ({vehicle.license_plate})
@@ -274,7 +280,7 @@ export function ExpenseFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{t("form.description.label")}</Label>
             <Textarea
               id="description"
               value={values.description}
@@ -287,10 +293,10 @@ export function ExpenseFormDialog({
           <DialogFooter>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting
-                ? "Saving…"
+                ? tCommon("actions.saving")
                 : isEdit
-                  ? "Save changes"
-                  : "Add expense"}
+                  ? tCommon("actions.saveChanges")
+                  : t("form.submit.add")}
             </Button>
           </DialogFooter>
         </form>

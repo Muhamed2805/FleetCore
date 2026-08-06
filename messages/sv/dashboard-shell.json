@@ -1,0 +1,97 @@
+{
+  "brand": "FleetCore",
+  "nav": {
+    "overview": "Översikt",
+    "vehicles": "Fordon",
+    "maintenance": "Underhåll",
+    "damageReports": "Skaderapporter",
+    "documents": "Dokument",
+    "expenses": "Utgifter",
+    "reminders": "Påminnelser",
+    "calendar": "Kalender",
+    "team": "Team"
+  },
+  "sidebar": {
+    "openNavigation": "Öppna navigering"
+  },
+  "userMenu": {
+    "openMenu": "Öppna användarmeny",
+    "signOut": "Logga ut"
+  },
+  "notifications": {
+    "srLabel": "Notiser",
+    "heading": "Notiser",
+    "markAllRead": "Markera alla som lästa",
+    "empty": "Inga notiser än.",
+    "vehicleFallback": "Fordon",
+    "itemTitle": "{vehicle} · {category}",
+    "expiresLabel": "Går ut {date} · {days}-dagars påminnelse",
+    "categories": {
+      "registration": "Registrering",
+      "insurance": "Försäkring",
+      "inspection": "Besiktning"
+    }
+  },
+  "search": {
+    "srLabel": "Sök",
+    "trigger": "Sök…",
+    "dialogTitle": "Sök",
+    "dialogDescription": "Sök fordon och underhållsjobb",
+    "placeholder": "Sök fordon, skyltar, underhåll…",
+    "empty": "Inga resultat hittades."
+  },
+  "searchGroups": {
+    "vehicles": "Fordon",
+    "maintenance": "Underhåll"
+  },
+  "charts": {
+    "fleetComposition": {
+      "title": "Flotta efter typ",
+      "empty": "Inga fordon än.",
+      "svgTitle": "Flottans sammansättning: {items}",
+      "rowAriaLabel": "{label}: {count} fordon, {percent}%"
+    },
+    "spendTrend": {
+      "title": "Utgifter, senaste 6 månaderna",
+      "svgTitle": "Månatliga utgifter: {items}",
+      "pointAriaLabel": "{label}: {amount}"
+    }
+  },
+  "overview": {
+    "welcome": "Välkommen",
+    "welcomeWithName": "Välkommen, {name}",
+    "subtitle": "Här är vad som händer med din fordonsflotta.",
+    "stats": {
+      "vehicles": "Fordon",
+      "noVehicles": "Inga fordon än",
+      "expiringSoon": "Går ut snart",
+      "next30Days": "Nästa 30 dagar",
+      "openMaintenance": "Öppet underhåll",
+      "noOpenJobs": "Inga öppna jobb",
+      "expensesThisMonth": "Utgifter denna månad"
+    },
+    "emptyState": {
+      "title": "Lägg till ditt första fordon",
+      "description": "Registrera bilar, skåpbilar, lastbilar, maskiner och truckar för att börja spåra dokument och utgångsdatum.",
+      "cta": "Gå till Fordon"
+    }
+  },
+  "dashboardNotFound": {
+    "title": "Hittades inte",
+    "description": "Den här sidan, fordonet eller posten finns inte eller kan ha tagits bort.",
+    "backToDashboard": "Tillbaka till instrumentpanelen"
+  },
+  "documentsPage": {
+    "title": "Dokument",
+    "description": "Registreringsbevis, försäkrings- och besiktningsdokument, med AI-driven datautvinning. Kommer i en senare fas."
+  },
+  "teamPage": {
+    "title": "Team",
+    "description": "Bjud in flottchefer, mekaniker och förare till ditt företag. Kommer i en senare fas."
+  },
+  "appNotFound": {
+    "title": "Sidan hittades inte",
+    "description": "Sidan du letar efter finns inte eller kan ha flyttats.",
+    "goHome": "Gå till startsidan"
+  }
+}

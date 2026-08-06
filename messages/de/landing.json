@@ -1,0 +1,12 @@
+{
+  "header": {
+    "brand": "FleetCore",
+    "logIn": "Anmelden"
+  },
+  "hero": {
+    "badge": "Phase 2 — Authentifizierung & Mandantenfähigkeit",
+    "title": "Flottenmanagement- und Wartungsplattform",
+    "description": "Verwalten Sie Fahrzeuge, Zulassungen, Versicherungen, Prüfungen, Wartungen und Dokumente von einem Dashboard aus.",
+    "getStarted": "Jetzt starten"
+  }
+}

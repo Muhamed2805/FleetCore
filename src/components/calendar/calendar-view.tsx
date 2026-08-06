@@ -1,14 +1,15 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 import {
   calendarEventColors,
-  calendarEventLabels,
+  getCalendarEventLabels,
   type CalendarEvent,
 } from "@/lib/calendar";
 import { cn } from "@/lib/utils";
@@ -17,10 +18,13 @@ function toDateKey(date: Date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const WEEKDAY_KEYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
 const MAX_VISIBLE_EVENTS = 3;
 
 export function CalendarView({ events }: { events: CalendarEvent[] }) {
+  const t = useTranslations("calendar");
+  const weekdays = WEEKDAY_KEYS.map((key) => t(`weekdays.${key}`));
+  const calendarEventLabels = getCalendarEventLabels(t);
   const today = new Date();
   const [cursor, setCursor] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDate, setSelectedDate] = useState(toDateKey(today));
@@ -68,7 +72,7 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                 }
               >
                 <ChevronLeft className="size-4" />
-                <span className="sr-only">Previous month</span>
+                <span className="sr-only">{t("nav.previousMonth")}</span>
               </Button>
               <Button
                 variant="outline"
@@ -78,7 +82,7 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                   setSelectedDate(toDateKey(today));
                 }}
               >
-                Today
+                {t("nav.today")}
               </Button>
               <Button
                 variant="outline"
@@ -88,13 +92,13 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                 }
               >
                 <ChevronRight className="size-4" />
-                <span className="sr-only">Next month</span>
+                <span className="sr-only">{t("nav.nextMonth")}</span>
               </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-7 gap-1 text-center text-xs text-muted-foreground">
-            {WEEKDAYS.map((day) => (
+            {weekdays.map((day) => (
               <div key={day} className="py-1">
                 {day}
               </div>
@@ -116,7 +120,7 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                   onClick={() => setSelectedDate(key)}
                   aria-current={isToday ? "date" : undefined}
                   aria-pressed={isSelected}
-                  aria-label={`${date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}${dayEvents.length ? `, ${dayEvents.length} event${dayEvents.length === 1 ? "" : "s"}` : ""}`}
+                  aria-label={`${date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}${dayEvents.length ? t("dayCell.eventsSuffix", { count: dayEvents.length }) : ""}`}
                   className={cn(
                     "flex min-h-20 flex-col items-start gap-1 rounded-md border p-1.5 text-left text-xs transition-colors outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50",
                     !isCurrentMonth && "text-muted-foreground/50",
@@ -144,7 +148,9 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
                     ))}
                     {dayEvents.length > MAX_VISIBLE_EVENTS ? (
                       <span className="text-muted-foreground">
-                        +{dayEvents.length - MAX_VISIBLE_EVENTS} more
+                        {t("dayCell.moreEvents", {
+                          count: dayEvents.length - MAX_VISIBLE_EVENTS,
+                        })}
                       </span>
                     ) : null}
                   </div>
@@ -177,7 +183,7 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
             })}
           </h2>
           {selectedEvents.length === 0 ? (
-            <p className="text-sm text-muted-foreground">Nothing scheduled.</p>
+            <p className="text-sm text-muted-foreground">{t("agenda.empty")}</p>
           ) : (
             <ul className="flex flex-col gap-3">
               {selectedEvents.map((event) => (

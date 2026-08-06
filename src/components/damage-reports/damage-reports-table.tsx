@@ -1,6 +1,7 @@
 "use client";
 
 import { Eye, Plus, TriangleAlert } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -26,9 +27,9 @@ import type { DamageReportWithDetails } from "@/components/damage-reports/damage
 import { DamageReportFormDialog } from "@/components/damage-reports/damage-report-form-dialog";
 import {
   damageSeverityBadgeVariant,
-  damageSeverityLabels,
   damageStatusBadgeVariant,
-  damageStatusLabels,
+  getDamageSeverityLabels,
+  getDamageStatusLabels,
 } from "@/lib/damage-reports";
 import { formatCurrency } from "@/lib/expenses";
 import { formatDate } from "@/lib/vehicles";
@@ -53,8 +54,13 @@ export function DamageReportsTable({
   reportedBy: string;
   canManage: boolean;
 }) {
+  const t = useTranslations("damageReports");
+  const tCommon = useTranslations("common");
   const [statusFilter, setStatusFilter] = useState("all");
   const [vehicleFilter, setVehicleFilter] = useState("all");
+
+  const severityLabels = getDamageSeverityLabels(t);
+  const statusLabels = getDamageStatusLabels(t);
 
   const filtered = useMemo(() => {
     return reports.filter((report) => {
@@ -71,10 +77,10 @@ export function DamageReportsTable({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
-            Damage reports
+            {t("page.title")}
           </h1>
           <p className="text-muted-foreground">
-            {reports.length} report{reports.length === 1 ? "" : "s"}.
+            {t("page.reportCount", { count: reports.length })}
           </p>
         </div>
         {vehicles.length > 0 ? (
@@ -85,7 +91,7 @@ export function DamageReportsTable({
             trigger={
               <Button>
                 <Plus className="size-4" />
-                Report damage
+                {t("actions.reportDamage")}
               </Button>
             }
           />
@@ -98,14 +104,14 @@ export function DamageReportsTable({
             <SelectValue>
               {(value: string | null) =>
                 value && value !== "all"
-                  ? damageStatusLabels[value as keyof typeof damageStatusLabels]
-                  : "All statuses"
+                  ? statusLabels[value as keyof typeof statusLabels]
+                  : t("filters.allStatuses")
               }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All statuses</SelectItem>
-            {Object.entries(damageStatusLabels).map(([value, label]) => (
+            <SelectItem value="all">{t("filters.allStatuses")}</SelectItem>
+            {Object.entries(statusLabels).map(([value, label]) => (
               <SelectItem key={value} value={value}>
                 {label}
               </SelectItem>
@@ -121,12 +127,12 @@ export function DamageReportsTable({
                   : null;
                 return vehicle
                   ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
-                  : "All vehicles";
+                  : t("filters.allVehicles");
               }}
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All vehicles</SelectItem>
+            <SelectItem value="all">{t("filters.allVehicles")}</SelectItem>
             {vehicles.map((vehicle) => (
               <SelectItem key={vehicle.id} value={vehicle.id}>
                 {vehicle.make} {vehicle.model} ({vehicle.license_plate})
@@ -145,15 +151,15 @@ export function DamageReportsTable({
             <div>
               <h2 className="font-medium">
                 {reports.length === 0
-                  ? "No damage reported"
-                  : "No reports match your filters"}
+                  ? t("emptyState.noDamageTitle")
+                  : t("emptyState.noMatchTitle")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
                 {reports.length === 0
                   ? vehicles.length === 0
-                    ? "Add a vehicle first, then report damage against it."
-                    : "Report damage with a photo when it happens."
-                  : "Try a different filter."}
+                    ? t("emptyState.addVehicleFirst")
+                    : t("emptyState.reportWithPhoto")
+                  : t("emptyState.tryDifferentFilter")}
               </p>
             </div>
           </CardContent>
@@ -163,12 +169,12 @@ export function DamageReportsTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Vehicle</TableHead>
-                <TableHead>Severity</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Reported</TableHead>
-                <TableHead>Reported by</TableHead>
-                <TableHead>Repair cost</TableHead>
+                <TableHead>{t("table.headers.vehicle")}</TableHead>
+                <TableHead>{t("table.headers.severity")}</TableHead>
+                <TableHead>{t("table.headers.status")}</TableHead>
+                <TableHead>{t("table.headers.reported")}</TableHead>
+                <TableHead>{t("table.headers.reportedBy")}</TableHead>
+                <TableHead>{t("table.headers.repairCost")}</TableHead>
                 <TableHead className="w-16" />
               </TableRow>
             </TableHeader>
@@ -182,12 +188,12 @@ export function DamageReportsTable({
                   </TableCell>
                   <TableCell>
                     <Badge variant={damageSeverityBadgeVariant[report.severity]}>
-                      {damageSeverityLabels[report.severity]}
+                      {severityLabels[report.severity]}
                     </Badge>
                   </TableCell>
                   <TableCell>
                     <Badge variant={damageStatusBadgeVariant[report.status]}>
-                      {damageStatusLabels[report.status]}
+                      {statusLabels[report.status]}
                     </Badge>
                   </TableCell>
                   <TableCell>{formatDate(report.reported_at)}</TableCell>
@@ -204,7 +210,7 @@ export function DamageReportsTable({
                       trigger={
                         <Button variant="ghost" size="icon-sm">
                           <Eye className="size-4" />
-                          <span className="sr-only">View</span>
+                          <span className="sr-only">{tCommon("actions.view")}</span>
                         </Button>
                       }
                     />

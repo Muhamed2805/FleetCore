@@ -1,0 +1,12 @@
+{
+  "header": {
+    "brand": "FleetCore",
+    "logIn": "Prijavi se"
+  },
+  "hero": {
+    "badge": "Faza 2 — autentifikacija i multi-tenant podrška",
+    "title": "Platforma za upravljanje i održavanje voznog parka",
+    "description": "Upravljajte vozilima, registracijama, osiguranjem, tehničkim pregledima, održavanjem i dokumentima sa jedne kontrolne table.",
+    "getStarted": "Započnite"
+  }
+}

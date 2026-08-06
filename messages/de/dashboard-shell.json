@@ -1,0 +1,97 @@
+{
+  "brand": "FleetCore",
+  "nav": {
+    "overview": "Übersicht",
+    "vehicles": "Fahrzeuge",
+    "maintenance": "Wartung",
+    "damageReports": "Schadensmeldungen",
+    "documents": "Dokumente",
+    "expenses": "Ausgaben",
+    "reminders": "Erinnerungen",
+    "calendar": "Kalender",
+    "team": "Team"
+  },
+  "sidebar": {
+    "openNavigation": "Navigation öffnen"
+  },
+  "userMenu": {
+    "openMenu": "Benutzermenü öffnen",
+    "signOut": "Abmelden"
+  },
+  "notifications": {
+    "srLabel": "Benachrichtigungen",
+    "heading": "Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "empty": "Noch keine Benachrichtigungen.",
+    "vehicleFallback": "Fahrzeug",
+    "itemTitle": "{vehicle} · {category}",
+    "expiresLabel": "Läuft am {date} ab · {days}-Tage-Erinnerung",
+    "categories": {
+      "registration": "Zulassung",
+      "insurance": "Versicherung",
+      "inspection": "Prüfung"
+    }
+  },
+  "search": {
+    "srLabel": "Suche",
+    "trigger": "Suchen…",
+    "dialogTitle": "Suche",
+    "dialogDescription": "Fahrzeuge und Wartungsaufträge durchsuchen",
+    "placeholder": "Fahrzeuge, Kennzeichen, Wartung durchsuchen…",
+    "empty": "Keine Ergebnisse gefunden."
+  },
+  "searchGroups": {
+    "vehicles": "Fahrzeuge",
+    "maintenance": "Wartung"
+  },
+  "charts": {
+    "fleetComposition": {
+      "title": "Flotte nach Typ",
+      "empty": "Noch keine Fahrzeuge.",
+      "svgTitle": "Flottenzusammensetzung: {items}",
+      "rowAriaLabel": "{label}: {count} Fahrzeuge, {percent}%"
+    },
+    "spendTrend": {
+      "title": "Ausgaben, letzte 6 Monate",
+      "svgTitle": "Monatliche Ausgaben: {items}",
+      "pointAriaLabel": "{label}: {amount}"
+    }
+  },
+  "overview": {
+    "welcome": "Willkommen",
+    "welcomeWithName": "Willkommen, {name}",
+    "subtitle": "Hier sehen Sie, was in Ihrer Flotte passiert.",
+    "stats": {
+      "vehicles": "Fahrzeuge",
+      "noVehicles": "Noch keine Fahrzeuge",
+      "expiringSoon": "Läuft bald ab",
+      "next30Days": "Nächste 30 Tage",
+      "openMaintenance": "Offene Wartungen",
+      "noOpenJobs": "Keine offenen Aufträge",
+      "expensesThisMonth": "Ausgaben diesen Monat"
+    },
+    "emptyState": {
+      "title": "Fügen Sie Ihr erstes Fahrzeug hinzu",
+      "description": "Erfassen Sie Pkw, Transporter, Lkw, Maschinen und Gabelstapler, um Dokumente und Ablauffristen im Blick zu behalten.",
+      "cta": "Zu den Fahrzeugen"
+    }
+  },
+  "dashboardNotFound": {
+    "title": "Nicht gefunden",
+    "description": "Diese Seite, dieses Fahrzeug oder dieser Datensatz existiert nicht oder wurde möglicherweise entfernt.",
+    "backToDashboard": "Zurück zum Dashboard"
+  },
+  "documentsPage": {
+    "title": "Dokumente",
+    "description": "Zulassungspapiere, Versicherungs- und Prüfdokumente mit KI-gestützter Datenextraktion. Folgt in einer späteren Phase."
+  },
+  "teamPage": {
+    "title": "Team",
+    "description": "Laden Sie Flottenmanager, Mechaniker und Fahrer zu Ihrem Unternehmen ein. Folgt in einer späteren Phase."
+  },
+  "appNotFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde möglicherweise verschoben.",
+    "goHome": "Zur Startseite"
+  }
+}

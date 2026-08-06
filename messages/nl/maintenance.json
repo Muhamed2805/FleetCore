@@ -1,0 +1,95 @@
+{
+  "enums": {
+    "maintenanceType": {
+      "oilChange": "Olieverversing",
+      "tireRotation": "Bandenrotatie",
+      "brakeService": "Remonderhoud",
+      "inspection": "Keuring",
+      "repair": "Reparatie",
+      "other": "Overig"
+    },
+    "maintenanceStatus": {
+      "scheduled": "Gepland",
+      "inProgress": "In uitvoering",
+      "completed": "Voltooid",
+      "cancelled": "Geannuleerd"
+    }
+  },
+  "form": {
+    "editTitle": "Onderhoud bewerken",
+    "addTitle": "Onderhoud toevoegen",
+    "editDescription": "Werk deze onderhoudstaak bij.",
+    "addDescription": "Plan een onderhoudstaak in of registreer uitgevoerd werk.",
+    "vehicle": {
+      "label": "Voertuig",
+      "placeholder": "Selecteer een voertuig"
+    },
+    "title": {
+      "label": "Titel",
+      "placeholder": "bv. Voorremblokken vervangen"
+    },
+    "type": {
+      "label": "Type",
+      "placeholder": "Selecteer type"
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Selecteer status"
+    },
+    "scheduledDate": {
+      "label": "Geplande datum"
+    },
+    "completedDate": {
+      "label": "Voltooiingsdatum"
+    },
+    "odometer": {
+      "label": "Kilometerstand"
+    },
+    "cost": {
+      "label": "Kosten"
+    },
+    "performedBy": {
+      "label": "Uitgevoerd door",
+      "unassigned": "Niet toegewezen",
+      "unnamed": "Naamloos"
+    },
+    "description": {
+      "label": "Omschrijving"
+    },
+    "errors": {
+      "vehicleAndTitleRequired": "Voertuig en titel zijn verplicht."
+    },
+    "submit": {
+      "add": "Onderhoud toevoegen"
+    }
+  },
+  "table": {
+    "heading": "Onderhoud",
+    "jobCount": "{count, plural, one {# onderhoudstaak.} other {# onderhoudstaken.}}",
+    "addButton": "Onderhoud toevoegen",
+    "filters": {
+      "allStatuses": "Alle statussen",
+      "allVehicles": "Alle voertuigen"
+    },
+    "emptyState": {
+      "noJobsTitle": "Nog geen onderhoudstaken",
+      "noMatchTitle": "Geen taken komen overeen met je filters",
+      "addVehicleFirst": "Voeg eerst een voertuig toe en plan er dan onderhoud voor in.",
+      "scheduleOrLog": "Plan onderhoud in of registreer uitgevoerd werk.",
+      "tryDifferentFilter": "Probeer een ander filter."
+    },
+    "columns": {
+      "job": "Taak",
+      "vehicle": "Voertuig",
+      "status": "Status",
+      "scheduled": "Gepland",
+      "completed": "Voltooid",
+      "cost": "Kosten",
+      "performedBy": "Uitgevoerd door"
+    },
+    "deleteDialog": {
+      "title": "{title} verwijderen?",
+      "description": "Dit kan niet ongedaan worden gemaakt."
+    }
+  }
+}

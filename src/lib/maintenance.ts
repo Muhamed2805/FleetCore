@@ -1,20 +1,30 @@
 import type { MaintenanceStatus, MaintenanceType } from "@/lib/supabase/types";
 
-export const maintenanceTypeLabels: Record<MaintenanceType, string> = {
-  oil_change: "Oil change",
-  tire_rotation: "Tire rotation",
-  brake_service: "Brake service",
-  inspection: "Inspection",
-  repair: "Repair",
-  other: "Other",
-};
+type Translate = (key: string) => string;
 
-export const maintenanceStatusLabels: Record<MaintenanceStatus, string> = {
-  scheduled: "Scheduled",
-  in_progress: "In progress",
-  completed: "Completed",
-  cancelled: "Cancelled",
-};
+export function getMaintenanceTypeLabels(
+  t: Translate
+): Record<MaintenanceType, string> {
+  return {
+    oil_change: t("enums.maintenanceType.oilChange"),
+    tire_rotation: t("enums.maintenanceType.tireRotation"),
+    brake_service: t("enums.maintenanceType.brakeService"),
+    inspection: t("enums.maintenanceType.inspection"),
+    repair: t("enums.maintenanceType.repair"),
+    other: t("enums.maintenanceType.other"),
+  };
+}
+
+export function getMaintenanceStatusLabels(
+  t: Translate
+): Record<MaintenanceStatus, string> {
+  return {
+    scheduled: t("enums.maintenanceStatus.scheduled"),
+    in_progress: t("enums.maintenanceStatus.inProgress"),
+    completed: t("enums.maintenanceStatus.completed"),
+    cancelled: t("enums.maintenanceStatus.cancelled"),
+  };
+}
 
 export const maintenanceStatusBadgeVariant: Record<
   MaintenanceStatus,

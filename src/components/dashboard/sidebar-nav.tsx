@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
-import { navItems } from "@/lib/nav";
+import { Link, usePathname } from "@/i18n/navigation";
+import { getNavItems } from "@/lib/nav";
 import type { UserRole } from "@/lib/supabase/types";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,9 @@ export function SidebarNav({
   role: UserRole;
   onNavigate?: () => void;
 }) {
+  const t = useTranslations("dashboardShell");
   const pathname = usePathname();
+  const navItems = getNavItems((key) => t(key));
 
   return (
     <nav className="flex flex-col gap-1">

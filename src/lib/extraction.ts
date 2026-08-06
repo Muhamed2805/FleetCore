@@ -1,6 +1,7 @@
 "use server";
 
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 import { createAnthropicClient, EXTRACTION_MODEL } from "@/lib/anthropic";
@@ -83,20 +84,21 @@ async function fileToContentBlock(file: File) {
   };
 }
 
-function getUploadedFile(formData: FormData): File | { error: string } {
+async function getUploadedFile(
+  formData: FormData
+): Promise<File | { error: string }> {
+  const t = await getTranslations("common.documentScan");
+
   if (!process.env.ANTHROPIC_API_KEY) {
-    return {
-      error:
-        "AI extraction isn't configured yet — ask an admin to add ANTHROPIC_API_KEY.",
-    };
+    return { error: t("notConfigured") };
   }
 
   const file = formData.get("file");
   if (!(file instanceof File) || file.size === 0) {
-    return { error: "Choose a file first." };
+    return { error: t("chooseFileFirst") };
   }
   if (file.size > 10 * 1024 * 1024) {
-    return { error: "File is too large (max 10MB)." };
+    return { error: t("fileTooLarge") };
   }
   return file;
 }
@@ -104,7 +106,7 @@ function getUploadedFile(formData: FormData): File | { error: string } {
 export async function extractVehicleRegistration(
   formData: FormData
 ): Promise<{ data?: ExtractedVehicleRegistration; error?: string }> {
-  const file = getUploadedFile(formData);
+  const file = await getUploadedFile(formData);
   if ("error" in file) return file;
 
   try {
@@ -130,13 +132,15 @@ export async function extractVehicleRegistration(
     });
 
     if (!response.parsed_output) {
-      return { error: "Could not read this document." };
+      const t = await getTranslations("common.documentScan");
+      return { error: t("couldNotRead") };
     }
 
     return { data: response.parsed_output };
   } catch (error) {
+    const t = await getTranslations("common.documentScan");
     return {
-      error: error instanceof Error ? error.message : "Extraction failed.",
+      error: error instanceof Error ? error.message : t("genericError"),
     };
   }
 }
@@ -144,7 +148,7 @@ export async function extractVehicleRegistration(
 export async function extractInvoice(
   formData: FormData
 ): Promise<{ data?: ExtractedInvoice; error?: string }> {
-  const file = getUploadedFile(formData);
+  const file = await getUploadedFile(formData);
   if ("error" in file) return file;
 
   try {
@@ -170,13 +174,15 @@ export async function extractInvoice(
     });
 
     if (!response.parsed_output) {
-      return { error: "Could not read this document." };
+      const t = await getTranslations("common.documentScan");
+      return { error: t("couldNotRead") };
     }
 
     return { data: response.parsed_output };
   } catch (error) {
+    const t = await getTranslations("common.documentScan");
     return {
-      error: error instanceof Error ? error.message : "Extraction failed.",
+      error: error instanceof Error ? error.message : t("genericError"),
     };
   }
 }

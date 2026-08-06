@@ -35,7 +35,7 @@ export type SearchItem = {
   id: string;
   title: string;
   subtitle: string;
-  group: "Vehicles" | "Maintenance";
+  group: "vehicles" | "maintenance";
   href: string;
 };
 
@@ -59,7 +59,7 @@ export const getSearchIndex = cache(async function getSearchIndex(): Promise<
     id: vehicle.id,
     title: `${vehicle.make} ${vehicle.model}`,
     subtitle: vehicle.license_plate,
-    group: "Vehicles",
+    group: "vehicles",
     href: `/dashboard/vehicles/${vehicle.id}`,
   }));
 
@@ -70,7 +70,7 @@ export const getSearchIndex = cache(async function getSearchIndex(): Promise<
         id: record.id,
         title: record.title,
         subtitle: vehicle ? `${vehicle.make} ${vehicle.model}` : "",
-        group: "Maintenance",
+        group: "maintenance",
         href: "/dashboard/maintenance",
       };
     }

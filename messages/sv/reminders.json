@@ -1,0 +1,40 @@
+{
+  "page": {
+    "title": "Påminnelser",
+    "description": "E-post- och app-påminnelser innan registreringar, försäkringar och besiktningar går ut."
+  },
+  "settings": {
+    "title": "Inställningar",
+    "description": "Välj när ditt team ska påminnas innan ett fordons registrering, försäkring eller besiktning går ut.",
+    "remindBefore": "Påminn innan utgång",
+    "thresholdDaysLabel": "{days, plural, one {# dag} other {# dagar}}",
+    "customDaysLabel": "Anpassat (kommaseparerade dagar)",
+    "customDaysPlaceholder": "t.ex. 60, 45",
+    "emailToggle": "Skicka även e-postpåminnelser",
+    "save": "Spara inställningar",
+    "saved": "Sparat."
+  },
+  "checkButton": {
+    "checking": "Kontrollerar…",
+    "checkNow": "Kontrollera nu",
+    "noneDue": "Inga nya påminnelser att skapa.",
+    "created": "{count, plural, one {# ny påminnelse skapad.} other {# nya påminnelser skapade.}}"
+  },
+  "list": {
+    "empty": {
+      "title": "Inga påminnelser än",
+      "description": "Du kommer att se påminnelser här när fordonsdokument närmar sig sina utgångsdatum."
+    },
+    "unknownVehicle": "Fordon",
+    "expiresOn": "Går ut {date}",
+    "dayReminder": "{days}-dagars påminnelse",
+    "emailed": "e-postad",
+    "readBadge": "Läst",
+    "markAsRead": "Markera som läst",
+    "categories": {
+      "registration": "Registrering",
+      "insurance": "Försäkring",
+      "inspection": "Besiktning"
+    }
+  }
+}

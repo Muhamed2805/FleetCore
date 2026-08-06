@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, type ReactElement } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +28,8 @@ export function DeleteVehicleDialog({
   trigger: ReactElement;
   onDeleted?: () => void;
 }) {
+  const t = useTranslations("vehicles");
+  const tCommon = useTranslations("common");
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -62,21 +65,22 @@ export function DeleteVehicleDialog({
       <AlertDialogTrigger render={trigger} />
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete {vehicleLabel}?</AlertDialogTitle>
+          <AlertDialogTitle>
+            {t("deleteDialog.title", { name: vehicleLabel })}
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            This permanently deletes the vehicle and its documents. This
-            can&apos;t be undone.
+            {t("deleteDialog.description")}
           </AlertDialogDescription>
         </AlertDialogHeader>
         {error ? <p className="text-sm text-destructive">{error}</p> : null}
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{tCommon("actions.cancel")}</AlertDialogCancel>
           <AlertDialogAction
             variant="destructive"
             disabled={isDeleting}
             onClick={handleDelete}
           >
-            {isDeleting ? "Deleting…" : "Delete"}
+            {isDeleting ? tCommon("actions.deleting") : tCommon("actions.delete")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

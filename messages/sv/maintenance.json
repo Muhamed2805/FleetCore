@@ -1,0 +1,95 @@
+{
+  "enums": {
+    "maintenanceType": {
+      "oilChange": "Oljebyte",
+      "tireRotation": "Däckrotation",
+      "brakeService": "Bromsservice",
+      "inspection": "Besiktning",
+      "repair": "Reparation",
+      "other": "Övrigt"
+    },
+    "maintenanceStatus": {
+      "scheduled": "Schemalagt",
+      "inProgress": "Pågående",
+      "completed": "Slutfört",
+      "cancelled": "Avbrutet"
+    }
+  },
+  "form": {
+    "editTitle": "Redigera underhåll",
+    "addTitle": "Lägg till underhåll",
+    "editDescription": "Uppdatera det här underhållsjobbet.",
+    "addDescription": "Schemalägg ett underhållsjobb eller registrera utfört arbete.",
+    "vehicle": {
+      "label": "Fordon",
+      "placeholder": "Välj ett fordon"
+    },
+    "title": {
+      "label": "Titel",
+      "placeholder": "t.ex. Främre bromsbelägg utbytta"
+    },
+    "type": {
+      "label": "Typ",
+      "placeholder": "Välj typ"
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Välj status"
+    },
+    "scheduledDate": {
+      "label": "Schemalagt datum"
+    },
+    "completedDate": {
+      "label": "Slutfört datum"
+    },
+    "odometer": {
+      "label": "Mätarställning"
+    },
+    "cost": {
+      "label": "Kostnad"
+    },
+    "performedBy": {
+      "label": "Utförd av",
+      "unassigned": "Ej tilldelad",
+      "unnamed": "Namnlös"
+    },
+    "description": {
+      "label": "Beskrivning"
+    },
+    "errors": {
+      "vehicleAndTitleRequired": "Fordon och titel krävs."
+    },
+    "submit": {
+      "add": "Lägg till underhåll"
+    }
+  },
+  "table": {
+    "heading": "Underhåll",
+    "jobCount": "{count, plural, one {# underhållsjobb.} other {# underhållsjobb.}}",
+    "addButton": "Lägg till underhåll",
+    "filters": {
+      "allStatuses": "Alla statusar",
+      "allVehicles": "Alla fordon"
+    },
+    "emptyState": {
+      "noJobsTitle": "Inga underhållsjobb än",
+      "noMatchTitle": "Inga jobb matchar dina filter",
+      "addVehicleFirst": "Lägg till ett fordon först, schemalägg sedan underhåll för det.",
+      "scheduleOrLog": "Schemalägg underhåll eller registrera utfört arbete.",
+      "tryDifferentFilter": "Prova ett annat filter."
+    },
+    "columns": {
+      "job": "Jobb",
+      "vehicle": "Fordon",
+      "status": "Status",
+      "scheduled": "Schemalagt",
+      "completed": "Slutfört",
+      "cost": "Kostnad",
+      "performedBy": "Utförd av"
+    },
+    "deleteDialog": {
+      "title": "Ta bort {title}?",
+      "description": "Det här går inte att ångra."
+    }
+  }
+}

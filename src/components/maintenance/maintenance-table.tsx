@@ -1,6 +1,7 @@
 "use client";
 
 import { Pencil, Plus, Trash2, Wrench } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { MaintenanceFormDialog } from "@/components/maintenance/maintenance-form-dialog";
@@ -24,9 +25,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
+  getMaintenanceStatusLabels,
+  getMaintenanceTypeLabels,
   maintenanceStatusBadgeVariant,
-  maintenanceStatusLabels,
-  maintenanceTypeLabels,
 } from "@/lib/maintenance";
 import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/supabase/types";
@@ -56,6 +57,10 @@ export function MaintenanceTable({
   companyId: string;
   canManage: boolean;
 }) {
+  const t = useTranslations("maintenance");
+  const tCommon = useTranslations("common");
+  const maintenanceTypeLabels = getMaintenanceTypeLabels(t);
+  const maintenanceStatusLabels = getMaintenanceStatusLabels(t);
   const [statusFilter, setStatusFilter] = useState("all");
   const [vehicleFilter, setVehicleFilter] = useState("all");
 
@@ -92,10 +97,10 @@ export function MaintenanceTable({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
-            Maintenance
+            {t("table.heading")}
           </h1>
           <p className="text-muted-foreground">
-            {records.length} maintenance job{records.length === 1 ? "" : "s"}.
+            {t("table.jobCount", { count: records.length })}
           </p>
         </div>
         {canManage && vehicles.length > 0 ? (
@@ -106,7 +111,7 @@ export function MaintenanceTable({
             trigger={
               <Button>
                 <Plus className="size-4" />
-                Add maintenance
+                {t("table.addButton")}
               </Button>
             }
           />
@@ -120,12 +125,12 @@ export function MaintenanceTable({
               {(value: string | null) =>
                 value && value !== "all"
                   ? maintenanceStatusLabels[value as keyof typeof maintenanceStatusLabels]
-                  : "All statuses"
+                  : t("table.filters.allStatuses")
               }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All statuses</SelectItem>
+            <SelectItem value="all">{t("table.filters.allStatuses")}</SelectItem>
             {Object.entries(maintenanceStatusLabels).map(([value, label]) => (
               <SelectItem key={value} value={value}>
                 {label}
@@ -140,12 +145,12 @@ export function MaintenanceTable({
                 const vehicle = value ? vehicleById.get(value) : null;
                 return vehicle
                   ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
-                  : "All vehicles";
+                  : t("table.filters.allVehicles");
               }}
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All vehicles</SelectItem>
+            <SelectItem value="all">{t("table.filters.allVehicles")}</SelectItem>
             {vehicles.map((vehicle) => (
               <SelectItem key={vehicle.id} value={vehicle.id}>
                 {vehicle.make} {vehicle.model} ({vehicle.license_plate})
@@ -164,15 +169,15 @@ export function MaintenanceTable({
             <div>
               <h2 className="font-medium">
                 {records.length === 0
-                  ? "No maintenance jobs yet"
-                  : "No jobs match your filters"}
+                  ? t("table.emptyState.noJobsTitle")
+                  : t("table.emptyState.noMatchTitle")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
                 {records.length === 0
                   ? vehicles.length === 0
-                    ? "Add a vehicle first, then schedule maintenance for it."
-                    : "Schedule maintenance or log completed work."
-                  : "Try a different filter."}
+                    ? t("table.emptyState.addVehicleFirst")
+                    : t("table.emptyState.scheduleOrLog")
+                  : t("table.emptyState.tryDifferentFilter")}
               </p>
             </div>
           </CardContent>
@@ -182,13 +187,13 @@ export function MaintenanceTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Job</TableHead>
-                <TableHead>Vehicle</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Scheduled</TableHead>
-                <TableHead>Completed</TableHead>
-                <TableHead>Cost</TableHead>
-                <TableHead>Performed by</TableHead>
+                <TableHead>{t("table.columns.job")}</TableHead>
+                <TableHead>{t("table.columns.vehicle")}</TableHead>
+                <TableHead>{t("table.columns.status")}</TableHead>
+                <TableHead>{t("table.columns.scheduled")}</TableHead>
+                <TableHead>{t("table.columns.completed")}</TableHead>
+                <TableHead>{t("table.columns.cost")}</TableHead>
+                <TableHead>{t("table.columns.performedBy")}</TableHead>
                 {canManage ? <TableHead className="w-20" /> : null}
               </TableRow>
             </TableHeader>
@@ -236,18 +241,24 @@ export function MaintenanceTable({
                             trigger={
                               <Button variant="ghost" size="icon-sm">
                                 <Pencil className="size-4" />
-                                <span className="sr-only">Edit</span>
+                                <span className="sr-only">
+                                  {tCommon("actions.edit")}
+                                </span>
                               </Button>
                             }
                           />
                           <ConfirmDeleteDialog
-                            title={`Delete ${record.title}?`}
-                            description="This can't be undone."
+                            title={t("table.deleteDialog.title", {
+                              title: record.title,
+                            })}
+                            description={t("table.deleteDialog.description")}
                             onConfirm={() => handleDelete(record.id)}
                             trigger={
                               <Button variant="ghost" size="icon-sm">
                                 <Trash2 className="size-4" />
-                                <span className="sr-only">Delete</span>
+                                <span className="sr-only">
+                                  {tCommon("actions.delete")}
+                                </span>
                               </Button>
                             }
                           />

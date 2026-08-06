@@ -1,0 +1,12 @@
+{
+  "header": {
+    "brand": "FleetCore",
+    "logIn": "Inloggen"
+  },
+  "hero": {
+    "badge": "Fase 2 — authenticatie & multi-tenancy",
+    "title": "Wagenparkbeheer & onderhoudsplatform",
+    "description": "Beheer voertuigen, registraties, verzekeringen, keuringen, onderhoud en documenten vanuit één dashboard.",
+    "getStarted": "Aan de slag"
+  }
+}

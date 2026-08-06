@@ -1,0 +1,115 @@
+{
+  "list": {
+    "title": "Vehicles",
+    "count": "{count, plural, one {# vehicle} other {# vehicles}} in your fleet.",
+    "addVehicle": "Add vehicle",
+    "searchPlaceholder": "Search make, model, plate or VIN…",
+    "allTypes": "All types",
+    "allStatuses": "All statuses",
+    "emptyTitle": "No vehicles yet",
+    "emptyTitleFiltered": "No vehicles match your filters",
+    "emptyDescription": "Add your first car, van, truck, machine or forklift.",
+    "emptyDescriptionFiltered": "Try a different search or filter.",
+    "table": {
+      "vehicle": "Vehicle",
+      "type": "Type",
+      "status": "Status",
+      "driver": "Driver",
+      "registration": "Registration",
+      "insurance": "Insurance",
+      "inspection": "Inspection"
+    }
+  },
+  "form": {
+    "addTitle": "Add vehicle",
+    "editTitle": "Edit vehicle",
+    "addDescription": "Add a car, van, truck, machine or forklift to your fleet.",
+    "editDescription": "Update this vehicle's details.",
+    "validationError": "Make, model and license plate are required.",
+    "type": "Type",
+    "selectType": "Select type",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "make": "Make",
+    "model": "Model",
+    "licensePlate": "License plate",
+    "year": "Year",
+    "vin": "VIN",
+    "odometer": "Odometer",
+    "assignedDriver": "Assigned driver",
+    "unassigned": "Unassigned",
+    "unnamedDriver": "Unnamed",
+    "registrationExpiry": "Registration exp.",
+    "insuranceExpiry": "Insurance exp.",
+    "inspectionExpiry": "Inspection exp.",
+    "notes": "Notes",
+    "addVehicle": "Add vehicle"
+  },
+  "scanRegistration": "Scan registration document",
+  "documents": {
+    "title": "Documents",
+    "chooseFileFirst": "Choose a file first.",
+    "categoryLabel": "Category",
+    "upload": "Upload",
+    "uploading": "Uploading…",
+    "empty": "No documents uploaded yet.",
+    "deleteConfirmTitle": "Delete {name}?",
+    "deleteConfirmDescription": "This can't be undone.",
+    "category": {
+      "registration": "Registration",
+      "insurance": "Insurance",
+      "inspection": "Inspection",
+      "other": "Other"
+    }
+  },
+  "deleteDialog": {
+    "title": "Delete {name}?",
+    "description": "This permanently deletes the vehicle and its documents. This can't be undone."
+  },
+  "detail": {
+    "back": "Vehicles",
+    "details": {
+      "title": "Details",
+      "year": "Year",
+      "vin": "VIN",
+      "odometer": "Odometer",
+      "odometerValue": "{value} km",
+      "assignedDriver": "Assigned driver",
+      "unassigned": "Unassigned"
+    },
+    "expiration": {
+      "title": "Expiration dates",
+      "registration": "Registration",
+      "insurance": "Insurance",
+      "inspection": "Inspection"
+    },
+    "notes": {
+      "title": "Notes"
+    },
+    "maintenance": {
+      "title": "Maintenance history",
+      "empty": "No maintenance recorded yet."
+    }
+  },
+  "damageReportsCard": {
+    "title": "Damage reports",
+    "reportButton": "Report damage",
+    "viewAll": "View all",
+    "empty": "No damage reported yet."
+  },
+  "enums": {
+    "vehicleType": {
+      "car": "Car",
+      "van": "Van",
+      "truck": "Truck",
+      "constructionMachinery": "Construction machinery",
+      "forklift": "Forklift"
+    },
+    "vehicleStatus": {
+      "active": "Active",
+      "maintenance": "In maintenance",
+      "inactive": "Inactive",
+      "sold": "Sold"
+    }
+  }
+}

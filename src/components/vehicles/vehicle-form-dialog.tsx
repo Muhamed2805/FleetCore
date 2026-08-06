@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent, type ReactElement } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -34,7 +35,7 @@ import type {
   VehicleStatus,
   VehicleType,
 } from "@/lib/supabase/types";
-import { vehicleStatusLabels, vehicleTypeLabels } from "@/lib/vehicles";
+import { getVehicleStatusLabels, getVehicleTypeLabels } from "@/lib/vehicles";
 
 type Vehicle = Database["public"]["Tables"]["vehicles"]["Row"];
 type Driver = { id: string; full_name: string | null };
@@ -87,6 +88,10 @@ export function VehicleFormDialog({
   vehicle?: Vehicle;
   trigger: ReactElement;
 }) {
+  const t = useTranslations("vehicles");
+  const tCommon = useTranslations("common");
+  const vehicleTypeLabels = getVehicleTypeLabels(t);
+  const vehicleStatusLabels = getVehicleStatusLabels(t);
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<FormValues>(() => toFormValues(vehicle));
@@ -129,7 +134,7 @@ export function VehicleFormDialog({
       !values.model.trim() ||
       !values.license_plate.trim()
     ) {
-      setError("Make, model and license plate are required.");
+      setError(t("form.validationError"));
       return;
     }
 
@@ -175,17 +180,17 @@ export function VehicleFormDialog({
       <DialogTrigger render={trigger} />
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit vehicle" : "Add vehicle"}</DialogTitle>
+          <DialogTitle>
+            {isEdit ? t("form.editTitle") : t("form.addTitle")}
+          </DialogTitle>
           <DialogDescription>
-            {isEdit
-              ? "Update this vehicle's details."
-              : "Add a car, van, truck, machine or forklift to your fleet."}
+            {isEdit ? t("form.editDescription") : t("form.addDescription")}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {!isEdit ? (
             <DocumentScanButton
-              label="Scan registration document"
+              label={t("scanRegistration")}
               action={extractVehicleRegistration}
               onExtracted={handleExtracted}
             />
@@ -193,7 +198,7 @@ export function VehicleFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label>Type</Label>
+              <Label>{t("form.type")}</Label>
               <Select
                 value={values.type}
                 onValueChange={(value) => set("type", value as VehicleType)}
@@ -201,7 +206,7 @@ export function VehicleFormDialog({
                 <SelectTrigger className="w-full">
                   <SelectValue>
                     {(value: VehicleType | null) =>
-                      value ? vehicleTypeLabels[value] : "Select type"
+                      value ? vehicleTypeLabels[value] : t("form.selectType")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -215,7 +220,7 @@ export function VehicleFormDialog({
               </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Status</Label>
+              <Label>{t("form.status")}</Label>
               <Select
                 value={values.status}
                 onValueChange={(value) =>
@@ -225,7 +230,9 @@ export function VehicleFormDialog({
                 <SelectTrigger className="w-full">
                   <SelectValue>
                     {(value: VehicleStatus | null) =>
-                      value ? vehicleStatusLabels[value] : "Select status"
+                      value
+                        ? vehicleStatusLabels[value]
+                        : t("form.selectStatus")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -244,7 +251,7 @@ export function VehicleFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="make">Make</Label>
+              <Label htmlFor="make">{t("form.make")}</Label>
               <Input
                 id="make"
                 value={values.make}
@@ -253,7 +260,7 @@ export function VehicleFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="model">Model</Label>
+              <Label htmlFor="model">{t("form.model")}</Label>
               <Input
                 id="model"
                 value={values.model}
@@ -265,7 +272,7 @@ export function VehicleFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="license_plate">License plate</Label>
+              <Label htmlFor="license_plate">{t("form.licensePlate")}</Label>
               <Input
                 id="license_plate"
                 value={values.license_plate}
@@ -276,7 +283,7 @@ export function VehicleFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="year">Year</Label>
+              <Label htmlFor="year">{t("form.year")}</Label>
               <Input
                 id="year"
                 type="number"
@@ -288,7 +295,7 @@ export function VehicleFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="vin">VIN</Label>
+              <Label htmlFor="vin">{t("form.vin")}</Label>
               <Input
                 id="vin"
                 value={values.vin}
@@ -296,7 +303,7 @@ export function VehicleFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="odometer">Odometer</Label>
+              <Label htmlFor="odometer">{t("form.odometer")}</Label>
               <Input
                 id="odometer"
                 type="number"
@@ -307,7 +314,7 @@ export function VehicleFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Assigned driver</Label>
+            <Label>{t("form.assignedDriver")}</Label>
             <Select
               value={values.assigned_driver_id || "none"}
               onValueChange={(value) =>
@@ -320,15 +327,18 @@ export function VehicleFormDialog({
               <SelectTrigger className="w-full">
                 <SelectValue>
                   {(value: string | null) =>
-                    value ? (driversById.get(value)?.full_name ?? "Unnamed") : "Unassigned"
+                    value
+                      ? (driversById.get(value)?.full_name ??
+                        t("form.unnamedDriver"))
+                      : t("form.unassigned")
                   }
                 </SelectValue>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">Unassigned</SelectItem>
+                <SelectItem value="none">{t("form.unassigned")}</SelectItem>
                 {drivers.map((driver) => (
                   <SelectItem key={driver.id} value={driver.id}>
-                    {driver.full_name ?? "Unnamed"}
+                    {driver.full_name ?? t("form.unnamedDriver")}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -337,7 +347,9 @@ export function VehicleFormDialog({
 
           <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="registration_expiry">Registration exp.</Label>
+              <Label htmlFor="registration_expiry">
+                {t("form.registrationExpiry")}
+              </Label>
               <Input
                 id="registration_expiry"
                 type="date"
@@ -348,7 +360,9 @@ export function VehicleFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="insurance_expiry">Insurance exp.</Label>
+              <Label htmlFor="insurance_expiry">
+                {t("form.insuranceExpiry")}
+              </Label>
               <Input
                 id="insurance_expiry"
                 type="date"
@@ -359,7 +373,9 @@ export function VehicleFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="inspection_expiry">Inspection exp.</Label>
+              <Label htmlFor="inspection_expiry">
+                {t("form.inspectionExpiry")}
+              </Label>
               <Input
                 id="inspection_expiry"
                 type="date"
@@ -372,7 +388,7 @@ export function VehicleFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="notes">Notes</Label>
+            <Label htmlFor="notes">{t("form.notes")}</Label>
             <Textarea
               id="notes"
               value={values.notes}
@@ -385,10 +401,10 @@ export function VehicleFormDialog({
           <DialogFooter>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting
-                ? "Saving…"
+                ? tCommon("actions.saving")
                 : isEdit
-                  ? "Save changes"
-                  : "Add vehicle"}
+                  ? tCommon("actions.saveChanges")
+                  : t("form.addVehicle")}
             </Button>
           </DialogFooter>
         </form>

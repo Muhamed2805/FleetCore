@@ -1,4 +1,5 @@
 import { LogOut } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -25,7 +26,7 @@ function initials(name: string | null, email: string | null | undefined) {
   return (email ?? "?").slice(0, 2).toUpperCase();
 }
 
-export function UserMenu({
+export async function UserMenu({
   fullName,
   email,
   role,
@@ -34,6 +35,8 @@ export function UserMenu({
   email: string | null | undefined;
   role: UserRole;
 }) {
+  const t = await getTranslations("dashboardShell");
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -42,7 +45,7 @@ export function UserMenu({
         <Avatar>
           <AvatarFallback>{initials(fullName, email)}</AvatarFallback>
         </Avatar>
-        <span className="sr-only">Open user menu</span>
+        <span className="sr-only">{t("userMenu.openMenu")}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuGroup>
@@ -60,7 +63,7 @@ export function UserMenu({
         <form action="/auth/signout" method="post">
           <DropdownMenuItem variant="destructive" render={<button type="submit" className="w-full" />}>
             <LogOut className="size-4" />
-            Sign out
+            {t("userMenu.signOut")}
           </DropdownMenuItem>
         </form>
       </DropdownMenuContent>

@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Schadensmeldungen",
+    "reportCount": "{count, plural, one {# Meldung} other {# Meldungen}}"
+  },
+  "actions": {
+    "reportDamage": "Schaden melden"
+  },
+  "filters": {
+    "allStatuses": "Alle Status",
+    "allVehicles": "Alle Fahrzeuge"
+  },
+  "table": {
+    "headers": {
+      "vehicle": "Fahrzeug",
+      "severity": "Schweregrad",
+      "status": "Status",
+      "reported": "Gemeldet",
+      "reportedBy": "Gemeldet von",
+      "repairCost": "Reparaturkosten"
+    },
+    "unnamedReporter": "Unbenannt"
+  },
+  "emptyState": {
+    "noDamageTitle": "Kein Schaden gemeldet",
+    "noMatchTitle": "Keine Meldungen entsprechen Ihren Filtern",
+    "addVehicleFirst": "Fügen Sie zuerst ein Fahrzeug hinzu, um Schäden dafür zu melden.",
+    "reportWithPhoto": "Melden Sie Schäden mit einem Foto, sobald sie auftreten.",
+    "tryDifferentFilter": "Versuchen Sie einen anderen Filter."
+  },
+  "form": {
+    "title": "Schaden melden",
+    "description": "Erfassen Sie einen Schaden am Fahrzeug mit Fotos — ein Mechaniker oder Flottenmanager kann ihn anschließend prüfen und die Reparaturkosten verknüpfen.",
+    "vehicleLabel": "Fahrzeug",
+    "vehiclePlaceholder": "Fahrzeug auswählen",
+    "severityLabel": "Schweregrad",
+    "severityPlaceholder": "Schweregrad auswählen",
+    "descriptionLabel": "Beschreibung",
+    "descriptionPlaceholder": "Was ist passiert und wo am Fahrzeug",
+    "photosLabel": "Fotos",
+    "submit": "Schaden melden",
+    "submitting": "Wird gespeichert…",
+    "errors": {
+      "chooseVehicle": "Wählen Sie ein Fahrzeug aus.",
+      "generic": "Etwas ist schiefgelaufen.",
+      "uploadFailed": "Meldung gespeichert, aber „{fileName}“ konnte nicht hochgeladen werden: {message}",
+      "attachFailed": "Meldung gespeichert, aber „{fileName}“ konnte nicht angehängt werden: {message}"
+    }
+  },
+  "detail": {
+    "titleFallback": "Schadensmeldung",
+    "reportedOn": "Gemeldet am {date}.",
+    "reportedOnBy": "Gemeldet am {date} von {name}.",
+    "statusPlaceholder": "Status",
+    "photosTitle": "Fotos",
+    "noPhotos": "Keine Fotos angehängt.",
+    "repairExpenseTitle": "Reparaturkosten",
+    "noRepairExpense": "Noch keine Reparaturkosten verknüpft.",
+    "addRepairExpense": "Reparaturkosten hinzufügen",
+    "repairExpenseDescription": "Schadensreparatur — {make} {model}",
+    "repairExpenseDescriptionFallback": "Schadensreparatur",
+    "deleteTitle": "Diese Schadensmeldung löschen?",
+    "deleteDescription": "Dadurch werden die Meldung und ihre Fotos entfernt. Dies kann nicht rückgängig gemacht werden.",
+    "deleteButton": "Meldung löschen"
+  },
+  "enums": {
+    "severity": {
+      "minor": "Leicht",
+      "moderate": "Mittel",
+      "severe": "Schwer"
+    },
+    "status": {
+      "reported": "Gemeldet",
+      "scheduled": "Geplant",
+      "inRepair": "In Reparatur",
+      "resolved": "Behoben"
+    }
+  }
+}

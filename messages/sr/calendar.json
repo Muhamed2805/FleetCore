@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Kalendar",
+    "description": "Predstojeći datumi isteka i zakazano održavanje."
+  },
+  "nav": {
+    "previousMonth": "Prethodni mesec",
+    "today": "Danas",
+    "nextMonth": "Sledeći mesec"
+  },
+  "weekdays": {
+    "sun": "Ned",
+    "mon": "Pon",
+    "tue": "Uto",
+    "wed": "Sre",
+    "thu": "Čet",
+    "fri": "Pet",
+    "sat": "Sub"
+  },
+  "dayCell": {
+    "eventsSuffix": "{count, plural, one {, # događaj} few {, # događaja} many {, # događaja} other {, # događaja}}",
+    "moreEvents": "+{count} više"
+  },
+  "agenda": {
+    "empty": "Ništa nije zakazano."
+  },
+  "events": {
+    "registrationTitle": "{vehicle} — registracija",
+    "insuranceTitle": "{vehicle} — osiguranje",
+    "inspectionTitle": "{vehicle} — tehnički pregled",
+    "maintenanceTitle": "{title} — {vehicle}"
+  },
+  "eventTypeLabels": {
+    "registration": "Registracija",
+    "insurance": "Osiguranje",
+    "inspection": "Tehnički pregled",
+    "maintenance": "Održavanje"
+  }
+}

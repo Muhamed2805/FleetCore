@@ -1,6 +1,7 @@
 "use client";
 
 import { Pencil, Plus, Receipt, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { ExpenseFormDialog } from "@/components/expenses/expense-form-dialog";
@@ -23,7 +24,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { expenseCategoryLabels, formatCurrency } from "@/lib/expenses";
+import { getExpenseCategoryLabels, formatCurrency } from "@/lib/expenses";
 import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -47,6 +48,9 @@ export function ExpensesTable({
   companyId: string;
   canManage: boolean;
 }) {
+  const t = useTranslations("expenses");
+  const tCommon = useTranslations("common");
+  const expenseCategoryLabels = getExpenseCategoryLabels(t);
   const [categoryFilter, setCategoryFilter] = useState("all");
 
   const vehicleById = useMemo(
@@ -78,10 +82,14 @@ export function ExpensesTable({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Expenses</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {t("table.heading")}
+          </h1>
           <p className="text-muted-foreground">
-            {filtered.length} expense{filtered.length === 1 ? "" : "s"} ·{" "}
-            {formatCurrency(total)} total
+            {t("table.summary", {
+              count: filtered.length,
+              total: formatCurrency(total),
+            })}
           </p>
         </div>
         {canManage ? (
@@ -91,7 +99,7 @@ export function ExpensesTable({
             trigger={
               <Button>
                 <Plus className="size-4" />
-                Add expense
+                {t("table.addButton")}
               </Button>
             }
           />
@@ -104,12 +112,12 @@ export function ExpensesTable({
             {(value: string | null) =>
               value && value !== "all"
                 ? expenseCategoryLabels[value as keyof typeof expenseCategoryLabels]
-                : "All categories"
+                : t("table.filters.allCategories")
             }
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All categories</SelectItem>
+          <SelectItem value="all">{t("table.filters.allCategories")}</SelectItem>
           {Object.entries(expenseCategoryLabels).map(([value, label]) => (
             <SelectItem key={value} value={value}>
               {label}
@@ -127,13 +135,13 @@ export function ExpensesTable({
             <div>
               <h2 className="font-medium">
                 {expenses.length === 0
-                  ? "No expenses yet"
-                  : "No expenses match this filter"}
+                  ? t("table.emptyState.noExpensesTitle")
+                  : t("table.emptyState.noMatchTitle")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
                 {expenses.length === 0
-                  ? "Track fuel, tolls, fines and other fleet costs."
-                  : "Try a different category."}
+                  ? t("table.emptyState.trackCosts")
+                  : t("table.emptyState.tryDifferentCategory")}
               </p>
             </div>
           </CardContent>
@@ -143,11 +151,11 @@ export function ExpensesTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Vehicle</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead>Amount</TableHead>
+                <TableHead>{t("table.columns.date")}</TableHead>
+                <TableHead>{t("table.columns.category")}</TableHead>
+                <TableHead>{t("table.columns.vehicle")}</TableHead>
+                <TableHead>{t("table.columns.description")}</TableHead>
+                <TableHead>{t("table.columns.amount")}</TableHead>
                 {canManage ? <TableHead className="w-20" /> : null}
               </TableRow>
             </TableHeader>
@@ -184,18 +192,22 @@ export function ExpensesTable({
                             trigger={
                               <Button variant="ghost" size="icon-sm">
                                 <Pencil className="size-4" />
-                                <span className="sr-only">Edit</span>
+                                <span className="sr-only">
+                                  {tCommon("actions.edit")}
+                                </span>
                               </Button>
                             }
                           />
                           <ConfirmDeleteDialog
-                            title="Delete this expense?"
-                            description="This can't be undone."
+                            title={t("table.deleteDialog.title")}
+                            description={t("table.deleteDialog.description")}
                             onConfirm={() => handleDelete(expense.id)}
                             trigger={
                               <Button variant="ghost" size="icon-sm">
                                 <Trash2 className="size-4" />
-                                <span className="sr-only">Delete</span>
+                                <span className="sr-only">
+                                  {tCommon("actions.delete")}
+                                </span>
                               </Button>
                             }
                           />

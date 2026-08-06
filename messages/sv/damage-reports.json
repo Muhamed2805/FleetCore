@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Skaderapporter",
+    "reportCount": "{count, plural, one {# rapport} other {# rapporter}}"
+  },
+  "actions": {
+    "reportDamage": "Rapportera skada"
+  },
+  "filters": {
+    "allStatuses": "Alla statusar",
+    "allVehicles": "Alla fordon"
+  },
+  "table": {
+    "headers": {
+      "vehicle": "Fordon",
+      "severity": "Allvarlighetsgrad",
+      "status": "Status",
+      "reported": "Rapporterad",
+      "reportedBy": "Rapporterad av",
+      "repairCost": "Reparationskostnad"
+    },
+    "unnamedReporter": "Namnlös"
+  },
+  "emptyState": {
+    "noDamageTitle": "Ingen skada rapporterad",
+    "noMatchTitle": "Inga rapporter matchar dina filter",
+    "addVehicleFirst": "Lägg till ett fordon först, rapportera sedan skada på det.",
+    "reportWithPhoto": "Rapportera skada med ett foto när det händer.",
+    "tryDifferentFilter": "Prova ett annat filter."
+  },
+  "form": {
+    "title": "Rapportera skada",
+    "description": "Logga skada på ett fordon med foton — en mekaniker eller flottchef kan bedöma den och koppla reparationskostnaden i efterhand.",
+    "vehicleLabel": "Fordon",
+    "vehiclePlaceholder": "Välj ett fordon",
+    "severityLabel": "Allvarlighetsgrad",
+    "severityPlaceholder": "Välj allvarlighetsgrad",
+    "descriptionLabel": "Beskrivning",
+    "descriptionPlaceholder": "Vad som hände och var på fordonet",
+    "photosLabel": "Foton",
+    "submit": "Rapportera skada",
+    "submitting": "Sparar…",
+    "errors": {
+      "chooseVehicle": "Välj ett fordon.",
+      "generic": "Något gick fel.",
+      "uploadFailed": "Rapporten sparades, men \"{fileName}\" kunde inte laddas upp: {message}",
+      "attachFailed": "Rapporten sparades, men \"{fileName}\" kunde inte bifogas: {message}"
+    }
+  },
+  "detail": {
+    "titleFallback": "Skaderapport",
+    "reportedOn": "Rapporterad {date}.",
+    "reportedOnBy": "Rapporterad {date} av {name}.",
+    "statusPlaceholder": "Status",
+    "photosTitle": "Foton",
+    "noPhotos": "Inga foton bifogade.",
+    "repairExpenseTitle": "Reparationsutgift",
+    "noRepairExpense": "Ingen reparationsutgift kopplad än.",
+    "addRepairExpense": "Lägg till reparationsutgift",
+    "repairExpenseDescription": "Skadereparation — {make} {model}",
+    "repairExpenseDescriptionFallback": "Skadereparation",
+    "deleteTitle": "Ta bort den här skaderapporten?",
+    "deleteDescription": "Det här tar bort rapporten och dess foton. Det här går inte att ångra.",
+    "deleteButton": "Ta bort rapport"
+  },
+  "enums": {
+    "severity": {
+      "minor": "Mindre",
+      "moderate": "Måttlig",
+      "severe": "Allvarlig"
+    },
+    "status": {
+      "reported": "Rapporterad",
+      "scheduled": "Schemalagd",
+      "inRepair": "Under reparation",
+      "resolved": "Åtgärdad"
+    }
+  }
+}

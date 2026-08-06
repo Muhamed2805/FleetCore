@@ -1,8 +1,7 @@
 "use client";
 
 import { Bell } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, NotificationCategory } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -24,12 +24,6 @@ type NotificationWithVehicle =
     vehicle: { make: string; model: string; license_plate: string } | null;
   };
 
-const categoryLabels: Record<NotificationCategory, string> = {
-  registration: "Registration",
-  insurance: "Insurance",
-  inspection: "Inspection",
-};
-
 export function NotificationsBell({
   initialNotifications,
   initialUnreadCount,
@@ -37,9 +31,17 @@ export function NotificationsBell({
   initialNotifications: NotificationWithVehicle[];
   initialUnreadCount: number;
 }) {
+  const t = useTranslations("dashboardShell");
+  const tCommon = useTranslations("common");
   const router = useRouter();
   const [notifications, setNotifications] = useState(initialNotifications);
   const [unreadCount, setUnreadCount] = useState(initialUnreadCount);
+
+  const categoryLabels: Record<NotificationCategory, string> = {
+    registration: t("notifications.categories.registration"),
+    insurance: t("notifications.categories.insurance"),
+    inspection: t("notifications.categories.inspection"),
+  };
 
   async function markAsRead(id: string) {
     setNotifications((prev) =>
@@ -76,19 +78,21 @@ export function NotificationsBell({
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>
         ) : null}
-        <span className="sr-only">Notifications</span>
+        <span className="sr-only">{t("notifications.srLabel")}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-80">
         <DropdownMenuGroup>
           <div className="flex items-center justify-between px-1.5 py-1">
-            <DropdownMenuLabel className="p-0">Notifications</DropdownMenuLabel>
+            <DropdownMenuLabel className="p-0">
+              {t("notifications.heading")}
+            </DropdownMenuLabel>
             {unreadCount > 0 ? (
               <button
                 type="button"
                 onClick={markAllRead}
                 className="text-xs text-muted-foreground hover:text-foreground"
               >
-                Mark all read
+                {t("notifications.markAllRead")}
               </button>
             ) : null}
           </div>
@@ -96,7 +100,7 @@ export function NotificationsBell({
         <DropdownMenuSeparator />
         {notifications.length === 0 ? (
           <p className="px-1.5 py-4 text-center text-sm text-muted-foreground">
-            No notifications yet.
+            {t("notifications.empty")}
           </p>
         ) : (
           notifications.map((notification) => (
@@ -109,14 +113,18 @@ export function NotificationsBell({
             >
               <div className="flex flex-col gap-0.5 py-0.5">
                 <span className="text-sm">
-                  {notification.vehicle
-                    ? `${notification.vehicle.make} ${notification.vehicle.model}`
-                    : "Vehicle"}{" "}
-                  · {categoryLabels[notification.category]}
+                  {t("notifications.itemTitle", {
+                    vehicle: notification.vehicle
+                      ? `${notification.vehicle.make} ${notification.vehicle.model}`
+                      : t("notifications.vehicleFallback"),
+                    category: categoryLabels[notification.category],
+                  })}
                 </span>
                 <span className="text-xs text-muted-foreground">
-                  Expires {formatDate(notification.due_date)} ·{" "}
-                  {notification.threshold_days}-day reminder
+                  {t("notifications.expiresLabel", {
+                    date: formatDate(notification.due_date),
+                    days: notification.threshold_days,
+                  })}
                 </span>
               </div>
             </DropdownMenuItem>
@@ -124,7 +132,7 @@ export function NotificationsBell({
         )}
         <DropdownMenuSeparator />
         <DropdownMenuItem render={<Link href="/dashboard/reminders" />}>
-          View all
+          {tCommon("actions.viewAll")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

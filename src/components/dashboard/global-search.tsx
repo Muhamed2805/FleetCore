@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, Truck, Wrench } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -13,9 +13,11 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { useRouter } from "@/i18n/navigation";
 import type { SearchItem } from "@/lib/supabase/queries";
 
 export function GlobalSearch({ items }: { items: SearchItem[] }) {
+  const t = useTranslations("dashboardShell");
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -35,8 +37,13 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
     router.push(href);
   }
 
-  const vehicles = items.filter((item) => item.group === "Vehicles");
-  const maintenance = items.filter((item) => item.group === "Maintenance");
+  const groupLabels: Record<SearchItem["group"], string> = {
+    vehicles: t("searchGroups.vehicles"),
+    maintenance: t("searchGroups.maintenance"),
+  };
+
+  const vehicles = items.filter((item) => item.group === "vehicles");
+  const maintenance = items.filter((item) => item.group === "maintenance");
 
   return (
     <>
@@ -47,7 +54,7 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
-        <span className="sr-only">Search</span>
+        <span className="sr-only">{t("search.srLabel")}</span>
       </Button>
       <Button
         variant="outline"
@@ -55,7 +62,7 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
-        Search…
+        {t("search.trigger")}
         <kbd className="ml-auto rounded border bg-muted px-1.5 py-0.5 text-[10px] font-medium">
           ⌘K
         </kbd>
@@ -63,14 +70,14 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
-        title="Search"
-        description="Search vehicles and maintenance jobs"
+        title={t("search.dialogTitle")}
+        description={t("search.dialogDescription")}
       >
-        <CommandInput placeholder="Search vehicles, plates, maintenance…" />
+        <CommandInput placeholder={t("search.placeholder")} />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{t("search.empty")}</CommandEmpty>
           {vehicles.length > 0 ? (
-            <CommandGroup heading="Vehicles">
+            <CommandGroup heading={groupLabels.vehicles}>
               {vehicles.map((item) => (
                 <CommandItem
                   key={item.id}
@@ -87,7 +94,7 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
             </CommandGroup>
           ) : null}
           {maintenance.length > 0 ? (
-            <CommandGroup heading="Maintenance">
+            <CommandGroup heading={groupLabels.maintenance}>
               {maintenance.map((item) => (
                 <CommandItem
                   key={item.id}

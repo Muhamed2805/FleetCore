@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "save": "Spara",
+    "saveChanges": "Spara ändringar",
+    "saving": "Sparar…",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "deleting": "Tar bort…",
+    "edit": "Redigera",
+    "add": "Lägg till",
+    "close": "Stäng",
+    "viewAll": "Visa alla",
+    "view": "Visa",
+    "unlink": "Koppla bort",
+    "confirm": "Bekräfta"
+  },
+  "status": {
+    "loading": "Laddar…"
+  },
+  "confirmDelete": {
+    "defaultTitle": "Är du säker?",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "deleting": "Tar bort…"
+  },
+  "documentScan": {
+    "notConfigured": "AI-extrahering är inte konfigurerad än — be en administratör lägga till ANTHROPIC_API_KEY.",
+    "chooseFileFirst": "Välj en fil först.",
+    "fileTooLarge": "Filen är för stor (max 10 MB).",
+    "scanning": "Skannar…",
+    "genericError": "Extrahering misslyckades.",
+    "couldNotRead": "Kunde inte läsa det här dokumentet."
+  },
+  "language": {
+    "label": "Språk"
+  },
+  "theme": {
+    "toggle": "Växla tema",
+    "light": "Ljust",
+    "dark": "Mörkt",
+    "system": "System"
+  }
+}

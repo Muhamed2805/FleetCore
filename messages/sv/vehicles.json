@@ -1,0 +1,115 @@
+{
+  "list": {
+    "title": "Fordon",
+    "count": "{count, plural, one {# fordon} other {# fordon}} i din flotta.",
+    "addVehicle": "Lägg till fordon",
+    "searchPlaceholder": "Sök märke, modell, skylt eller VIN…",
+    "allTypes": "Alla typer",
+    "allStatuses": "Alla statusar",
+    "emptyTitle": "Inga fordon än",
+    "emptyTitleFiltered": "Inga fordon matchar dina filter",
+    "emptyDescription": "Lägg till din första bil, skåpbil, lastbil, maskin eller truck.",
+    "emptyDescriptionFiltered": "Prova en annan sökning eller ett annat filter.",
+    "table": {
+      "vehicle": "Fordon",
+      "type": "Typ",
+      "status": "Status",
+      "driver": "Förare",
+      "registration": "Registrering",
+      "insurance": "Försäkring",
+      "inspection": "Besiktning"
+    }
+  },
+  "form": {
+    "addTitle": "Lägg till fordon",
+    "editTitle": "Redigera fordon",
+    "addDescription": "Lägg till en bil, skåpbil, lastbil, maskin eller truck i din flotta.",
+    "editDescription": "Uppdatera det här fordonets uppgifter.",
+    "validationError": "Märke, modell och registreringsskylt krävs.",
+    "type": "Typ",
+    "selectType": "Välj typ",
+    "status": "Status",
+    "selectStatus": "Välj status",
+    "make": "Märke",
+    "model": "Modell",
+    "licensePlate": "Registreringsskylt",
+    "year": "Årsmodell",
+    "vin": "VIN",
+    "odometer": "Mätarställning",
+    "assignedDriver": "Tilldelad förare",
+    "unassigned": "Ej tilldelad",
+    "unnamedDriver": "Namnlös",
+    "registrationExpiry": "Registrering utgår",
+    "insuranceExpiry": "Försäkring utgår",
+    "inspectionExpiry": "Besiktning utgår",
+    "notes": "Anteckningar",
+    "addVehicle": "Lägg till fordon"
+  },
+  "scanRegistration": "Skanna registreringsbevis",
+  "documents": {
+    "title": "Dokument",
+    "chooseFileFirst": "Välj en fil först.",
+    "categoryLabel": "Kategori",
+    "upload": "Ladda upp",
+    "uploading": "Laddar upp…",
+    "empty": "Inga dokument uppladdade än.",
+    "deleteConfirmTitle": "Ta bort {name}?",
+    "deleteConfirmDescription": "Det här går inte att ångra.",
+    "category": {
+      "registration": "Registrering",
+      "insurance": "Försäkring",
+      "inspection": "Besiktning",
+      "other": "Övrigt"
+    }
+  },
+  "deleteDialog": {
+    "title": "Ta bort {name}?",
+    "description": "Det här tar permanent bort fordonet och dess dokument. Det här går inte att ångra."
+  },
+  "detail": {
+    "back": "Fordon",
+    "details": {
+      "title": "Detaljer",
+      "year": "Årsmodell",
+      "vin": "VIN",
+      "odometer": "Mätarställning",
+      "odometerValue": "{value} km",
+      "assignedDriver": "Tilldelad förare",
+      "unassigned": "Ej tilldelad"
+    },
+    "expiration": {
+      "title": "Utgångsdatum",
+      "registration": "Registrering",
+      "insurance": "Försäkring",
+      "inspection": "Besiktning"
+    },
+    "notes": {
+      "title": "Anteckningar"
+    },
+    "maintenance": {
+      "title": "Underhållshistorik",
+      "empty": "Inget underhåll registrerat än."
+    }
+  },
+  "damageReportsCard": {
+    "title": "Skaderapporter",
+    "reportButton": "Rapportera skada",
+    "viewAll": "Visa alla",
+    "empty": "Ingen skada rapporterad än."
+  },
+  "enums": {
+    "vehicleType": {
+      "car": "Bil",
+      "van": "Skåpbil",
+      "truck": "Lastbil",
+      "constructionMachinery": "Anläggningsmaskin",
+      "forklift": "Truck"
+    },
+    "vehicleStatus": {
+      "active": "Aktivt",
+      "maintenance": "Under underhåll",
+      "inactive": "Inaktivt",
+      "sold": "Sålt"
+    }
+  }
+}

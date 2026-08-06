@@ -1,0 +1,68 @@
+{
+  "enums": {
+    "expenseCategory": {
+      "fuel": "Brandstof",
+      "toll": "Tol",
+      "fine": "Boete",
+      "parking": "Parkeren",
+      "registrationFee": "Registratiekosten",
+      "insurancePremium": "Verzekeringspremie",
+      "repair": "Reparatie",
+      "other": "Overig"
+    }
+  },
+  "form": {
+    "editTitle": "Uitgave bewerken",
+    "addTitle": "Uitgave toevoegen",
+    "dialogDescription": "Houd brandstof, tol, boetes en andere wagenparkkosten bij.",
+    "scanLabel": "Bon of factuur scannen",
+    "category": {
+      "label": "Categorie",
+      "placeholder": "Selecteer categorie"
+    },
+    "amount": {
+      "label": "Bedrag"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "vehicle": {
+      "label": "Voertuig",
+      "noVehicle": "Geen voertuig"
+    },
+    "description": {
+      "label": "Omschrijving"
+    },
+    "errors": {
+      "invalidAmount": "Voer een geldig bedrag in."
+    },
+    "submit": {
+      "add": "Uitgave toevoegen"
+    }
+  },
+  "table": {
+    "heading": "Uitgaven",
+    "summary": "{count, plural, one {# uitgave} other {# uitgaven}} · {total} totaal",
+    "addButton": "Uitgave toevoegen",
+    "filters": {
+      "allCategories": "Alle categorieën"
+    },
+    "emptyState": {
+      "noExpensesTitle": "Nog geen uitgaven",
+      "noMatchTitle": "Geen uitgaven komen overeen met dit filter",
+      "trackCosts": "Houd brandstof, tol, boetes en andere wagenparkkosten bij.",
+      "tryDifferentCategory": "Probeer een andere categorie."
+    },
+    "columns": {
+      "date": "Datum",
+      "category": "Categorie",
+      "vehicle": "Voertuig",
+      "description": "Omschrijving",
+      "amount": "Bedrag"
+    },
+    "deleteDialog": {
+      "title": "Deze uitgave verwijderen?",
+      "description": "Dit kan niet ongedaan worden gemaakt."
+    }
+  }
+}

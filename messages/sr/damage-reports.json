@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Prijave šteta",
+    "reportCount": "{count, plural, one {# prijava} few {# prijave} many {# prijava} other {# prijava}}"
+  },
+  "actions": {
+    "reportDamage": "Prijavi štetu"
+  },
+  "filters": {
+    "allStatuses": "Svi statusi",
+    "allVehicles": "Sva vozila"
+  },
+  "table": {
+    "headers": {
+      "vehicle": "Vozilo",
+      "severity": "Ozbiljnost",
+      "status": "Status",
+      "reported": "Prijavljeno",
+      "reportedBy": "Prijavio",
+      "repairCost": "Trošak popravke"
+    },
+    "unnamedReporter": "Bez imena"
+  },
+  "emptyState": {
+    "noDamageTitle": "Nema prijavljenih šteta",
+    "noMatchTitle": "Nijedna prijava ne odgovara filterima",
+    "addVehicleFirst": "Prvo dodajte vozilo, a zatim prijavite štetu na njemu.",
+    "reportWithPhoto": "Prijavite štetu sa fotografijom čim se desi.",
+    "tryDifferentFilter": "Pokušajte sa drugačijim filterom."
+  },
+  "form": {
+    "title": "Prijavi štetu",
+    "description": "Evidentirajte štetu na vozilu uz fotografije — mehaničar ili menadžer voznog parka može kasnije da je obradi i poveže trošak popravke.",
+    "vehicleLabel": "Vozilo",
+    "vehiclePlaceholder": "Izaberite vozilo",
+    "severityLabel": "Ozbiljnost",
+    "severityPlaceholder": "Izaberite ozbiljnost",
+    "descriptionLabel": "Opis",
+    "descriptionPlaceholder": "Šta se desilo i gde na vozilu",
+    "photosLabel": "Fotografije",
+    "submit": "Prijavi štetu",
+    "submitting": "Čuvanje…",
+    "errors": {
+      "chooseVehicle": "Izaberite vozilo.",
+      "generic": "Nešto je pošlo po zlu.",
+      "uploadFailed": "Prijava je sačuvana, ali otpremanje fajla \"{fileName}\" nije uspelo: {message}",
+      "attachFailed": "Prijava je sačuvana, ali prilaganje fajla \"{fileName}\" nije uspelo: {message}"
+    }
+  },
+  "detail": {
+    "titleFallback": "Prijava štete",
+    "reportedOn": "Prijavljeno {date}.",
+    "reportedOnBy": "Prijavljeno {date} od strane {name}.",
+    "statusPlaceholder": "Status",
+    "photosTitle": "Fotografije",
+    "noPhotos": "Nema priloženih fotografija.",
+    "repairExpenseTitle": "Trošak popravke",
+    "noRepairExpense": "Trošak popravke još nije povezan.",
+    "addRepairExpense": "Dodaj trošak popravke",
+    "repairExpenseDescription": "Popravka štete — {make} {model}",
+    "repairExpenseDescriptionFallback": "Popravka štete",
+    "deleteTitle": "Obrisati ovu prijavu štete?",
+    "deleteDescription": "Ovo uklanja prijavu i njene fotografije. Ovo se ne može poništiti.",
+    "deleteButton": "Obriši prijavu"
+  },
+  "enums": {
+    "severity": {
+      "minor": "Manja",
+      "moderate": "Umerena",
+      "severe": "Ozbiljna"
+    },
+    "status": {
+      "reported": "Prijavljeno",
+      "scheduled": "Zakazano",
+      "inRepair": "U popravci",
+      "resolved": "Rešeno"
+    }
+  }
+}
