@@ -1,4 +1,4 @@
-import { ArrowLeft, Pencil } from "lucide-react";
+import { ArrowLeft, Pencil, Plus } from "lucide-react";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -10,10 +10,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { DamageReportFormDialog } from "@/components/damage-reports/damage-report-form-dialog";
 import { DeleteVehicleDialog } from "@/components/vehicles/delete-vehicle-dialog";
 import { ExpiryBadge } from "@/components/vehicles/expiry-badge";
 import { VehicleDocuments } from "@/components/vehicles/vehicle-documents";
 import { VehicleFormDialog } from "@/components/vehicles/vehicle-form-dialog";
+import {
+  damageSeverityBadgeVariant,
+  damageSeverityLabels,
+  damageStatusBadgeVariant,
+  damageStatusLabels,
+} from "@/lib/damage-reports";
 import { formatCurrency } from "@/lib/expenses";
 import {
   maintenanceStatusBadgeVariant,
@@ -41,21 +48,31 @@ export default async function VehicleDetailPage({
 
   const supabase = await createClient();
 
-  const [{ data: vehicle }, { data: documents }, { data: drivers }, { data: maintenanceRecords }] =
-    await Promise.all([
-      supabase.from("vehicles").select("*").eq("id", id).single(),
-      supabase
-        .from("vehicle_documents")
-        .select("*")
-        .eq("vehicle_id", id)
-        .order("created_at", { ascending: false }),
-      supabase.from("profiles").select("id, full_name").eq("role", "driver"),
-      supabase
-        .from("maintenance_records")
-        .select("*")
-        .eq("vehicle_id", id)
-        .order("created_at", { ascending: false }),
-    ]);
+  const [
+    { data: vehicle },
+    { data: documents },
+    { data: drivers },
+    { data: maintenanceRecords },
+    { data: damageReports },
+  ] = await Promise.all([
+    supabase.from("vehicles").select("*").eq("id", id).single(),
+    supabase
+      .from("vehicle_documents")
+      .select("*")
+      .eq("vehicle_id", id)
+      .order("created_at", { ascending: false }),
+    supabase.from("profiles").select("id, full_name").eq("role", "driver"),
+    supabase
+      .from("maintenance_records")
+      .select("*")
+      .eq("vehicle_id", id)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("damage_reports")
+      .select("*")
+      .eq("vehicle_id", id)
+      .order("reported_at", { ascending: false }),
+  ]);
 
   if (!vehicle) {
     notFound();
@@ -228,6 +245,78 @@ export default async function VehicleDetailPage({
                   <Badge variant={maintenanceStatusBadgeVariant[record.status]}>
                     {maintenanceStatusLabels[record.status]}
                   </Badge>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="flex-row items-center justify-between space-y-0">
+          <CardTitle className="text-sm text-muted-foreground">
+            Damage reports
+          </CardTitle>
+          <div className="flex items-center gap-2">
+            <DamageReportFormDialog
+              companyId={profile.company_id}
+              vehicles={[
+                {
+                  id: vehicle.id,
+                  make: vehicle.make,
+                  model: vehicle.model,
+                  license_plate: vehicle.license_plate,
+                },
+              ]}
+              reportedBy={profile.id}
+              defaultVehicleId={vehicle.id}
+              trigger={
+                <Button variant="ghost" size="sm">
+                  <Plus className="size-4" />
+                  Report damage
+                </Button>
+              }
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              nativeButton={false}
+              render={<Link href="/dashboard/damage-reports" />}
+            >
+              View all
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {!damageReports?.length ? (
+            <p className="text-sm text-muted-foreground">
+              No damage reported yet.
+            </p>
+          ) : (
+            <ul className="flex flex-col divide-y">
+              {damageReports.map((report) => (
+                <li
+                  key={report.id}
+                  className="flex items-center justify-between gap-3 py-3"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium">
+                      {formatDate(report.reported_at)}
+                    </span>
+                    {report.description ? (
+                      <span className="text-xs text-muted-foreground truncate max-w-xs">
+                        {report.description}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant={damageSeverityBadgeVariant[report.severity]}>
+                      {damageSeverityLabels[report.severity]}
+                    </Badge>
+                    <Badge variant={damageStatusBadgeVariant[report.status]}>
+                      {damageStatusLabels[report.status]}
+                    </Badge>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -47,8 +47,8 @@ const emptyForm = {
 
 type FormValues = typeof emptyForm;
 
-function toFormValues(expense?: Expense): FormValues {
-  if (!expense) return emptyForm;
+function toFormValues(expense?: Expense, defaultVehicleId?: string): FormValues {
+  if (!expense) return { ...emptyForm, vehicle_id: defaultVehicleId ?? "" };
   return {
     vehicle_id: expense.vehicle_id ?? "",
     category: expense.category,
@@ -62,16 +62,32 @@ export function ExpenseFormDialog({
   companyId,
   vehicles,
   expense,
+  defaultVehicleId,
+  defaultCategory,
+  defaultDescription,
+  onCreated,
   trigger,
 }: {
   companyId: string;
   vehicles: VehicleOption[];
   expense?: Expense;
+  defaultVehicleId?: string;
+  defaultCategory?: ExpenseCategory;
+  defaultDescription?: string;
+  onCreated?: (expense: Expense) => void;
   trigger: ReactElement;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<FormValues>(() => toFormValues(expense));
+  const [values, setValues] = useState<FormValues>(() => {
+    const base = toFormValues(expense, defaultVehicleId);
+    if (expense) return base;
+    return {
+      ...base,
+      category: defaultCategory ?? base.category,
+      description: defaultDescription ?? base.description,
+    };
+  });
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -95,7 +111,16 @@ export function ExpenseFormDialog({
   function handleOpenChange(next: boolean) {
     setOpen(next);
     if (next) {
-      setValues(toFormValues(expense));
+      const base = toFormValues(expense, defaultVehicleId);
+      setValues(
+        expense
+          ? base
+          : {
+              ...base,
+              category: defaultCategory ?? base.category,
+              description: defaultDescription ?? base.description,
+            }
+      );
       setError(null);
     }
   }
@@ -121,17 +146,28 @@ export function ExpenseFormDialog({
       description: values.description.trim() || null,
     };
 
-    const { error } = isEdit
-      ? await supabase.from("expenses").update(payload).eq("id", expense!.id)
+    const { data, error } = isEdit
+      ? await supabase
+          .from("expenses")
+          .update(payload)
+          .eq("id", expense!.id)
+          .select()
+          .single()
       : await supabase
           .from("expenses")
-          .insert({ ...payload, company_id: companyId });
+          .insert({ ...payload, company_id: companyId })
+          .select()
+          .single();
 
     setIsSubmitting(false);
 
     if (error) {
       setError(error.message);
       return;
+    }
+
+    if (!isEdit && data) {
+      onCreated?.(data);
     }
 
     setOpen(false);
