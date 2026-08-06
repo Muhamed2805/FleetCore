@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Kalender",
+    "description": "Bevorstehende Ablauffristen und geplante Wartungen."
+  },
+  "nav": {
+    "previousMonth": "Vorheriger Monat",
+    "today": "Heute",
+    "nextMonth": "Nächster Monat"
+  },
+  "weekdays": {
+    "sun": "So",
+    "mon": "Mo",
+    "tue": "Di",
+    "wed": "Mi",
+    "thu": "Do",
+    "fri": "Fr",
+    "sat": "Sa"
+  },
+  "dayCell": {
+    "eventsSuffix": "{count, plural, one {, # Ereignis} other {, # Ereignisse}}",
+    "moreEvents": "+{count} weitere"
+  },
+  "agenda": {
+    "empty": "Nichts geplant."
+  },
+  "events": {
+    "registrationTitle": "{vehicle} — Zulassung",
+    "insuranceTitle": "{vehicle} — Versicherung",
+    "inspectionTitle": "{vehicle} — Prüfung",
+    "maintenanceTitle": "{title} — {vehicle}"
+  },
+  "eventTypeLabels": {
+    "registration": "Zulassung",
+    "insurance": "Versicherung",
+    "inspection": "Prüfung",
+    "maintenance": "Wartung"
+  }
+}

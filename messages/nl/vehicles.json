@@ -1,0 +1,115 @@
+{
+  "list": {
+    "title": "Voertuigen",
+    "count": "{count, plural, one {# voertuig} other {# voertuigen}} in je wagenpark.",
+    "addVehicle": "Voertuig toevoegen",
+    "searchPlaceholder": "Zoek merk, model, kenteken of VIN…",
+    "allTypes": "Alle types",
+    "allStatuses": "Alle statussen",
+    "emptyTitle": "Nog geen voertuigen",
+    "emptyTitleFiltered": "Geen voertuigen komen overeen met je filters",
+    "emptyDescription": "Voeg je eerste auto, bestelwagen, vrachtwagen, machine of heftruck toe.",
+    "emptyDescriptionFiltered": "Probeer een andere zoekopdracht of filter.",
+    "table": {
+      "vehicle": "Voertuig",
+      "type": "Type",
+      "status": "Status",
+      "driver": "Chauffeur",
+      "registration": "Registratie",
+      "insurance": "Verzekering",
+      "inspection": "Keuring"
+    }
+  },
+  "form": {
+    "addTitle": "Voertuig toevoegen",
+    "editTitle": "Voertuig bewerken",
+    "addDescription": "Voeg een auto, bestelwagen, vrachtwagen, machine of heftruck toe aan je wagenpark.",
+    "editDescription": "Werk de gegevens van dit voertuig bij.",
+    "validationError": "Merk, model en kenteken zijn verplicht.",
+    "type": "Type",
+    "selectType": "Selecteer type",
+    "status": "Status",
+    "selectStatus": "Selecteer status",
+    "make": "Merk",
+    "model": "Model",
+    "licensePlate": "Kenteken",
+    "year": "Bouwjaar",
+    "vin": "VIN",
+    "odometer": "Kilometerstand",
+    "assignedDriver": "Toegewezen chauffeur",
+    "unassigned": "Niet toegewezen",
+    "unnamedDriver": "Naamloos",
+    "registrationExpiry": "Verval registratie",
+    "insuranceExpiry": "Verval verzekering",
+    "inspectionExpiry": "Verval keuring",
+    "notes": "Notities",
+    "addVehicle": "Voertuig toevoegen"
+  },
+  "scanRegistration": "Kentekenbewijs scannen",
+  "documents": {
+    "title": "Documenten",
+    "chooseFileFirst": "Kies eerst een bestand.",
+    "categoryLabel": "Categorie",
+    "upload": "Uploaden",
+    "uploading": "Uploaden…",
+    "empty": "Nog geen documenten geüpload.",
+    "deleteConfirmTitle": "{name} verwijderen?",
+    "deleteConfirmDescription": "Dit kan niet ongedaan worden gemaakt.",
+    "category": {
+      "registration": "Registratie",
+      "insurance": "Verzekering",
+      "inspection": "Keuring",
+      "other": "Overig"
+    }
+  },
+  "deleteDialog": {
+    "title": "{name} verwijderen?",
+    "description": "Dit verwijdert het voertuig en de bijbehorende documenten definitief. Dit kan niet ongedaan worden gemaakt."
+  },
+  "detail": {
+    "back": "Voertuigen",
+    "details": {
+      "title": "Gegevens",
+      "year": "Bouwjaar",
+      "vin": "VIN",
+      "odometer": "Kilometerstand",
+      "odometerValue": "{value} km",
+      "assignedDriver": "Toegewezen chauffeur",
+      "unassigned": "Niet toegewezen"
+    },
+    "expiration": {
+      "title": "Vervaldata",
+      "registration": "Registratie",
+      "insurance": "Verzekering",
+      "inspection": "Keuring"
+    },
+    "notes": {
+      "title": "Notities"
+    },
+    "maintenance": {
+      "title": "Onderhoudsgeschiedenis",
+      "empty": "Nog geen onderhoud geregistreerd."
+    }
+  },
+  "damageReportsCard": {
+    "title": "Schademeldingen",
+    "reportButton": "Schade melden",
+    "viewAll": "Alles bekijken",
+    "empty": "Nog geen schade gemeld."
+  },
+  "enums": {
+    "vehicleType": {
+      "car": "Auto",
+      "van": "Bestelwagen",
+      "truck": "Vrachtwagen",
+      "constructionMachinery": "Bouwmachine",
+      "forklift": "Heftruck"
+    },
+    "vehicleStatus": {
+      "active": "Actief",
+      "maintenance": "In onderhoud",
+      "inactive": "Inactief",
+      "sold": "Verkocht"
+    }
+  }
+}

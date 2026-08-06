@@ -1,0 +1,115 @@
+{
+  "list": {
+    "title": "Vozila",
+    "count": "{count, plural, one {# vozilo} few {# vozila} many {# vozila} other {# vozila}} u vašem voznom parku.",
+    "addVehicle": "Dodaj vozilo",
+    "searchPlaceholder": "Pretraga po marki, modelu, tablici ili VIN broju…",
+    "allTypes": "Svi tipovi",
+    "allStatuses": "Svi statusi",
+    "emptyTitle": "Još nema vozila",
+    "emptyTitleFiltered": "Nijedno vozilo ne odgovara filterima",
+    "emptyDescription": "Dodajte svoj prvi automobil, kombi, kamion, mašinu ili viljuškar.",
+    "emptyDescriptionFiltered": "Pokušajte sa drugačijom pretragom ili filterom.",
+    "table": {
+      "vehicle": "Vozilo",
+      "type": "Tip",
+      "status": "Status",
+      "driver": "Vozač",
+      "registration": "Registracija",
+      "insurance": "Osiguranje",
+      "inspection": "Tehnički pregled"
+    }
+  },
+  "form": {
+    "addTitle": "Dodaj vozilo",
+    "editTitle": "Izmeni vozilo",
+    "addDescription": "Dodajte automobil, kombi, kamion, mašinu ili viljuškar u svoj vozni park.",
+    "editDescription": "Ažurirajte podatke o ovom vozilu.",
+    "validationError": "Marka, model i registarska tablica su obavezni.",
+    "type": "Tip",
+    "selectType": "Izaberite tip",
+    "status": "Status",
+    "selectStatus": "Izaberite status",
+    "make": "Marka",
+    "model": "Model",
+    "licensePlate": "Registarska tablica",
+    "year": "Godina",
+    "vin": "VIN",
+    "odometer": "Kilometraža",
+    "assignedDriver": "Dodeljeni vozač",
+    "unassigned": "Nedodeljeno",
+    "unnamedDriver": "Bez imena",
+    "registrationExpiry": "Ist. registracije",
+    "insuranceExpiry": "Ist. osiguranja",
+    "inspectionExpiry": "Ist. tehničkog pregleda",
+    "notes": "Napomene",
+    "addVehicle": "Dodaj vozilo"
+  },
+  "scanRegistration": "Skeniraj saobraćajnu dozvolu",
+  "documents": {
+    "title": "Dokumenti",
+    "chooseFileFirst": "Prvo izaberite fajl.",
+    "categoryLabel": "Kategorija",
+    "upload": "Otpremi",
+    "uploading": "Otpremanje…",
+    "empty": "Još nema otpremljenih dokumenata.",
+    "deleteConfirmTitle": "Obrisati {name}?",
+    "deleteConfirmDescription": "Ovo se ne može poništiti.",
+    "category": {
+      "registration": "Registracija",
+      "insurance": "Osiguranje",
+      "inspection": "Tehnički pregled",
+      "other": "Ostalo"
+    }
+  },
+  "deleteDialog": {
+    "title": "Obrisati {name}?",
+    "description": "Ovo trajno briše vozilo i njegove dokumente. Ovo se ne može poništiti."
+  },
+  "detail": {
+    "back": "Vozila",
+    "details": {
+      "title": "Detalji",
+      "year": "Godina",
+      "vin": "VIN",
+      "odometer": "Kilometraža",
+      "odometerValue": "{value} km",
+      "assignedDriver": "Dodeljeni vozač",
+      "unassigned": "Nedodeljeno"
+    },
+    "expiration": {
+      "title": "Datumi isteka",
+      "registration": "Registracija",
+      "insurance": "Osiguranje",
+      "inspection": "Tehnički pregled"
+    },
+    "notes": {
+      "title": "Napomene"
+    },
+    "maintenance": {
+      "title": "Istorija održavanja",
+      "empty": "Još nema evidentiranog održavanja."
+    }
+  },
+  "damageReportsCard": {
+    "title": "Prijave šteta",
+    "reportButton": "Prijavi štetu",
+    "viewAll": "Prikaži sve",
+    "empty": "Još nema prijavljenih šteta."
+  },
+  "enums": {
+    "vehicleType": {
+      "car": "Automobil",
+      "van": "Kombi",
+      "truck": "Kamion",
+      "constructionMachinery": "Građevinska mašina",
+      "forklift": "Viljuškar"
+    },
+    "vehicleStatus": {
+      "active": "Aktivno",
+      "maintenance": "Na održavanju",
+      "inactive": "Neaktivno",
+      "sold": "Prodato"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Kalender",
+    "description": "Aankomende vervaldata en gepland onderhoud."
+  },
+  "nav": {
+    "previousMonth": "Vorige maand",
+    "today": "Vandaag",
+    "nextMonth": "Volgende maand"
+  },
+  "weekdays": {
+    "sun": "Zo",
+    "mon": "Ma",
+    "tue": "Di",
+    "wed": "Wo",
+    "thu": "Do",
+    "fri": "Vr",
+    "sat": "Za"
+  },
+  "dayCell": {
+    "eventsSuffix": "{count, plural, one {, # item} other {, # items}}",
+    "moreEvents": "+{count} meer"
+  },
+  "agenda": {
+    "empty": "Niets gepland."
+  },
+  "events": {
+    "registrationTitle": "{vehicle} — registratie",
+    "insuranceTitle": "{vehicle} — verzekering",
+    "inspectionTitle": "{vehicle} — keuring",
+    "maintenanceTitle": "{title} — {vehicle}"
+  },
+  "eventTypeLabels": {
+    "registration": "Registratie",
+    "insurance": "Verzekering",
+    "inspection": "Keuring",
+    "maintenance": "Onderhoud"
+  }
+}

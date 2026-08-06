@@ -1,9 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { FileText, Trash2, Upload } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRef, useState, type FormEvent } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -32,13 +33,6 @@ type VehicleDocument = Database["public"]["Tables"]["vehicle_documents"]["Row"] 
   url: string | null;
 };
 
-const categoryLabels: Record<DocumentCategory, string> = {
-  registration: "Registration",
-  insurance: "Insurance",
-  inspection: "Inspection",
-  other: "Other",
-};
-
 export function VehicleDocuments({
   vehicleId,
   companyId,
@@ -52,6 +46,14 @@ export function VehicleDocuments({
   documents: VehicleDocument[];
   canManage: boolean;
 }) {
+  const t = useTranslations("vehicles");
+  const tCommon = useTranslations("common");
+  const categoryLabels: Record<DocumentCategory, string> = {
+    registration: t("documents.category.registration"),
+    insurance: t("documents.category.insurance"),
+    inspection: t("documents.category.inspection"),
+    other: t("documents.category.other"),
+  };
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [category, setCategory] = useState<DocumentCategory>("registration");
@@ -62,7 +64,7 @@ export function VehicleDocuments({
     event.preventDefault();
     const file = fileInputRef.current?.files?.[0];
     if (!file) {
-      setError("Choose a file first.");
+      setError(t("documents.chooseFileFirst"));
       return;
     }
 
@@ -118,7 +120,7 @@ export function VehicleDocuments({
     <Card>
       <CardHeader>
         <CardTitle className="text-sm text-muted-foreground">
-          Documents
+          {t("documents.title")}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
@@ -128,7 +130,9 @@ export function VehicleDocuments({
             className="flex flex-col gap-3 sm:flex-row sm:items-end"
           >
             <div className="flex flex-col gap-2">
-              <span className="text-xs text-muted-foreground">Category</span>
+              <span className="text-xs text-muted-foreground">
+                {t("documents.categoryLabel")}
+              </span>
               <Select
                 value={category}
                 onValueChange={(value) =>
@@ -138,7 +142,9 @@ export function VehicleDocuments({
                 <SelectTrigger className="w-full sm:w-40">
                   <SelectValue>
                     {(value: DocumentCategory | null) =>
-                      value ? categoryLabels[value] : "Category"
+                      value
+                        ? categoryLabels[value]
+                        : t("documents.categoryLabel")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -158,7 +164,7 @@ export function VehicleDocuments({
             />
             <Button type="submit" disabled={isUploading}>
               <Upload className="size-4" />
-              {isUploading ? "Uploading…" : "Upload"}
+              {isUploading ? t("documents.uploading") : t("documents.upload")}
             </Button>
           </form>
         ) : null}
@@ -167,7 +173,7 @@ export function VehicleDocuments({
 
         {documents.length === 0 ? (
           <p className="text-sm text-muted-foreground">
-            No documents uploaded yet.
+            {t("documents.empty")}
           </p>
         ) : (
           <ul className="flex flex-col divide-y">
@@ -204,24 +210,30 @@ export function VehicleDocuments({
                       render={<Button variant="ghost" size="icon-sm" />}
                     >
                       <Trash2 className="size-4" />
-                      <span className="sr-only">Delete</span>
+                      <span className="sr-only">
+                        {tCommon("actions.delete")}
+                      </span>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
                         <AlertDialogTitle>
-                          Delete {doc.file_name}?
+                          {t("documents.deleteConfirmTitle", {
+                            name: doc.file_name,
+                          })}
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                          This can&apos;t be undone.
+                          {t("documents.deleteConfirmDescription")}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>
+                          {tCommon("actions.cancel")}
+                        </AlertDialogCancel>
                         <AlertDialogAction
                           variant="destructive"
                           onClick={() => handleDelete(doc)}
                         >
-                          Delete
+                          {tCommon("actions.delete")}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>

@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent, type ReactElement } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,8 +25,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  maintenanceStatusLabels,
-  maintenanceTypeLabels,
+  getMaintenanceStatusLabels,
+  getMaintenanceTypeLabels,
 } from "@/lib/maintenance";
 import { createClient } from "@/lib/supabase/client";
 import type {
@@ -86,6 +87,10 @@ export function MaintenanceFormDialog({
   trigger: ReactElement;
 }) {
   const router = useRouter();
+  const t = useTranslations("maintenance");
+  const tCommon = useTranslations("common");
+  const maintenanceTypeLabels = getMaintenanceTypeLabels(t);
+  const maintenanceStatusLabels = getMaintenanceStatusLabels(t);
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<FormValues>(() =>
     toFormValues(record, defaultVehicleId)
@@ -113,7 +118,7 @@ export function MaintenanceFormDialog({
     event.preventDefault();
 
     if (!values.vehicle_id || !values.title.trim()) {
-      setError("Vehicle and title are required.");
+      setError(t("form.errors.vehicleAndTitleRequired"));
       return;
     }
 
@@ -159,16 +164,16 @@ export function MaintenanceFormDialog({
       <DialogTrigger render={trigger} />
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit maintenance" : "Add maintenance"}</DialogTitle>
+          <DialogTitle>
+            {isEdit ? t("form.editTitle") : t("form.addTitle")}
+          </DialogTitle>
           <DialogDescription>
-            {isEdit
-              ? "Update this maintenance job."
-              : "Schedule a maintenance job or log completed work."}
+            {isEdit ? t("form.editDescription") : t("form.addDescription")}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label>Vehicle</Label>
+            <Label>{t("form.vehicle.label")}</Label>
             <Select
               value={values.vehicle_id}
               onValueChange={(value) => set("vehicle_id", value ?? "")}
@@ -179,7 +184,7 @@ export function MaintenanceFormDialog({
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
                       ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
-                      : "Select a vehicle";
+                      : t("form.vehicle.placeholder");
                   }}
                 </SelectValue>
               </SelectTrigger>
@@ -194,19 +199,19 @@ export function MaintenanceFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">{t("form.title.label")}</Label>
             <Input
               id="title"
               value={values.title}
               onChange={(event) => set("title", event.target.value)}
-              placeholder="e.g. Front brake pads replaced"
+              placeholder={t("form.title.placeholder")}
               required
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label>Type</Label>
+              <Label>{t("form.type.label")}</Label>
               <Select
                 value={values.type}
                 onValueChange={(value) =>
@@ -216,7 +221,9 @@ export function MaintenanceFormDialog({
                 <SelectTrigger className="w-full">
                   <SelectValue>
                     {(value: MaintenanceType | null) =>
-                      value ? maintenanceTypeLabels[value] : "Select type"
+                      value
+                        ? maintenanceTypeLabels[value]
+                        : t("form.type.placeholder")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -232,7 +239,7 @@ export function MaintenanceFormDialog({
               </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Status</Label>
+              <Label>{t("form.status.label")}</Label>
               <Select
                 value={values.status}
                 onValueChange={(value) =>
@@ -242,7 +249,9 @@ export function MaintenanceFormDialog({
                 <SelectTrigger className="w-full">
                   <SelectValue>
                     {(value: MaintenanceStatus | null) =>
-                      value ? maintenanceStatusLabels[value] : "Select status"
+                      value
+                        ? maintenanceStatusLabels[value]
+                        : t("form.status.placeholder")
                     }
                   </SelectValue>
                 </SelectTrigger>
@@ -261,7 +270,9 @@ export function MaintenanceFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="scheduled_date">Scheduled date</Label>
+              <Label htmlFor="scheduled_date">
+                {t("form.scheduledDate.label")}
+              </Label>
               <Input
                 id="scheduled_date"
                 type="date"
@@ -272,7 +283,9 @@ export function MaintenanceFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="completed_date">Completed date</Label>
+              <Label htmlFor="completed_date">
+                {t("form.completedDate.label")}
+              </Label>
               <Input
                 id="completed_date"
                 type="date"
@@ -286,7 +299,7 @@ export function MaintenanceFormDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="odometer">Odometer</Label>
+              <Label htmlFor="odometer">{t("form.odometer.label")}</Label>
               <Input
                 id="odometer"
                 type="number"
@@ -295,7 +308,7 @@ export function MaintenanceFormDialog({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="cost">Cost</Label>
+              <Label htmlFor="cost">{t("form.cost.label")}</Label>
               <Input
                 id="cost"
                 type="number"
@@ -307,7 +320,7 @@ export function MaintenanceFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Performed by</Label>
+            <Label>{t("form.performedBy.label")}</Label>
             <Select
               value={values.performed_by || "none"}
               onValueChange={(value) =>
@@ -317,15 +330,20 @@ export function MaintenanceFormDialog({
               <SelectTrigger className="w-full">
                 <SelectValue>
                   {(value: string | null) =>
-                    value ? (staffById.get(value)?.full_name ?? "Unnamed") : "Unassigned"
+                    value
+                      ? (staffById.get(value)?.full_name ??
+                        t("form.performedBy.unnamed"))
+                      : t("form.performedBy.unassigned")
                   }
                 </SelectValue>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">Unassigned</SelectItem>
+                <SelectItem value="none">
+                  {t("form.performedBy.unassigned")}
+                </SelectItem>
                 {staff.map((person) => (
                   <SelectItem key={person.id} value={person.id}>
-                    {person.full_name ?? "Unnamed"}
+                    {person.full_name ?? t("form.performedBy.unnamed")}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -333,7 +351,7 @@ export function MaintenanceFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{t("form.description.label")}</Label>
             <Textarea
               id="description"
               value={values.description}
@@ -346,10 +364,10 @@ export function MaintenanceFormDialog({
           <DialogFooter>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting
-                ? "Saving…"
+                ? tCommon("actions.saving")
                 : isEdit
-                  ? "Save changes"
-                  : "Add maintenance"}
+                  ? tCommon("actions.saveChanges")
+                  : t("form.submit.add")}
             </Button>
           </DialogFooter>
         </form>

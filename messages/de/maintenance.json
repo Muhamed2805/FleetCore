@@ -1,0 +1,95 @@
+{
+  "enums": {
+    "maintenanceType": {
+      "oilChange": "Ölwechsel",
+      "tireRotation": "Reifenrotation",
+      "brakeService": "Bremsenservice",
+      "inspection": "Inspektion",
+      "repair": "Reparatur",
+      "other": "Sonstiges"
+    },
+    "maintenanceStatus": {
+      "scheduled": "Geplant",
+      "inProgress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    }
+  },
+  "form": {
+    "editTitle": "Wartung bearbeiten",
+    "addTitle": "Wartung hinzufügen",
+    "editDescription": "Aktualisieren Sie diesen Wartungsauftrag.",
+    "addDescription": "Planen Sie einen Wartungsauftrag oder erfassen Sie eine abgeschlossene Arbeit.",
+    "vehicle": {
+      "label": "Fahrzeug",
+      "placeholder": "Fahrzeug auswählen"
+    },
+    "title": {
+      "label": "Titel",
+      "placeholder": "z. B. Vordere Bremsbeläge erneuert"
+    },
+    "type": {
+      "label": "Typ",
+      "placeholder": "Typ auswählen"
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Status auswählen"
+    },
+    "scheduledDate": {
+      "label": "Geplantes Datum"
+    },
+    "completedDate": {
+      "label": "Abschlussdatum"
+    },
+    "odometer": {
+      "label": "Kilometerstand"
+    },
+    "cost": {
+      "label": "Kosten"
+    },
+    "performedBy": {
+      "label": "Durchgeführt von",
+      "unassigned": "Nicht zugewiesen",
+      "unnamed": "Unbenannt"
+    },
+    "description": {
+      "label": "Beschreibung"
+    },
+    "errors": {
+      "vehicleAndTitleRequired": "Fahrzeug und Titel sind erforderlich."
+    },
+    "submit": {
+      "add": "Wartung hinzufügen"
+    }
+  },
+  "table": {
+    "heading": "Wartung",
+    "jobCount": "{count, plural, one {# Wartungsauftrag.} other {# Wartungsaufträge.}}",
+    "addButton": "Wartung hinzufügen",
+    "filters": {
+      "allStatuses": "Alle Status",
+      "allVehicles": "Alle Fahrzeuge"
+    },
+    "emptyState": {
+      "noJobsTitle": "Noch keine Wartungsaufträge",
+      "noMatchTitle": "Keine Aufträge entsprechen Ihren Filtern",
+      "addVehicleFirst": "Fügen Sie zuerst ein Fahrzeug hinzu, um dann eine Wartung dafür zu planen.",
+      "scheduleOrLog": "Planen Sie eine Wartung oder erfassen Sie abgeschlossene Arbeiten.",
+      "tryDifferentFilter": "Versuchen Sie einen anderen Filter."
+    },
+    "columns": {
+      "job": "Auftrag",
+      "vehicle": "Fahrzeug",
+      "status": "Status",
+      "scheduled": "Geplant",
+      "completed": "Abgeschlossen",
+      "cost": "Kosten",
+      "performedBy": "Durchgeführt von"
+    },
+    "deleteDialog": {
+      "title": "{title} löschen?",
+      "description": "Dies kann nicht rückgängig gemacht werden."
+    }
+  }
+}

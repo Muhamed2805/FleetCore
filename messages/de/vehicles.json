@@ -1,0 +1,115 @@
+{
+  "list": {
+    "title": "Fahrzeuge",
+    "count": "{count, plural, one {# Fahrzeug} other {# Fahrzeuge}} in Ihrer Flotte.",
+    "addVehicle": "Fahrzeug hinzufügen",
+    "searchPlaceholder": "Marke, Modell, Kennzeichen oder FIN suchen…",
+    "allTypes": "Alle Typen",
+    "allStatuses": "Alle Status",
+    "emptyTitle": "Noch keine Fahrzeuge",
+    "emptyTitleFiltered": "Keine Fahrzeuge entsprechen Ihren Filtern",
+    "emptyDescription": "Fügen Sie Ihr erstes Fahrzeug hinzu – Pkw, Transporter, Lkw, Maschine oder Gabelstapler.",
+    "emptyDescriptionFiltered": "Versuchen Sie eine andere Suche oder einen anderen Filter.",
+    "table": {
+      "vehicle": "Fahrzeug",
+      "type": "Typ",
+      "status": "Status",
+      "driver": "Fahrer",
+      "registration": "Zulassung",
+      "insurance": "Versicherung",
+      "inspection": "Prüfung"
+    }
+  },
+  "form": {
+    "addTitle": "Fahrzeug hinzufügen",
+    "editTitle": "Fahrzeug bearbeiten",
+    "addDescription": "Fügen Sie Ihrer Flotte einen Pkw, Transporter, Lkw, eine Maschine oder einen Gabelstapler hinzu.",
+    "editDescription": "Aktualisieren Sie die Angaben zu diesem Fahrzeug.",
+    "validationError": "Marke, Modell und Kennzeichen sind erforderlich.",
+    "type": "Typ",
+    "selectType": "Typ auswählen",
+    "status": "Status",
+    "selectStatus": "Status auswählen",
+    "make": "Marke",
+    "model": "Modell",
+    "licensePlate": "Kennzeichen",
+    "year": "Baujahr",
+    "vin": "FIN",
+    "odometer": "Kilometerstand",
+    "assignedDriver": "Zugewiesener Fahrer",
+    "unassigned": "Nicht zugewiesen",
+    "unnamedDriver": "Unbenannt",
+    "registrationExpiry": "Zulassung gültig bis",
+    "insuranceExpiry": "Versicherung gültig bis",
+    "inspectionExpiry": "Prüfung gültig bis",
+    "notes": "Notizen",
+    "addVehicle": "Fahrzeug hinzufügen"
+  },
+  "scanRegistration": "Zulassungsdokument scannen",
+  "documents": {
+    "title": "Dokumente",
+    "chooseFileFirst": "Wählen Sie zuerst eine Datei aus.",
+    "categoryLabel": "Kategorie",
+    "upload": "Hochladen",
+    "uploading": "Wird hochgeladen…",
+    "empty": "Noch keine Dokumente hochgeladen.",
+    "deleteConfirmTitle": "{name} löschen?",
+    "deleteConfirmDescription": "Dies kann nicht rückgängig gemacht werden.",
+    "category": {
+      "registration": "Zulassung",
+      "insurance": "Versicherung",
+      "inspection": "Prüfung",
+      "other": "Sonstiges"
+    }
+  },
+  "deleteDialog": {
+    "title": "{name} löschen?",
+    "description": "Dadurch werden das Fahrzeug und seine Dokumente dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden."
+  },
+  "detail": {
+    "back": "Fahrzeuge",
+    "details": {
+      "title": "Details",
+      "year": "Baujahr",
+      "vin": "FIN",
+      "odometer": "Kilometerstand",
+      "odometerValue": "{value} km",
+      "assignedDriver": "Zugewiesener Fahrer",
+      "unassigned": "Nicht zugewiesen"
+    },
+    "expiration": {
+      "title": "Ablauffristen",
+      "registration": "Zulassung",
+      "insurance": "Versicherung",
+      "inspection": "Prüfung"
+    },
+    "notes": {
+      "title": "Notizen"
+    },
+    "maintenance": {
+      "title": "Wartungshistorie",
+      "empty": "Noch keine Wartungen erfasst."
+    }
+  },
+  "damageReportsCard": {
+    "title": "Schadensmeldungen",
+    "reportButton": "Schaden melden",
+    "viewAll": "Alle anzeigen",
+    "empty": "Noch kein Schaden gemeldet."
+  },
+  "enums": {
+    "vehicleType": {
+      "car": "Pkw",
+      "van": "Transporter",
+      "truck": "Lkw",
+      "constructionMachinery": "Baumaschine",
+      "forklift": "Gabelstapler"
+    },
+    "vehicleStatus": {
+      "active": "Aktiv",
+      "maintenance": "In Wartung",
+      "inactive": "Inaktiv",
+      "sold": "Verkauft"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "save": "Sačuvaj",
+    "saveChanges": "Sačuvaj izmene",
+    "saving": "Čuvanje…",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "deleting": "Brisanje…",
+    "edit": "Izmeni",
+    "add": "Dodaj",
+    "close": "Zatvori",
+    "viewAll": "Prikaži sve",
+    "view": "Prikaži",
+    "unlink": "Ukloni vezu",
+    "confirm": "Potvrdi"
+  },
+  "status": {
+    "loading": "Učitavanje…"
+  },
+  "confirmDelete": {
+    "defaultTitle": "Da li ste sigurni?",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "deleting": "Brisanje…"
+  },
+  "documentScan": {
+    "notConfigured": "AI ekstrakcija još nije podešena — zamolite administratora da doda ANTHROPIC_API_KEY.",
+    "chooseFileFirst": "Prvo izaberite fajl.",
+    "fileTooLarge": "Fajl je prevelik (maks. 10MB).",
+    "scanning": "Skeniranje…",
+    "genericError": "Ekstrakcija nije uspela.",
+    "couldNotRead": "Nije moguće pročitati ovaj dokument."
+  },
+  "language": {
+    "label": "Jezik"
+  },
+  "theme": {
+    "toggle": "Promeni temu",
+    "light": "Svetla",
+    "dark": "Tamna",
+    "system": "Sistemska"
+  }
+}

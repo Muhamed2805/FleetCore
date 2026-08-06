@@ -12,12 +12,18 @@ export type CalendarEvent = {
   href: string;
 };
 
-export const calendarEventLabels: Record<CalendarEventType, string> = {
-  registration: "Registration",
-  insurance: "Insurance",
-  inspection: "Inspection",
-  maintenance: "Maintenance",
-};
+type Translate = (key: string) => string;
+
+export function getCalendarEventLabels(
+  t: Translate
+): Record<CalendarEventType, string> {
+  return {
+    registration: t("eventTypeLabels.registration"),
+    insurance: t("eventTypeLabels.insurance"),
+    inspection: t("eventTypeLabels.inspection"),
+    maintenance: t("eventTypeLabels.maintenance"),
+  };
+}
 
 export const calendarEventColors: Record<CalendarEventType, string> = {
   registration: "var(--chart-1)",

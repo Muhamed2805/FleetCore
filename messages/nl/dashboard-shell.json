@@ -1,0 +1,97 @@
+{
+  "brand": "FleetCore",
+  "nav": {
+    "overview": "Overzicht",
+    "vehicles": "Voertuigen",
+    "maintenance": "Onderhoud",
+    "damageReports": "Schademeldingen",
+    "documents": "Documenten",
+    "expenses": "Uitgaven",
+    "reminders": "Herinneringen",
+    "calendar": "Kalender",
+    "team": "Team"
+  },
+  "sidebar": {
+    "openNavigation": "Navigatie openen"
+  },
+  "userMenu": {
+    "openMenu": "Gebruikersmenu openen",
+    "signOut": "Uitloggen"
+  },
+  "notifications": {
+    "srLabel": "Meldingen",
+    "heading": "Meldingen",
+    "markAllRead": "Alles als gelezen markeren",
+    "empty": "Nog geen meldingen.",
+    "vehicleFallback": "Voertuig",
+    "itemTitle": "{vehicle} · {category}",
+    "expiresLabel": "Verloopt {date} · herinnering {days} dagen vooraf",
+    "categories": {
+      "registration": "Registratie",
+      "insurance": "Verzekering",
+      "inspection": "Keuring"
+    }
+  },
+  "search": {
+    "srLabel": "Zoeken",
+    "trigger": "Zoeken…",
+    "dialogTitle": "Zoeken",
+    "dialogDescription": "Zoek voertuigen en onderhoudstaken",
+    "placeholder": "Zoek voertuigen, kentekens, onderhoud…",
+    "empty": "Geen resultaten gevonden."
+  },
+  "searchGroups": {
+    "vehicles": "Voertuigen",
+    "maintenance": "Onderhoud"
+  },
+  "charts": {
+    "fleetComposition": {
+      "title": "Wagenpark per type",
+      "empty": "Nog geen voertuigen.",
+      "svgTitle": "Samenstelling wagenpark: {items}",
+      "rowAriaLabel": "{label}: {count} voertuigen, {percent}%"
+    },
+    "spendTrend": {
+      "title": "Uitgaven, afgelopen 6 maanden",
+      "svgTitle": "Maandelijkse uitgaven: {items}",
+      "pointAriaLabel": "{label}: {amount}"
+    }
+  },
+  "overview": {
+    "welcome": "Welkom",
+    "welcomeWithName": "Welkom, {name}",
+    "subtitle": "Dit is wat er speelt in je wagenpark.",
+    "stats": {
+      "vehicles": "Voertuigen",
+      "noVehicles": "Nog geen voertuigen",
+      "expiringSoon": "Verloopt binnenkort",
+      "next30Days": "Komende 30 dagen",
+      "openMaintenance": "Openstaand onderhoud",
+      "noOpenJobs": "Geen openstaande taken",
+      "expensesThisMonth": "Uitgaven deze maand"
+    },
+    "emptyState": {
+      "title": "Voeg je eerste voertuig toe",
+      "description": "Registreer auto's, bestelwagens, vrachtwagens, machines en heftrucks om documenten en verlooptermijnen te volgen.",
+      "cta": "Naar Voertuigen"
+    }
+  },
+  "dashboardNotFound": {
+    "title": "Niet gevonden",
+    "description": "Deze pagina, dit voertuig of dit record bestaat niet of is mogelijk verwijderd.",
+    "backToDashboard": "Terug naar dashboard"
+  },
+  "documentsPage": {
+    "title": "Documenten",
+    "description": "Kentekenbewijzen, verzekerings- en keuringsdocumenten, met AI-gestuurde gegevensextractie. Komt in een latere fase."
+  },
+  "teamPage": {
+    "title": "Team",
+    "description": "Nodig fleetmanagers, monteurs en chauffeurs uit voor je bedrijf. Komt in een latere fase."
+  },
+  "appNotFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt bestaat niet of is mogelijk verplaatst.",
+    "goHome": "Naar startpagina"
+  }
+}

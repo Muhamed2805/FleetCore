@@ -1,23 +1,35 @@
-import { Truck } from "lucide-react";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-
-export default function NotFound() {
+export default function RootNotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center">
-      <div className="flex items-center gap-2 font-semibold tracking-tight">
-        <Truck className="size-5" />
-        FleetCore
-      </div>
-      <h1 className="text-3xl font-semibold tracking-tight">Page not found</h1>
-      <p className="max-w-sm text-muted-foreground">
-        The page you&apos;re looking for doesn&apos;t exist or may have been
-        moved.
-      </p>
-      <Button nativeButton={false} render={<Link href="/" />}>
-        Go home
-      </Button>
-    </div>
+    <html lang="en">
+      <body>
+        <div
+          style={{
+            display: "flex",
+            minHeight: "100vh",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+            padding: "1.5rem",
+            textAlign: "center",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <div style={{ fontWeight: 600 }}>FleetCore</div>
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 600 }}>
+            Page not found
+          </h1>
+          <p style={{ maxWidth: "24rem", color: "#71717a" }}>
+            The page you&apos;re looking for doesn&apos;t exist or may have
+            been moved.
+          </p>
+          <Link href="/" style={{ color: "#2563eb" }}>
+            Go home
+          </Link>
+        </div>
+      </body>
+    </html>
   );
 }

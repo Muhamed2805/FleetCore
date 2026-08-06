@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { Pencil, Plus, Search, Trash2, Truck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
+import { Link } from "@/i18n/navigation";
 import { ExpiryBadge } from "@/components/vehicles/expiry-badge";
 import { DeleteVehicleDialog } from "@/components/vehicles/delete-vehicle-dialog";
 import { VehicleFormDialog } from "@/components/vehicles/vehicle-form-dialog";
@@ -28,9 +29,9 @@ import {
 } from "@/components/ui/table";
 import type { Database } from "@/lib/supabase/types";
 import {
+  getVehicleStatusLabels,
+  getVehicleTypeLabels,
   vehicleStatusBadgeVariant,
-  vehicleStatusLabels,
-  vehicleTypeLabels,
 } from "@/lib/vehicles";
 
 type Vehicle = Database["public"]["Tables"]["vehicles"]["Row"];
@@ -47,6 +48,10 @@ export function VehiclesTable({
   companyId: string;
   canManage: boolean;
 }) {
+  const t = useTranslations("vehicles");
+  const tCommon = useTranslations("common");
+  const vehicleTypeLabels = getVehicleTypeLabels(t);
+  const vehicleStatusLabels = getVehicleStatusLabels(t);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -73,10 +78,11 @@ export function VehiclesTable({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Vehicles</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {t("list.title")}
+          </h1>
           <p className="text-muted-foreground">
-            {vehicles.length} vehicle{vehicles.length === 1 ? "" : "s"} in
-            your fleet.
+            {t("list.count", { count: vehicles.length })}
           </p>
         </div>
         {canManage ? (
@@ -86,7 +92,7 @@ export function VehiclesTable({
             trigger={
               <Button>
                 <Plus className="size-4" />
-                Add vehicle
+                {t("list.addVehicle")}
               </Button>
             }
           />
@@ -97,7 +103,7 @@ export function VehiclesTable({
         <div className="relative flex-1">
           <Search className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search make, model, plate or VIN…"
+            placeholder={t("list.searchPlaceholder")}
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             className="pl-8"
@@ -110,12 +116,14 @@ export function VehiclesTable({
           <SelectTrigger className="sm:w-48">
             <SelectValue>
               {(value: string | null) =>
-                value && value !== "all" ? vehicleTypeLabels[value as keyof typeof vehicleTypeLabels] : "All types"
+                value && value !== "all"
+                  ? vehicleTypeLabels[value as keyof typeof vehicleTypeLabels]
+                  : t("list.allTypes")
               }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All types</SelectItem>
+            <SelectItem value="all">{t("list.allTypes")}</SelectItem>
             {Object.entries(vehicleTypeLabels).map(([value, label]) => (
               <SelectItem key={value} value={value}>
                 {label}
@@ -130,12 +138,14 @@ export function VehiclesTable({
           <SelectTrigger className="sm:w-48">
             <SelectValue>
               {(value: string | null) =>
-                value && value !== "all" ? vehicleStatusLabels[value as keyof typeof vehicleStatusLabels] : "All statuses"
+                value && value !== "all"
+                  ? vehicleStatusLabels[value as keyof typeof vehicleStatusLabels]
+                  : t("list.allStatuses")
               }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All statuses</SelectItem>
+            <SelectItem value="all">{t("list.allStatuses")}</SelectItem>
             {Object.entries(vehicleStatusLabels).map(([value, label]) => (
               <SelectItem key={value} value={value}>
                 {label}
@@ -154,13 +164,13 @@ export function VehiclesTable({
             <div>
               <h2 className="font-medium">
                 {vehicles.length === 0
-                  ? "No vehicles yet"
-                  : "No vehicles match your filters"}
+                  ? t("list.emptyTitle")
+                  : t("list.emptyTitleFiltered")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
                 {vehicles.length === 0
-                  ? "Add your first car, van, truck, machine or forklift."
-                  : "Try a different search or filter."}
+                  ? t("list.emptyDescription")
+                  : t("list.emptyDescriptionFiltered")}
               </p>
             </div>
           </CardContent>
@@ -170,13 +180,13 @@ export function VehiclesTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Vehicle</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Driver</TableHead>
-                <TableHead>Registration</TableHead>
-                <TableHead>Insurance</TableHead>
-                <TableHead>Inspection</TableHead>
+                <TableHead>{t("list.table.vehicle")}</TableHead>
+                <TableHead>{t("list.table.type")}</TableHead>
+                <TableHead>{t("list.table.status")}</TableHead>
+                <TableHead>{t("list.table.driver")}</TableHead>
+                <TableHead>{t("list.table.registration")}</TableHead>
+                <TableHead>{t("list.table.insurance")}</TableHead>
+                <TableHead>{t("list.table.inspection")}</TableHead>
                 {canManage ? <TableHead className="w-10" /> : null}
               </TableRow>
             </TableHeader>
@@ -227,7 +237,9 @@ export function VehiclesTable({
                           trigger={
                             <Button variant="ghost" size="icon-sm">
                               <Pencil className="size-4" />
-                              <span className="sr-only">Edit</span>
+                              <span className="sr-only">
+                                {tCommon("actions.edit")}
+                              </span>
                             </Button>
                           }
                         />
@@ -237,7 +249,9 @@ export function VehiclesTable({
                           trigger={
                             <Button variant="ghost" size="icon-sm">
                               <Trash2 className="size-4" />
-                              <span className="sr-only">Delete</span>
+                              <span className="sr-only">
+                                {tCommon("actions.delete")}
+                              </span>
                             </Button>
                           }
                         />

@@ -1,0 +1,97 @@
+{
+  "brand": "FleetCore",
+  "nav": {
+    "overview": "Pregled",
+    "vehicles": "Vozila",
+    "maintenance": "Održavanje",
+    "damageReports": "Prijave šteta",
+    "documents": "Dokumenti",
+    "expenses": "Troškovi",
+    "reminders": "Podsjetnici",
+    "calendar": "Kalendar",
+    "team": "Tim"
+  },
+  "sidebar": {
+    "openNavigation": "Otvori navigaciju"
+  },
+  "userMenu": {
+    "openMenu": "Otvori korisnički izbornik",
+    "signOut": "Odjava"
+  },
+  "notifications": {
+    "srLabel": "Obavijesti",
+    "heading": "Obavijesti",
+    "markAllRead": "Označi sve kao pročitano",
+    "empty": "Još nema obavijesti.",
+    "vehicleFallback": "Vozilo",
+    "itemTitle": "{vehicle} · {category}",
+    "expiresLabel": "Ističe {date} · podsjetnik {days} dana prije",
+    "categories": {
+      "registration": "Registracija",
+      "insurance": "Osiguranje",
+      "inspection": "Tehnički pregled"
+    }
+  },
+  "search": {
+    "srLabel": "Pretraga",
+    "trigger": "Pretraži…",
+    "dialogTitle": "Pretraga",
+    "dialogDescription": "Pretražite vozila i naloge za održavanje",
+    "placeholder": "Pretražite vozila, registarske oznake, održavanje…",
+    "empty": "Nema rezultata."
+  },
+  "searchGroups": {
+    "vehicles": "Vozila",
+    "maintenance": "Održavanje"
+  },
+  "charts": {
+    "fleetComposition": {
+      "title": "Vozni park po tipu",
+      "empty": "Još nema vozila.",
+      "svgTitle": "Sastav voznog parka: {items}",
+      "rowAriaLabel": "{label}: {count} vozila, {percent}%"
+    },
+    "spendTrend": {
+      "title": "Potrošnja, posljednjih 6 mjeseci",
+      "svgTitle": "Mjesečna potrošnja: {items}",
+      "pointAriaLabel": "{label}: {amount}"
+    }
+  },
+  "overview": {
+    "welcome": "Dobrodošli",
+    "welcomeWithName": "Dobrodošli, {name}",
+    "subtitle": "Evo što se događa s vašim voznim parkom.",
+    "stats": {
+      "vehicles": "Vozila",
+      "noVehicles": "Još nema vozila",
+      "expiringSoon": "Uskoro ističe",
+      "next30Days": "Sljedećih 30 dana",
+      "openMaintenance": "Otvoreno održavanje",
+      "noOpenJobs": "Nema otvorenih naloga",
+      "expensesThisMonth": "Troškovi ovog mjeseca"
+    },
+    "emptyState": {
+      "title": "Dodajte svoje prvo vozilo",
+      "description": "Registrirajte automobile, kombije, kamione, strojeve i viličare kako biste počeli pratiti dokumente i rokove isteka.",
+      "cta": "Idi na Vozila"
+    }
+  },
+  "dashboardNotFound": {
+    "title": "Nije pronađeno",
+    "description": "Ova stranica, vozilo ili zapis ne postoji ili je možda uklonjen.",
+    "backToDashboard": "Natrag na nadzornu ploču"
+  },
+  "documentsPage": {
+    "title": "Dokumenti",
+    "description": "Prometne dozvole, police osiguranja i dokumenti tehničkog pregleda, uz izdvajanje podataka pomoću AI-ja. Stiže u sljedećoj fazi."
+  },
+  "teamPage": {
+    "title": "Tim",
+    "description": "Pozovite voditelje flote, mehaničare i vozače u svoju tvrtku. Stiže u sljedećoj fazi."
+  },
+  "appNotFound": {
+    "title": "Stranica nije pronađena",
+    "description": "Stranica koju tražite ne postoji ili je možda premještena.",
+    "goHome": "Idi na početnu"
+  }
+}

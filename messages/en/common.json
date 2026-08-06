@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "edit": "Edit",
+    "add": "Add",
+    "close": "Close",
+    "viewAll": "View all",
+    "view": "View",
+    "unlink": "Unlink",
+    "confirm": "Confirm"
+  },
+  "status": {
+    "loading": "Loading…"
+  },
+  "confirmDelete": {
+    "defaultTitle": "Are you sure?",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting…"
+  },
+  "documentScan": {
+    "notConfigured": "AI extraction isn't configured yet — ask an admin to add ANTHROPIC_API_KEY.",
+    "chooseFileFirst": "Choose a file first.",
+    "fileTooLarge": "File is too large (max 10MB).",
+    "scanning": "Scanning…",
+    "genericError": "Extraction failed.",
+    "couldNotRead": "Could not read this document."
+  },
+  "language": {
+    "label": "Language"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

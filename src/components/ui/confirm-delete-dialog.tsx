@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, type ReactElement } from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,6 +27,7 @@ export function ConfirmDeleteDialog({
   trigger: ReactElement;
   onConfirm: () => Promise<{ error?: string } | void>;
 }) {
+  const t = useTranslations("common.confirmDelete");
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -58,13 +60,13 @@ export function ConfirmDeleteDialog({
         </AlertDialogHeader>
         {error ? <p className="text-sm text-destructive">{error}</p> : null}
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
           <AlertDialogAction
             variant="destructive"
             disabled={isDeleting}
             onClick={handleConfirm}
           >
-            {isDeleting ? "Deleting…" : "Delete"}
+            {isDeleting ? t("deleting") : t("delete")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

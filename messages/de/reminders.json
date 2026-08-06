@@ -1,0 +1,40 @@
+{
+  "page": {
+    "title": "Erinnerungen",
+    "description": "E-Mail- und In-App-Erinnerungen, bevor Zulassungen, Versicherungen und Prüfungen ablaufen."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Legen Sie fest, wann Ihr Team benachrichtigt wird, bevor die Zulassung, Versicherung oder Prüfung eines Fahrzeugs abläuft.",
+    "remindBefore": "Vor Ablauf erinnern",
+    "thresholdDaysLabel": "{days, plural, one {# Tag} other {# Tage}}",
+    "customDaysLabel": "Benutzerdefiniert (durch Komma getrennte Tage)",
+    "customDaysPlaceholder": "z. B. 60, 45",
+    "emailToggle": "Auch E-Mail-Erinnerungen senden",
+    "save": "Einstellungen speichern",
+    "saved": "Gespeichert."
+  },
+  "checkButton": {
+    "checking": "Wird geprüft…",
+    "checkNow": "Jetzt prüfen",
+    "noneDue": "Keine neuen Erinnerungen fällig.",
+    "created": "{count, plural, one {# neue Erinnerung erstellt.} other {# neue Erinnerungen erstellt.}}"
+  },
+  "list": {
+    "empty": {
+      "title": "Noch keine Erinnerungen",
+      "description": "Hier erscheinen Erinnerungen, sobald sich die Ablauffristen von Fahrzeugdokumenten nähern."
+    },
+    "unknownVehicle": "Fahrzeug",
+    "expiresOn": "Läuft am {date} ab",
+    "dayReminder": "{days}-Tage-Erinnerung",
+    "emailed": "per E-Mail versendet",
+    "readBadge": "Gelesen",
+    "markAsRead": "Als gelesen markieren",
+    "categories": {
+      "registration": "Zulassung",
+      "insurance": "Versicherung",
+      "inspection": "Prüfung"
+    }
+  }
+}

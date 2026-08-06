@@ -1,0 +1,68 @@
+{
+  "enums": {
+    "expenseCategory": {
+      "fuel": "Gorivo",
+      "toll": "Cestarina",
+      "fine": "Kazna",
+      "parking": "Parking",
+      "registrationFee": "Naknada za registraciju",
+      "insurancePremium": "Premija osiguranja",
+      "repair": "Popravak",
+      "other": "Ostalo"
+    }
+  },
+  "form": {
+    "editTitle": "Uredi trošak",
+    "addTitle": "Dodaj trošak",
+    "dialogDescription": "Pratite gorivo, cestarine, kazne i druge troškove voznog parka.",
+    "scanLabel": "Skeniraj račun ili fakturu",
+    "category": {
+      "label": "Kategorija",
+      "placeholder": "Odaberite kategoriju"
+    },
+    "amount": {
+      "label": "Iznos"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "vehicle": {
+      "label": "Vozilo",
+      "noVehicle": "Bez vozila"
+    },
+    "description": {
+      "label": "Opis"
+    },
+    "errors": {
+      "invalidAmount": "Unesite valjan iznos."
+    },
+    "submit": {
+      "add": "Dodaj trošak"
+    }
+  },
+  "table": {
+    "heading": "Troškovi",
+    "summary": "{count, plural, one {# trošak} few {# troška} many {# troškova} other {# troškova}} · {total} ukupno",
+    "addButton": "Dodaj trošak",
+    "filters": {
+      "allCategories": "Sve kategorije"
+    },
+    "emptyState": {
+      "noExpensesTitle": "Još nema troškova",
+      "noMatchTitle": "Nema troškova koji odgovaraju ovom filtru",
+      "trackCosts": "Pratite gorivo, cestarine, kazne i druge troškove voznog parka.",
+      "tryDifferentCategory": "Pokušajte s drugom kategorijom."
+    },
+    "columns": {
+      "date": "Datum",
+      "category": "Kategorija",
+      "vehicle": "Vozilo",
+      "description": "Opis",
+      "amount": "Iznos"
+    },
+    "deleteDialog": {
+      "title": "Izbrisati ovaj trošak?",
+      "description": "Ovo se ne može poništiti."
+    }
+  }
+}

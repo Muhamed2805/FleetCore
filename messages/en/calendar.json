@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Calendar",
+    "description": "Upcoming expirations and scheduled maintenance."
+  },
+  "nav": {
+    "previousMonth": "Previous month",
+    "today": "Today",
+    "nextMonth": "Next month"
+  },
+  "weekdays": {
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
+  },
+  "dayCell": {
+    "eventsSuffix": "{count, plural, one {, # event} other {, # events}}",
+    "moreEvents": "+{count} more"
+  },
+  "agenda": {
+    "empty": "Nothing scheduled."
+  },
+  "events": {
+    "registrationTitle": "{vehicle} — registration",
+    "insuranceTitle": "{vehicle} — insurance",
+    "inspectionTitle": "{vehicle} — inspection",
+    "maintenanceTitle": "{title} — {vehicle}"
+  },
+  "eventTypeLabels": {
+    "registration": "Registration",
+    "insurance": "Insurance",
+    "inspection": "Inspection",
+    "maintenance": "Maintenance"
+  }
+}

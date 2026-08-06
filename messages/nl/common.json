@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "save": "Opslaan",
+    "saveChanges": "Wijzigingen opslaan",
+    "saving": "Opslaan…",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "deleting": "Verwijderen…",
+    "edit": "Bewerken",
+    "add": "Toevoegen",
+    "close": "Sluiten",
+    "viewAll": "Alles bekijken",
+    "view": "Bekijken",
+    "unlink": "Ontkoppelen",
+    "confirm": "Bevestigen"
+  },
+  "status": {
+    "loading": "Laden…"
+  },
+  "confirmDelete": {
+    "defaultTitle": "Weet je het zeker?",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "deleting": "Verwijderen…"
+  },
+  "documentScan": {
+    "notConfigured": "AI-extractie is nog niet ingesteld — vraag een beheerder om ANTHROPIC_API_KEY toe te voegen.",
+    "chooseFileFirst": "Kies eerst een bestand.",
+    "fileTooLarge": "Bestand is te groot (max. 10MB).",
+    "scanning": "Scannen…",
+    "genericError": "Extractie mislukt.",
+    "couldNotRead": "Dit document kon niet worden gelezen."
+  },
+  "language": {
+    "label": "Taal"
+  },
+  "theme": {
+    "toggle": "Thema wisselen",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem"
+  }
+}

@@ -1,8 +1,9 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
-import { updateReminderSettings } from "@/app/dashboard/reminders/actions";
+import { updateReminderSettings } from "@/app/[locale]/dashboard/reminders/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,6 +19,8 @@ export function ReminderSettingsForm({
   thresholdsDays: number[];
   emailEnabled: boolean;
 }) {
+  const t = useTranslations("reminders");
+  const tCommon = useTranslations("common");
   const [checked, setChecked] = useState<Record<number, boolean>>(
     Object.fromEntries(
       DEFAULT_THRESHOLDS.map((day) => [day, thresholdsDays.includes(day)])
@@ -62,7 +65,7 @@ export function ReminderSettingsForm({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Remind before expiration</span>
+        <span className="text-sm font-medium">{t("settings.remindBefore")}</span>
         <div className="flex flex-wrap gap-4">
           {DEFAULT_THRESHOLDS.map((day) => (
             <label key={day} className="flex items-center gap-2 text-sm">
@@ -77,19 +80,19 @@ export function ReminderSettingsForm({
                 }
                 className="size-4 rounded border-input"
               />
-              {day} day{day === 1 ? "" : "s"}
+              {t("settings.thresholdDaysLabel", { days: day })}
             </label>
           ))}
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label htmlFor="custom_days">Custom (comma-separated days)</Label>
+        <Label htmlFor="custom_days">{t("settings.customDaysLabel")}</Label>
         <Input
           id="custom_days"
           value={customDays}
           onChange={(event) => setCustomDays(event.target.value)}
-          placeholder="e.g. 60, 45"
+          placeholder={t("settings.customDaysPlaceholder")}
           className="max-w-xs"
         />
       </div>
@@ -101,15 +104,15 @@ export function ReminderSettingsForm({
           onChange={(event) => setEmailEnabled(event.target.checked)}
           className="size-4 rounded border-input"
         />
-        Also send email reminders
+        {t("settings.emailToggle")}
       </label>
 
       <div className="flex items-center gap-3">
         <Button type="submit" disabled={status === "saving"}>
-          {status === "saving" ? "Saving…" : "Save settings"}
+          {status === "saving" ? tCommon("actions.saving") : t("settings.save")}
         </Button>
         {status === "saved" ? (
-          <span className="text-sm text-muted-foreground">Saved.</span>
+          <span className="text-sm text-muted-foreground">{t("settings.saved")}</span>
         ) : null}
         {error ? <span className="text-sm text-destructive">{error}</span> : null}
       </div>

@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "save": "Speichern",
+    "saveChanges": "Änderungen speichern",
+    "saving": "Wird gespeichert…",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "deleting": "Wird gelöscht…",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "close": "Schließen",
+    "viewAll": "Alle anzeigen",
+    "view": "Anzeigen",
+    "unlink": "Verknüpfung aufheben",
+    "confirm": "Bestätigen"
+  },
+  "status": {
+    "loading": "Wird geladen…"
+  },
+  "confirmDelete": {
+    "defaultTitle": "Sind Sie sicher?",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "deleting": "Wird gelöscht…"
+  },
+  "documentScan": {
+    "notConfigured": "Die KI-Extraktion ist noch nicht konfiguriert — bitten Sie einen Administrator, ANTHROPIC_API_KEY hinzuzufügen.",
+    "chooseFileFirst": "Wählen Sie zuerst eine Datei aus.",
+    "fileTooLarge": "Die Datei ist zu groß (max. 10 MB).",
+    "scanning": "Wird gescannt…",
+    "genericError": "Extraktion fehlgeschlagen.",
+    "couldNotRead": "Dieses Dokument konnte nicht gelesen werden."
+  },
+  "language": {
+    "label": "Sprache"
+  },
+  "theme": {
+    "toggle": "Design umschalten",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  }
+}

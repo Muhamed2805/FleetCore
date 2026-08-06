@@ -1,0 +1,68 @@
+{
+  "enums": {
+    "expenseCategory": {
+      "fuel": "Kraftstoff",
+      "toll": "Maut",
+      "fine": "Bußgeld",
+      "parking": "Parken",
+      "registrationFee": "Zulassungsgebühr",
+      "insurancePremium": "Versicherungsprämie",
+      "repair": "Reparatur",
+      "other": "Sonstiges"
+    }
+  },
+  "form": {
+    "editTitle": "Ausgabe bearbeiten",
+    "addTitle": "Ausgabe hinzufügen",
+    "dialogDescription": "Erfassen Sie Kraftstoff, Maut, Bußgelder und andere Flottenkosten.",
+    "scanLabel": "Beleg oder Rechnung scannen",
+    "category": {
+      "label": "Kategorie",
+      "placeholder": "Kategorie auswählen"
+    },
+    "amount": {
+      "label": "Betrag"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "vehicle": {
+      "label": "Fahrzeug",
+      "noVehicle": "Kein Fahrzeug"
+    },
+    "description": {
+      "label": "Beschreibung"
+    },
+    "errors": {
+      "invalidAmount": "Geben Sie einen gültigen Betrag ein."
+    },
+    "submit": {
+      "add": "Ausgabe hinzufügen"
+    }
+  },
+  "table": {
+    "heading": "Ausgaben",
+    "summary": "{count, plural, one {# Ausgabe} other {# Ausgaben}} · {total} insgesamt",
+    "addButton": "Ausgabe hinzufügen",
+    "filters": {
+      "allCategories": "Alle Kategorien"
+    },
+    "emptyState": {
+      "noExpensesTitle": "Noch keine Ausgaben",
+      "noMatchTitle": "Keine Ausgaben entsprechen diesem Filter",
+      "trackCosts": "Erfassen Sie Kraftstoff, Maut, Bußgelder und andere Flottenkosten.",
+      "tryDifferentCategory": "Versuchen Sie eine andere Kategorie."
+    },
+    "columns": {
+      "date": "Datum",
+      "category": "Kategorie",
+      "vehicle": "Fahrzeug",
+      "description": "Beschreibung",
+      "amount": "Betrag"
+    },
+    "deleteDialog": {
+      "title": "Diese Ausgabe löschen?",
+      "description": "Dies kann nicht rückgängig gemacht werden."
+    }
+  }
+}

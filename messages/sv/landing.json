@@ -1,0 +1,12 @@
+{
+  "header": {
+    "brand": "FleetCore",
+    "logIn": "Logga in"
+  },
+  "hero": {
+    "badge": "Fas 2 — autentisering och multitenans",
+    "title": "Plattform för flotthantering och underhåll",
+    "description": "Hantera fordon, registreringar, försäkringar, besiktningar, underhåll och dokument från en instrumentpanel.",
+    "getStarted": "Kom igång"
+  }
+}

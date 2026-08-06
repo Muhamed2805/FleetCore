@@ -1,0 +1,95 @@
+{
+  "enums": {
+    "maintenanceType": {
+      "oilChange": "Oil change",
+      "tireRotation": "Tire rotation",
+      "brakeService": "Brake service",
+      "inspection": "Inspection",
+      "repair": "Repair",
+      "other": "Other"
+    },
+    "maintenanceStatus": {
+      "scheduled": "Scheduled",
+      "inProgress": "In progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "form": {
+    "editTitle": "Edit maintenance",
+    "addTitle": "Add maintenance",
+    "editDescription": "Update this maintenance job.",
+    "addDescription": "Schedule a maintenance job or log completed work.",
+    "vehicle": {
+      "label": "Vehicle",
+      "placeholder": "Select a vehicle"
+    },
+    "title": {
+      "label": "Title",
+      "placeholder": "e.g. Front brake pads replaced"
+    },
+    "type": {
+      "label": "Type",
+      "placeholder": "Select type"
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Select status"
+    },
+    "scheduledDate": {
+      "label": "Scheduled date"
+    },
+    "completedDate": {
+      "label": "Completed date"
+    },
+    "odometer": {
+      "label": "Odometer"
+    },
+    "cost": {
+      "label": "Cost"
+    },
+    "performedBy": {
+      "label": "Performed by",
+      "unassigned": "Unassigned",
+      "unnamed": "Unnamed"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "errors": {
+      "vehicleAndTitleRequired": "Vehicle and title are required."
+    },
+    "submit": {
+      "add": "Add maintenance"
+    }
+  },
+  "table": {
+    "heading": "Maintenance",
+    "jobCount": "{count, plural, one {# maintenance job.} other {# maintenance jobs.}}",
+    "addButton": "Add maintenance",
+    "filters": {
+      "allStatuses": "All statuses",
+      "allVehicles": "All vehicles"
+    },
+    "emptyState": {
+      "noJobsTitle": "No maintenance jobs yet",
+      "noMatchTitle": "No jobs match your filters",
+      "addVehicleFirst": "Add a vehicle first, then schedule maintenance for it.",
+      "scheduleOrLog": "Schedule maintenance or log completed work.",
+      "tryDifferentFilter": "Try a different filter."
+    },
+    "columns": {
+      "job": "Job",
+      "vehicle": "Vehicle",
+      "status": "Status",
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "cost": "Cost",
+      "performedBy": "Performed by"
+    },
+    "deleteDialog": {
+      "title": "Delete {title}?",
+      "description": "This can't be undone."
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Schademeldingen",
+    "reportCount": "{count, plural, one {# melding} other {# meldingen}}"
+  },
+  "actions": {
+    "reportDamage": "Schade melden"
+  },
+  "filters": {
+    "allStatuses": "Alle statussen",
+    "allVehicles": "Alle voertuigen"
+  },
+  "table": {
+    "headers": {
+      "vehicle": "Voertuig",
+      "severity": "Ernst",
+      "status": "Status",
+      "reported": "Gemeld",
+      "reportedBy": "Gemeld door",
+      "repairCost": "Reparatiekosten"
+    },
+    "unnamedReporter": "Naamloos"
+  },
+  "emptyState": {
+    "noDamageTitle": "Geen schade gemeld",
+    "noMatchTitle": "Geen meldingen komen overeen met je filters",
+    "addVehicleFirst": "Voeg eerst een voertuig toe en meld er dan schade voor.",
+    "reportWithPhoto": "Meld schade met een foto zodra het gebeurt.",
+    "tryDifferentFilter": "Probeer een ander filter."
+  },
+  "form": {
+    "title": "Schade melden",
+    "description": "Leg schade aan een voertuig vast met foto's — een monteur of fleetmanager kan de melding beoordelen en achteraf de reparatiekosten koppelen.",
+    "vehicleLabel": "Voertuig",
+    "vehiclePlaceholder": "Selecteer een voertuig",
+    "severityLabel": "Ernst",
+    "severityPlaceholder": "Selecteer ernst",
+    "descriptionLabel": "Omschrijving",
+    "descriptionPlaceholder": "Wat er is gebeurd en waar op het voertuig",
+    "photosLabel": "Foto's",
+    "submit": "Schade melden",
+    "submitting": "Opslaan…",
+    "errors": {
+      "chooseVehicle": "Kies een voertuig.",
+      "generic": "Er is iets misgegaan.",
+      "uploadFailed": "Melding opgeslagen, maar \"{fileName}\" kon niet worden geüpload: {message}",
+      "attachFailed": "Melding opgeslagen, maar \"{fileName}\" kon niet worden bijgevoegd: {message}"
+    }
+  },
+  "detail": {
+    "titleFallback": "Schademelding",
+    "reportedOn": "Gemeld op {date}.",
+    "reportedOnBy": "Gemeld op {date} door {name}.",
+    "statusPlaceholder": "Status",
+    "photosTitle": "Foto's",
+    "noPhotos": "Geen foto's bijgevoegd.",
+    "repairExpenseTitle": "Reparatie-uitgave",
+    "noRepairExpense": "Nog geen reparatie-uitgave gekoppeld.",
+    "addRepairExpense": "Reparatie-uitgave toevoegen",
+    "repairExpenseDescription": "Schadereparatie — {make} {model}",
+    "repairExpenseDescriptionFallback": "Schadereparatie",
+    "deleteTitle": "Deze schademelding verwijderen?",
+    "deleteDescription": "Dit verwijdert de melding en de bijbehorende foto's. Dit kan niet ongedaan worden gemaakt.",
+    "deleteButton": "Melding verwijderen"
+  },
+  "enums": {
+    "severity": {
+      "minor": "Licht",
+      "moderate": "Matig",
+      "severe": "Ernstig"
+    },
+    "status": {
+      "reported": "Gemeld",
+      "scheduled": "Gepland",
+      "inRepair": "In reparatie",
+      "resolved": "Afgehandeld"
+    }
+  }
+}

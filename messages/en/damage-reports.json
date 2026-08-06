@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Damage reports",
+    "reportCount": "{count, plural, one {# report} other {# reports}}"
+  },
+  "actions": {
+    "reportDamage": "Report damage"
+  },
+  "filters": {
+    "allStatuses": "All statuses",
+    "allVehicles": "All vehicles"
+  },
+  "table": {
+    "headers": {
+      "vehicle": "Vehicle",
+      "severity": "Severity",
+      "status": "Status",
+      "reported": "Reported",
+      "reportedBy": "Reported by",
+      "repairCost": "Repair cost"
+    },
+    "unnamedReporter": "Unnamed"
+  },
+  "emptyState": {
+    "noDamageTitle": "No damage reported",
+    "noMatchTitle": "No reports match your filters",
+    "addVehicleFirst": "Add a vehicle first, then report damage against it.",
+    "reportWithPhoto": "Report damage with a photo when it happens.",
+    "tryDifferentFilter": "Try a different filter."
+  },
+  "form": {
+    "title": "Report damage",
+    "description": "Log damage on a vehicle with photos — a mechanic or fleet manager can triage it and link the repair cost afterwards.",
+    "vehicleLabel": "Vehicle",
+    "vehiclePlaceholder": "Select a vehicle",
+    "severityLabel": "Severity",
+    "severityPlaceholder": "Select severity",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "What happened and where on the vehicle",
+    "photosLabel": "Photos",
+    "submit": "Report damage",
+    "submitting": "Saving…",
+    "errors": {
+      "chooseVehicle": "Choose a vehicle.",
+      "generic": "Something went wrong.",
+      "uploadFailed": "Report saved, but \"{fileName}\" failed to upload: {message}",
+      "attachFailed": "Report saved, but \"{fileName}\" failed to attach: {message}"
+    }
+  },
+  "detail": {
+    "titleFallback": "Damage report",
+    "reportedOn": "Reported {date}.",
+    "reportedOnBy": "Reported {date} by {name}.",
+    "statusPlaceholder": "Status",
+    "photosTitle": "Photos",
+    "noPhotos": "No photos attached.",
+    "repairExpenseTitle": "Repair expense",
+    "noRepairExpense": "No repair expense linked yet.",
+    "addRepairExpense": "Add repair expense",
+    "repairExpenseDescription": "Damage repair — {make} {model}",
+    "repairExpenseDescriptionFallback": "Damage repair",
+    "deleteTitle": "Delete this damage report?",
+    "deleteDescription": "This removes the report and its photos. This can't be undone.",
+    "deleteButton": "Delete report"
+  },
+  "enums": {
+    "severity": {
+      "minor": "Minor",
+      "moderate": "Moderate",
+      "severe": "Severe"
+    },
+    "status": {
+      "reported": "Reported",
+      "scheduled": "Scheduled",
+      "inRepair": "In repair",
+      "resolved": "Resolved"
+    }
+  }
+}

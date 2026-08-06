@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -15,17 +16,17 @@ type NotificationWithVehicle =
     vehicle: { make: string; model: string; license_plate: string } | null;
   };
 
-const categoryLabels: Record<NotificationCategory, string> = {
-  registration: "Registration",
-  insurance: "Insurance",
-  inspection: "Inspection",
-};
-
 export function RemindersList({
   notifications: initialNotifications,
 }: {
   notifications: NotificationWithVehicle[];
 }) {
+  const t = useTranslations("reminders");
+  const categoryLabels: Record<NotificationCategory, string> = {
+    registration: t("list.categories.registration"),
+    insurance: t("list.categories.insurance"),
+    inspection: t("list.categories.inspection"),
+  };
   const [notifications, setNotifications] = useState(initialNotifications);
 
   async function markAsRead(id: string) {
@@ -44,10 +45,9 @@ export function RemindersList({
             <Bell className="size-6 text-muted-foreground" />
           </div>
           <div>
-            <h2 className="font-medium">No reminders yet</h2>
+            <h2 className="font-medium">{t("list.empty.title")}</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              You&apos;ll see reminders here as vehicle documents approach
-              their expiration dates.
+              {t("list.empty.description")}
             </p>
           </div>
         </CardContent>
@@ -66,24 +66,24 @@ export function RemindersList({
             <span className="text-sm font-medium">
               {notification.vehicle
                 ? `${notification.vehicle.make} ${notification.vehicle.model} (${notification.vehicle.license_plate})`
-                : "Vehicle"}{" "}
+                : t("list.unknownVehicle")}{" "}
               · {categoryLabels[notification.category]}
             </span>
             <span className="text-xs text-muted-foreground">
-              Expires {formatDate(notification.due_date)} ·{" "}
-              {notification.threshold_days}-day reminder
-              {notification.email_sent_at ? " · emailed" : ""}
+              {t("list.expiresOn", { date: formatDate(notification.due_date) })}{" "}
+              · {t("list.dayReminder", { days: notification.threshold_days })}
+              {notification.email_sent_at ? ` · ${t("list.emailed")}` : ""}
             </span>
           </div>
           {notification.is_read ? (
-            <Badge variant="outline">Read</Badge>
+            <Badge variant="outline">{t("list.readBadge")}</Badge>
           ) : (
             <Button
               variant="ghost"
               size="sm"
               onClick={() => markAsRead(notification.id)}
             >
-              Mark as read
+              {t("list.markAsRead")}
             </Button>
           )}
         </li>

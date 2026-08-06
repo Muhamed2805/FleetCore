@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/expenses";
@@ -16,6 +17,7 @@ export function SpendTrendChart({
 }: {
   data: { label: string; total: number }[];
 }) {
+  const t = useTranslations("dashboardShell");
   const titleId = useId();
   const [hovered, setHovered] = useState<number | null>(null);
 
@@ -28,7 +30,7 @@ export function SpendTrendChart({
     <Card>
       <CardHeader>
         <CardTitle className="text-sm text-muted-foreground">
-          Spend, last 6 months
+          {t("charts.spendTrend.title")}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -40,7 +42,11 @@ export function SpendTrendChart({
           style={{ height: CHART_HEIGHT }}
         >
           <title id={titleId}>
-            Monthly spend: {data.map((d) => `${d.label} ${formatCurrency(d.total)}`).join(", ")}
+            {t("charts.spendTrend.svgTitle", {
+              items: data
+                .map((d) => `${d.label} ${formatCurrency(d.total)}`)
+                .join(", "),
+            })}
           </title>
           {gridValues.map((value) => {
             const y = plotHeight - (value / max) * (plotHeight - 8);
@@ -77,7 +83,10 @@ export function SpendTrendChart({
                 key={point.label}
                 tabIndex={0}
                 role="button"
-                aria-label={`${point.label}: ${formatCurrency(point.total)}`}
+                aria-label={t("charts.spendTrend.pointAriaLabel", {
+                  label: point.label,
+                  amount: formatCurrency(point.total),
+                })}
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
                 onFocus={() => setHovered(index)}

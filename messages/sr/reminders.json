@@ -1,0 +1,40 @@
+{
+  "page": {
+    "title": "Podsetnici",
+    "description": "Email i in-app podsetnici pre isteka registracije, osiguranja i tehničkog pregleda."
+  },
+  "settings": {
+    "title": "Podešavanja",
+    "description": "Izaberite kada vaš tim dobija podsetnik pre nego što istekne registracija, osiguranje ili tehnički pregled vozila.",
+    "remindBefore": "Podseti pre isteka",
+    "thresholdDaysLabel": "{days, plural, one {# dan} few {# dana} many {# dana} other {# dana}}",
+    "customDaysLabel": "Prilagođeno (dani odvojeni zarezom)",
+    "customDaysPlaceholder": "npr. 60, 45",
+    "emailToggle": "Takođe šalji podsetnike i putem email-a",
+    "save": "Sačuvaj podešavanja",
+    "saved": "Sačuvano."
+  },
+  "checkButton": {
+    "checking": "Proveravanje…",
+    "checkNow": "Proveri sada",
+    "noneDue": "Nema novih podsetnika koji dospevaju.",
+    "created": "{count, plural, one {Kreiran je # novi podsetnik.} few {Kreirana su # nova podsetnika.} many {Kreirano je # novih podsetnika.} other {Kreirano je # novih podsetnika.}}"
+  },
+  "list": {
+    "empty": {
+      "title": "Još nema podsetnika",
+      "description": "Ovde ćete videti podsetnike kada se dokumenti vozila budu približavali datumu isteka."
+    },
+    "unknownVehicle": "Vozilo",
+    "expiresOn": "Ističe {date}",
+    "dayReminder": "podsetnik {days} dana pre isteka",
+    "emailed": "poslato imejlom",
+    "readBadge": "Pročitano",
+    "markAsRead": "Označi kao pročitano",
+    "categories": {
+      "registration": "Registracija",
+      "insurance": "Osiguranje",
+      "inspection": "Tehnički pregled"
+    }
+  }
+}

@@ -1,19 +1,25 @@
 import type { VehicleStatus, VehicleType } from "@/lib/supabase/types";
 
-export const vehicleTypeLabels: Record<VehicleType, string> = {
-  car: "Car",
-  van: "Van",
-  truck: "Truck",
-  construction_machinery: "Construction machinery",
-  forklift: "Forklift",
-};
+type Translate = (key: string) => string;
 
-export const vehicleStatusLabels: Record<VehicleStatus, string> = {
-  active: "Active",
-  maintenance: "In maintenance",
-  inactive: "Inactive",
-  sold: "Sold",
-};
+export function getVehicleTypeLabels(t: Translate): Record<VehicleType, string> {
+  return {
+    car: t("enums.vehicleType.car"),
+    van: t("enums.vehicleType.van"),
+    truck: t("enums.vehicleType.truck"),
+    construction_machinery: t("enums.vehicleType.constructionMachinery"),
+    forklift: t("enums.vehicleType.forklift"),
+  };
+}
+
+export function getVehicleStatusLabels(t: Translate): Record<VehicleStatus, string> {
+  return {
+    active: t("enums.vehicleStatus.active"),
+    maintenance: t("enums.vehicleStatus.maintenance"),
+    inactive: t("enums.vehicleStatus.inactive"),
+    sold: t("enums.vehicleStatus.sold"),
+  };
+}
 
 export const vehicleStatusBadgeVariant: Record<
   VehicleStatus,

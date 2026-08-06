@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useRef, useState, type FormEvent, type ReactElement } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { damageSeverityLabels } from "@/lib/damage-reports";
+import { useRouter } from "@/i18n/navigation";
+import { getDamageSeverityLabels } from "@/lib/damage-reports";
 import { createClient } from "@/lib/supabase/client";
 import type { DamageSeverity } from "@/lib/supabase/types";
 
@@ -54,6 +55,7 @@ export function DamageReportFormDialog({
   defaultVehicleId?: string;
   trigger: ReactElement;
 }) {
+  const t = useTranslations("damageReports");
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
@@ -64,6 +66,7 @@ export function DamageReportFormDialog({
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const severityLabels = getDamageSeverityLabels(t);
   const vehiclesById = new Map(vehicles.map((vehicle) => [vehicle.id, vehicle]));
 
   function set<K extends keyof FormValues>(key: K, value: FormValues[K]) {
@@ -83,7 +86,7 @@ export function DamageReportFormDialog({
     event.preventDefault();
 
     if (!values.vehicle_id) {
-      setError("Choose a vehicle.");
+      setError(t("form.errors.chooseVehicle"));
       return;
     }
 
@@ -106,7 +109,7 @@ export function DamageReportFormDialog({
 
     if (insertError || !report) {
       setIsSubmitting(false);
-      setError(insertError?.message ?? "Something went wrong.");
+      setError(insertError?.message ?? t("form.errors.generic"));
       return;
     }
 
@@ -121,7 +124,12 @@ export function DamageReportFormDialog({
         .upload(path, file);
 
       if (uploadError) {
-        setError(`Report saved, but "${file.name}" failed to upload: ${uploadError.message}`);
+        setError(
+          t("form.errors.uploadFailed", {
+            fileName: file.name,
+            message: uploadError.message,
+          })
+        );
         continue;
       }
 
@@ -135,7 +143,12 @@ export function DamageReportFormDialog({
         });
 
       if (photoError) {
-        setError(`Report saved, but "${file.name}" failed to attach: ${photoError.message}`);
+        setError(
+          t("form.errors.attachFailed", {
+            fileName: file.name,
+            message: photoError.message,
+          })
+        );
       }
     }
 
@@ -149,15 +162,12 @@ export function DamageReportFormDialog({
       <DialogTrigger render={trigger} />
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Report damage</DialogTitle>
-          <DialogDescription>
-            Log damage on a vehicle with photos — a mechanic or fleet manager
-            can triage it and link the repair cost afterwards.
-          </DialogDescription>
+          <DialogTitle>{t("form.title")}</DialogTitle>
+          <DialogDescription>{t("form.description")}</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label>Vehicle</Label>
+            <Label>{t("form.vehicleLabel")}</Label>
             <Select
               value={values.vehicle_id}
               onValueChange={(value) => set("vehicle_id", value ?? "")}
@@ -168,7 +178,7 @@ export function DamageReportFormDialog({
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
                       ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
-                      : "Select a vehicle";
+                      : t("form.vehiclePlaceholder");
                   }}
                 </SelectValue>
               </SelectTrigger>
@@ -183,7 +193,7 @@ export function DamageReportFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Severity</Label>
+            <Label>{t("form.severityLabel")}</Label>
             <Select
               value={values.severity}
               onValueChange={(value) =>
@@ -193,12 +203,12 @@ export function DamageReportFormDialog({
               <SelectTrigger className="w-full">
                 <SelectValue>
                   {(value: DamageSeverity | null) =>
-                    value ? damageSeverityLabels[value] : "Select severity"
+                    value ? severityLabels[value] : t("form.severityPlaceholder")
                   }
                 </SelectValue>
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(damageSeverityLabels).map(([value, label]) => (
+                {Object.entries(severityLabels).map(([value, label]) => (
                   <SelectItem key={value} value={value}>
                     {label}
                   </SelectItem>
@@ -208,17 +218,17 @@ export function DamageReportFormDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{t("form.descriptionLabel")}</Label>
             <Textarea
               id="description"
               value={values.description}
               onChange={(event) => set("description", event.target.value)}
-              placeholder="What happened and where on the vehicle"
+              placeholder={t("form.descriptionPlaceholder")}
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="photos">Photos</Label>
+            <Label htmlFor="photos">{t("form.photosLabel")}</Label>
             <input
               ref={fileInputRef}
               id="photos"
@@ -233,7 +243,7 @@ export function DamageReportFormDialog({
 
           <DialogFooter>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Saving…" : "Report damage"}
+              {isSubmitting ? t("form.submitting") : t("form.submit")}
             </Button>
           </DialogFooter>
         </form>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRef, useState, type ChangeEvent } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ export function DocumentScanButton<T>({
   action: (formData: FormData) => Promise<{ data?: T; error?: string }>;
   onExtracted: (data: T) => void;
 }) {
+  const t = useTranslations("common.documentScan");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isScanning, setIsScanning] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,7 +64,7 @@ export function DocumentScanButton<T>({
         ) : (
           <Sparkles className="size-4" />
         )}
-        {isScanning ? "Reading document…" : label}
+        {isScanning ? t("scanning") : label}
       </Button>
       {error ? <p className="text-xs text-destructive">{error}</p> : null}
     </div>

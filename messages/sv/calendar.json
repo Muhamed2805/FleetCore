@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Kalender",
+    "description": "Kommande utgångar och schemalagt underhåll."
+  },
+  "nav": {
+    "previousMonth": "Föregående månad",
+    "today": "Idag",
+    "nextMonth": "Nästa månad"
+  },
+  "weekdays": {
+    "sun": "Sön",
+    "mon": "Mån",
+    "tue": "Tis",
+    "wed": "Ons",
+    "thu": "Tor",
+    "fri": "Fre",
+    "sat": "Lör"
+  },
+  "dayCell": {
+    "eventsSuffix": "{count, plural, one {, # händelse} other {, # händelser}}",
+    "moreEvents": "+{count} till"
+  },
+  "agenda": {
+    "empty": "Inget schemalagt."
+  },
+  "events": {
+    "registrationTitle": "{vehicle} — registrering",
+    "insuranceTitle": "{vehicle} — försäkring",
+    "inspectionTitle": "{vehicle} — besiktning",
+    "maintenanceTitle": "{title} — {vehicle}"
+  },
+  "eventTypeLabels": {
+    "registration": "Registrering",
+    "insurance": "Försäkring",
+    "inspection": "Besiktning",
+    "maintenance": "Underhåll"
+  }
+}

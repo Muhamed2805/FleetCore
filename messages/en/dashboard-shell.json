@@ -1,0 +1,97 @@
+{
+  "brand": "FleetCore",
+  "nav": {
+    "overview": "Overview",
+    "vehicles": "Vehicles",
+    "maintenance": "Maintenance",
+    "damageReports": "Damage reports",
+    "documents": "Documents",
+    "expenses": "Expenses",
+    "reminders": "Reminders",
+    "calendar": "Calendar",
+    "team": "Team"
+  },
+  "sidebar": {
+    "openNavigation": "Open navigation"
+  },
+  "userMenu": {
+    "openMenu": "Open user menu",
+    "signOut": "Sign out"
+  },
+  "notifications": {
+    "srLabel": "Notifications",
+    "heading": "Notifications",
+    "markAllRead": "Mark all read",
+    "empty": "No notifications yet.",
+    "vehicleFallback": "Vehicle",
+    "itemTitle": "{vehicle} · {category}",
+    "expiresLabel": "Expires {date} · {days}-day reminder",
+    "categories": {
+      "registration": "Registration",
+      "insurance": "Insurance",
+      "inspection": "Inspection"
+    }
+  },
+  "search": {
+    "srLabel": "Search",
+    "trigger": "Search…",
+    "dialogTitle": "Search",
+    "dialogDescription": "Search vehicles and maintenance jobs",
+    "placeholder": "Search vehicles, plates, maintenance…",
+    "empty": "No results found."
+  },
+  "searchGroups": {
+    "vehicles": "Vehicles",
+    "maintenance": "Maintenance"
+  },
+  "charts": {
+    "fleetComposition": {
+      "title": "Fleet by type",
+      "empty": "No vehicles yet.",
+      "svgTitle": "Fleet composition: {items}",
+      "rowAriaLabel": "{label}: {count} vehicles, {percent}%"
+    },
+    "spendTrend": {
+      "title": "Spend, last 6 months",
+      "svgTitle": "Monthly spend: {items}",
+      "pointAriaLabel": "{label}: {amount}"
+    }
+  },
+  "overview": {
+    "welcome": "Welcome",
+    "welcomeWithName": "Welcome, {name}",
+    "subtitle": "Here's what's happening with your fleet.",
+    "stats": {
+      "vehicles": "Vehicles",
+      "noVehicles": "No vehicles yet",
+      "expiringSoon": "Expiring soon",
+      "next30Days": "Next 30 days",
+      "openMaintenance": "Open maintenance",
+      "noOpenJobs": "No open jobs",
+      "expensesThisMonth": "Expenses this month"
+    },
+    "emptyState": {
+      "title": "Add your first vehicle",
+      "description": "Register cars, vans, trucks, machinery and forklifts to start tracking documents and expirations.",
+      "cta": "Go to Vehicles"
+    }
+  },
+  "dashboardNotFound": {
+    "title": "Not found",
+    "description": "This page, vehicle, or record doesn't exist or may have been removed.",
+    "backToDashboard": "Back to dashboard"
+  },
+  "documentsPage": {
+    "title": "Documents",
+    "description": "Registration papers, insurance and inspection documents, with AI-powered data extraction. Coming in a later phase."
+  },
+  "teamPage": {
+    "title": "Team",
+    "description": "Invite Fleet Managers, Mechanics and Drivers to your company. Coming in a later phase."
+  },
+  "appNotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or may have been moved.",
+    "goHome": "Go home"
+  }
+}

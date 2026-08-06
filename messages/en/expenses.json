@@ -1,0 +1,68 @@
+{
+  "enums": {
+    "expenseCategory": {
+      "fuel": "Fuel",
+      "toll": "Toll",
+      "fine": "Fine",
+      "parking": "Parking",
+      "registrationFee": "Registration fee",
+      "insurancePremium": "Insurance premium",
+      "repair": "Repair",
+      "other": "Other"
+    }
+  },
+  "form": {
+    "editTitle": "Edit expense",
+    "addTitle": "Add expense",
+    "dialogDescription": "Track fuel, tolls, fines and other fleet costs.",
+    "scanLabel": "Scan receipt or invoice",
+    "category": {
+      "label": "Category",
+      "placeholder": "Select category"
+    },
+    "amount": {
+      "label": "Amount"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "vehicle": {
+      "label": "Vehicle",
+      "noVehicle": "No vehicle"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "errors": {
+      "invalidAmount": "Enter a valid amount."
+    },
+    "submit": {
+      "add": "Add expense"
+    }
+  },
+  "table": {
+    "heading": "Expenses",
+    "summary": "{count, plural, one {# expense} other {# expenses}} · {total} total",
+    "addButton": "Add expense",
+    "filters": {
+      "allCategories": "All categories"
+    },
+    "emptyState": {
+      "noExpensesTitle": "No expenses yet",
+      "noMatchTitle": "No expenses match this filter",
+      "trackCosts": "Track fuel, tolls, fines and other fleet costs.",
+      "tryDifferentCategory": "Try a different category."
+    },
+    "columns": {
+      "date": "Date",
+      "category": "Category",
+      "vehicle": "Vehicle",
+      "description": "Description",
+      "amount": "Amount"
+    },
+    "deleteDialog": {
+      "title": "Delete this expense?",
+      "description": "This can't be undone."
+    }
+  }
+}
