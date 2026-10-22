@@ -48,7 +48,7 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
   return (
     <>
       <Button
-        variant="outline"
+        variant="ghost"
         size="icon"
         className="text-muted-foreground sm:hidden"
         onClick={() => setOpen(true)}
@@ -58,12 +58,12 @@ export function GlobalSearch({ items }: { items: SearchItem[] }) {
       </Button>
       <Button
         variant="outline"
-        className="hidden w-56 justify-start text-muted-foreground sm:flex sm:w-64"
+        className="hidden w-56 justify-start bg-muted/60 font-normal text-muted-foreground shadow-none hover:bg-muted sm:flex sm:w-72 dark:bg-input/20"
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
         {t("search.trigger")}
-        <kbd className="ml-auto rounded border bg-muted px-1.5 py-0.5 text-[10px] font-medium">
+        <kbd className="ml-auto rounded border bg-background px-1.5 py-0.5 font-sans text-[10px] font-medium text-muted-foreground">
           ⌘K
         </kbd>
       </Button>

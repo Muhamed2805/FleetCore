@@ -43,10 +43,14 @@ export async function UserMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<button className="rounded-full outline-none focus-visible:ring-3 focus-visible:ring-ring/50" />}
+        render={
+          <button className="rounded-full ring-1 ring-border transition-shadow outline-none hover:ring-primary/40 focus-visible:ring-3 focus-visible:ring-ring/50" />
+        }
       >
         <Avatar>
-          <AvatarFallback>{initials(fullName, email)}</AvatarFallback>
+          <AvatarFallback className="bg-linear-to-br from-indigo-500 to-violet-600 text-xs font-semibold text-white">
+            {initials(fullName, email)}
+          </AvatarFallback>
         </Avatar>
         <span className="sr-only">{t("userMenu.openMenu")}</span>
       </DropdownMenuTrigger>

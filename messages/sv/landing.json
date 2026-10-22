@@ -1,12 +1,52 @@
 {
   "header": {
     "brand": "FleetCore",
-    "logIn": "Logga in"
+    "logIn": "Logga in",
+    "signUp": "Registrera dig"
   },
   "hero": {
     "badge": "Bilar, skåpbilar, lastbilar, maskiner och truckar",
     "title": "Plattform för flotthantering och underhåll",
     "description": "Hantera fordon, registreringar, försäkringar, besiktningar, underhåll och dokument från en instrumentpanel.",
-    "getStarted": "Kom igång"
+    "getStarted": "Kom igång",
+    "secondary": "Se funktionerna"
+  },
+  "features": {
+    "eyebrow": "Allt på ett ställe",
+    "title": "För fordonsflottor som inte gillar överraskningar",
+    "subtitle": "Från första registreringen till sista kvittot håller FleetCore koll på fordon, deadlines och kostnader.",
+    "items": {
+      "vehicles": {
+        "title": "Fordon & dokument",
+        "description": "Varje bil, skåpbil, lastbil, maskin och truck med registrering, försäkring, besiktning och dokument."
+      },
+      "reminders": {
+        "title": "Påminnelser om utgångsdatum",
+        "description": "Aviseringar via e-post och i appen innan registrering, försäkring eller besiktning går ut."
+      },
+      "maintenance": {
+        "title": "Underhåll & reparationer",
+        "description": "Planera servicejobb, registrera utfört arbete och behåll hela historiken för varje fordon."
+      },
+      "expenses": {
+        "title": "Kostnader & CSV-export",
+        "description": "Följ bränsle, vägavgifter, böter och reparationer och exportera dem till din revisor."
+      },
+      "ai": {
+        "title": "AI-skanning av dokument",
+        "description": "Ladda upp ett registreringsbevis eller ett kvitto så fyller formuläret i sig självt."
+      },
+      "team": {
+        "title": "Team & roller",
+        "description": "Bjud in fordonsansvariga, mekaniker och förare, var och en med den åtkomst de behöver."
+      }
+    }
+  },
+  "cta": {
+    "title": "Redo att ta kontroll över din fordonsflotta?",
+    "description": "Skapa ditt företagskonto på under en minut."
+  },
+  "footer": {
+    "tagline": "Plattform för fordonsförvaltning och underhåll"
   }
 }

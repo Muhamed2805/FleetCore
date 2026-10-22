@@ -17,7 +17,7 @@ export function ListPageSkeleton({ filters = 1 }: { filters?: number }) {
         ))}
       </div>
 
-      <div className="rounded-xl border">
+      <div className="overflow-hidden rounded-xl border bg-card shadow-xs dark:shadow-none">
         <div className="flex flex-col divide-y">
           {Array.from({ length: 6 }).map((_, index) => (
             <div key={index} className="flex items-center gap-4 p-3">

@@ -1,12 +1,52 @@
 {
   "header": {
     "brand": "FleetCore",
-    "logIn": "Prijava"
+    "logIn": "Prijava",
+    "signUp": "Registracija"
   },
   "hero": {
     "badge": "Automobili, kombiji, kamioni, mašine i viljuškari",
     "title": "Platforma za upravljanje i održavanje voznog parka",
     "description": "Upravljajte vozilima, registracijama, osiguranjem, tehničkim pregledima, održavanjem i dokumentima na jednom mjestu.",
-    "getStarted": "Započnite"
+    "getStarted": "Započnite",
+    "secondary": "Pogledaj mogućnosti"
+  },
+  "features": {
+    "eyebrow": "Sve na jednom mjestu",
+    "title": "Za vozne parkove koji ne vole iznenađenja",
+    "subtitle": "Od prve registracije do posljednjeg računa, FleetCore drži vozila, rokove i troškove pod kontrolom.",
+    "items": {
+      "vehicles": {
+        "title": "Vozila i dokumenti",
+        "description": "Svaki automobil, kombi, kamion, mašina i viljuškar sa registracijom, osiguranjem, tehničkim pregledom i dokumentima."
+      },
+      "reminders": {
+        "title": "Podsjetnici za istek",
+        "description": "Obavještenja emailom i u aplikaciji prije nego istekne registracija, osiguranje ili tehnički pregled."
+      },
+      "maintenance": {
+        "title": "Održavanje i popravke",
+        "description": "Planirajte servise, evidentirajte završene radove i čuvajte kompletnu historiju za svako vozilo."
+      },
+      "expenses": {
+        "title": "Troškovi i CSV izvoz",
+        "description": "Pratite gorivo, putarine, kazne i popravke, pa ih izvezite za knjigovođu."
+      },
+      "ai": {
+        "title": "AI skeniranje dokumenata",
+        "description": "Učitajte saobraćajnu dozvolu ili račun i forma se sama popuni."
+      },
+      "team": {
+        "title": "Tim i uloge",
+        "description": "Pozovite menadžere voznog parka, mehaničare i vozače, svakog sa pristupom koji mu treba."
+      }
+    }
+  },
+  "cta": {
+    "title": "Spremni da preuzmete kontrolu nad voznim parkom?",
+    "description": "Napravite nalog za firmu za manje od minute."
+  },
+  "footer": {
+    "tagline": "Platforma za upravljanje i održavanje voznog parka"
   }
 }

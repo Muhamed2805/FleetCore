@@ -12,13 +12,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function ThemeToggle() {
+export function ThemeToggle({
+  variant = "outline",
+}: {
+  variant?: "outline" | "ghost";
+}) {
   const t = useTranslations("common.theme");
   const { setTheme } = useTheme();
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" size="icon" />}>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant={variant}
+            size="icon"
+            className={variant === "ghost" ? "text-muted-foreground" : undefined}
+          />
+        }
+      >
         <Sun className="size-4 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
         <Moon className="absolute size-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
         <span className="sr-only">{t("toggle")}</span>

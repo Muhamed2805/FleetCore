@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
+import { AuthShell } from "@/components/auth/auth-shell";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -57,7 +58,7 @@ export default function SignupPage() {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-1 items-center justify-center px-4 py-12">
+      <AuthShell>
         <Card className="w-full max-w-sm">
           <CardHeader>
             <CardTitle>{t("signup.checkInbox.title")}</CardTitle>
@@ -66,12 +67,12 @@ export default function SignupPage() {
             </CardDescription>
           </CardHeader>
         </Card>
-      </div>
+      </AuthShell>
     );
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t("signup.title")}</CardTitle>
@@ -135,6 +136,6 @@ export default function SignupPage() {
           </p>
         </CardContent>
       </Card>
-    </div>
+    </AuthShell>
   );
 }

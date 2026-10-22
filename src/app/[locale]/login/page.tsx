@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useRouter as useAppRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState, type FormEvent } from "react";
 
+import { AuthShell } from "@/components/auth/auth-shell";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,7 +71,7 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t("login.title")}</CardTitle>
@@ -126,6 +127,6 @@ function LoginForm() {
           </p>
         </CardContent>
       </Card>
-    </div>
+    </AuthShell>
   );
 }

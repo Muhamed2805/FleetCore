@@ -56,7 +56,7 @@ export function RemindersList({
   }
 
   return (
-    <ul className="flex flex-col divide-y rounded-xl border">
+    <ul className="flex flex-col divide-y overflow-hidden rounded-xl border bg-card shadow-xs dark:shadow-none">
       {notifications.map((notification) => (
         <li
           key={notification.id}

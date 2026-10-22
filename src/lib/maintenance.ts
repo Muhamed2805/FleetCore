@@ -1,3 +1,4 @@
+import type { BadgeVariant } from "@/components/ui/badge";
 import type { MaintenanceStatus, MaintenanceType } from "@/lib/supabase/types";
 
 type Translate = (key: string) => string;
@@ -28,12 +29,12 @@ export function getMaintenanceStatusLabels(
 
 export const maintenanceStatusBadgeVariant: Record<
   MaintenanceStatus,
-  "default" | "secondary" | "destructive" | "outline"
+  BadgeVariant
 > = {
-  scheduled: "secondary",
-  in_progress: "default",
-  completed: "outline",
-  cancelled: "destructive",
+  scheduled: "info",
+  in_progress: "warning",
+  completed: "success",
+  cancelled: "secondary",
 };
 
 // "all" (or nothing) means no filter. Used by the Maintenance table and the

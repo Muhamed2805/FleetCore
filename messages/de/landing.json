@@ -1,12 +1,52 @@
 {
   "header": {
     "brand": "FleetCore",
-    "logIn": "Anmelden"
+    "logIn": "Anmelden",
+    "signUp": "Registrieren"
   },
   "hero": {
     "badge": "Pkw, Transporter, Lkw, Maschinen & Gabelstapler",
     "title": "Flottenmanagement- und Wartungsplattform",
     "description": "Verwalten Sie Fahrzeuge, Zulassungen, Versicherungen, Prüfungen, Wartungen und Dokumente von einem Dashboard aus.",
-    "getStarted": "Jetzt starten"
+    "getStarted": "Jetzt starten",
+    "secondary": "Funktionen ansehen"
+  },
+  "features": {
+    "eyebrow": "Alles an einem Ort",
+    "title": "Für Fuhrparks, die keine Überraschungen mögen",
+    "subtitle": "Von der ersten Zulassung bis zum letzten Beleg behält FleetCore Fahrzeuge, Fristen und Kosten im Griff.",
+    "items": {
+      "vehicles": {
+        "title": "Fahrzeuge & Dokumente",
+        "description": "Jedes Auto, jeder Transporter, Lkw, jede Maschine und jeder Stapler mit Zulassung, Versicherung, Prüfung und Dokumenten."
+      },
+      "reminders": {
+        "title": "Erinnerungen an Fristen",
+        "description": "Benachrichtigungen per E-Mail und in der App, bevor Zulassung, Versicherung oder Prüfung ablaufen."
+      },
+      "maintenance": {
+        "title": "Wartung & Reparaturen",
+        "description": "Wartungsaufträge planen, erledigte Arbeiten erfassen und die komplette Historie jedes Fahrzeugs behalten."
+      },
+      "expenses": {
+        "title": "Kosten & CSV-Export",
+        "description": "Kraftstoff, Maut, Bußgelder und Reparaturen erfassen und für die Buchhaltung exportieren."
+      },
+      "ai": {
+        "title": "KI-Dokumentenscan",
+        "description": "Fahrzeugschein oder Beleg hochladen, und das Formular füllt sich von selbst."
+      },
+      "team": {
+        "title": "Team & Rollen",
+        "description": "Fuhrparkleiter, Mechaniker und Fahrer einladen, jeweils mit genau den Rechten, die sie brauchen."
+      }
+    }
+  },
+  "cta": {
+    "title": "Bereit, Ihren Fuhrpark in den Griff zu bekommen?",
+    "description": "Erstellen Sie Ihr Firmenkonto in weniger als einer Minute."
+  },
+  "footer": {
+    "tagline": "Plattform für Fuhrparkverwaltung und Wartung"
   }
 }

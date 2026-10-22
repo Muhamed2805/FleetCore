@@ -29,7 +29,7 @@ export function SpendTrendChart({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm text-muted-foreground">
+        <CardTitle>
           {t("charts.spendTrend.title")}
         </CardTitle>
       </CardHeader>
@@ -99,7 +99,7 @@ export function SpendTrendChart({
                   width={BAR_WIDTH}
                   height={barHeight}
                   rx={4}
-                  fill="var(--chart-1)"
+                  fill="var(--primary)"
                   opacity={isHovered ? 1 : 0.9}
                 />
                 {isHovered ? (
