@@ -31,7 +31,8 @@
     "genericError": "Extraction failed.",
     "couldNotRead": "Could not read this document.",
     "notSignedIn": "Your session has expired. Sign in again.",
-    "unsupportedType": "Upload a JPEG, PNG, GIF or WebP image, or a PDF."
+    "unsupportedType": "Upload a JPEG, PNG, GIF or WebP image, or a PDF.",
+    "rateLimited": "You've reached the AI scan limit. Try again later."
   },
   "language": {
     "label": "Language"

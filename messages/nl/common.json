@@ -31,7 +31,8 @@
     "genericError": "Extractie mislukt.",
     "couldNotRead": "Dit document kon niet worden gelezen.",
     "notSignedIn": "Je sessie is verlopen. Log opnieuw in.",
-    "unsupportedType": "Upload een JPEG-, PNG-, GIF- of WebP-afbeelding, of een pdf."
+    "unsupportedType": "Upload een JPEG-, PNG-, GIF- of WebP-afbeelding, of een pdf.",
+    "rateLimited": "Je hebt de limiet voor AI-scans bereikt. Probeer het later opnieuw."
   },
   "language": {
     "label": "Taal"

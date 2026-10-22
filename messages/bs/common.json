@@ -31,7 +31,8 @@
     "genericError": "Ekstrakcija nije uspjela.",
     "couldNotRead": "Nije moguće pročitati ovaj dokument.",
     "notSignedIn": "Sesija je istekla. Prijavite se ponovo.",
-    "unsupportedType": "Otpremite JPEG, PNG, GIF ili WebP sliku, ili PDF."
+    "unsupportedType": "Otpremite JPEG, PNG, GIF ili WebP sliku, ili PDF.",
+    "rateLimited": "Dostigli ste limit AI skeniranja. Pokušajte ponovo kasnije."
   },
   "language": {
     "label": "Jezik"

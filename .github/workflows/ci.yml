@@ -41,6 +41,33 @@ jobs:
       - name: Build
         run: npm run build
 
+  database:
+    name: Migrations & database types
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Applies every migration to a throwaway Postgres (Docker is available
+      # on the runner) and regenerates the types from it.
+      - name: Apply migrations and generate types
+        run: npm run db:types
+
+      - name: Fail if the committed types are out of date
+        run: |
+          if ! git diff --exit-code -- src/lib/supabase/database.types.ts; then
+            echo "::error::src/lib/supabase/database.types.ts doesn't match the migrations. Run npm run db:types and commit the result."
+            exit 1
+          fi
+
   e2e:
     name: E2E smoke tests
     runs-on: ubuntu-latest
