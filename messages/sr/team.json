@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Tim",
+    "memberCount": "{count, plural, one {# član} few {# člana} many {# članova} other {# članova}}"
+  },
+  "actions": {
+    "invite": "Pozovi člana"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "fleetManager": "Menadžer voznog parka",
+    "mechanic": "Mehaničar",
+    "driver": "Vozač"
+  },
+  "roleDescriptions": {
+    "admin": "Potpun pristup, uključujući tim i podešavanja kompanije.",
+    "fleet_manager": "Upravlja vozilima, dokumentima, održavanjem i troškovima.",
+    "mechanic": "Vodi održavanje i prijave štete; ostalo samo pregleda.",
+    "driver": "Vidi vozni park i može da prijavi štetu."
+  },
+  "inviteDialog": {
+    "title": "Pozovite člana tima",
+    "description": "Osoba će dobiti link za kreiranje naloga u vašoj kompaniji. Link važi 7 dana.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "ime@kompanija.com",
+    "roleLabel": "Uloga",
+    "submit": "Pošalji pozivnicu",
+    "submitting": "Slanje…",
+    "successTitle": "Pozivnica je kreirana",
+    "emailedDescription": "Poslali smo pozivnicu na {email}. Link ispod možete da podelite i sami.",
+    "notEmailedDescription": "Slanje emailova nije podešeno, pa ništa nije poslato. Sami podelite ovaj link sa {email}.",
+    "linkLabel": "Link pozivnice",
+    "done": "Gotovo"
+  },
+  "members": {
+    "headers": {
+      "member": "Član",
+      "role": "Uloga",
+      "joined": "Član od"
+    },
+    "you": "Vi",
+    "changeRole": "Promeni ulogu za {name}",
+    "remove": "Ukloni {name}",
+    "removeTitle": "Ukloniti {name}?",
+    "removeDescription": "Nalog ove osobe se briše i ona odmah gubi pristup. Vozila, održavanja i troškovi koje je unela ostaju u kompaniji."
+  },
+  "invitations": {
+    "title": "Pozivnice na čekanju",
+    "description": "Pozivnice koje još nisu prihvaćene.",
+    "headers": {
+      "email": "Email",
+      "role": "Uloga",
+      "invited": "Poslato",
+      "expires": "Ističe"
+    },
+    "expired": "Istekla",
+    "copyLink": "Kopiraj link",
+    "copied": "Kopirano",
+    "copyPrompt": "Kopirajte link pozivnice:",
+    "resend": "Ponovo pošalji pozivnicu na {email}",
+    "resent": "Pozivnica je ponovo poslata na {email}.",
+    "newLink": "Kreiran je novi link za {email}, a stari više ne radi. Kopirajte ga iz liste.",
+    "revoke": "Opozovi pozivnicu za {email}",
+    "revokeTitle": "Opozvati pozivnicu za {email}?",
+    "revokeDescription": "Link pozivnice prestaje da radi. Osobu možete kasnije ponovo da pozovete."
+  },
+  "errors": {
+    "notAllowed": "Samo administratori mogu da upravljaju timom.",
+    "invalidEmail": "Unesite ispravnu email adresu.",
+    "alreadyMember": "Ova osoba je već član vaše kompanije.",
+    "ownRole": "Ne možete da promenite sopstvenu ulogu.",
+    "removeSelf": "Ne možete da uklonite sami sebe.",
+    "generic": "Nešto nije u redu. Pokušajte ponovo."
+  },
+  "email": {
+    "subject": "Pozivnica za kompaniju {company} na FleetCore-u",
+    "body": "{inviter} vam šalje pozivnicu da se pridružite kompaniji {company} na FleetCore-u (uloga: {role}).\n\nKreirajte svoj nalog ovde:\n{url}\n\nLink ističe za {days} dana."
+  },
+  "invite": {
+    "title": "Pridružite se kompaniji {company}",
+    "description": "Pozvani ste u ulozi: {role}. Kreirajte nalog da biste počeli.",
+    "emailLabel": "Email",
+    "fullNameLabel": "Vaše ime",
+    "passwordLabel": "Lozinka",
+    "submit": "Kreiraj nalog i pridruži se",
+    "submitting": "Kreiranje naloga…",
+    "goToLogin": "Idi na prijavu",
+    "signOutToAccept": "Odjavi se i nastavi",
+    "checkInbox": {
+      "title": "Proverite svoje sanduče",
+      "description": "Poslali smo link za potvrdu na {email}. Kliknite na njega da aktivirate svoj nalog."
+    },
+    "errors": {
+      "rejected": "Ova pozivnica više ne može da se koristi. Zatražite novu od administratora.",
+      "emailTaken": "Nalog sa ovim emailom već postoji. Pozivnice rade samo za nove naloge."
+    },
+    "invalid": {
+      "title": "Pozivnica nije pronađena",
+      "description": "Link nije ispravan ili je pozivnica opozvana. Zatražite novu od administratora."
+    },
+    "accepted": {
+      "title": "Pozivnica je već iskorišćena",
+      "description": "Sa ovom pozivnicom je već kreiran nalog. Prijavite se da biste nastavili."
+    },
+    "expired": {
+      "title": "Pozivnica je istekla",
+      "description": "Zamolite administratora kompanije {company} da vam pošalje novu pozivnicu."
+    },
+    "signedIn": {
+      "title": "Već ste prijavljeni",
+      "description": "Prijavljeni ste kao {currentEmail}. Ova pozivnica je za {email}. Odjavite se da biste kreirali taj nalog."
+    }
+  }
+}

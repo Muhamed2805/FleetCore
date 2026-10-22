@@ -85,10 +85,6 @@
     "title": "Dokumenti",
     "description": "Registracioni dokumenti, polise osiguranja i dokumenti tehničkog pregleda, uz AI ekstrakciju podataka. Stiže u kasnijoj fazi."
   },
-  "teamPage": {
-    "title": "Tim",
-    "description": "Pozovite menadžere voznog parka, mehaničare i vozače u svoju kompaniju. Stiže u kasnijoj fazi."
-  },
   "appNotFound": {
     "title": "Stranica nije pronađena",
     "description": "Stranica koju tražite ne postoji ili je možda premještena.",

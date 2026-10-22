@@ -495,12 +495,84 @@ export type Database = {
           },
         ];
       };
+      company_invitations: {
+        Row: {
+          id: string;
+          company_id: string;
+          email: string;
+          role: UserRole;
+          token: string;
+          invited_by: string | null;
+          created_at: string;
+          expires_at: string;
+          accepted_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          company_id: string;
+          email: string;
+          role?: UserRole;
+          token?: string;
+          invited_by?: string | null;
+          created_at?: string;
+          expires_at?: string;
+          accepted_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          company_id?: string;
+          email?: string;
+          role?: UserRole;
+          token?: string;
+          invited_by?: string | null;
+          created_at?: string;
+          expires_at?: string;
+          accepted_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "company_invitations_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: {
       generate_due_reminders: {
         Args: Record<string, never>;
         Returns: NotificationRow[];
+      };
+      get_invitation: {
+        Args: { invite_token: string };
+        Returns: {
+          email: string;
+          role: UserRole;
+          company_name: string;
+          expires_at: string;
+          accepted: boolean;
+        }[];
+      };
+      get_team_members: {
+        Args: Record<string, never>;
+        Returns: {
+          id: string;
+          full_name: string | null;
+          email: string;
+          role: UserRole;
+          created_at: string;
+        }[];
+      };
+      update_member_role: {
+        Args: { member_id: string; new_role: UserRole };
+        Returns: undefined;
+      };
+      remove_member: {
+        Args: { member_id: string };
+        Returns: undefined;
       };
     };
     Enums: {

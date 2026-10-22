@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Team",
+    "memberCount": "{count, plural, one {# medlem} other {# medlemmar}}"
+  },
+  "actions": {
+    "invite": "Bjud in medlem"
+  },
+  "roles": {
+    "admin": "Administratör",
+    "fleetManager": "Flottchef",
+    "mechanic": "Mekaniker",
+    "driver": "Förare"
+  },
+  "roleDescriptions": {
+    "admin": "Full åtkomst, inklusive teamet och företagets inställningar.",
+    "fleet_manager": "Hanterar fordon, dokument, underhåll och utgifter.",
+    "mechanic": "Sköter underhåll och skaderapporter; läsbehörighet i övrigt.",
+    "driver": "Ser fordonsflottan och kan rapportera skador."
+  },
+  "inviteDialog": {
+    "title": "Bjud in en teammedlem",
+    "description": "Personen får en länk för att skapa ett konto i ditt företag. Länken gäller i 7 dagar.",
+    "emailLabel": "E-post",
+    "emailPlaceholder": "namn@foretag.se",
+    "roleLabel": "Roll",
+    "submit": "Skicka inbjudan",
+    "submitting": "Skickar…",
+    "successTitle": "Inbjudan skapad",
+    "emailedDescription": "Vi har skickat en inbjudan till {email}. Du kan också dela länken nedan själv.",
+    "notEmailedDescription": "E-postutskick är inte konfigurerat, så inget skickades. Dela den här länken med {email} själv.",
+    "linkLabel": "Inbjudningslänk",
+    "done": "Klar"
+  },
+  "members": {
+    "headers": {
+      "member": "Medlem",
+      "role": "Roll",
+      "joined": "Medlem sedan"
+    },
+    "you": "Du",
+    "changeRole": "Ändra roll för {name}",
+    "remove": "Ta bort {name}",
+    "removeTitle": "Ta bort {name}?",
+    "removeDescription": "Kontot raderas och åtkomsten upphör direkt. Fordon, underhåll och utgifter som personen skapat finns kvar i företaget."
+  },
+  "invitations": {
+    "title": "Väntande inbjudningar",
+    "description": "Inbjudningar som inte har accepterats ännu.",
+    "headers": {
+      "email": "E-post",
+      "role": "Roll",
+      "invited": "Inbjuden",
+      "expires": "Går ut"
+    },
+    "expired": "Utgången",
+    "copyLink": "Kopiera länk",
+    "copied": "Kopierad",
+    "copyPrompt": "Kopiera inbjudningslänken:",
+    "resend": "Skicka inbjudan till {email} igen",
+    "resent": "Inbjudan har skickats igen till {email}.",
+    "newLink": "En ny länk har skapats för {email} och den gamla fungerar inte längre. Kopiera den från listan.",
+    "revoke": "Återkalla inbjudan för {email}",
+    "revokeTitle": "Återkalla inbjudan för {email}?",
+    "revokeDescription": "Inbjudningslänken slutar fungera. Du kan bjuda in personen igen senare."
+  },
+  "errors": {
+    "notAllowed": "Endast administratörer kan hantera teamet.",
+    "invalidEmail": "Ange en giltig e-postadress.",
+    "alreadyMember": "Den här personen är redan medlem i ditt företag.",
+    "ownRole": "Du kan inte ändra din egen roll.",
+    "removeSelf": "Du kan inte ta bort dig själv.",
+    "generic": "Något gick fel. Försök igen."
+  },
+  "email": {
+    "subject": "Inbjudan till {company} på FleetCore",
+    "body": "{inviter} har bjudit in dig till {company} på FleetCore (roll: {role}).\n\nSkapa ditt konto här:\n{url}\n\nLänken går ut om {days} dagar."
+  },
+  "invite": {
+    "title": "Gå med i {company}",
+    "description": "Du har bjudits in med rollen {role}. Skapa ditt konto för att komma igång.",
+    "emailLabel": "E-post",
+    "fullNameLabel": "Ditt namn",
+    "passwordLabel": "Lösenord",
+    "submit": "Skapa konto och gå med",
+    "submitting": "Skapar konto…",
+    "goToLogin": "Gå till inloggning",
+    "signOutToAccept": "Logga ut och fortsätt",
+    "checkInbox": {
+      "title": "Kolla din inkorg",
+      "description": "Vi har skickat en bekräftelselänk till {email}. Klicka på den för att aktivera ditt konto."
+    },
+    "errors": {
+      "rejected": "Den här inbjudan kan inte användas längre. Be din administratör om en ny.",
+      "emailTaken": "Det finns redan ett konto med den här e-postadressen. Inbjudningar fungerar bara för nya konton."
+    },
+    "invalid": {
+      "title": "Inbjudan hittades inte",
+      "description": "Länken är ogiltig eller så har inbjudan återkallats. Be din administratör om en ny."
+    },
+    "accepted": {
+      "title": "Inbjudan har redan använts",
+      "description": "Ett konto har redan skapats med den här inbjudan. Logga in för att fortsätta."
+    },
+    "expired": {
+      "title": "Inbjudan har gått ut",
+      "description": "Be en administratör på {company} att skicka en ny inbjudan."
+    },
+    "signedIn": {
+      "title": "Du är redan inloggad",
+      "description": "Du är inloggad som {currentEmail}. Den här inbjudan gäller {email}. Logga ut för att skapa det kontot."
+    }
+  }
+}

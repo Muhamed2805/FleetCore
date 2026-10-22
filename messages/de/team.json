@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Team",
+    "memberCount": "{count, plural, one {# Mitglied} other {# Mitglieder}}"
+  },
+  "actions": {
+    "invite": "Mitglied einladen"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "fleetManager": "Flottenmanager",
+    "mechanic": "Mechaniker",
+    "driver": "Fahrer"
+  },
+  "roleDescriptions": {
+    "admin": "Voller Zugriff, einschließlich Team- und Unternehmenseinstellungen.",
+    "fleet_manager": "Verwaltet Fahrzeuge, Dokumente, Wartung und Ausgaben.",
+    "mechanic": "Bearbeitet Wartung und Schadensmeldungen; sonst nur Lesezugriff.",
+    "driver": "Sieht die Flotte und kann Schäden melden."
+  },
+  "inviteDialog": {
+    "title": "Teammitglied einladen",
+    "description": "Die Person erhält einen Link, um ein Konto in Ihrem Unternehmen zu erstellen. Der Link ist 7 Tage gültig.",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "name@firma.de",
+    "roleLabel": "Rolle",
+    "submit": "Einladung senden",
+    "submitting": "Wird gesendet…",
+    "successTitle": "Einladung erstellt",
+    "emailedDescription": "Wir haben eine Einladung an {email} gesendet. Sie können den Link unten auch selbst teilen.",
+    "notEmailedDescription": "Der E-Mail-Versand ist nicht eingerichtet, daher wurde nichts gesendet. Teilen Sie diesen Link selbst mit {email}.",
+    "linkLabel": "Einladungslink",
+    "done": "Fertig"
+  },
+  "members": {
+    "headers": {
+      "member": "Mitglied",
+      "role": "Rolle",
+      "joined": "Mitglied seit"
+    },
+    "you": "Sie",
+    "changeRole": "Rolle von {name} ändern",
+    "remove": "{name} entfernen",
+    "removeTitle": "{name} entfernen?",
+    "removeDescription": "Das Konto wird gelöscht und der Zugriff endet sofort. Von dieser Person erstellte Fahrzeuge, Wartungen und Ausgaben bleiben im Unternehmen."
+  },
+  "invitations": {
+    "title": "Offene Einladungen",
+    "description": "Einladungen, die noch nicht angenommen wurden.",
+    "headers": {
+      "email": "E-Mail",
+      "role": "Rolle",
+      "invited": "Eingeladen",
+      "expires": "Läuft ab"
+    },
+    "expired": "Abgelaufen",
+    "copyLink": "Link kopieren",
+    "copied": "Kopiert",
+    "copyPrompt": "Einladungslink kopieren:",
+    "resend": "Einladung erneut an {email} senden",
+    "resent": "Einladung erneut an {email} gesendet.",
+    "newLink": "Neuer Link für {email} erstellt, der alte funktioniert nicht mehr. Kopieren Sie ihn aus der Liste.",
+    "revoke": "Einladung für {email} widerrufen",
+    "revokeTitle": "Einladung für {email} widerrufen?",
+    "revokeDescription": "Der Einladungslink funktioniert dann nicht mehr. Sie können die Person später erneut einladen."
+  },
+  "errors": {
+    "notAllowed": "Nur Administratoren können das Team verwalten.",
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "alreadyMember": "Diese Person ist bereits Mitglied Ihres Unternehmens.",
+    "ownRole": "Sie können Ihre eigene Rolle nicht ändern.",
+    "removeSelf": "Sie können sich nicht selbst entfernen.",
+    "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "email": {
+    "subject": "Einladung zu {company} auf FleetCore",
+    "body": "{inviter} lädt Sie ein, {company} auf FleetCore beizutreten (Rolle: {role}).\n\nErstellen Sie hier Ihr Konto:\n{url}\n\nDieser Link läuft in {days} Tagen ab."
+  },
+  "invite": {
+    "title": "{company} beitreten",
+    "description": "Sie wurden mit der Rolle {role} eingeladen. Erstellen Sie Ihr Konto, um loszulegen.",
+    "emailLabel": "E-Mail",
+    "fullNameLabel": "Ihr Name",
+    "passwordLabel": "Passwort",
+    "submit": "Konto erstellen und beitreten",
+    "submitting": "Konto wird erstellt…",
+    "goToLogin": "Zur Anmeldung",
+    "signOutToAccept": "Abmelden und fortfahren",
+    "checkInbox": {
+      "title": "Postfach prüfen",
+      "description": "Wir haben einen Bestätigungslink an {email} gesendet. Klicken Sie darauf, um Ihr Konto zu aktivieren."
+    },
+    "errors": {
+      "rejected": "Diese Einladung kann nicht mehr verwendet werden. Bitten Sie Ihren Administrator um eine neue.",
+      "emailTaken": "Für diese E-Mail-Adresse gibt es bereits ein Konto. Einladungen gelten nur für neue Konten."
+    },
+    "invalid": {
+      "title": "Einladung nicht gefunden",
+      "description": "Dieser Link ist ungültig oder die Einladung wurde widerrufen. Bitten Sie Ihren Administrator um eine neue."
+    },
+    "accepted": {
+      "title": "Einladung bereits verwendet",
+      "description": "Mit dieser Einladung wurde bereits ein Konto erstellt. Melden Sie sich an, um fortzufahren."
+    },
+    "expired": {
+      "title": "Einladung abgelaufen",
+      "description": "Bitten Sie einen Administrator von {company}, Ihnen eine neue Einladung zu senden."
+    },
+    "signedIn": {
+      "title": "Sie sind bereits angemeldet",
+      "description": "Sie sind als {currentEmail} angemeldet. Diese Einladung gilt für {email}. Melden Sie sich ab, um dieses Konto zu erstellen."
+    }
+  }
+}

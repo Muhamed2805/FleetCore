@@ -85,10 +85,6 @@
     "title": "Dokument",
     "description": "Registreringsbevis, försäkrings- och besiktningsdokument, med AI-driven datautvinning. Kommer i en senare fas."
   },
-  "teamPage": {
-    "title": "Team",
-    "description": "Bjud in flottchefer, mekaniker och förare till ditt företag. Kommer i en senare fas."
-  },
   "appNotFound": {
     "title": "Sidan hittades inte",
     "description": "Sidan du letar efter finns inte eller kan ha flyttats.",

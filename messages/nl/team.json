@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Team",
+    "memberCount": "{count, plural, one {# lid} other {# leden}}"
+  },
+  "actions": {
+    "invite": "Lid uitnodigen"
+  },
+  "roles": {
+    "admin": "Beheerder",
+    "fleetManager": "Fleetmanager",
+    "mechanic": "Monteur",
+    "driver": "Chauffeur"
+  },
+  "roleDescriptions": {
+    "admin": "Volledige toegang, inclusief het team en de bedrijfsinstellingen.",
+    "fleet_manager": "Beheert voertuigen, documenten, onderhoud en uitgaven.",
+    "mechanic": "Verwerkt onderhoud en schademeldingen; verder alleen-lezen.",
+    "driver": "Ziet het wagenpark en kan schade melden."
+  },
+  "inviteDialog": {
+    "title": "Teamlid uitnodigen",
+    "description": "De persoon krijgt een link om een account in je bedrijf aan te maken. De link is 7 dagen geldig.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "naam@bedrijf.nl",
+    "roleLabel": "Rol",
+    "submit": "Uitnodiging versturen",
+    "submitting": "Versturen…",
+    "successTitle": "Uitnodiging aangemaakt",
+    "emailedDescription": "We hebben een uitnodiging naar {email} gestuurd. Je kunt de link hieronder ook zelf delen.",
+    "notEmailedDescription": "E-mail versturen is niet ingesteld, dus er is niets verzonden. Deel deze link zelf met {email}.",
+    "linkLabel": "Uitnodigingslink",
+    "done": "Klaar"
+  },
+  "members": {
+    "headers": {
+      "member": "Lid",
+      "role": "Rol",
+      "joined": "Lid sinds"
+    },
+    "you": "Jij",
+    "changeRole": "Rol wijzigen voor {name}",
+    "remove": "{name} verwijderen",
+    "removeTitle": "{name} verwijderen?",
+    "removeDescription": "Het account wordt verwijderd en de toegang stopt direct. Voertuigen, onderhoud en uitgaven die deze persoon heeft aangemaakt blijven in het bedrijf."
+  },
+  "invitations": {
+    "title": "Openstaande uitnodigingen",
+    "description": "Uitnodigingen die nog niet zijn geaccepteerd.",
+    "headers": {
+      "email": "E-mail",
+      "role": "Rol",
+      "invited": "Uitgenodigd",
+      "expires": "Verloopt"
+    },
+    "expired": "Verlopen",
+    "copyLink": "Link kopiëren",
+    "copied": "Gekopieerd",
+    "copyPrompt": "Kopieer de uitnodigingslink:",
+    "resend": "Uitnodiging opnieuw naar {email} sturen",
+    "resent": "Uitnodiging opnieuw naar {email} gestuurd.",
+    "newLink": "Nieuwe link aangemaakt voor {email}, de oude werkt niet meer. Kopieer hem uit de lijst.",
+    "revoke": "Uitnodiging voor {email} intrekken",
+    "revokeTitle": "Uitnodiging voor {email} intrekken?",
+    "revokeDescription": "De uitnodigingslink werkt dan niet meer. Je kunt de persoon later opnieuw uitnodigen."
+  },
+  "errors": {
+    "notAllowed": "Alleen beheerders kunnen het team beheren.",
+    "invalidEmail": "Vul een geldig e-mailadres in.",
+    "alreadyMember": "Deze persoon is al lid van je bedrijf.",
+    "ownRole": "Je kunt je eigen rol niet wijzigen.",
+    "removeSelf": "Je kunt jezelf niet verwijderen.",
+    "generic": "Er ging iets mis. Probeer het opnieuw."
+  },
+  "email": {
+    "subject": "Uitnodiging voor {company} op FleetCore",
+    "body": "{inviter} nodigt je uit om lid te worden van {company} op FleetCore (rol: {role}).\n\nMaak hier je account aan:\n{url}\n\nDeze link verloopt over {days} dagen."
+  },
+  "invite": {
+    "title": "Word lid van {company}",
+    "description": "Je bent uitgenodigd met de rol {role}. Maak je account aan om te beginnen.",
+    "emailLabel": "E-mail",
+    "fullNameLabel": "Je naam",
+    "passwordLabel": "Wachtwoord",
+    "submit": "Account aanmaken en lid worden",
+    "submitting": "Account aanmaken…",
+    "goToLogin": "Naar inloggen",
+    "signOutToAccept": "Uitloggen en doorgaan",
+    "checkInbox": {
+      "title": "Controleer je inbox",
+      "description": "We hebben een bevestigingslink naar {email} gestuurd. Klik erop om je account te activeren."
+    },
+    "errors": {
+      "rejected": "Deze uitnodiging kan niet meer worden gebruikt. Vraag je beheerder om een nieuwe.",
+      "emailTaken": "Er bestaat al een account met dit e-mailadres. Uitnodigingen werken alleen voor nieuwe accounts."
+    },
+    "invalid": {
+      "title": "Uitnodiging niet gevonden",
+      "description": "Deze link is ongeldig of de uitnodiging is ingetrokken. Vraag je beheerder om een nieuwe."
+    },
+    "accepted": {
+      "title": "Uitnodiging al gebruikt",
+      "description": "Met deze uitnodiging is al een account aangemaakt. Log in om verder te gaan."
+    },
+    "expired": {
+      "title": "Uitnodiging verlopen",
+      "description": "Vraag een beheerder van {company} om je een nieuwe uitnodiging te sturen."
+    },
+    "signedIn": {
+      "title": "Je bent al ingelogd",
+      "description": "Je bent ingelogd als {currentEmail}. Deze uitnodiging is voor {email}. Log uit om dat account aan te maken."
+    }
+  }
+}

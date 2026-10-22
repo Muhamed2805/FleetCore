@@ -85,10 +85,6 @@
     "title": "Documents",
     "description": "Registration papers, insurance and inspection documents, with AI-powered data extraction. Coming in a later phase."
   },
-  "teamPage": {
-    "title": "Team",
-    "description": "Invite Fleet Managers, Mechanics and Drivers to your company. Coming in a later phase."
-  },
   "appNotFound": {
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or may have been moved.",

@@ -24,6 +24,8 @@ commit history.
 - [x] Phase 8 — AI-powered data extraction from documents
 - [x] Phase 9 — Polish, responsive, accessibility (deploy prep TBD)
 - [x] Phase 10 — Damage reports (photos, severity/status workflow, linked repair expenses)
+- [x] Phase 11 — Internationalization (en, bs, hr, sr, de, sv, nl)
+- [x] Phase 12 — Team (email invitations, role changes, member removal)
 
 ## Tech stack
 
@@ -54,8 +56,23 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Every signup creates a new company and its first user as `admin`. Roles are
 `admin`, `fleet_manager`, `mechanic`, `driver` (see
-`supabase/migrations/20260805210300_init_auth_schema.sql`). Inviting
-teammates into an existing company is a later phase.
+`supabase/migrations/20260805210300_init_auth_schema.sql`). Admins bring
+teammates into the company from the Team page (below).
+
+### Team
+
+Admins invite people by email with a role from the Team page. The invitee
+opens the link (`/invite/<token>`, valid 7 days) and creates an account with
+that email; the signup trigger adds them to the inviting company with the
+invited role instead of creating a new company. Invitations are for new
+accounts only — a user belongs to exactly one company. Invite emails go out
+via Resend; without `RESEND_API_KEY` nothing is sent and the admin gets a
+link to copy and share instead.
+
+Admins can change any other member's role and remove members (which deletes
+their account; records they created stay, with the author cleared). Admins
+can't change their own role or remove themselves, so a company always keeps
+at least one admin.
 
 ### AI document extraction
 
