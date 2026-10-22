@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Documents",
+    "documentCount": "{count, plural, one {# document} other {# documents}}"
+  },
+  "actions": {
+    "upload": "Upload document"
+  },
+  "missing": {
+    "title": "Missing documents",
+    "description": "These vehicles have an expiry date on file but no matching document.",
+    "upload": "Upload"
+  },
+  "filters": {
+    "searchPlaceholder": "Search by file name or vehicle…",
+    "allCategories": "All categories",
+    "allVehicles": "All vehicles"
+  },
+  "table": {
+    "headers": {
+      "document": "Document",
+      "vehicle": "Vehicle",
+      "category": "Category",
+      "expires": "Expires",
+      "uploaded": "Uploaded",
+      "uploadedBy": "Uploaded by"
+    },
+    "replaced": "Replaced",
+    "replacedHint": "A newer document in this category exists for this vehicle.",
+    "unnamedUploader": "Unnamed"
+  },
+  "emptyState": {
+    "noDocumentsTitle": "No documents yet",
+    "noDocumentsDescription": "Upload registration papers, insurance policies and inspection certificates to keep them in one place.",
+    "addVehicleFirst": "Add a vehicle first, then upload its documents.",
+    "noMatchTitle": "No matching documents",
+    "tryDifferentFilter": "Try a different search or filter."
+  },
+  "upload": {
+    "title": "Upload document",
+    "description": "Attach a document to a vehicle.",
+    "descriptionForVehicle": "Attach a document to {vehicle}.",
+    "vehicleLabel": "Vehicle",
+    "vehiclePlaceholder": "Select a vehicle",
+    "categoryLabel": "Category",
+    "fileLabel": "File",
+    "scan": "Read with AI",
+    "scanning": "Reading…",
+    "expiryLabel": "Valid until",
+    "expiryHint": {
+      "registration": "Updates the vehicle's registration expiry, which reminders use.",
+      "insurance": "Updates the vehicle's insurance expiry, which reminders use.",
+      "inspection": "Updates the vehicle's inspection expiry, which reminders use."
+    },
+    "scanFoundExpiry": "Expiry date read from the document. Check it before uploading.",
+    "scanNoExpiry": "No expiry date found in this document.",
+    "plateMismatch": "This document mentions plate {plate}, which doesn't match the selected vehicle.",
+    "submit": "Upload",
+    "uploading": "Uploading…",
+    "errors": {
+      "vehicleRequired": "Select a vehicle.",
+      "fileRequired": "Choose a file to upload.",
+      "expiryNotSaved": "The document was uploaded, but the expiry date couldn't be saved: {message}"
+    }
+  },
+  "deleteConfirm": {
+    "title": "Delete {name}?",
+    "description": "The file is deleted permanently. This can't be undone."
+  }
+}

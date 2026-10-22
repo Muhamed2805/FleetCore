@@ -26,10 +26,12 @@
   "documentScan": {
     "notConfigured": "Die KI-Extraktion ist noch nicht konfiguriert — bitten Sie einen Administrator, ANTHROPIC_API_KEY hinzuzufügen.",
     "chooseFileFirst": "Wählen Sie zuerst eine Datei aus.",
-    "fileTooLarge": "Die Datei ist zu groß (max. 10 MB).",
+    "fileTooLarge": "Die Datei ist zu groß (max. {max} MB).",
     "scanning": "Wird gescannt…",
     "genericError": "Extraktion fehlgeschlagen.",
-    "couldNotRead": "Dieses Dokument konnte nicht gelesen werden."
+    "couldNotRead": "Dieses Dokument konnte nicht gelesen werden.",
+    "notSignedIn": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+    "unsupportedType": "Laden Sie ein JPEG-, PNG-, GIF- oder WebP-Bild oder eine PDF-Datei hoch."
   },
   "language": {
     "label": "Sprache"

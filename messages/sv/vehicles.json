@@ -48,13 +48,7 @@
   "scanRegistration": "Skanna registreringsbevis",
   "documents": {
     "title": "Dokument",
-    "chooseFileFirst": "Välj en fil först.",
-    "categoryLabel": "Kategori",
-    "upload": "Ladda upp",
-    "uploading": "Laddar upp…",
     "empty": "Inga dokument uppladdade än.",
-    "deleteConfirmTitle": "Ta bort {name}?",
-    "deleteConfirmDescription": "Det här går inte att ångra.",
     "category": {
       "registration": "Registrering",
       "insurance": "Försäkring",

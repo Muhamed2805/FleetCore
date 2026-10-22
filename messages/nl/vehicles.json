@@ -48,13 +48,7 @@
   "scanRegistration": "Kentekenbewijs scannen",
   "documents": {
     "title": "Documenten",
-    "chooseFileFirst": "Kies eerst een bestand.",
-    "categoryLabel": "Categorie",
-    "upload": "Uploaden",
-    "uploading": "Uploaden…",
     "empty": "Nog geen documenten geüpload.",
-    "deleteConfirmTitle": "{name} verwijderen?",
-    "deleteConfirmDescription": "Dit kan niet ongedaan worden gemaakt.",
     "category": {
       "registration": "Registratie",
       "insurance": "Verzekering",

@@ -81,10 +81,6 @@
     "description": "Deze pagina, dit voertuig of dit record bestaat niet of is mogelijk verwijderd.",
     "backToDashboard": "Terug naar dashboard"
   },
-  "documentsPage": {
-    "title": "Documenten",
-    "description": "Kentekenbewijzen, verzekerings- en keuringsdocumenten, met AI-gestuurde gegevensextractie. Komt in een latere fase."
-  },
   "appNotFound": {
     "title": "Pagina niet gevonden",
     "description": "De pagina die je zoekt bestaat niet of is mogelijk verplaatst.",

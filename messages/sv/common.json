@@ -26,10 +26,12 @@
   "documentScan": {
     "notConfigured": "AI-extrahering är inte konfigurerad än — be en administratör lägga till ANTHROPIC_API_KEY.",
     "chooseFileFirst": "Välj en fil först.",
-    "fileTooLarge": "Filen är för stor (max 10 MB).",
+    "fileTooLarge": "Filen är för stor (max {max} MB).",
     "scanning": "Skannar…",
     "genericError": "Extrahering misslyckades.",
-    "couldNotRead": "Kunde inte läsa det här dokumentet."
+    "couldNotRead": "Kunde inte läsa det här dokumentet.",
+    "notSignedIn": "Din session har gått ut. Logga in igen.",
+    "unsupportedType": "Ladda upp en JPEG-, PNG-, GIF- eller WebP-bild, eller en PDF."
   },
   "language": {
     "label": "Språk"

@@ -48,13 +48,7 @@
   "scanRegistration": "Zulassungsdokument scannen",
   "documents": {
     "title": "Dokumente",
-    "chooseFileFirst": "Wählen Sie zuerst eine Datei aus.",
-    "categoryLabel": "Kategorie",
-    "upload": "Hochladen",
-    "uploading": "Wird hochgeladen…",
     "empty": "Noch keine Dokumente hochgeladen.",
-    "deleteConfirmTitle": "{name} löschen?",
-    "deleteConfirmDescription": "Dies kann nicht rückgängig gemacht werden.",
     "category": {
       "registration": "Zulassung",
       "insurance": "Versicherung",

@@ -48,13 +48,7 @@
   "scanRegistration": "Skeniraj saobraćajnu dozvolu",
   "documents": {
     "title": "Dokumenti",
-    "chooseFileFirst": "Prvo odaberite fajl.",
-    "categoryLabel": "Kategorija",
-    "upload": "Otpremi",
-    "uploading": "Otpremanje…",
     "empty": "Još nema otpremljenih dokumenata.",
-    "deleteConfirmTitle": "Izbrisati {name}?",
-    "deleteConfirmDescription": "Ovo se ne može poništiti.",
     "category": {
       "registration": "Registracija",
       "insurance": "Osiguranje",

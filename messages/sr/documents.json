@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Dokumenti",
+    "documentCount": "{count, plural, one {# dokument} few {# dokumenta} other {# dokumenata}}"
+  },
+  "actions": {
+    "upload": "Otpremi dokument"
+  },
+  "missing": {
+    "title": "Dokumenti koji nedostaju",
+    "description": "Ova vozila imaju unet datum isteka, ali nemaju odgovarajući dokument.",
+    "upload": "Otpremi"
+  },
+  "filters": {
+    "searchPlaceholder": "Pretraga po nazivu fajla ili vozilu…",
+    "allCategories": "Sve kategorije",
+    "allVehicles": "Sva vozila"
+  },
+  "table": {
+    "headers": {
+      "document": "Dokument",
+      "vehicle": "Vozilo",
+      "category": "Kategorija",
+      "expires": "Ističe",
+      "uploaded": "Otpremljeno",
+      "uploadedBy": "Otpremio"
+    },
+    "replaced": "Zamenjen",
+    "replacedHint": "Za ovo vozilo postoji noviji dokument iste kategorije.",
+    "unnamedUploader": "Bez imena"
+  },
+  "emptyState": {
+    "noDocumentsTitle": "Još nema dokumenata",
+    "noDocumentsDescription": "Otpremite saobraćajne dozvole, polise osiguranja i potvrde o tehničkom pregledu da bi bili na jednom mestu.",
+    "addVehicleFirst": "Prvo dodajte vozilo, a zatim otpremite njegova dokumenta.",
+    "noMatchTitle": "Nijedan dokument ne odgovara pretrazi",
+    "tryDifferentFilter": "Pokušajte sa drugačijom pretragom ili filterom."
+  },
+  "upload": {
+    "title": "Otpremi dokument",
+    "description": "Priložite dokument uz vozilo.",
+    "descriptionForVehicle": "Priložite dokument uz vozilo {vehicle}.",
+    "vehicleLabel": "Vozilo",
+    "vehiclePlaceholder": "Izaberite vozilo",
+    "categoryLabel": "Kategorija",
+    "fileLabel": "Fajl",
+    "scan": "Pročitaj pomoću AI",
+    "scanning": "Čitanje…",
+    "expiryLabel": "Važi do",
+    "expiryHint": {
+      "registration": "Ažurira datum isteka registracije vozila, koji koriste podsetnici.",
+      "insurance": "Ažurira datum isteka osiguranja vozila, koji koriste podsetnici.",
+      "inspection": "Ažurira datum isteka tehničkog pregleda vozila, koji koriste podsetnici."
+    },
+    "scanFoundExpiry": "Datum isteka je pročitan iz dokumenta. Proverite ga pre otpremanja.",
+    "scanNoExpiry": "U ovom dokumentu nije pronađen datum isteka.",
+    "plateMismatch": "Dokument navodi tablicu {plate}, koja se ne poklapa sa izabranim vozilom.",
+    "submit": "Otpremi",
+    "uploading": "Otpremanje…",
+    "errors": {
+      "vehicleRequired": "Izaberite vozilo.",
+      "fileRequired": "Izaberite fajl za otpremanje.",
+      "expiryNotSaved": "Dokument je otpremljen, ali datum isteka nije sačuvan: {message}"
+    }
+  },
+  "deleteConfirm": {
+    "title": "Obrisati {name}?",
+    "description": "Fajl se trajno briše. Ovo se ne može poništiti."
+  }
+}

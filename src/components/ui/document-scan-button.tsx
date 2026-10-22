@@ -5,6 +5,11 @@ import { useTranslations } from "next-intl";
 import { useRef, useState, type ChangeEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  MAX_SCAN_FILE_MB,
+  SCAN_ACCEPT,
+  scanFileProblem,
+} from "@/lib/document-scan";
 
 export function DocumentScanButton<T>({
   label,
@@ -25,12 +30,26 @@ export function DocumentScanButton<T>({
     event.target.value = "";
     if (!file) return;
 
+    // Checked here too: a file over the Server Action body limit is rejected
+    // before the action runs, without a readable error.
+    const problem = scanFileProblem(file);
+    if (problem) {
+      setError(t(problem, { max: MAX_SCAN_FILE_MB }));
+      return;
+    }
+
     setIsScanning(true);
     setError(null);
 
     const formData = new FormData();
     formData.set("file", file);
-    const result = await action(formData);
+
+    let result: Awaited<ReturnType<typeof action>>;
+    try {
+      result = await action(formData);
+    } catch {
+      result = { error: t("genericError") };
+    }
 
     setIsScanning(false);
 
@@ -48,7 +67,7 @@ export function DocumentScanButton<T>({
       <input
         ref={inputRef}
         type="file"
-        accept="image/jpeg,image/png,image/gif,image/webp,application/pdf"
+        accept={SCAN_ACCEPT}
         onChange={handleChange}
         className="hidden"
       />

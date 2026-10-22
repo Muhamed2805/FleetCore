@@ -30,6 +30,7 @@ commit history.
 - [x] Phase 12 — Team (email invitations, role changes, member removal)
 - [x] Phase 13 — CI (lint, typecheck and build on every pull request)
 - [x] Phase 14 — Playwright smoke tests in CI
+- [x] Phase 15 — Documents (company-wide list, missing documents, AI expiry scan)
 
 ## Tech stack
 
@@ -108,6 +109,25 @@ Add Vehicle and Add Expense forms send an uploaded image or PDF to Claude
 prefill the form. Requires `ANTHROPIC_API_KEY`; without it the button shows
 a clear "not configured" message instead of failing silently.
 
+Scans run as Server Actions, so only signed-in members can trigger them (each
+scan spends API credits). Files are capped at 4 MB, set in
+`src/lib/document-scan.ts`, to stay under the Server Action body limit in
+`next.config.ts` and Vercel's 4.5 MB request limit.
+
+### Documents
+
+The Documents page lists every vehicle document in the company, with search
+(file name, vehicle or plate) and category/vehicle filters. Admins and fleet
+managers upload from there or from a vehicle's page. For registration,
+insurance and inspection documents, the upload dialog has a "Valid until"
+date, prefilled from the vehicle. Changing it updates the vehicle's expiry,
+which reminders and the calendar read. "Read with AI" fills that date from
+the document, picks the vehicle by its plate when none is selected, and warns
+when the plate doesn't match. Only the newest document per vehicle and
+category shows the expiry; older ones are marked as replaced. A "Missing
+documents" card lists vehicles (not sold) that have an expiry date on file
+but no matching document.
+
 ### Damage reports
 
 Any company member — including drivers, who are usually the ones holding the
@@ -127,3 +147,5 @@ every company and is meant to be hit by a scheduler once deployed (Phase
 9); until then, trigger it manually or use the "Check now" button on the
 Reminders page, which scans just your own company. Emails go out via
 Resend and are skipped (logged only) until `RESEND_API_KEY` is set.
+Each expiry date gets its own set of reminders, so renewing a document and
+moving the date starts the thresholds over.

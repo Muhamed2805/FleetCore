@@ -81,10 +81,6 @@
     "description": "Den här sidan, fordonet eller posten finns inte eller kan ha tagits bort.",
     "backToDashboard": "Tillbaka till instrumentpanelen"
   },
-  "documentsPage": {
-    "title": "Dokument",
-    "description": "Registreringsbevis, försäkrings- och besiktningsdokument, med AI-driven datautvinning. Kommer i en senare fas."
-  },
   "appNotFound": {
     "title": "Sidan hittades inte",
     "description": "Sidan du letar efter finns inte eller kan ha flyttats.",

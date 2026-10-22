@@ -48,13 +48,7 @@
   "scanRegistration": "Scan registration document",
   "documents": {
     "title": "Documents",
-    "chooseFileFirst": "Choose a file first.",
-    "categoryLabel": "Category",
-    "upload": "Upload",
-    "uploading": "Uploading…",
     "empty": "No documents uploaded yet.",
-    "deleteConfirmTitle": "Delete {name}?",
-    "deleteConfirmDescription": "This can't be undone.",
     "category": {
       "registration": "Registration",
       "insurance": "Insurance",
