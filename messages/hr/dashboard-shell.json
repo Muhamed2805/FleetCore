@@ -85,10 +85,6 @@
     "title": "Dokumenti",
     "description": "Prometne dozvole, police osiguranja i dokumenti tehničkog pregleda, uz izdvajanje podataka pomoću AI-ja. Stiže u sljedećoj fazi."
   },
-  "teamPage": {
-    "title": "Tim",
-    "description": "Pozovite voditelje flote, mehaničare i vozače u svoju tvrtku. Stiže u sljedećoj fazi."
-  },
   "appNotFound": {
     "title": "Stranica nije pronađena",
     "description": "Stranica koju tražite ne postoji ili je možda premještena.",

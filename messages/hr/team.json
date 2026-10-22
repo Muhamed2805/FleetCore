@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Tim",
+    "memberCount": "{count, plural, one {# član} few {# člana} many {# članova} other {# članova}}"
+  },
+  "actions": {
+    "invite": "Pozovi člana"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "fleetManager": "Voditelj flote",
+    "mechanic": "Mehaničar",
+    "driver": "Vozač"
+  },
+  "roleDescriptions": {
+    "admin": "Potpun pristup, uključujući tim i postavke tvrtke.",
+    "fleet_manager": "Upravlja vozilima, dokumentima, održavanjem i troškovima.",
+    "mechanic": "Vodi održavanje i prijave štete; ostalo samo pregledava.",
+    "driver": "Vidi vozni park i može prijaviti štetu."
+  },
+  "inviteDialog": {
+    "title": "Pozovite člana tima",
+    "description": "Osoba će dobiti poveznicu za otvaranje računa u vašoj tvrtki. Poveznica vrijedi 7 dana.",
+    "emailLabel": "E-pošta",
+    "emailPlaceholder": "ime@tvrtka.hr",
+    "roleLabel": "Uloga",
+    "submit": "Pošalji pozivnicu",
+    "submitting": "Slanje…",
+    "successTitle": "Pozivnica je izrađena",
+    "emailedDescription": "Poslali smo pozivnicu na {email}. Poveznicu ispod možete podijeliti i sami.",
+    "notEmailedDescription": "Slanje e-pošte nije postavljeno pa ništa nije poslano. Sami podijelite ovu poveznicu s {email}.",
+    "linkLabel": "Poveznica pozivnice",
+    "done": "Gotovo"
+  },
+  "members": {
+    "headers": {
+      "member": "Član",
+      "role": "Uloga",
+      "joined": "Član od"
+    },
+    "you": "Vi",
+    "changeRole": "Promijeni ulogu za {name}",
+    "remove": "Ukloni {name}",
+    "removeTitle": "Ukloniti {name}?",
+    "removeDescription": "Račun ove osobe briše se i ona odmah gubi pristup. Vozila, održavanja i troškovi koje je unijela ostaju u tvrtki."
+  },
+  "invitations": {
+    "title": "Pozivnice na čekanju",
+    "description": "Pozivnice koje još nisu prihvaćene.",
+    "headers": {
+      "email": "E-pošta",
+      "role": "Uloga",
+      "invited": "Poslano",
+      "expires": "Istječe"
+    },
+    "expired": "Istekla",
+    "copyLink": "Kopiraj poveznicu",
+    "copied": "Kopirano",
+    "copyPrompt": "Kopirajte poveznicu pozivnice:",
+    "resend": "Ponovno pošalji pozivnicu na {email}",
+    "resent": "Pozivnica je ponovno poslana na {email}.",
+    "newLink": "Izrađena je nova poveznica za {email}, a stara više ne radi. Kopirajte je s popisa.",
+    "revoke": "Opozovi pozivnicu za {email}",
+    "revokeTitle": "Opozvati pozivnicu za {email}?",
+    "revokeDescription": "Poveznica pozivnice prestaje raditi. Osobu možete kasnije ponovno pozvati."
+  },
+  "errors": {
+    "notAllowed": "Samo administratori mogu upravljati timom.",
+    "invalidEmail": "Unesite ispravnu adresu e-pošte.",
+    "alreadyMember": "Ova osoba već je član vaše tvrtke.",
+    "ownRole": "Ne možete promijeniti vlastitu ulogu.",
+    "removeSelf": "Ne možete ukloniti sami sebe.",
+    "generic": "Nešto nije u redu. Pokušajte ponovno."
+  },
+  "email": {
+    "subject": "Pozivnica za tvrtku {company} na FleetCoreu",
+    "body": "{inviter} šalje vam pozivnicu da se pridružite tvrtki {company} na FleetCoreu (uloga: {role}).\n\nOtvorite svoj račun ovdje:\n{url}\n\nPoveznica istječe za {days} dana."
+  },
+  "invite": {
+    "title": "Pridružite se tvrtki {company}",
+    "description": "Pozvani ste u ulozi: {role}. Otvorite račun kako biste započeli.",
+    "emailLabel": "E-pošta",
+    "fullNameLabel": "Ime i prezime",
+    "passwordLabel": "Lozinka",
+    "submit": "Otvori račun i pridruži se",
+    "submitting": "Otvaranje računa…",
+    "goToLogin": "Idi na prijavu",
+    "signOutToAccept": "Odjavi se i nastavi",
+    "checkInbox": {
+      "title": "Provjerite svoju e-poštu",
+      "description": "Poslali smo poveznicu za potvrdu na {email}. Kliknite je kako biste aktivirali svoj račun."
+    },
+    "errors": {
+      "rejected": "Ova se pozivnica više ne može koristiti. Zatražite novu od administratora.",
+      "emailTaken": "Račun s ovom adresom e-pošte već postoji. Pozivnice vrijede samo za nove račune."
+    },
+    "invalid": {
+      "title": "Pozivnica nije pronađena",
+      "description": "Poveznica nije ispravna ili je pozivnica opozvana. Zatražite novu od administratora."
+    },
+    "accepted": {
+      "title": "Pozivnica je već iskorištena",
+      "description": "S ovom je pozivnicom već otvoren račun. Prijavite se za nastavak."
+    },
+    "expired": {
+      "title": "Pozivnica je istekla",
+      "description": "Zamolite administratora tvrtke {company} da vam pošalje novu pozivnicu."
+    },
+    "signedIn": {
+      "title": "Već ste prijavljeni",
+      "description": "Prijavljeni ste kao {currentEmail}. Ova je pozivnica za {email}. Odjavite se kako biste otvorili taj račun."
+    }
+  }
+}

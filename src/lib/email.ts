@@ -1,16 +1,15 @@
 import { Resend } from "resend";
 
-const FROM_ADDRESS = "FleetCore <reminders@fleetcore.app>";
+const REMINDERS_FROM = "FleetCore <reminders@fleetcore.app>";
+const TEAM_FROM = "FleetCore <team@fleetcore.app>";
 
-export async function sendReminderEmail({
-  to,
-  subject,
-  text,
-}: {
+type EmailMessage = {
   to: string;
   subject: string;
   text: string;
-}) {
+};
+
+async function sendEmail({ from, to, subject, text }: EmailMessage & { from: string }) {
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
@@ -20,7 +19,7 @@ export async function sendReminderEmail({
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
-    from: FROM_ADDRESS,
+    from,
     to,
     subject,
     text,
@@ -32,4 +31,12 @@ export async function sendReminderEmail({
   }
 
   return { skipped: false as const };
+}
+
+export function sendReminderEmail(message: EmailMessage) {
+  return sendEmail({ from: REMINDERS_FROM, ...message });
+}
+
+export function sendInvitationEmail(message: EmailMessage) {
+  return sendEmail({ from: TEAM_FROM, ...message });
 }

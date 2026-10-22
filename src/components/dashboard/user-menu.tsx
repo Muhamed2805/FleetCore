@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { UserRole } from "@/lib/supabase/types";
+import { getRoleLabels } from "@/lib/team";
 
 function initials(name: string | null, email: string | null | undefined) {
   if (name) {
@@ -36,6 +37,7 @@ export async function UserMenu({
   role: UserRole;
 }) {
   const t = await getTranslations("dashboardShell");
+  const tTeam = await getTranslations("team");
 
   return (
     <DropdownMenu>
@@ -54,8 +56,8 @@ export async function UserMenu({
             <span className="truncate text-xs font-normal text-muted-foreground">
               {email}
             </span>
-            <Badge variant="secondary" className="mt-1 w-fit capitalize">
-              {role.replace("_", " ")}
+            <Badge variant="secondary" className="mt-1 w-fit">
+              {getRoleLabels(tTeam)[role]}
             </Badge>
           </DropdownMenuLabel>
         </DropdownMenuGroup>

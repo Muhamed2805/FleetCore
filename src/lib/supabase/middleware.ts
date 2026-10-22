@@ -5,8 +5,9 @@ import { routing } from "@/i18n/routing";
 
 // /api routes manage their own auth (session cookies for user-triggered
 // routes, a bearer secret for the cron route) rather than the
-// redirect-to-/login gate below.
-const PUBLIC_PATHS = ["/login", "/signup", "/auth", "/api"];
+// redirect-to-/login gate below. /invite is opened by people who don't
+// have an account yet.
+const PUBLIC_PATHS = ["/login", "/signup", "/auth", "/api", "/invite"];
 
 // The i18n middleware only prefixes non-default locales (`localePrefix:
 // "as-needed"`), so `/login` is English and `/bs/login` is Bosnian. Auth

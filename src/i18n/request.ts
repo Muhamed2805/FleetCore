@@ -20,6 +20,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     damageReports,
     reminders,
     calendar,
+    team,
   ] = await Promise.all([
     import(`../../messages/${locale}/common.json`),
     import(`../../messages/${locale}/auth.json`),
@@ -31,6 +32,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../../messages/${locale}/damage-reports.json`),
     import(`../../messages/${locale}/reminders.json`),
     import(`../../messages/${locale}/calendar.json`),
+    import(`../../messages/${locale}/team.json`),
   ]);
 
   return {
@@ -46,6 +48,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       damageReports: damageReports.default,
       reminders: reminders.default,
       calendar: calendar.default,
+      team: team.default,
     },
   };
 });

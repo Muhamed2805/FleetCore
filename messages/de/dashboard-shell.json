@@ -85,10 +85,6 @@
     "title": "Dokumente",
     "description": "Zulassungspapiere, Versicherungs- und Prüfdokumente mit KI-gestützter Datenextraktion. Folgt in einer späteren Phase."
   },
-  "teamPage": {
-    "title": "Team",
-    "description": "Laden Sie Flottenmanager, Mechaniker und Fahrer zu Ihrem Unternehmen ein. Folgt in einer späteren Phase."
-  },
   "appNotFound": {
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde möglicherweise verschoben.",

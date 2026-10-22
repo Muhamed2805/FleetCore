@@ -1,0 +1,114 @@
+{
+  "page": {
+    "title": "Team",
+    "memberCount": "{count, plural, one {# member} other {# members}}"
+  },
+  "actions": {
+    "invite": "Invite member"
+  },
+  "roles": {
+    "admin": "Admin",
+    "fleetManager": "Fleet manager",
+    "mechanic": "Mechanic",
+    "driver": "Driver"
+  },
+  "roleDescriptions": {
+    "admin": "Full access, including the team and company settings.",
+    "fleet_manager": "Manages vehicles, documents, maintenance and expenses.",
+    "mechanic": "Handles maintenance and damage reports; read-only elsewhere.",
+    "driver": "Sees the fleet and can report damage."
+  },
+  "inviteDialog": {
+    "title": "Invite a team member",
+    "description": "They'll get a link to create an account in your company. The link is valid for 7 days.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@company.com",
+    "roleLabel": "Role",
+    "submit": "Send invitation",
+    "submitting": "Sending…",
+    "successTitle": "Invitation created",
+    "emailedDescription": "We emailed an invitation to {email}. You can also share the link below.",
+    "notEmailedDescription": "Email sending isn't configured, so nothing was sent. Share this link with {email} yourself.",
+    "linkLabel": "Invite link",
+    "done": "Done"
+  },
+  "members": {
+    "headers": {
+      "member": "Member",
+      "role": "Role",
+      "joined": "Joined"
+    },
+    "you": "You",
+    "changeRole": "Change role for {name}",
+    "remove": "Remove {name}",
+    "removeTitle": "Remove {name}?",
+    "removeDescription": "Their account is deleted and they lose access immediately. Vehicles, maintenance and expenses they created stay in the company."
+  },
+  "invitations": {
+    "title": "Pending invitations",
+    "description": "Invitations that haven't been accepted yet.",
+    "headers": {
+      "email": "Email",
+      "role": "Role",
+      "invited": "Invited",
+      "expires": "Expires"
+    },
+    "expired": "Expired",
+    "copyLink": "Copy link",
+    "copied": "Copied",
+    "copyPrompt": "Copy the invite link:",
+    "resend": "Resend invitation to {email}",
+    "resent": "Invitation sent again to {email}.",
+    "newLink": "New link created for {email} — the old one no longer works. Copy it from the list.",
+    "revoke": "Revoke invitation for {email}",
+    "revokeTitle": "Revoke invitation for {email}?",
+    "revokeDescription": "The invite link stops working. You can invite them again later."
+  },
+  "errors": {
+    "notAllowed": "Only admins can manage the team.",
+    "invalidEmail": "Enter a valid email address.",
+    "alreadyMember": "This person is already a member of your company.",
+    "ownRole": "You can't change your own role.",
+    "removeSelf": "You can't remove yourself.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "email": {
+    "subject": "You're invited to join {company} on FleetCore",
+    "body": "{inviter} invited you to join {company} on FleetCore as {role}.\n\nCreate your account here:\n{url}\n\nThis link expires in {days} days."
+  },
+  "invite": {
+    "title": "Join {company}",
+    "description": "You've been invited as {role}. Create your account to get started.",
+    "emailLabel": "Email",
+    "fullNameLabel": "Your name",
+    "passwordLabel": "Password",
+    "submit": "Create account and join",
+    "submitting": "Creating account…",
+    "goToLogin": "Go to login",
+    "signOutToAccept": "Sign out and continue",
+    "checkInbox": {
+      "title": "Check your inbox",
+      "description": "We sent a confirmation link to {email}. Click it to activate your account."
+    },
+    "errors": {
+      "rejected": "This invitation can't be used anymore. Ask your admin for a new one.",
+      "emailTaken": "An account with this email already exists. Invitations only work for new accounts."
+    },
+    "invalid": {
+      "title": "Invitation not found",
+      "description": "This link is invalid or the invitation was revoked. Ask your admin for a new one."
+    },
+    "accepted": {
+      "title": "Invitation already used",
+      "description": "An account was already created with this invitation. Log in to continue."
+    },
+    "expired": {
+      "title": "Invitation expired",
+      "description": "Ask an admin of {company} to send you a new invitation."
+    },
+    "signedIn": {
+      "title": "You're already signed in",
+      "description": "You're signed in as {currentEmail}. This invitation is for {email} — sign out to create that account."
+    }
+  }
+}
