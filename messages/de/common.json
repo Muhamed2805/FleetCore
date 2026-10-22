@@ -31,7 +31,8 @@
     "genericError": "Extraktion fehlgeschlagen.",
     "couldNotRead": "Dieses Dokument konnte nicht gelesen werden.",
     "notSignedIn": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
-    "unsupportedType": "Laden Sie ein JPEG-, PNG-, GIF- oder WebP-Bild oder eine PDF-Datei hoch."
+    "unsupportedType": "Laden Sie ein JPEG-, PNG-, GIF- oder WebP-Bild oder eine PDF-Datei hoch.",
+    "rateLimited": "Sie haben das Limit für KI-Scans erreicht. Versuchen Sie es später erneut."
   },
   "language": {
     "label": "Sprache"

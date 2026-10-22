@@ -60,9 +60,12 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Checks
 
 CI (`.github/workflows/ci.yml`) runs on every pull request and every push
-to `main`, on the Node version in `.nvmrc`, as two parallel jobs:
+to `main`, on the Node version in `.nvmrc`, as three parallel jobs:
 
 - **Lint, typecheck & build**
+- **Migrations & database types** — applies every migration to a
+  throwaway Postgres and fails if `src/lib/supabase/database.types.ts`
+  doesn't match them (see Database types below).
 - **E2E smoke tests** — Playwright (`e2e/`) against the production build:
   public pages in every locale, the login redirect for protected pages,
   the invite page, and the `/auth` and `/api` route handlers. They need no
@@ -77,7 +80,21 @@ npm run typecheck
 npm run build
 npx playwright install chromium   # first time only
 npm run test:e2e                  # reuses a running `npm run dev`, or starts one
+npm run db:types                  # after changing migrations; needs Docker
 ```
+
+### Database types
+
+`src/lib/supabase/database.types.ts` is generated from the migrations, never
+edited by hand. `npm run db:types` (`scripts/db-types.mjs`) starts a
+throwaway Postgres 17 container, adds the few Supabase pieces the migrations
+expect (`scripts/supabase-stub.sql`), applies every migration in order and
+runs the Supabase CLI generator against it. It needs Docker but no Supabase
+login, and a migration that fails to apply fails the run.
+
+After adding a migration: run `npm run db:types` and commit the regenerated
+file with it. `src/lib/supabase/types.ts` re-exports `Database` and gives
+the enums their app-facing names (`UserRole`, `VehicleStatus`, …).
 
 ### Roles
 
@@ -104,6 +121,11 @@ UI:
 
 See `supabase/migrations/20261023090000_tenant_isolation_hardening.sql`.
 
+Policies call the helpers wrapped in a subquery,
+`(select public.get_my_company_id())`, `(select auth.uid())`, so Postgres
+runs them once per query instead of once per row. New policies must do the
+same (`supabase/migrations/20261023100000_rls_initplan.sql`).
+
 ### Team
 
 Admins invite people by email with a role from the Team page. The invitee
@@ -112,7 +134,9 @@ that email; the signup trigger adds them to the inviting company with the
 invited role instead of creating a new company. Invitations are for new
 accounts only — a user belongs to exactly one company. Invite emails go out
 via Resend; without `RESEND_API_KEY` nothing is sent and the admin gets a
-link to copy and share instead.
+link to copy and share instead. Invite links are built from `SITE_URL`;
+set it in every deployment, since without it they fall back to the
+request's Host header.
 
 Admins can change any other member's role and remove members (which deletes
 their account; records they created stay, with the author cleared). Admins
@@ -131,6 +155,11 @@ Scans run as Server Actions, so only signed-in members can trigger them (each
 scan spends API credits). Files are capped at 4 MB, set in
 `src/lib/document-scan.ts`, to stay under the Server Action body limit in
 `next.config.ts` and Vercel's 4.5 MB request limit.
+
+Scans are rate limited in the database: at most 30 per user per hour and
+200 per company per day (`consume_ai_scan()` in
+`supabase/migrations/20261023110000_ai_scan_rate_limit.sql`). Each scan is
+counted before the API call, so failed scans count too.
 
 ### Documents
 

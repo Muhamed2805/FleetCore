@@ -31,7 +31,8 @@
     "genericError": "Extrahering misslyckades.",
     "couldNotRead": "Kunde inte läsa det här dokumentet.",
     "notSignedIn": "Din session har gått ut. Logga in igen.",
-    "unsupportedType": "Ladda upp en JPEG-, PNG-, GIF- eller WebP-bild, eller en PDF."
+    "unsupportedType": "Ladda upp en JPEG-, PNG-, GIF- eller WebP-bild, eller en PDF.",
+    "rateLimited": "Du har nått gränsen för AI-skanningar. Försök igen senare."
   },
   "language": {
     "label": "Språk"

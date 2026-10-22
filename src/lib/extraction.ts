@@ -12,6 +12,7 @@ import {
 } from "@/lib/document-scan";
 import { expiringCategories, type ExpiringCategory } from "@/lib/documents";
 import { getCurrentProfile } from "@/lib/supabase/queries";
+import { createClient } from "@/lib/supabase/server";
 
 const vehicleRegistrationSchema = z.object({
   make: z.string().nullable(),
@@ -122,6 +123,18 @@ async function getUploadedFile(
   if (problem) {
     return { error: t(problem, { max: MAX_SCAN_FILE_MB }) };
   }
+
+  // Counted before the API call, so failed scans use up quota too. Limits
+  // are in supabase/migrations/20261023110000_ai_scan_rate_limit.sql.
+  const supabase = await createClient();
+  const { data: allowed, error } = await supabase.rpc("consume_ai_scan");
+  if (error) {
+    return { error: t("genericError") };
+  }
+  if (!allowed) {
+    return { error: t("rateLimited") };
+  }
+
   return file;
 }
 
