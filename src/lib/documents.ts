@@ -1,11 +1,12 @@
-import type { createClient } from "@/lib/supabase/client";
+import {
+  DOCUMENTS_BUCKET,
+  storageSafeFileName,
+  type BrowserClient,
+} from "@/lib/storage";
 import type { Database, DocumentCategory } from "@/lib/supabase/types";
 
-type BrowserClient = ReturnType<typeof createClient>;
 type VehicleUpdate = Database["public"]["Tables"]["vehicles"]["Update"];
 type Translate = (key: string) => string;
-
-export const DOCUMENTS_BUCKET = "vehicle-documents";
 
 export const documentCategories: DocumentCategory[] = [
   "registration",
@@ -95,19 +96,6 @@ export function getDocumentCategoryLabels(
 // "sa 123 ab"); compare them on letters and digits only.
 export function normalizePlate(plate: string | null | undefined) {
   return (plate ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "");
-}
-
-// Storage keys accept only a limited character set, so a name like
-// "Registracija Škoda.pdf" would be rejected. The original name is kept in
-// vehicle_documents.file_name for display; the key only needs to be unique
-// and readable.
-export function storageSafeFileName(name: string) {
-  const safe = name
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^A-Za-z0-9._-]+/g, "_")
-    .replace(/^_+|_+$/g, "");
-  return safe.slice(-100) || "document";
 }
 
 export async function uploadVehicleDocument(

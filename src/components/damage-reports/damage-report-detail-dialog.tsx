@@ -31,6 +31,7 @@ import {
   getDamageStatusLabels,
 } from "@/lib/damage-reports";
 import { getExpenseCategoryLabels, formatCurrency } from "@/lib/expenses";
+import { deleteDamageReportWithFiles } from "@/lib/storage";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, DamageReportStatus } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -131,13 +132,8 @@ export function DamageReportDetailDialog({
     router.refresh();
   }
 
-  async function handleDelete() {
-    const supabase = createClient();
-    const { error: deleteError } = await supabase
-      .from("damage_reports")
-      .delete()
-      .eq("id", report.id);
-    return { error: deleteError?.message };
+  function handleDelete() {
+    return deleteDamageReportWithFiles(createClient(), report.id);
   }
 
   return (

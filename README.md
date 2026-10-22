@@ -86,6 +86,24 @@ Every signup creates a new company and its first user as `admin`. Roles are
 `supabase/migrations/20260805210300_init_auth_schema.sql`). Admins bring
 teammates into the company from the Team page (below).
 
+### Tenant isolation
+
+Each company is a tenant, and the database enforces the boundary, not the
+UI:
+
+- Row Level Security on every table scopes reads and writes to the
+  caller's company (`get_my_company_id()`) and role (`get_my_role()`).
+- Composite foreign keys (`(vehicle_id, company_id)` and so on) stop a row
+  from pointing at another company's vehicle, expense, report or member.
+- `company_id` on a profile never changes for a signed-in user, and users
+  can only edit their own `full_name`; role changes and removals go
+  through `update_member_role()` and `remove_member()`.
+- Storage keys start with the company id, which the bucket policies check.
+- Server Actions re-check the session and role, since anyone can POST to
+  them. The service-role key is only used by the cron route.
+
+See `supabase/migrations/20261023090000_tenant_isolation_hardening.sql`.
+
 ### Team
 
 Admins invite people by email with a role from the Team page. The invitee
@@ -148,4 +166,6 @@ every company and is meant to be hit by a scheduler once deployed (Phase
 Reminders page, which scans just your own company. Emails go out via
 Resend and are skipped (logged only) until `RESEND_API_KEY` is set.
 Each expiry date gets its own set of reminders, so renewing a document and
-moving the date starts the thresholds over.
+moving the date starts the thresholds over. Each cron run emails every
+notification from the last two days that hasn't been emailed yet,
+including ones created by "Check now".

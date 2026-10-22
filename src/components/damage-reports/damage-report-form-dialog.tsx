@@ -24,6 +24,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "@/i18n/navigation";
 import { getDamageSeverityLabels } from "@/lib/damage-reports";
+import { DAMAGE_PHOTOS_BUCKET, storageSafeFileName } from "@/lib/storage";
 import { createClient } from "@/lib/supabase/client";
 import type { DamageSeverity } from "@/lib/supabase/types";
 
@@ -118,9 +119,9 @@ export function DamageReportFormDialog({
       : [];
 
     for (const file of files) {
-      const path = `${companyId}/${report.id}/${Date.now()}-${file.name}`;
+      const path = `${companyId}/${report.id}/${Date.now()}-${storageSafeFileName(file.name)}`;
       const { error: uploadError } = await supabase.storage
-        .from("damage-reports")
+        .from(DAMAGE_PHOTOS_BUCKET)
         .upload(path, file);
 
       if (uploadError) {

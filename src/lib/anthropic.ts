@@ -1,3 +1,5 @@
+import "server-only";
+
 import Anthropic from "@anthropic-ai/sdk";
 
 // Server-only. Never import this from a Client Component.

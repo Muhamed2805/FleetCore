@@ -11,11 +11,9 @@ import { Label } from "@/components/ui/label";
 const DEFAULT_THRESHOLDS = [30, 15, 7, 1];
 
 export function ReminderSettingsForm({
-  companyId,
   thresholdsDays,
   emailEnabled: initialEmailEnabled,
 }: {
-  companyId: string;
   thresholdsDays: number[];
   emailEnabled: boolean;
 }) {
@@ -49,7 +47,6 @@ export function ReminderSettingsForm({
       .filter((value) => Number.isInteger(value) && value > 0);
 
     const result = await updateReminderSettings(
-      companyId,
       [...selected, ...custom],
       emailEnabled
     );

@@ -27,8 +27,10 @@ export default async function DashboardLayout({
     return null;
   }
 
-  const { notifications, unreadCount } = await getNotificationsSummary();
-  const searchItems = await getSearchIndex();
+  const [{ notifications, unreadCount }, searchItems] = await Promise.all([
+    getNotificationsSummary(),
+    getSearchIndex(),
+  ]);
 
   return (
     <div className="flex min-h-screen">

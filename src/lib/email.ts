@@ -1,3 +1,5 @@
+import "server-only";
+
 import { Resend } from "resend";
 
 const REMINDERS_FROM = "FleetCore <reminders@fleetcore.app>";
