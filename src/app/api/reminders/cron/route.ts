@@ -15,8 +15,11 @@ const categoryLabels: Record<NotificationCategory, string> = {
 // client has no user session, so generate_due_reminders() runs unscoped),
 // then emails each newly created notification's recipient.
 export async function POST(request: Request) {
+  // Reject when CRON_SECRET is unset too — otherwise the expected header
+  // would be the literal string "Bearer undefined".
+  const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!secret || authHeader !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
