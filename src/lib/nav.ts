@@ -4,6 +4,7 @@ import {
   FileText,
   LayoutDashboard,
   Receipt,
+  Settings,
   TriangleAlert,
   Truck,
   Users,
@@ -42,5 +43,6 @@ export function getNavItems(t: Translate): NavItem[] {
       icon: Users,
       roles: ["admin"],
     },
+    { title: t("nav.settings"), href: "/dashboard/settings", icon: Settings },
   ];
 }

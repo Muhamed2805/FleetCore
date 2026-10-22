@@ -9,14 +9,16 @@
     "expenses": "Utgifter",
     "reminders": "Påminnelser",
     "calendar": "Kalender",
-    "team": "Team"
+    "team": "Team",
+    "settings": "Inställningar"
   },
   "sidebar": {
     "openNavigation": "Öppna navigering"
   },
   "userMenu": {
     "openMenu": "Öppna användarmeny",
-    "signOut": "Logga ut"
+    "signOut": "Logga ut",
+    "settings": "Inställningar"
   },
   "notifications": {
     "srLabel": "Notiser",

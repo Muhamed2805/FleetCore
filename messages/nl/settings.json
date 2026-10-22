@@ -1,0 +1,41 @@
+{
+  "page": {
+    "title": "Instellingen",
+    "description": "Beheer je profiel, wachtwoord en bedrijf."
+  },
+  "saved": "Opgeslagen.",
+  "profile": {
+    "title": "Profiel",
+    "description": "Je team ziet je naam. Een beheerder beheert de rollen.",
+    "emailLabel": "E-mailadres",
+    "roleLabel": "Rol"
+  },
+  "fullName": {
+    "label": "Je naam"
+  },
+  "companyName": {
+    "label": "Bedrijfsnaam"
+  },
+  "password": {
+    "title": "Wachtwoord",
+    "description": "Vul je huidige wachtwoord in om een nieuw te kiezen.",
+    "currentLabel": "Huidig wachtwoord",
+    "newLabel": "Nieuw wachtwoord",
+    "confirmLabel": "Bevestig nieuw wachtwoord",
+    "hint": "Minstens {min} tekens.",
+    "submit": "Wachtwoord wijzigen",
+    "submitting": "Wijzigen…",
+    "saved": "Wachtwoord gewijzigd."
+  },
+  "company": {
+    "title": "Bedrijf",
+    "description": "Je hele team ziet de bedrijfsnaam."
+  },
+  "errors": {
+    "notSignedIn": "Je sessie is verlopen. Log opnieuw in.",
+    "notAllowed": "Alleen beheerders kunnen de bedrijfsnaam wijzigen.",
+    "invalidName": "Vul een naam in van maximaal 100 tekens.",
+    "invalidCompanyName": "Vul een bedrijfsnaam in van maximaal 100 tekens.",
+    "generic": "Opslaan is mislukt. Probeer het opnieuw."
+  }
+}

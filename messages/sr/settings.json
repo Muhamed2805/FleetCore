@@ -1,0 +1,41 @@
+{
+  "page": {
+    "title": "Podešavanja",
+    "description": "Upravljajte profilom, lozinkom i kompanijom."
+  },
+  "saved": "Sačuvano.",
+  "profile": {
+    "title": "Profil",
+    "description": "Vaše ime vidi ceo tim. Uloge menja administrator.",
+    "emailLabel": "Email",
+    "roleLabel": "Uloga"
+  },
+  "fullName": {
+    "label": "Vaše ime"
+  },
+  "companyName": {
+    "label": "Naziv kompanije"
+  },
+  "password": {
+    "title": "Lozinka",
+    "description": "Unesite trenutnu lozinku da biste izabrali novu.",
+    "currentLabel": "Trenutna lozinka",
+    "newLabel": "Nova lozinka",
+    "confirmLabel": "Potvrdite novu lozinku",
+    "hint": "Najmanje {min} znakova.",
+    "submit": "Promeni lozinku",
+    "submitting": "Menjanje…",
+    "saved": "Lozinka je promenjena."
+  },
+  "company": {
+    "title": "Kompanija",
+    "description": "Naziv kompanije vidi ceo tim."
+  },
+  "errors": {
+    "notSignedIn": "Sesija je istekla. Prijavite se ponovo.",
+    "notAllowed": "Samo administratori mogu da menjaju naziv kompanije.",
+    "invalidName": "Unesite ime do 100 znakova.",
+    "invalidCompanyName": "Unesite naziv kompanije do 100 znakova.",
+    "generic": "Čuvanje nije uspelo. Pokušajte ponovo."
+  }
+}
