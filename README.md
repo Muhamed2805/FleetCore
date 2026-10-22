@@ -29,6 +29,7 @@ commit history.
 - [x] Phase 11 — Internationalization (en, bs, hr, sr, de, sv, nl)
 - [x] Phase 12 — Team (email invitations, role changes, member removal)
 - [x] Phase 13 — CI (lint, typecheck and build on every pull request)
+- [x] Phase 14 — Playwright smoke tests in CI
 
 ## Tech stack
 
@@ -58,13 +59,23 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Checks
 
 CI (`.github/workflows/ci.yml`) runs on every pull request and every push
-to `main`: lint, typecheck and a production build, on the Node version in
-`.nvmrc`. Run the same locally before opening a PR:
+to `main`, on the Node version in `.nvmrc`, as two parallel jobs:
+
+- **Lint, typecheck & build**
+- **E2E smoke tests** — Playwright (`e2e/`) against the production build:
+  public pages in every locale, the login redirect for protected pages,
+  the invite page, and the `/auth` and `/api` route handlers. They need no
+  session, so CI runs them against a placeholder Supabase URL with no
+  secrets.
+
+Run the same locally before opening a PR:
 
 ```bash
 npm run lint
 npm run typecheck
 npm run build
+npx playwright install chromium   # first time only
+npm run test:e2e                  # reuses a running `npm run dev`, or starts one
 ```
 
 ### Roles
