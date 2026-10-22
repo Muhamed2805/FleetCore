@@ -1,5 +1,7 @@
 # FleetCore
 
+[![CI](https://github.com/Muhamed2805/FleetCore/actions/workflows/ci.yml/badge.svg)](https://github.com/Muhamed2805/FleetCore/actions/workflows/ci.yml)
+
 Modern SaaS fleet management & maintenance platform for companies operating
 cars, vans, trucks, construction machinery and forklifts. Vehicles,
 registrations, insurance, inspections, maintenance schedules, service
@@ -26,6 +28,7 @@ commit history.
 - [x] Phase 10 — Damage reports (photos, severity/status workflow, linked repair expenses)
 - [x] Phase 11 — Internationalization (en, bs, hr, sr, de, sv, nl)
 - [x] Phase 12 — Team (email invitations, role changes, member removal)
+- [x] Phase 13 — CI (lint, typecheck and build on every pull request)
 
 ## Tech stack
 
@@ -51,6 +54,18 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Checks
+
+CI (`.github/workflows/ci.yml`) runs on every pull request and every push
+to `main`: lint, typecheck and a production build, on the Node version in
+`.nvmrc`. Run the same locally before opening a PR:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
 ### Roles
 
