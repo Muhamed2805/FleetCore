@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { FleetCompositionChart } from "@/components/dashboard/fleet-composition-chart";
 import { SpendTrendChart } from "@/components/dashboard/spend-trend-chart";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -161,9 +161,9 @@ export default async function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button nativeButton={false} render={<Link href="/dashboard/vehicles" />}>
+            <Link href="/dashboard/vehicles" className={buttonVariants()}>
               {t("overview.emptyState.cta")}
-            </Button>
+            </Link>
           </CardContent>
         </Card>
       ) : (

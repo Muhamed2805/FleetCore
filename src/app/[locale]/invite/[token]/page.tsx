@@ -5,7 +5,7 @@ import {
   AcceptInviteForm,
   SignOutToAcceptButton,
 } from "@/components/team/accept-invite-form";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -59,9 +59,9 @@ export default async function InvitePage({
   const invitation = data?.[0] ?? null;
 
   const loginLink = (
-    <Button nativeButton={false} variant="outline" render={<Link href="/login" />}>
+    <Link href="/login" className={buttonVariants({ variant: "outline" })}>
       {t("invite.goToLogin")}
-    </Button>
+    </Link>
   );
 
   if (!invitation) {

@@ -6,8 +6,8 @@ import { expect, test } from "@playwright/test";
 import { routing } from "../src/i18n/routing";
 
 // Smoke tests: every public page renders in every locale, protected pages
-// redirect to login, and the route handlers outside app/[locale] respond
-// instead of 404ing. None of them need a session, so CI runs them against
+// redirect to login, unknown URLs get a localized 404, and the route
+// handlers outside app/[locale] respond instead of 404ing. None of them need a session, so CI runs them against
 // a placeholder Supabase URL (see .github/workflows/ci.yml).
 
 // Reads a message straight from messages/<locale>/<namespace>.json, so the
@@ -35,11 +35,11 @@ test.describe("public pages", () => {
     expect(response?.status()).toBe(200);
     await expect(page).toHaveTitle(/FleetCore/);
 
-    // Base UI's Button renders this <a> with role="button", so match by text.
-    await page
-      .getByRole("banner")
-      .getByText(t("en", "landing", "header.logIn"), { exact: true })
-      .click();
+    await expect(
+      page.getByRole("link", { name: t("en", "landing", "hero.getStarted") })
+    ).toHaveAttribute("href", "/signup");
+
+    await page.getByRole("link", { name: t("en", "landing", "header.logIn") }).click();
     await expect(page).toHaveURL(/\/login$/);
   });
 
@@ -67,6 +67,26 @@ test.describe("public pages", () => {
       await expect(page.getByLabel(t("en", "auth", key))).toBeVisible();
     }
   });
+
+  test("unknown route returns 404", async ({ page }) => {
+    const response = await page.goto("/this-page-does-not-exist");
+    expect(response?.status()).toBe(404);
+    await expect(
+      page.getByRole("heading", { name: t("en", "dashboard-shell", "appNotFound.title") })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: t("en", "dashboard-shell", "appNotFound.goHome") })
+    ).toHaveAttribute("href", "/");
+  });
+
+  test("unknown route 404 is localized", async ({ page }) => {
+    const response = await page.goto("/de/this-page-does-not-exist");
+    expect(response?.status()).toBe(404);
+    await expect(page.locator("html")).toHaveAttribute("lang", "de");
+    await expect(
+      page.getByRole("heading", { name: t("de", "dashboard-shell", "appNotFound.title") })
+    ).toBeVisible();
+  });
 });
 
 test.describe("auth gate", () => {
@@ -83,6 +103,11 @@ test.describe("auth gate", () => {
   test("team page redirects to login", async ({ page }) => {
     await page.goto("/dashboard/team");
     await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fteam$/);
+  });
+
+  test("unknown dashboard route still redirects to login", async ({ page }) => {
+    await page.goto("/dashboard/does-not-exist");
+    await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fdoes-not-exist$/);
   });
 });
 

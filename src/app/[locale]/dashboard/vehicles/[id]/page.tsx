@@ -4,7 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { Link, redirect } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -110,16 +110,13 @@ export default async function VehicleDetailPage({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="-ml-2"
-          nativeButton={false}
-          render={<Link href="/dashboard/vehicles" />}
+        <Link
+          href="/dashboard/vehicles"
+          className={buttonVariants({ variant: "ghost", size: "sm", className: "-ml-2" })}
         >
           <ArrowLeft className="size-4" />
           {t("detail.back")}
-        </Button>
+        </Link>
       </div>
 
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -242,14 +239,12 @@ export default async function VehicleDetailPage({
           <CardTitle className="text-sm text-muted-foreground">
             {t("detail.maintenance.title")}
           </CardTitle>
-          <Button
-            variant="ghost"
-            size="sm"
-            nativeButton={false}
-            render={<Link href="/dashboard/maintenance" />}
+          <Link
+            href="/dashboard/maintenance"
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
             {tCommon("actions.viewAll")}
-          </Button>
+          </Link>
         </CardHeader>
         <CardContent>
           {!maintenanceRecords?.length ? (
@@ -307,14 +302,12 @@ export default async function VehicleDetailPage({
                 </Button>
               }
             />
-            <Button
-              variant="ghost"
-              size="sm"
-              nativeButton={false}
-              render={<Link href="/dashboard/damage-reports" />}
+            <Link
+              href="/dashboard/damage-reports"
+              className={buttonVariants({ variant: "ghost", size: "sm" })}
             >
               {t("damageReportsCard.viewAll")}
-            </Button>
+            </Link>
           </div>
         </CardHeader>
         <CardContent>

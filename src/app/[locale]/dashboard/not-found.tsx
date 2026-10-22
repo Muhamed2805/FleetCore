@@ -1,7 +1,7 @@
 import { SearchX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 
@@ -20,13 +20,9 @@ export default async function DashboardNotFound() {
             {t("dashboardNotFound.description")}
           </p>
         </div>
-        <Button
-          variant="outline"
-          nativeButton={false}
-          render={<Link href="/dashboard" />}
-        >
+        <Link href="/dashboard" className={buttonVariants({ variant: "outline" })}>
           {t("dashboardNotFound.backToDashboard")}
-        </Button>
+        </Link>
       </CardContent>
     </Card>
   );
