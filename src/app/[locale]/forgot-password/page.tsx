@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
+import { AuthShell } from "@/components/auth/auth-shell";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -54,7 +55,7 @@ export default function ForgotPasswordPage() {
 
   if (isSent) {
     return (
-      <div className="flex flex-1 items-center justify-center px-4 py-12">
+      <AuthShell>
         <Card className="w-full max-w-sm">
           <CardHeader>
             <CardTitle>{t("forgotPassword.sent.title")}</CardTitle>
@@ -71,12 +72,12 @@ export default function ForgotPasswordPage() {
             </Link>
           </CardContent>
         </Card>
-      </div>
+      </AuthShell>
     );
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t("forgotPassword.title")}</CardTitle>
@@ -110,6 +111,6 @@ export default function ForgotPasswordPage() {
           </p>
         </CardContent>
       </Card>
-    </div>
+    </AuthShell>
   );
 }

@@ -1,3 +1,4 @@
+import type { BadgeVariant } from "@/components/ui/badge";
 import type { VehicleStatus, VehicleType } from "@/lib/supabase/types";
 
 type Translate = (key: string) => string;
@@ -21,15 +22,13 @@ export function getVehicleStatusLabels(t: Translate): Record<VehicleStatus, stri
   };
 }
 
-export const vehicleStatusBadgeVariant: Record<
-  VehicleStatus,
-  "default" | "secondary" | "destructive" | "outline"
-> = {
-  active: "default",
-  maintenance: "secondary",
-  inactive: "outline",
-  sold: "outline",
-};
+export const vehicleStatusBadgeVariant: Record<VehicleStatus, BadgeVariant> =
+  {
+    active: "success",
+    maintenance: "warning",
+    inactive: "outline",
+    sold: "secondary",
+  };
 
 export type ExpiryUrgency = "expired" | "soon" | "ok" | "none";
 

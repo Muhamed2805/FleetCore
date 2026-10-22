@@ -123,7 +123,7 @@ export default async function DashboardPage() {
             ? t("overview.welcomeWithName", { name: profile.full_name })
             : t("overview.welcome")}
         </h1>
-        <p className="text-muted-foreground">{t("overview.subtitle")}</p>
+        <p className="mt-1 text-muted-foreground">{t("overview.subtitle")}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -131,24 +131,28 @@ export default async function DashboardPage() {
           title={t("overview.stats.vehicles")}
           value={vehicles?.length ?? 0}
           icon={Truck}
+          tone="indigo"
           hint={vehicles?.length ? undefined : t("overview.stats.noVehicles")}
         />
         <StatCard
           title={t("overview.stats.expiringSoon")}
           value={expiringSoon}
           icon={Bell}
+          tone="amber"
           hint={t("overview.stats.next30Days")}
         />
         <StatCard
           title={t("overview.stats.openMaintenance")}
           value={openMaintenanceCount ?? 0}
           icon={Wrench}
+          tone="sky"
           hint={openMaintenanceCount ? undefined : t("overview.stats.noOpenJobs")}
         />
         <StatCard
           title={t("overview.stats.expensesThisMonth")}
           value={formatCurrency(expensesThisMonthTotal)}
           icon={Receipt}
+          tone="emerald"
         />
       </div>
 

@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 
+import { AuthShell } from "@/components/auth/auth-shell";
 import { ResetPasswordForm } from "@/components/auth/reset-password-form";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -28,9 +29,9 @@ export default async function ResetPasswordPage() {
 
   if (user && isRecovery) {
     return (
-      <div className="flex flex-1 items-center justify-center px-4 py-12">
+      <AuthShell>
         <ResetPasswordForm email={user.email ?? ""} />
-      </div>
+      </AuthShell>
     );
   }
 
@@ -39,7 +40,7 @@ export default async function ResetPasswordPage() {
   const state = user ? "signedIn" : "expired";
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t(`resetPassword.${state}.title`)}</CardTitle>
@@ -54,6 +55,6 @@ export default async function ResetPasswordPage() {
           </Link>
         </CardContent>
       </Card>
-    </div>
+    </AuthShell>
   );
 }

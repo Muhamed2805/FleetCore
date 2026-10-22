@@ -12,7 +12,7 @@ export function ExpiryBadge({ date }: { date: string | null }) {
     urgency === "expired"
       ? "destructive"
       : urgency === "soon"
-        ? "secondary"
+        ? "warning"
         : "outline";
 
   return (

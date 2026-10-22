@@ -12,6 +12,11 @@
     "team": "Team",
     "settings": "Settings"
   },
+  "navGroups": {
+    "fleet": "Fleet",
+    "planning": "Costs & planning",
+    "organization": "Organization"
+  },
   "sidebar": {
     "openNavigation": "Open navigation"
   },

@@ -14,8 +14,13 @@ import {
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeLabels, routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 
-export function LanguageSelector() {
+export function LanguageSelector({
+  variant = "outline",
+}: {
+  variant?: "outline" | "ghost";
+}) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -33,10 +38,13 @@ export function LanguageSelector() {
       onValueChange={(value) => value && handleChange(value)}
     >
       <SelectTrigger
-        size="sm"
         disabled={isPending}
         aria-label="Language"
-        className="w-auto"
+        className={cn(
+          "w-auto",
+          variant === "ghost" &&
+            "border-transparent bg-transparent text-muted-foreground shadow-none hover:bg-muted hover:text-foreground dark:bg-transparent dark:hover:bg-muted/60"
+        )}
       >
         <Languages className="size-4" />
         <SelectValue>

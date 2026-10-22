@@ -12,6 +12,11 @@
     "team": "Tim",
     "settings": "Postavke"
   },
+  "navGroups": {
+    "fleet": "Vozni park",
+    "planning": "Troškovi i planiranje",
+    "organization": "Organizacija"
+  },
   "sidebar": {
     "openNavigation": "Otvori navigaciju"
   },

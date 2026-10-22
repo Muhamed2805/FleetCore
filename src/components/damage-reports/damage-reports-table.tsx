@@ -165,7 +165,7 @@ export function DamageReportsTable({
           </CardContent>
         </Card>
       ) : (
-        <div className="rounded-xl border">
+        <div className="overflow-hidden rounded-xl border bg-card shadow-xs dark:shadow-none">
           <Table>
             <TableHeader>
               <TableRow>

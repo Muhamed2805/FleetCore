@@ -1,12 +1,52 @@
 {
   "header": {
     "brand": "FleetCore",
-    "logIn": "Inloggen"
+    "logIn": "Inloggen",
+    "signUp": "Registreren"
   },
   "hero": {
     "badge": "Auto's, bestelwagens, vrachtwagens, machines en heftrucks",
     "title": "Wagenparkbeheer & onderhoudsplatform",
     "description": "Beheer voertuigen, registraties, verzekeringen, keuringen, onderhoud en documenten vanuit één dashboard.",
-    "getStarted": "Aan de slag"
+    "getStarted": "Aan de slag",
+    "secondary": "Bekijk de functies"
+  },
+  "features": {
+    "eyebrow": "Alles op één plek",
+    "title": "Voor wagenparken die niet van verrassingen houden",
+    "subtitle": "Van de eerste registratie tot het laatste bonnetje houdt FleetCore voertuigen, deadlines en kosten onder controle.",
+    "items": {
+      "vehicles": {
+        "title": "Voertuigen & documenten",
+        "description": "Elke auto, bestelwagen, vrachtwagen, machine en heftruck met registratie, verzekering, keuring en documenten."
+      },
+      "reminders": {
+        "title": "Herinneringen bij verval",
+        "description": "Meldingen per e-mail en in de app voordat registratie, verzekering of keuring verloopt."
+      },
+      "maintenance": {
+        "title": "Onderhoud & reparaties",
+        "description": "Plan onderhoudstaken, registreer uitgevoerd werk en bewaar de volledige historie van elk voertuig."
+      },
+      "expenses": {
+        "title": "Kosten & CSV-export",
+        "description": "Volg brandstof, tol, boetes en reparaties en exporteer ze voor je boekhouder."
+      },
+      "ai": {
+        "title": "AI-documentscan",
+        "description": "Upload een kentekenbewijs of bonnetje en het formulier vult zichzelf in."
+      },
+      "team": {
+        "title": "Team & rollen",
+        "description": "Nodig wagenparkbeheerders, monteurs en chauffeurs uit, elk met de toegang die ze nodig hebben."
+      }
+    }
+  },
+  "cta": {
+    "title": "Klaar om je wagenpark onder controle te krijgen?",
+    "description": "Maak je bedrijfsaccount aan in minder dan een minuut."
+  },
+  "footer": {
+    "tagline": "Platform voor wagenparkbeheer en onderhoud"
   }
 }

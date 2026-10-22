@@ -42,7 +42,7 @@ export function FleetCompositionChart({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm text-muted-foreground">
+        <CardTitle>
           {t("charts.fleetComposition.title")}
         </CardTitle>
       </CardHeader>

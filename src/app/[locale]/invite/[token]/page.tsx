@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import { AuthShell } from "@/components/auth/auth-shell";
 import {
   AcceptInviteForm,
   SignOutToAcceptButton,
@@ -32,7 +33,7 @@ function MessageCard({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
@@ -40,7 +41,7 @@ function MessageCard({
         </CardHeader>
         {children ? <CardContent>{children}</CardContent> : null}
       </Card>
-    </div>
+    </AuthShell>
   );
 }
 
@@ -114,7 +115,7 @@ export default async function InvitePage({
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-12">
+    <AuthShell>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>
@@ -130,6 +131,6 @@ export default async function InvitePage({
           <AcceptInviteForm token={token} email={invitation.email} />
         </CardContent>
       </Card>
-    </div>
+    </AuthShell>
   );
 }

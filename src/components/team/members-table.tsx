@@ -80,7 +80,7 @@ export function MembersTable({
   return (
     <div className="flex flex-col gap-3">
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
-      <div className="rounded-xl border">
+      <div className="overflow-hidden rounded-xl border bg-card shadow-xs dark:shadow-none">
         <Table>
           <TableHeader>
             <TableRow>

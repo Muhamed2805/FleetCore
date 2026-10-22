@@ -12,6 +12,11 @@
     "team": "Team",
     "settings": "Instellingen"
   },
+  "navGroups": {
+    "fleet": "Wagenpark",
+    "planning": "Kosten & planning",
+    "organization": "Organisatie"
+  },
   "sidebar": {
     "openNavigation": "Navigatie openen"
   },

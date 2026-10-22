@@ -12,6 +12,11 @@
     "team": "Team",
     "settings": "Inställningar"
   },
+  "navGroups": {
+    "fleet": "Fordonsflotta",
+    "planning": "Kostnader & planering",
+    "organization": "Organisation"
+  },
   "sidebar": {
     "openNavigation": "Öppna navigering"
   },

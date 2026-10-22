@@ -1,3 +1,4 @@
+import type { BadgeVariant } from "@/components/ui/badge";
 import type { DamageReportStatus, DamageSeverity } from "@/lib/supabase/types";
 
 export const damageSeverityLabels: Record<DamageSeverity, string> = {
@@ -6,14 +7,12 @@ export const damageSeverityLabels: Record<DamageSeverity, string> = {
   severe: "Severe",
 };
 
-export const damageSeverityBadgeVariant: Record<
-  DamageSeverity,
-  "default" | "secondary" | "destructive" | "outline"
-> = {
-  minor: "outline",
-  moderate: "secondary",
-  severe: "destructive",
-};
+export const damageSeverityBadgeVariant: Record<DamageSeverity, BadgeVariant> =
+  {
+    minor: "secondary",
+    moderate: "warning",
+    severe: "destructive",
+  };
 
 export const damageStatusLabels: Record<DamageReportStatus, string> = {
   reported: "Reported",
@@ -24,12 +23,12 @@ export const damageStatusLabels: Record<DamageReportStatus, string> = {
 
 export const damageStatusBadgeVariant: Record<
   DamageReportStatus,
-  "default" | "secondary" | "destructive" | "outline"
+  BadgeVariant
 > = {
-  reported: "secondary",
-  scheduled: "outline",
+  reported: "warning",
+  scheduled: "info",
   in_repair: "default",
-  resolved: "outline",
+  resolved: "success",
 };
 
 type Translate = (key: string) => string;

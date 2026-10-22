@@ -1,12 +1,52 @@
 {
   "header": {
     "brand": "FleetCore",
-    "logIn": "Log in"
+    "logIn": "Log in",
+    "signUp": "Sign up"
   },
   "hero": {
     "badge": "Cars, vans, trucks, machinery & forklifts",
     "title": "Fleet Management & Maintenance Platform",
     "description": "Manage vehicles, registrations, insurance, inspections, maintenance and documents from one dashboard.",
-    "getStarted": "Get started"
+    "getStarted": "Get started",
+    "secondary": "See features"
+  },
+  "features": {
+    "eyebrow": "Everything in one place",
+    "title": "Built for fleets that can't afford surprises",
+    "subtitle": "From the first registration to the last receipt, FleetCore keeps your vehicles, deadlines and costs under control.",
+    "items": {
+      "vehicles": {
+        "title": "Vehicles & documents",
+        "description": "Every car, van, truck, machine and forklift with its registration, insurance, inspection and documents."
+      },
+      "reminders": {
+        "title": "Expiry reminders",
+        "description": "Email and in-app alerts before a registration, insurance or inspection runs out."
+      },
+      "maintenance": {
+        "title": "Maintenance & repairs",
+        "description": "Plan service jobs, log completed work and keep a full history for every vehicle."
+      },
+      "expenses": {
+        "title": "Costs & CSV export",
+        "description": "Track fuel, tolls, fines and repairs, then export them for your accountant."
+      },
+      "ai": {
+        "title": "AI document scanning",
+        "description": "Upload a registration document or a receipt and the form fills itself in."
+      },
+      "team": {
+        "title": "Team & roles",
+        "description": "Invite fleet managers, mechanics and drivers, each with the access they need."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to take control of your fleet?",
+    "description": "Create your company account in under a minute."
+  },
+  "footer": {
+    "tagline": "Fleet management & maintenance platform"
   }
 }

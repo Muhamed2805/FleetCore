@@ -11,7 +11,7 @@ export default function RemindersLoading() {
         <Skeleton className="h-9 w-28" />
       </div>
       <Skeleton className="h-56 rounded-xl" />
-      <div className="rounded-xl border">
+      <div className="overflow-hidden rounded-xl border bg-card shadow-xs dark:shadow-none">
         <div className="flex flex-col divide-y">
           {Array.from({ length: 4 }).map((_, index) => (
             <div key={index} className="flex items-center justify-between gap-4 p-4">
