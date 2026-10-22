@@ -17,9 +17,25 @@ export function getExpenseCategoryLabels(
   };
 }
 
+// Every amount in the app is in this currency.
+export const CURRENCY = "USD";
+
 export function formatCurrency(amount: number) {
   return new Intl.NumberFormat(undefined, {
     style: "currency",
-    currency: "USD",
+    currency: CURRENCY,
   }).format(amount);
+}
+
+// "all" (or nothing) means no filter. Used by the Expenses table and the CSV
+// export, so both filter the same way.
+export type ExpenseFilters = { category?: string };
+
+export function filterExpenses<E extends { category: ExpenseCategory }>(
+  expenses: E[],
+  { category = "all" }: ExpenseFilters
+) {
+  return expenses.filter(
+    (expense) => category === "all" || expense.category === category
+  );
 }

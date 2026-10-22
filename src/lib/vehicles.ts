@@ -51,3 +51,38 @@ export function formatDate(date: string | null) {
     day: "numeric",
   });
 }
+
+// "all" (or nothing) means no filter. Used by the Vehicles table and the
+// CSV export, so both filter the same way.
+export type VehicleFilters = {
+  search?: string;
+  type?: string;
+  status?: string;
+};
+
+export function filterVehicles<
+  V extends {
+    type: VehicleType;
+    status: VehicleStatus;
+    make: string;
+    model: string;
+    license_plate: string;
+    vin: string | null;
+  },
+>(
+  vehicles: V[],
+  { search = "", type = "all", status = "all" }: VehicleFilters
+) {
+  const query = search.trim().toLowerCase();
+  return vehicles.filter((vehicle) => {
+    if (type !== "all" && vehicle.type !== type) return false;
+    if (status !== "all" && vehicle.status !== status) return false;
+    if (!query) return true;
+    return [
+      vehicle.make,
+      vehicle.model,
+      vehicle.license_plate,
+      vehicle.vin,
+    ].some((field) => field?.toLowerCase().includes(query));
+  });
+}

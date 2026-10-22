@@ -32,6 +32,7 @@ commit history.
 - [x] Phase 14 — Playwright smoke tests in CI
 - [x] Phase 15 — Documents (company-wide list, missing documents, AI expiry scan)
 - [x] Phase 16 — Account & settings (password reset, profile, password and company name)
+- [x] Phase 17 — CSV export (vehicles, maintenance, expenses)
 
 ## Tech stack
 
@@ -207,6 +208,30 @@ when the plate doesn't match. Only the newest document per vehicle and
 category shows the expiry; older ones are marked as replaced. A "Missing
 documents" card lists vehicles (not sold) that have an expiry date on file
 but no matching document.
+
+### Export
+
+The Vehicles, Maintenance and Expenses pages have an "Export CSV" button. It
+downloads the rows that match the filters set on the page, from
+`/dashboard/export/<dataset>` (`vehicles`, `maintenance` or `expenses`).
+Any member can export what they can already see: the route reads as the
+signed-in user, so RLS keeps it to their company.
+
+The file is made for spreadsheets, Excel first:
+
+- UTF-8 with a byte order mark, so letters like č, ž and ö show correctly.
+- The interface language sets the delimiter and the decimal separator. In
+  English it's `,` and `1234.50`. In the other languages it's `;` and
+  `1234,50`, which is what Excel expects with those regional settings.
+- Dates are `YYYY-MM-DD`. Amounts have two decimals and no thousands
+  separator. The column header names the currency.
+- Text that starts like a formula (`=`, `+`, `-`, `@`) gets a leading `'`, so
+  a vehicle note can't run as a formula when the file is opened (CSV
+  injection).
+
+Rows are read 1000 at a time, the most Supabase returns per request, so an
+export has every matching row. The list pages themselves load at most 1000
+rows.
 
 ### Damage reports
 

@@ -4,6 +4,7 @@ import { Pencil, Plus, Receipt, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
+import { ExportButton } from "@/components/dashboard/export-button";
 import { ExpenseFormDialog } from "@/components/expenses/expense-form-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getExpenseCategoryLabels, formatCurrency } from "@/lib/expenses";
+import {
+  filterExpenses,
+  formatCurrency,
+  getExpenseCategoryLabels,
+} from "@/lib/expenses";
 import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -59,11 +64,7 @@ export function ExpensesTable({
   );
 
   const filtered = useMemo(
-    () =>
-      expenses.filter(
-        (expense) =>
-          categoryFilter === "all" || expense.category === categoryFilter
-      ),
+    () => filterExpenses(expenses, { category: categoryFilter }),
     [expenses, categoryFilter]
   );
 
@@ -92,18 +93,25 @@ export function ExpensesTable({
             })}
           </p>
         </div>
-        {canManage ? (
-          <ExpenseFormDialog
-            companyId={companyId}
-            vehicles={vehicles}
-            trigger={
-              <Button>
-                <Plus className="size-4" />
-                {t("table.addButton")}
-              </Button>
-            }
+        <div className="flex flex-wrap items-center gap-2">
+          <ExportButton
+            dataset="expenses"
+            filters={{ category: categoryFilter }}
+            disabled={filtered.length === 0}
           />
-        ) : null}
+          {canManage ? (
+            <ExpenseFormDialog
+              companyId={companyId}
+              vehicles={vehicles}
+              trigger={
+                <Button>
+                  <Plus className="size-4" />
+                  {t("table.addButton")}
+                </Button>
+              }
+            />
+          ) : null}
+        </div>
       </div>
 
       <Select value={categoryFilter} onValueChange={(v) => setCategoryFilter(v ?? "all")}>

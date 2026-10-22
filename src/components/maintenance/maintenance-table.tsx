@@ -4,6 +4,7 @@ import { Pencil, Plus, Trash2, Wrench } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
+import { ExportButton } from "@/components/dashboard/export-button";
 import { MaintenanceFormDialog } from "@/components/maintenance/maintenance-form-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
+  filterMaintenanceRecords,
   getMaintenanceStatusLabels,
   getMaintenanceTypeLabels,
   maintenanceStatusBadgeVariant,
@@ -73,15 +75,14 @@ export function MaintenanceTable({
     [staff]
   );
 
-  const filtered = useMemo(() => {
-    return records.filter((record) => {
-      if (statusFilter !== "all" && record.status !== statusFilter)
-        return false;
-      if (vehicleFilter !== "all" && record.vehicle_id !== vehicleFilter)
-        return false;
-      return true;
-    });
-  }, [records, statusFilter, vehicleFilter]);
+  const filtered = useMemo(
+    () =>
+      filterMaintenanceRecords(records, {
+        status: statusFilter,
+        vehicleId: vehicleFilter,
+      }),
+    [records, statusFilter, vehicleFilter]
+  );
 
   async function handleDelete(id: string) {
     const supabase = createClient();
@@ -103,19 +104,26 @@ export function MaintenanceTable({
             {t("table.jobCount", { count: records.length })}
           </p>
         </div>
-        {canManage && vehicles.length > 0 ? (
-          <MaintenanceFormDialog
-            companyId={companyId}
-            vehicles={vehicles}
-            staff={staff}
-            trigger={
-              <Button>
-                <Plus className="size-4" />
-                {t("table.addButton")}
-              </Button>
-            }
+        <div className="flex flex-wrap items-center gap-2">
+          <ExportButton
+            dataset="maintenance"
+            filters={{ status: statusFilter, vehicleId: vehicleFilter }}
+            disabled={filtered.length === 0}
           />
-        ) : null}
+          {canManage && vehicles.length > 0 ? (
+            <MaintenanceFormDialog
+              companyId={companyId}
+              vehicles={vehicles}
+              staff={staff}
+              trigger={
+                <Button>
+                  <Plus className="size-4" />
+                  {t("table.addButton")}
+                </Button>
+              }
+            />
+          ) : null}
+        </div>
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">

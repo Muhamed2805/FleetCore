@@ -197,6 +197,17 @@ test.describe("route handlers", () => {
     expect(response.headers().location).toMatch(/\/bs\/login\?error=link$/);
   });
 
+  test("CSV export sends signed-out visitors to login", async ({ request }) => {
+    for (const [path, login] of [
+      ["/dashboard/export/expenses", /\/login\?next=%2Fdashboard%2Fexport%2Fexpenses$/],
+      ["/bs/dashboard/export/vehicles", /\/bs\/login\?next=%2Fbs%2Fdashboard%2Fexport%2Fvehicles$/],
+    ] as const) {
+      const response = await request.get(path, { maxRedirects: 0 });
+      expect(response.status()).toBe(307);
+      expect(response.headers().location).toMatch(login);
+    }
+  });
+
   test("reminders cron rejects requests without the secret", async ({ request }) => {
     const missing = await request.post("/api/reminders/cron");
     expect(missing.status()).toBe(401);

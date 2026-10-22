@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { Link } from "@/i18n/navigation";
+import { ExportButton } from "@/components/dashboard/export-button";
 import { ExpiryBadge } from "@/components/vehicles/expiry-badge";
 import { DeleteVehicleDialog } from "@/components/vehicles/delete-vehicle-dialog";
 import { VehicleFormDialog } from "@/components/vehicles/vehicle-form-dialog";
@@ -29,6 +30,7 @@ import {
 } from "@/components/ui/table";
 import type { Database } from "@/lib/supabase/types";
 import {
+  filterVehicles,
   getVehicleStatusLabels,
   getVehicleTypeLabels,
   vehicleStatusBadgeVariant,
@@ -61,18 +63,15 @@ export function VehiclesTable({
     [drivers]
   );
 
-  const filtered = useMemo(() => {
-    const query = search.trim().toLowerCase();
-    return vehicles.filter((vehicle) => {
-      if (typeFilter !== "all" && vehicle.type !== typeFilter) return false;
-      if (statusFilter !== "all" && vehicle.status !== statusFilter)
-        return false;
-      if (!query) return true;
-      return [vehicle.make, vehicle.model, vehicle.license_plate, vehicle.vin]
-        .filter(Boolean)
-        .some((field) => field!.toLowerCase().includes(query));
-    });
-  }, [vehicles, search, typeFilter, statusFilter]);
+  const filtered = useMemo(
+    () =>
+      filterVehicles(vehicles, {
+        search,
+        type: typeFilter,
+        status: statusFilter,
+      }),
+    [vehicles, search, typeFilter, statusFilter]
+  );
 
   return (
     <div className="flex flex-col gap-6">
@@ -85,18 +84,25 @@ export function VehiclesTable({
             {t("list.count", { count: vehicles.length })}
           </p>
         </div>
-        {canManage ? (
-          <VehicleFormDialog
-            companyId={companyId}
-            drivers={drivers}
-            trigger={
-              <Button>
-                <Plus className="size-4" />
-                {t("list.addVehicle")}
-              </Button>
-            }
+        <div className="flex flex-wrap items-center gap-2">
+          <ExportButton
+            dataset="vehicles"
+            filters={{ search, type: typeFilter, status: statusFilter }}
+            disabled={filtered.length === 0}
           />
-        ) : null}
+          {canManage ? (
+            <VehicleFormDialog
+              companyId={companyId}
+              drivers={drivers}
+              trigger={
+                <Button>
+                  <Plus className="size-4" />
+                  {t("list.addVehicle")}
+                </Button>
+              }
+            />
+          ) : null}
+        </div>
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">

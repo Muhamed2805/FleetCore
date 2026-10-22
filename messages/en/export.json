@@ -1,0 +1,29 @@
+{
+  "button": "Export CSV",
+  "hint": "Download the rows that match the current filters as a CSV file.",
+  "columns": {
+    "make": "Make",
+    "model": "Model",
+    "year": "Year",
+    "licensePlate": "License plate",
+    "vin": "VIN",
+    "type": "Type",
+    "status": "Status",
+    "odometer": "Odometer (km)",
+    "assignedDriver": "Assigned driver",
+    "registrationExpiry": "Registration expiry",
+    "insuranceExpiry": "Insurance expiry",
+    "inspectionExpiry": "Inspection expiry",
+    "notes": "Notes",
+    "title": "Title",
+    "vehicle": "Vehicle",
+    "scheduledDate": "Scheduled date",
+    "completedDate": "Completed date",
+    "cost": "Cost ({currency})",
+    "performedBy": "Performed by",
+    "description": "Description",
+    "date": "Date",
+    "category": "Category",
+    "amount": "Amount ({currency})"
+  }
+}

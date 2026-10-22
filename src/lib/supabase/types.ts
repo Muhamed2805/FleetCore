@@ -6,6 +6,8 @@
 import type { Enums } from "./database.types";
 
 export type { Database, Json, Tables, TablesInsert, TablesUpdate } from "./database.types";
+// Every enum's values, e.g. Constants.public.Enums.vehicle_type.
+export { Constants } from "./database.types";
 
 export type UserRole = Enums<"user_role">;
 export type VehicleType = Enums<"vehicle_type">;

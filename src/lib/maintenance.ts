@@ -35,3 +35,17 @@ export const maintenanceStatusBadgeVariant: Record<
   completed: "outline",
   cancelled: "destructive",
 };
+
+// "all" (or nothing) means no filter. Used by the Maintenance table and the
+// CSV export, so both filter the same way.
+export type MaintenanceFilters = { status?: string; vehicleId?: string };
+
+export function filterMaintenanceRecords<
+  R extends { status: MaintenanceStatus; vehicle_id: string },
+>(records: R[], { status = "all", vehicleId = "all" }: MaintenanceFilters) {
+  return records.filter(
+    (record) =>
+      (status === "all" || record.status === status) &&
+      (vehicleId === "all" || record.vehicle_id === vehicleId)
+  );
+}
