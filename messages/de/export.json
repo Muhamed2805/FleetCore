@@ -1,0 +1,29 @@
+{
+  "button": "CSV exportieren",
+  "hint": "Die Zeilen, die den aktuellen Filtern entsprechen, als CSV-Datei herunterladen.",
+  "columns": {
+    "make": "Marke",
+    "model": "Modell",
+    "year": "Baujahr",
+    "licensePlate": "Kennzeichen",
+    "vin": "FIN",
+    "type": "Typ",
+    "status": "Status",
+    "odometer": "Kilometerstand (km)",
+    "assignedDriver": "Zugewiesener Fahrer",
+    "registrationExpiry": "Zulassung gültig bis",
+    "insuranceExpiry": "Versicherung gültig bis",
+    "inspectionExpiry": "Prüfung gültig bis",
+    "notes": "Notizen",
+    "title": "Titel",
+    "vehicle": "Fahrzeug",
+    "scheduledDate": "Geplantes Datum",
+    "completedDate": "Abschlussdatum",
+    "cost": "Kosten ({currency})",
+    "performedBy": "Durchgeführt von",
+    "description": "Beschreibung",
+    "date": "Datum",
+    "category": "Kategorie",
+    "amount": "Betrag ({currency})"
+  }
+}

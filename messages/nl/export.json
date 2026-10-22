@@ -1,0 +1,29 @@
+{
+  "button": "CSV exporteren",
+  "hint": "Download de rijen die bij de huidige filters passen als CSV-bestand.",
+  "columns": {
+    "make": "Merk",
+    "model": "Model",
+    "year": "Bouwjaar",
+    "licensePlate": "Kenteken",
+    "vin": "VIN",
+    "type": "Type",
+    "status": "Status",
+    "odometer": "Kilometerstand (km)",
+    "assignedDriver": "Toegewezen chauffeur",
+    "registrationExpiry": "Verval registratie",
+    "insuranceExpiry": "Verval verzekering",
+    "inspectionExpiry": "Verval keuring",
+    "notes": "Notities",
+    "title": "Titel",
+    "vehicle": "Voertuig",
+    "scheduledDate": "Geplande datum",
+    "completedDate": "Voltooiingsdatum",
+    "cost": "Kosten ({currency})",
+    "performedBy": "Uitgevoerd door",
+    "description": "Omschrijving",
+    "date": "Datum",
+    "category": "Categorie",
+    "amount": "Bedrag ({currency})"
+  }
+}

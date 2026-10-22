@@ -1,0 +1,29 @@
+{
+  "button": "Exportera CSV",
+  "hint": "Ladda ner raderna som matchar de aktuella filtren som en CSV-fil.",
+  "columns": {
+    "make": "Märke",
+    "model": "Modell",
+    "year": "Årsmodell",
+    "licensePlate": "Registreringsskylt",
+    "vin": "VIN",
+    "type": "Typ",
+    "status": "Status",
+    "odometer": "Mätarställning (km)",
+    "assignedDriver": "Tilldelad förare",
+    "registrationExpiry": "Registrering utgår",
+    "insuranceExpiry": "Försäkring utgår",
+    "inspectionExpiry": "Besiktning utgår",
+    "notes": "Anteckningar",
+    "title": "Titel",
+    "vehicle": "Fordon",
+    "scheduledDate": "Schemalagt datum",
+    "completedDate": "Slutfört datum",
+    "cost": "Kostnad ({currency})",
+    "performedBy": "Utförd av",
+    "description": "Beskrivning",
+    "date": "Datum",
+    "category": "Kategori",
+    "amount": "Belopp ({currency})"
+  }
+}

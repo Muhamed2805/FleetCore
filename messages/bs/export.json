@@ -1,0 +1,29 @@
+{
+  "button": "Izvezi CSV",
+  "hint": "Preuzmite redove koji odgovaraju trenutnim filterima kao CSV datoteku.",
+  "columns": {
+    "make": "Marka",
+    "model": "Model",
+    "year": "Godina",
+    "licensePlate": "Registarska tablica",
+    "vin": "VIN",
+    "type": "Tip",
+    "status": "Status",
+    "odometer": "Kilometraža (km)",
+    "assignedDriver": "Dodijeljeni vozač",
+    "registrationExpiry": "Istek registracije",
+    "insuranceExpiry": "Istek osiguranja",
+    "inspectionExpiry": "Istek tehničkog pregleda",
+    "notes": "Napomene",
+    "title": "Naslov",
+    "vehicle": "Vozilo",
+    "scheduledDate": "Zakazani datum",
+    "completedDate": "Datum završetka",
+    "cost": "Trošak ({currency})",
+    "performedBy": "Izvršilac",
+    "description": "Opis",
+    "date": "Datum",
+    "category": "Kategorija",
+    "amount": "Iznos ({currency})"
+  }
+}

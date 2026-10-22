@@ -23,6 +23,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     team,
     documents,
     settings,
+    exportMessages,
   ] = await Promise.all([
     import(`../../messages/${locale}/common.json`),
     import(`../../messages/${locale}/auth.json`),
@@ -37,6 +38,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../../messages/${locale}/team.json`),
     import(`../../messages/${locale}/documents.json`),
     import(`../../messages/${locale}/settings.json`),
+    import(`../../messages/${locale}/export.json`),
   ]);
 
   return {
@@ -55,6 +57,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       team: team.default,
       documents: documents.default,
       settings: settings.default,
+      export: exportMessages.default,
     },
   };
 });
