@@ -15,18 +15,21 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { deleteVehicleWithFiles } from "@/lib/storage";
 import { createClient } from "@/lib/supabase/client";
 
 export function DeleteVehicleDialog({
   vehicleId,
   vehicleLabel,
   trigger,
-  onDeleted,
+  redirectTo,
 }: {
   vehicleId: string;
   vehicleLabel: string;
   trigger: ReactElement;
-  onDeleted?: () => void;
+  // Where to go once deleted, e.g. from the vehicle's own page, which
+  // would otherwise refresh into a 404.
+  redirectTo?: string;
 }) {
   const t = useTranslations("vehicles");
   const tCommon = useTranslations("common");
@@ -39,25 +42,20 @@ export function DeleteVehicleDialog({
     setIsDeleting(true);
     setError(null);
 
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("vehicles")
-      .delete()
-      .eq("id", vehicleId);
+    const { error } = await deleteVehicleWithFiles(createClient(), vehicleId);
 
     setIsDeleting(false);
 
     if (error) {
-      setError(error.message);
+      setError(error);
       return;
     }
 
     setOpen(false);
-    if (onDeleted) {
-      onDeleted();
-    } else {
-      router.refresh();
+    if (redirectTo) {
+      router.push(redirectTo);
     }
+    router.refresh();
   }
 
   return (

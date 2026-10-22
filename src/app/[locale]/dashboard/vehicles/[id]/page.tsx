@@ -27,6 +27,7 @@ import {
   getMaintenanceStatusLabels,
   maintenanceStatusBadgeVariant,
 } from "@/lib/maintenance";
+import { DOCUMENTS_BUCKET } from "@/lib/storage";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -90,7 +91,7 @@ export default async function VehicleDetailPage({
   const { data: signedUrls } =
     documentPaths.length > 0
       ? await supabase.storage
-          .from("vehicle-documents")
+          .from(DOCUMENTS_BUCKET)
           .createSignedUrls(documentPaths, 3600)
       : { data: [] as { path: string | null; signedUrl: string }[] };
 
@@ -148,6 +149,7 @@ export default async function VehicleDetailPage({
             />
             <DeleteVehicleDialog
               vehicleId={vehicle.id}
+              redirectTo="/dashboard/vehicles"
               vehicleLabel={`${vehicle.make} ${vehicle.model}`}
               trigger={
                 <Button variant="outline">{tCommon("actions.delete")}</Button>

@@ -10,10 +10,17 @@ const categoryLabels: Record<NotificationCategory, string> = {
   inspection: "inspection",
 };
 
+// Notifications created by the "Check now" button never went through
+// this route, so emailing only the rows the scan below returns would skip
+// them. Anything created in this window and not yet emailed is sent; the
+// window keeps a company that turns email on later from receiving a
+// backlog of old reminders.
+const EMAIL_WINDOW_MS = 2 * 24 * 60 * 60 * 1000;
+
 // Triggered by an external scheduler (see README) with
 // `Authorization: Bearer <CRON_SECRET>`. Scans every company (the admin
 // client has no user session, so generate_due_reminders() runs unscoped),
-// then emails each newly created notification's recipient.
+// then emails every recipient whose notification hasn't been emailed yet.
 export async function POST(request: Request) {
   // Reject when CRON_SECRET is unset too — otherwise the expected header
   // would be the literal string "Bearer undefined".
@@ -33,9 +40,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  const notifications = created ?? [];
+  const { data: pending, error: pendingError } = await supabase
+    .from("notifications")
+    .select("*")
+    .is("email_sent_at", null)
+    .gte("created_at", new Date(Date.now() - EMAIL_WINDOW_MS).toISOString());
+
+  if (pendingError) {
+    return NextResponse.json({ error: pendingError.message }, { status: 500 });
+  }
+
+  const createdCount = created?.length ?? 0;
+  const notifications = pending ?? [];
   if (notifications.length === 0) {
-    return NextResponse.json({ created: 0, emailed: 0 });
+    return NextResponse.json({ created: createdCount, emailed: 0 });
   }
 
   const companyIds = [...new Set(notifications.map((n) => n.company_id))];
@@ -88,5 +106,5 @@ export async function POST(request: Request) {
     }
   }
 
-  return NextResponse.json({ created: notifications.length, emailed });
+  return NextResponse.json({ created: createdCount, emailed });
 }

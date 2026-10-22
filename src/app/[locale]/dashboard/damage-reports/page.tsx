@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { DamageReportsTable } from "@/components/damage-reports/damage-reports-table";
 import { redirect } from "@/i18n/navigation";
+import { DAMAGE_PHOTOS_BUCKET } from "@/lib/storage";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/types";
@@ -53,7 +54,7 @@ export default async function DamageReportsPage() {
   const { data: signedUrls } =
     photoPaths.length > 0
       ? await supabase.storage
-          .from("damage-reports")
+          .from(DAMAGE_PHOTOS_BUCKET)
           .createSignedUrls(photoPaths, 3600)
       : { data: [] as { path: string | null; signedUrl: string }[] };
 

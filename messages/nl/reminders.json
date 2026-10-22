@@ -12,7 +12,11 @@
     "customDaysPlaceholder": "bv. 60, 45",
     "emailToggle": "Ook e-mailherinneringen versturen",
     "save": "Instellingen opslaan",
-    "saved": "Opgeslagen."
+    "saved": "Opgeslagen.",
+    "errors": {
+      "notAllowed": "Alleen een beheerder kan de herinneringsinstellingen wijzigen.",
+      "invalidDays": "Gebruik hele dagen van 1 tot {max}, maximaal {count} waarden."
+    }
   },
   "checkButton": {
     "checking": "Controleren…",

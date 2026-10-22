@@ -12,7 +12,11 @@
     "customDaysPlaceholder": "e.g. 60, 45",
     "emailToggle": "Also send email reminders",
     "save": "Save settings",
-    "saved": "Saved."
+    "saved": "Saved.",
+    "errors": {
+      "notAllowed": "Only an admin can change reminder settings.",
+      "invalidDays": "Use whole days from 1 to {max}, at most {count} values."
+    }
   },
   "checkButton": {
     "checking": "Checking…",

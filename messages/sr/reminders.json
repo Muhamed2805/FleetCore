@@ -12,7 +12,11 @@
     "customDaysPlaceholder": "npr. 60, 45",
     "emailToggle": "Takođe šalji podsetnike i putem email-a",
     "save": "Sačuvaj podešavanja",
-    "saved": "Sačuvano."
+    "saved": "Sačuvano.",
+    "errors": {
+      "notAllowed": "Samo administrator može da menja podešavanja podsetnika.",
+      "invalidDays": "Unesite cele dane od 1 do {max}, najviše {count} vrednosti."
+    }
   },
   "checkButton": {
     "checking": "Proveravanje…",

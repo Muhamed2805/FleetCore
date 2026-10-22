@@ -84,7 +84,6 @@ export default async function RemindersPage() {
           </CardHeader>
           <CardContent>
             <ReminderSettingsForm
-              companyId={profile.company_id}
               thresholdsDays={settings.thresholds_days}
               emailEnabled={settings.email_enabled}
             />

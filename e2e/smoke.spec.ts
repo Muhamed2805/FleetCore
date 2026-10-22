@@ -162,3 +162,15 @@ test.describe("route handlers", () => {
     expect(undefinedSecret.status()).toBe(401);
   });
 });
+
+test.describe("security headers", () => {
+  test("pages refuse to be framed and don't leak referrers", async ({ request }) => {
+    const response = await request.get("/login");
+    const headers = response.headers();
+    expect(headers["x-frame-options"]).toBe("DENY");
+    expect(headers["content-security-policy"]).toContain("frame-ancestors 'none'");
+    expect(headers["x-content-type-options"]).toBe("nosniff");
+    expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+    expect(headers["x-powered-by"]).toBeUndefined();
+  });
+});

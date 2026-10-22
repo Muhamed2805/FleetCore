@@ -12,7 +12,11 @@
     "customDaysPlaceholder": "z. B. 60, 45",
     "emailToggle": "Auch E-Mail-Erinnerungen senden",
     "save": "Einstellungen speichern",
-    "saved": "Gespeichert."
+    "saved": "Gespeichert.",
+    "errors": {
+      "notAllowed": "Nur ein Administrator kann die Erinnerungseinstellungen ändern.",
+      "invalidDays": "Verwenden Sie ganze Tage von 1 bis {max}, höchstens {count} Werte."
+    }
   },
   "checkButton": {
     "checking": "Wird geprüft…",

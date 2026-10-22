@@ -12,7 +12,11 @@
     "customDaysPlaceholder": "t.ex. 60, 45",
     "emailToggle": "Skicka även e-postpåminnelser",
     "save": "Spara inställningar",
-    "saved": "Sparat."
+    "saved": "Sparat.",
+    "errors": {
+      "notAllowed": "Endast en administratör kan ändra inställningarna för påminnelser.",
+      "invalidDays": "Ange hela dagar från 1 till {max}, högst {count} värden."
+    }
   },
   "checkButton": {
     "checking": "Kontrollerar…",

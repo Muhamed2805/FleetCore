@@ -8,12 +8,12 @@ import {
 } from "@/components/documents/documents-table";
 import { redirect } from "@/i18n/navigation";
 import {
-  DOCUMENTS_BUCKET,
   expiringCategories,
   isExpiringCategory,
   vehicleExpiry,
   type DocumentVehicle,
 } from "@/lib/documents";
+import { DOCUMENTS_BUCKET } from "@/lib/storage";
 import { getCurrentProfile } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 

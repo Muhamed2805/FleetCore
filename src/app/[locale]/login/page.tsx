@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useRouter as useAppRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, useRouter } from "@/i18n/navigation";
+import { safeNextPath } from "@/lib/safe-redirect";
 import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
@@ -28,6 +29,7 @@ export default function LoginPage() {
 function LoginForm() {
   const t = useTranslations("auth");
   const router = useRouter();
+  const appRouter = useAppRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,7 +54,16 @@ function LoginForm() {
       return;
     }
 
-    router.push(searchParams.get("next") ?? "/dashboard");
+    // `next` is the full path the proxy bounced, locale prefix included
+    // ("/bs/dashboard/vehicles"), so it goes to the plain router; the
+    // localized one would prefix it again. Without it, the localized router
+    // picks the current locale's dashboard.
+    const next = safeNextPath(searchParams.get("next"), "");
+    if (next) {
+      appRouter.push(next);
+    } else {
+      router.push("/dashboard");
+    }
     router.refresh();
   }
 
