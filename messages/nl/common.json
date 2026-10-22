@@ -26,10 +26,12 @@
   "documentScan": {
     "notConfigured": "AI-extractie is nog niet ingesteld — vraag een beheerder om ANTHROPIC_API_KEY toe te voegen.",
     "chooseFileFirst": "Kies eerst een bestand.",
-    "fileTooLarge": "Bestand is te groot (max. 10MB).",
+    "fileTooLarge": "Bestand is te groot (max. {max} MB).",
     "scanning": "Scannen…",
     "genericError": "Extractie mislukt.",
-    "couldNotRead": "Dit document kon niet worden gelezen."
+    "couldNotRead": "Dit document kon niet worden gelezen.",
+    "notSignedIn": "Je sessie is verlopen. Log opnieuw in.",
+    "unsupportedType": "Upload een JPEG-, PNG-, GIF- of WebP-afbeelding, of een pdf."
   },
   "language": {
     "label": "Taal"

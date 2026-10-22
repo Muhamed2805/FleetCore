@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Dokumente",
+    "documentCount": "{count, plural, one {# Dokument} other {# Dokumente}}"
+  },
+  "actions": {
+    "upload": "Dokument hochladen"
+  },
+  "missing": {
+    "title": "Fehlende Dokumente",
+    "description": "Für diese Fahrzeuge ist ein Ablaufdatum hinterlegt, aber kein passendes Dokument.",
+    "upload": "Hochladen"
+  },
+  "filters": {
+    "searchPlaceholder": "Nach Dateiname oder Fahrzeug suchen…",
+    "allCategories": "Alle Kategorien",
+    "allVehicles": "Alle Fahrzeuge"
+  },
+  "table": {
+    "headers": {
+      "document": "Dokument",
+      "vehicle": "Fahrzeug",
+      "category": "Kategorie",
+      "expires": "Läuft ab",
+      "uploaded": "Hochgeladen",
+      "uploadedBy": "Hochgeladen von"
+    },
+    "replaced": "Ersetzt",
+    "replacedHint": "Für dieses Fahrzeug gibt es ein neueres Dokument dieser Kategorie.",
+    "unnamedUploader": "Unbenannt"
+  },
+  "emptyState": {
+    "noDocumentsTitle": "Noch keine Dokumente",
+    "noDocumentsDescription": "Laden Sie Zulassungen, Versicherungspolicen und Prüfberichte hoch, um alles an einem Ort zu haben.",
+    "addVehicleFirst": "Fügen Sie zuerst ein Fahrzeug hinzu und laden Sie dann seine Dokumente hoch.",
+    "noMatchTitle": "Keine passenden Dokumente",
+    "tryDifferentFilter": "Versuchen Sie eine andere Suche oder einen anderen Filter."
+  },
+  "upload": {
+    "title": "Dokument hochladen",
+    "description": "Hängen Sie ein Dokument an ein Fahrzeug an.",
+    "descriptionForVehicle": "Hängen Sie ein Dokument an {vehicle} an.",
+    "vehicleLabel": "Fahrzeug",
+    "vehiclePlaceholder": "Fahrzeug auswählen",
+    "categoryLabel": "Kategorie",
+    "fileLabel": "Datei",
+    "scan": "Mit KI auslesen",
+    "scanning": "Wird gelesen…",
+    "expiryLabel": "Gültig bis",
+    "expiryHint": {
+      "registration": "Aktualisiert das Ablaufdatum der Zulassung, das für Erinnerungen verwendet wird.",
+      "insurance": "Aktualisiert das Ablaufdatum der Versicherung, das für Erinnerungen verwendet wird.",
+      "inspection": "Aktualisiert das Ablaufdatum der Prüfung, das für Erinnerungen verwendet wird."
+    },
+    "scanFoundExpiry": "Ablaufdatum aus dem Dokument gelesen. Prüfen Sie es vor dem Hochladen.",
+    "scanNoExpiry": "In diesem Dokument wurde kein Ablaufdatum gefunden.",
+    "plateMismatch": "Dieses Dokument nennt das Kennzeichen {plate}, das nicht zum ausgewählten Fahrzeug passt.",
+    "submit": "Hochladen",
+    "uploading": "Wird hochgeladen…",
+    "errors": {
+      "vehicleRequired": "Wählen Sie ein Fahrzeug aus.",
+      "fileRequired": "Wählen Sie eine Datei zum Hochladen aus.",
+      "expiryNotSaved": "Das Dokument wurde hochgeladen, aber das Ablaufdatum konnte nicht gespeichert werden: {message}"
+    }
+  },
+  "deleteConfirm": {
+    "title": "{name} löschen?",
+    "description": "Die Datei wird endgültig gelöscht. Dies kann nicht rückgängig gemacht werden."
+  }
+}

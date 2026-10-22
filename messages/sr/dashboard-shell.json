@@ -81,10 +81,6 @@
     "description": "Ova stranica, vozilo ili zapis ne postoji ili je možda uklonjen.",
     "backToDashboard": "Nazad na kontrolnu tablu"
   },
-  "documentsPage": {
-    "title": "Dokumenti",
-    "description": "Saobraćajne dozvole, polise osiguranja i dokumenti tehničkog pregleda, uz AI ekstrakciju podataka. Stiže u narednoj fazi."
-  },
   "appNotFound": {
     "title": "Stranica nije pronađena",
     "description": "Stranica koju tražite ne postoji ili je možda premeštena.",

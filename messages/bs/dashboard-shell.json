@@ -81,10 +81,6 @@
     "description": "Ova stranica, vozilo ili zapis ne postoje ili su možda uklonjeni.",
     "backToDashboard": "Nazad na početnu"
   },
-  "documentsPage": {
-    "title": "Dokumenti",
-    "description": "Registracioni dokumenti, polise osiguranja i dokumenti tehničkog pregleda, uz AI ekstrakciju podataka. Stiže u kasnijoj fazi."
-  },
   "appNotFound": {
     "title": "Stranica nije pronađena",
     "description": "Stranica koju tražite ne postoji ili je možda premještena.",

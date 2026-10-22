@@ -5,13 +5,13 @@ import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 import { createAnthropicClient, EXTRACTION_MODEL } from "@/lib/anthropic";
-
-const ACCEPTED_IMAGE_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/gif",
-  "image/webp",
-]);
+import {
+  isScannableImageType,
+  MAX_SCAN_FILE_MB,
+  scanFileProblem,
+} from "@/lib/document-scan";
+import { expiringCategories, type ExpiringCategory } from "@/lib/documents";
+import { getCurrentProfile } from "@/lib/supabase/queries";
 
 const vehicleRegistrationSchema = z.object({
   make: z.string().nullable(),
@@ -53,6 +53,22 @@ const invoiceSchema = z.object({
 
 export type ExtractedInvoice = z.infer<typeof invoiceSchema>;
 
+const vehicleDocumentSchema = z.object({
+  license_plate: z.string().nullable(),
+  expiry_date: z
+    .string()
+    .nullable()
+    .describe("Last day the document is valid, in ISO format YYYY-MM-DD"),
+});
+
+export type ExtractedVehicleDocument = z.infer<typeof vehicleDocumentSchema>;
+
+const vehicleDocumentKinds: Record<ExpiringCategory, string> = {
+  registration: "a vehicle registration document",
+  insurance: "a vehicle insurance policy or insurance certificate",
+  inspection: "a vehicle technical inspection certificate",
+};
+
 async function fileToContentBlock(file: File) {
   const bytes = Buffer.from(await file.arrayBuffer());
   const data = bytes.toString("base64");
@@ -68,17 +84,16 @@ async function fileToContentBlock(file: File) {
     };
   }
 
-  if (!ACCEPTED_IMAGE_TYPES.has(file.type)) {
-    throw new Error(
-      "Unsupported file type. Upload a JPEG, PNG, GIF, WebP image or a PDF."
-    );
+  // getUploadedFile has already rejected anything else.
+  if (!isScannableImageType(file.type)) {
+    throw new Error(`Unsupported file type: ${file.type}`);
   }
 
   return {
     type: "image" as const,
     source: {
       type: "base64" as const,
-      media_type: file.type as "image/jpeg" | "image/png" | "image/gif" | "image/webp",
+      media_type: file.type,
       data,
     },
   };
@@ -89,6 +104,12 @@ async function getUploadedFile(
 ): Promise<File | { error: string }> {
   const t = await getTranslations("common.documentScan");
 
+  // Server actions can be called by anyone who can reach the app, and every
+  // scan spends API credits, so only signed-in members may scan.
+  if (!(await getCurrentProfile())) {
+    return { error: t("notSignedIn") };
+  }
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return { error: t("notConfigured") };
   }
@@ -97,8 +118,9 @@ async function getUploadedFile(
   if (!(file instanceof File) || file.size === 0) {
     return { error: t("chooseFileFirst") };
   }
-  if (file.size > 10 * 1024 * 1024) {
-    return { error: t("fileTooLarge") };
+  const problem = scanFileProblem(file);
+  if (problem) {
+    return { error: t(problem, { max: MAX_SCAN_FILE_MB }) };
   }
   return file;
 }
@@ -171,6 +193,54 @@ export async function extractInvoice(
         },
       ],
       output_config: { format: zodOutputFormat(invoiceSchema) },
+    });
+
+    if (!response.parsed_output) {
+      const t = await getTranslations("common.documentScan");
+      return { error: t("couldNotRead") };
+    }
+
+    return { data: response.parsed_output };
+  } catch (error) {
+    const t = await getTranslations("common.documentScan");
+    return {
+      error: error instanceof Error ? error.message : t("genericError"),
+    };
+  }
+}
+
+export async function extractVehicleDocument(
+  formData: FormData
+): Promise<{ data?: ExtractedVehicleDocument; error?: string }> {
+  const category = z.enum(expiringCategories).safeParse(formData.get("category"));
+  if (!category.success) {
+    const t = await getTranslations("common.documentScan");
+    return { error: t("genericError") };
+  }
+
+  const file = await getUploadedFile(formData);
+  if ("error" in file) return file;
+
+  try {
+    const block = await fileToContentBlock(file);
+    const client = createAnthropicClient();
+
+    const response = await client.messages.parse({
+      model: EXTRACTION_MODEL,
+      max_tokens: 1024,
+      messages: [
+        {
+          role: "user",
+          content: [
+            block,
+            {
+              type: "text",
+              text: `This is ${vehicleDocumentKinds[category.data]}. Extract the license plate of the vehicle it covers and the date it expires (the last day it is valid). Use null for any field that isn't present or legible.`,
+            },
+          ],
+        },
+      ],
+      output_config: { format: zodOutputFormat(vehicleDocumentSchema) },
     });
 
     if (!response.parsed_output) {

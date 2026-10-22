@@ -26,10 +26,12 @@
   "documentScan": {
     "notConfigured": "AI ekstrakcija još nije konfigurirana — zamolite administratora da doda ANTHROPIC_API_KEY.",
     "chooseFileFirst": "Najprije odaberite datoteku.",
-    "fileTooLarge": "Datoteka je prevelika (maks. 10 MB).",
+    "fileTooLarge": "Datoteka je prevelika (maks. {max} MB).",
     "scanning": "Skeniranje…",
     "genericError": "Ekstrakcija nije uspjela.",
-    "couldNotRead": "Nije moguće pročitati ovaj dokument."
+    "couldNotRead": "Nije moguće pročitati ovaj dokument.",
+    "notSignedIn": "Sesija je istekla. Ponovno se prijavite.",
+    "unsupportedType": "Učitajte JPEG, PNG, GIF ili WebP sliku, ili PDF."
   },
   "language": {
     "label": "Jezik"

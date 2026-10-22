@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Documenten",
+    "documentCount": "{count, plural, one {# document} other {# documenten}}"
+  },
+  "actions": {
+    "upload": "Document uploaden"
+  },
+  "missing": {
+    "title": "Ontbrekende documenten",
+    "description": "Voor deze voertuigen is een vervaldatum ingevuld, maar er is geen bijbehorend document.",
+    "upload": "Uploaden"
+  },
+  "filters": {
+    "searchPlaceholder": "Zoek op bestandsnaam of voertuig…",
+    "allCategories": "Alle categorieën",
+    "allVehicles": "Alle voertuigen"
+  },
+  "table": {
+    "headers": {
+      "document": "Document",
+      "vehicle": "Voertuig",
+      "category": "Categorie",
+      "expires": "Vervalt",
+      "uploaded": "Geüpload",
+      "uploadedBy": "Geüpload door"
+    },
+    "replaced": "Vervangen",
+    "replacedHint": "Er is een nieuwer document in deze categorie voor dit voertuig.",
+    "unnamedUploader": "Naamloos"
+  },
+  "emptyState": {
+    "noDocumentsTitle": "Nog geen documenten",
+    "noDocumentsDescription": "Upload kentekenbewijzen, verzekeringspolissen en keuringsrapporten om ze op één plek te bewaren.",
+    "addVehicleFirst": "Voeg eerst een voertuig toe en upload daarna de documenten ervan.",
+    "noMatchTitle": "Geen overeenkomende documenten",
+    "tryDifferentFilter": "Probeer een andere zoekopdracht of een ander filter."
+  },
+  "upload": {
+    "title": "Document uploaden",
+    "description": "Koppel een document aan een voertuig.",
+    "descriptionForVehicle": "Koppel een document aan {vehicle}.",
+    "vehicleLabel": "Voertuig",
+    "vehiclePlaceholder": "Kies een voertuig",
+    "categoryLabel": "Categorie",
+    "fileLabel": "Bestand",
+    "scan": "Uitlezen met AI",
+    "scanning": "Uitlezen…",
+    "expiryLabel": "Geldig tot",
+    "expiryHint": {
+      "registration": "Werkt de vervaldatum van de registratie bij; herinneringen gebruiken die datum.",
+      "insurance": "Werkt de vervaldatum van de verzekering bij; herinneringen gebruiken die datum.",
+      "inspection": "Werkt de vervaldatum van de keuring bij; herinneringen gebruiken die datum."
+    },
+    "scanFoundExpiry": "Vervaldatum uit het document gelezen. Controleer die voordat je uploadt.",
+    "scanNoExpiry": "Geen vervaldatum gevonden in dit document.",
+    "plateMismatch": "Dit document noemt kenteken {plate}, dat niet overeenkomt met het gekozen voertuig.",
+    "submit": "Uploaden",
+    "uploading": "Uploaden…",
+    "errors": {
+      "vehicleRequired": "Kies een voertuig.",
+      "fileRequired": "Kies een bestand om te uploaden.",
+      "expiryNotSaved": "Het document is geüpload, maar de vervaldatum kon niet worden opgeslagen: {message}"
+    }
+  },
+  "deleteConfirm": {
+    "title": "{name} verwijderen?",
+    "description": "Het bestand wordt definitief verwijderd. Dit kan niet ongedaan worden gemaakt."
+  }
+}

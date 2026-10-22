@@ -105,6 +105,11 @@ test.describe("auth gate", () => {
     await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fteam$/);
   });
 
+  test("documents page redirects to login", async ({ page }) => {
+    await page.goto("/dashboard/documents");
+    await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fdocuments$/);
+  });
+
   test("unknown dashboard route still redirects to login", async ({ page }) => {
     await page.goto("/dashboard/does-not-exist");
     await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fdoes-not-exist$/);

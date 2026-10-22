@@ -227,7 +227,7 @@ export default async function VehicleDetailPage({
       ) : null}
 
       <VehicleDocuments
-        vehicleId={vehicle.id}
+        vehicle={vehicle}
         companyId={profile.company_id}
         uploadedBy={profile.id}
         documents={documentsWithUrl}

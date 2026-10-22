@@ -26,10 +26,12 @@
   "documentScan": {
     "notConfigured": "AI extraction isn't configured yet — ask an admin to add ANTHROPIC_API_KEY.",
     "chooseFileFirst": "Choose a file first.",
-    "fileTooLarge": "File is too large (max 10MB).",
+    "fileTooLarge": "File is too large (max {max} MB).",
     "scanning": "Scanning…",
     "genericError": "Extraction failed.",
-    "couldNotRead": "Could not read this document."
+    "couldNotRead": "Could not read this document.",
+    "notSignedIn": "Your session has expired. Sign in again.",
+    "unsupportedType": "Upload a JPEG, PNG, GIF or WebP image, or a PDF."
   },
   "language": {
     "label": "Language"

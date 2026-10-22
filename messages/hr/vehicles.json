@@ -48,13 +48,7 @@
   "scanRegistration": "Skeniraj prometnu dozvolu",
   "documents": {
     "title": "Dokumenti",
-    "chooseFileFirst": "Najprije odaberite datoteku.",
-    "categoryLabel": "Kategorija",
-    "upload": "Učitaj",
-    "uploading": "Učitavanje…",
     "empty": "Još nema učitanih dokumenata.",
-    "deleteConfirmTitle": "Izbrisati {name}?",
-    "deleteConfirmDescription": "Ovo se ne može poništiti.",
     "category": {
       "registration": "Registracija",
       "insurance": "Osiguranje",

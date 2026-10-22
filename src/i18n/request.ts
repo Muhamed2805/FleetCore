@@ -21,6 +21,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     reminders,
     calendar,
     team,
+    documents,
   ] = await Promise.all([
     import(`../../messages/${locale}/common.json`),
     import(`../../messages/${locale}/auth.json`),
@@ -33,6 +34,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../../messages/${locale}/reminders.json`),
     import(`../../messages/${locale}/calendar.json`),
     import(`../../messages/${locale}/team.json`),
+    import(`../../messages/${locale}/documents.json`),
   ]);
 
   return {
@@ -49,6 +51,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       reminders: reminders.default,
       calendar: calendar.default,
       team: team.default,
+      documents: documents.default,
     },
   };
 });

@@ -2,31 +2,24 @@
 
 import { FileText, Trash2, Upload } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRef, useState, type FormEvent } from "react";
 
-import { useRouter } from "@/i18n/navigation";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { UploadDocumentDialog } from "@/components/documents/upload-document-dialog";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import type { Database, DocumentCategory } from "@/lib/supabase/types";
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ConfirmDeleteDialog } from "@/components/ui/confirm-delete-dialog";
+import {
+  deleteVehicleDocument,
+  getDocumentCategoryLabels,
+  type DocumentVehicle,
+} from "@/lib/documents";
 import { createClient } from "@/lib/supabase/client";
+import type { Database } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
 
 type VehicleDocument = Database["public"]["Tables"]["vehicle_documents"]["Row"] & {
@@ -34,87 +27,22 @@ type VehicleDocument = Database["public"]["Tables"]["vehicle_documents"]["Row"] 
 };
 
 export function VehicleDocuments({
-  vehicleId,
+  vehicle,
   companyId,
   uploadedBy,
   documents,
   canManage,
 }: {
-  vehicleId: string;
+  vehicle: DocumentVehicle;
   companyId: string;
   uploadedBy: string;
   documents: VehicleDocument[];
   canManage: boolean;
 }) {
   const t = useTranslations("vehicles");
+  const tDocuments = useTranslations("documents");
   const tCommon = useTranslations("common");
-  const categoryLabels: Record<DocumentCategory, string> = {
-    registration: t("documents.category.registration"),
-    insurance: t("documents.category.insurance"),
-    inspection: t("documents.category.inspection"),
-    other: t("documents.category.other"),
-  };
-  const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [category, setCategory] = useState<DocumentCategory>("registration");
-  const [isUploading, setIsUploading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleUpload(event: FormEvent) {
-    event.preventDefault();
-    const file = fileInputRef.current?.files?.[0];
-    if (!file) {
-      setError(t("documents.chooseFileFirst"));
-      return;
-    }
-
-    setIsUploading(true);
-    setError(null);
-
-    const supabase = createClient();
-    const path = `${companyId}/${vehicleId}/${Date.now()}-${file.name}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from("vehicle-documents")
-      .upload(path, file);
-
-    if (uploadError) {
-      setIsUploading(false);
-      setError(uploadError.message);
-      return;
-    }
-
-    const { error: insertError } = await supabase
-      .from("vehicle_documents")
-      .insert({
-        company_id: companyId,
-        vehicle_id: vehicleId,
-        category,
-        file_path: path,
-        file_name: file.name,
-        uploaded_by: uploadedBy,
-      });
-
-    setIsUploading(false);
-
-    if (insertError) {
-      await supabase.storage.from("vehicle-documents").remove([path]);
-      setError(insertError.message);
-      return;
-    }
-
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
-    router.refresh();
-  }
-
-  async function handleDelete(doc: VehicleDocument) {
-    const supabase = createClient();
-    await supabase.storage.from("vehicle-documents").remove([doc.file_path]);
-    await supabase.from("vehicle_documents").delete().eq("id", doc.id);
-    router.refresh();
-  }
+  const categoryLabels = getDocumentCategoryLabels(t);
 
   return (
     <Card>
@@ -122,55 +50,24 @@ export function VehicleDocuments({
         <CardTitle className="text-sm text-muted-foreground">
           {t("documents.title")}
         </CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
         {canManage ? (
-          <form
-            onSubmit={handleUpload}
-            className="flex flex-col gap-3 sm:flex-row sm:items-end"
-          >
-            <div className="flex flex-col gap-2">
-              <span className="text-xs text-muted-foreground">
-                {t("documents.categoryLabel")}
-              </span>
-              <Select
-                value={category}
-                onValueChange={(value) =>
-                  setCategory(value as DocumentCategory)
-                }
-              >
-                <SelectTrigger className="w-full sm:w-40">
-                  <SelectValue>
-                    {(value: DocumentCategory | null) =>
-                      value
-                        ? categoryLabels[value]
-                        : t("documents.categoryLabel")
-                    }
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.entries(categoryLabels).map(([value, label]) => (
-                    <SelectItem key={value} value={value}>
-                      {label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              className="flex-1 rounded-lg border border-input bg-transparent text-sm file:mr-3 file:h-8 file:rounded-md file:border-0 file:bg-secondary file:px-3 file:text-sm file:font-medium"
+          <CardAction>
+            <UploadDocumentDialog
+              companyId={companyId}
+              uploadedBy={uploadedBy}
+              vehicles={[vehicle]}
+              defaultVehicleId={vehicle.id}
+              trigger={
+                <Button variant="outline" size="sm">
+                  <Upload className="size-4" />
+                  {tDocuments("actions.upload")}
+                </Button>
+              }
             />
-            <Button type="submit" disabled={isUploading}>
-              <Upload className="size-4" />
-              {isUploading ? t("documents.uploading") : t("documents.upload")}
-            </Button>
-          </form>
+          </CardAction>
         ) : null}
-
-        {error ? <p className="text-sm text-destructive">{error}</p> : null}
-
+      </CardHeader>
+      <CardContent>
         {documents.length === 0 ? (
           <p className="text-sm text-muted-foreground">
             {t("documents.empty")}
@@ -205,39 +102,21 @@ export function VehicleDocuments({
                   </div>
                 </div>
                 {canManage ? (
-                  <AlertDialog>
-                    <AlertDialogTrigger
-                      render={<Button variant="ghost" size="icon-sm" />}
-                    >
-                      <Trash2 className="size-4" />
-                      <span className="sr-only">
-                        {tCommon("actions.delete")}
-                      </span>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          {t("documents.deleteConfirmTitle", {
-                            name: doc.file_name,
-                          })}
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          {t("documents.deleteConfirmDescription")}
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>
-                          {tCommon("actions.cancel")}
-                        </AlertDialogCancel>
-                        <AlertDialogAction
-                          variant="destructive"
-                          onClick={() => handleDelete(doc)}
-                        >
+                  <ConfirmDeleteDialog
+                    title={tDocuments("deleteConfirm.title", {
+                      name: doc.file_name,
+                    })}
+                    description={tDocuments("deleteConfirm.description")}
+                    onConfirm={() => deleteVehicleDocument(createClient(), doc)}
+                    trigger={
+                      <Button variant="ghost" size="icon-sm">
+                        <Trash2 className="size-4" />
+                        <span className="sr-only">
                           {tCommon("actions.delete")}
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                        </span>
+                      </Button>
+                    }
+                  />
                 ) : null}
               </li>
             ))}

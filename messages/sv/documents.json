@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Dokument",
+    "documentCount": "{count, plural, one {# dokument} other {# dokument}}"
+  },
+  "actions": {
+    "upload": "Ladda upp dokument"
+  },
+  "missing": {
+    "title": "Saknade dokument",
+    "description": "De här fordonen har ett utgångsdatum registrerat men inget matchande dokument.",
+    "upload": "Ladda upp"
+  },
+  "filters": {
+    "searchPlaceholder": "Sök på filnamn eller fordon…",
+    "allCategories": "Alla kategorier",
+    "allVehicles": "Alla fordon"
+  },
+  "table": {
+    "headers": {
+      "document": "Dokument",
+      "vehicle": "Fordon",
+      "category": "Kategori",
+      "expires": "Går ut",
+      "uploaded": "Uppladdat",
+      "uploadedBy": "Uppladdat av"
+    },
+    "replaced": "Ersatt",
+    "replacedHint": "Det finns ett nyare dokument i samma kategori för det här fordonet.",
+    "unnamedUploader": "Namnlös"
+  },
+  "emptyState": {
+    "noDocumentsTitle": "Inga dokument än",
+    "noDocumentsDescription": "Ladda upp registreringsbevis, försäkringsbrev och besiktningsprotokoll så att allt finns på ett ställe.",
+    "addVehicleFirst": "Lägg till ett fordon först och ladda sedan upp dess dokument.",
+    "noMatchTitle": "Inga matchande dokument",
+    "tryDifferentFilter": "Prova en annan sökning eller ett annat filter."
+  },
+  "upload": {
+    "title": "Ladda upp dokument",
+    "description": "Koppla ett dokument till ett fordon.",
+    "descriptionForVehicle": "Koppla ett dokument till {vehicle}.",
+    "vehicleLabel": "Fordon",
+    "vehiclePlaceholder": "Välj ett fordon",
+    "categoryLabel": "Kategori",
+    "fileLabel": "Fil",
+    "scan": "Läs med AI",
+    "scanning": "Läser…",
+    "expiryLabel": "Giltigt till",
+    "expiryHint": {
+      "registration": "Uppdaterar fordonets utgångsdatum för registrering, som påminnelser använder.",
+      "insurance": "Uppdaterar fordonets utgångsdatum för försäkring, som påminnelser använder.",
+      "inspection": "Uppdaterar fordonets utgångsdatum för besiktning, som påminnelser använder."
+    },
+    "scanFoundExpiry": "Utgångsdatumet lästes från dokumentet. Kontrollera det innan du laddar upp.",
+    "scanNoExpiry": "Inget utgångsdatum hittades i dokumentet.",
+    "plateMismatch": "Dokumentet anger registreringsnumret {plate}, som inte matchar det valda fordonet.",
+    "submit": "Ladda upp",
+    "uploading": "Laddar upp…",
+    "errors": {
+      "vehicleRequired": "Välj ett fordon.",
+      "fileRequired": "Välj en fil att ladda upp.",
+      "expiryNotSaved": "Dokumentet laddades upp, men utgångsdatumet kunde inte sparas: {message}"
+    }
+  },
+  "deleteConfirm": {
+    "title": "Ta bort {name}?",
+    "description": "Filen tas bort permanent. Det här går inte att ångra."
+  }
+}
