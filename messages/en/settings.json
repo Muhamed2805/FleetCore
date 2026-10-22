@@ -1,0 +1,41 @@
+{
+  "page": {
+    "title": "Settings",
+    "description": "Manage your profile, password and company."
+  },
+  "saved": "Saved.",
+  "profile": {
+    "title": "Profile",
+    "description": "Your team sees your name. An admin manages roles.",
+    "emailLabel": "Email",
+    "roleLabel": "Role"
+  },
+  "fullName": {
+    "label": "Your name"
+  },
+  "companyName": {
+    "label": "Company name"
+  },
+  "password": {
+    "title": "Password",
+    "description": "Enter your current password to choose a new one.",
+    "currentLabel": "Current password",
+    "newLabel": "New password",
+    "confirmLabel": "Confirm new password",
+    "hint": "At least {min} characters.",
+    "submit": "Change password",
+    "submitting": "Changing…",
+    "saved": "Password changed."
+  },
+  "company": {
+    "title": "Company",
+    "description": "Your whole team sees the company name."
+  },
+  "errors": {
+    "notSignedIn": "Your session has expired. Log in again.",
+    "notAllowed": "Only admins can change the company name.",
+    "invalidName": "Enter a name of up to 100 characters.",
+    "invalidCompanyName": "Enter a company name of up to 100 characters.",
+    "generic": "Couldn't save. Try again."
+  }
+}

@@ -1,4 +1,4 @@
-import { LogOut } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "@/i18n/navigation";
 import type { UserRole } from "@/lib/supabase/types";
 import { getRoleLabels } from "@/lib/team";
 
@@ -62,6 +63,10 @@ export async function UserMenu({
           </DropdownMenuLabel>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuItem render={<Link href="/dashboard/settings" />}>
+          <Settings className="size-4" />
+          {t("userMenu.settings")}
+        </DropdownMenuItem>
         <form action="/auth/signout" method="post">
           <DropdownMenuItem variant="destructive" render={<button type="submit" className="w-full" />}>
             <LogOut className="size-4" />

@@ -9,14 +9,16 @@
     "expenses": "Troškovi",
     "reminders": "Podsjetnici",
     "calendar": "Kalendar",
-    "team": "Tim"
+    "team": "Tim",
+    "settings": "Postavke"
   },
   "sidebar": {
     "openNavigation": "Otvori navigaciju"
   },
   "userMenu": {
     "openMenu": "Otvori korisnički izbornik",
-    "signOut": "Odjava"
+    "signOut": "Odjava",
+    "settings": "Postavke"
   },
   "notifications": {
     "srLabel": "Obavijesti",

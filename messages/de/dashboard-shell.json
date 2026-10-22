@@ -9,14 +9,16 @@
     "expenses": "Ausgaben",
     "reminders": "Erinnerungen",
     "calendar": "Kalender",
-    "team": "Team"
+    "team": "Team",
+    "settings": "Einstellungen"
   },
   "sidebar": {
     "openNavigation": "Navigation öffnen"
   },
   "userMenu": {
     "openMenu": "Benutzermenü öffnen",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "settings": "Einstellungen"
   },
   "notifications": {
     "srLabel": "Benachrichtigungen",

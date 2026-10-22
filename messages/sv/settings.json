@@ -1,0 +1,41 @@
+{
+  "page": {
+    "title": "Inställningar",
+    "description": "Hantera din profil, ditt lösenord och ditt företag."
+  },
+  "saved": "Sparat.",
+  "profile": {
+    "title": "Profil",
+    "description": "Ditt team ser ditt namn. En administratör hanterar roller.",
+    "emailLabel": "E-post",
+    "roleLabel": "Roll"
+  },
+  "fullName": {
+    "label": "Ditt namn"
+  },
+  "companyName": {
+    "label": "Företagsnamn"
+  },
+  "password": {
+    "title": "Lösenord",
+    "description": "Ange ditt nuvarande lösenord för att välja ett nytt.",
+    "currentLabel": "Nuvarande lösenord",
+    "newLabel": "Nytt lösenord",
+    "confirmLabel": "Bekräfta nytt lösenord",
+    "hint": "Minst {min} tecken.",
+    "submit": "Byt lösenord",
+    "submitting": "Byter…",
+    "saved": "Lösenordet har bytts."
+  },
+  "company": {
+    "title": "Företag",
+    "description": "Hela teamet ser företagsnamnet."
+  },
+  "errors": {
+    "notSignedIn": "Din session har gått ut. Logga in igen.",
+    "notAllowed": "Endast administratörer kan ändra företagsnamnet.",
+    "invalidName": "Ange ett namn på högst 100 tecken.",
+    "invalidCompanyName": "Ange ett företagsnamn på högst 100 tecken.",
+    "generic": "Det gick inte att spara. Försök igen."
+  }
+}

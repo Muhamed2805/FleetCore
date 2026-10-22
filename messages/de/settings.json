@@ -1,0 +1,41 @@
+{
+  "page": {
+    "title": "Einstellungen",
+    "description": "Verwalten Sie Ihr Profil, Ihr Passwort und Ihr Unternehmen."
+  },
+  "saved": "Gespeichert.",
+  "profile": {
+    "title": "Profil",
+    "description": "Ihr Team sieht Ihren Namen. Rollen verwaltet ein Administrator.",
+    "emailLabel": "E-Mail",
+    "roleLabel": "Rolle"
+  },
+  "fullName": {
+    "label": "Ihr Name"
+  },
+  "companyName": {
+    "label": "Firmenname"
+  },
+  "password": {
+    "title": "Passwort",
+    "description": "Geben Sie Ihr aktuelles Passwort ein, um ein neues festzulegen.",
+    "currentLabel": "Aktuelles Passwort",
+    "newLabel": "Neues Passwort",
+    "confirmLabel": "Neues Passwort bestätigen",
+    "hint": "Mindestens {min} Zeichen.",
+    "submit": "Passwort ändern",
+    "submitting": "Wird geändert…",
+    "saved": "Passwort geändert."
+  },
+  "company": {
+    "title": "Unternehmen",
+    "description": "Ihr gesamtes Team sieht den Firmennamen."
+  },
+  "errors": {
+    "notSignedIn": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+    "notAllowed": "Nur Administratoren können den Firmennamen ändern.",
+    "invalidName": "Geben Sie einen Namen mit höchstens 100 Zeichen ein.",
+    "invalidCompanyName": "Geben Sie einen Firmennamen mit höchstens 100 Zeichen ein.",
+    "generic": "Speichern fehlgeschlagen. Versuchen Sie es erneut."
+  }
+}

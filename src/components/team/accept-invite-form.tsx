@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "@/i18n/navigation";
+import { MIN_PASSWORD_LENGTH } from "@/lib/passwords";
 import { createClient } from "@/lib/supabase/client";
 
 export function AcceptInviteForm({
@@ -103,7 +104,7 @@ export function AcceptInviteForm({
           id="password"
           type="password"
           autoComplete="new-password"
-          minLength={6}
+          minLength={MIN_PASSWORD_LENGTH}
           required
           value={password}
           onChange={(event) => setPassword(event.target.value)}

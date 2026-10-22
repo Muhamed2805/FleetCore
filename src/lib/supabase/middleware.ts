@@ -5,16 +5,17 @@ import { routing } from "@/i18n/routing";
 
 // Only the app itself requires a session; signed-out visitors hitting it
 // are sent to /login. Everything else stays reachable signed out: the
-// landing, login, signup and /invite pages, the /auth and /api route
-// handlers (which manage their own auth: session cookies for user-triggered
-// routes, a bearer secret for the cron route), and unknown URLs, which
-// should 404 rather than bounce to /login. A new page that needs a session
-// outside /dashboard must be added here. The dashboard layout re-checks the
-// session and RLS guards the data, so this gate is not the only check.
+// landing, login, signup, password reset and /invite pages, the /auth and
+// /api route handlers (which manage their own auth: session cookies for
+// user-triggered routes, a bearer secret for the cron route), and unknown
+// URLs, which should 404 rather than bounce to /login. A new page that needs
+// a session outside /dashboard must be added here. The dashboard layout
+// re-checks the session and RLS guards the data, so this gate is not the
+// only check.
 const PROTECTED_PATHS = ["/dashboard"];
 
 // Signed-in users have no use for these and are sent to /dashboard.
-const AUTH_PAGES = ["/login", "/signup"];
+const AUTH_PAGES = ["/login", "/signup", "/forgot-password"];
 
 // Segment-aware prefix match: "/dashboard" matches "/dashboard/vehicles"
 // but not "/dashboards".

@@ -9,14 +9,16 @@
     "expenses": "Uitgaven",
     "reminders": "Herinneringen",
     "calendar": "Kalender",
-    "team": "Team"
+    "team": "Team",
+    "settings": "Instellingen"
   },
   "sidebar": {
     "openNavigation": "Navigatie openen"
   },
   "userMenu": {
     "openMenu": "Gebruikersmenu openen",
-    "signOut": "Uitloggen"
+    "signOut": "Uitloggen",
+    "settings": "Instellingen"
   },
   "notifications": {
     "srLabel": "Meldingen",

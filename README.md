@@ -31,6 +31,7 @@ commit history.
 - [x] Phase 13 — CI (lint, typecheck and build on every pull request)
 - [x] Phase 14 — Playwright smoke tests in CI
 - [x] Phase 15 — Documents (company-wide list, missing documents, AI expiry scan)
+- [x] Phase 16 — Account & settings (password reset, profile, password and company name)
 
 ## Tech stack
 
@@ -48,7 +49,12 @@ commit history.
    (`npx supabase link --project-ref <ref>`) then run
    `npx supabase db push`, or paste the contents of
    `supabase/migrations/*.sql` into the SQL editor in the dashboard.
-4. Install and run:
+4. In Authentication > URL Configuration, set the Site URL to the app's
+   URL. Email links (signup confirmation, password reset) return through
+   `/auth/callback`, which Supabase allows on the Site URL's host; for any
+   other host (for example preview deployments) add `https://<host>/**`
+   to the Redirect URLs.
+5. Install and run:
 
 ```bash
 npm install
@@ -142,6 +148,33 @@ Admins can change any other member's role and remove members (which deletes
 their account; records they created stay, with the author cleared). Admins
 can't change their own role or remove themselves, so a company always keeps
 at least one admin.
+
+### Account
+
+Everyone manages their own account from Settings (`/dashboard/settings`):
+their name and their password. Admins also rename the company there. The
+database enforces the same rules as the forms: names are trimmed and 1–100
+characters (check constraints, which the signup trigger respects too),
+members can only update their own `full_name`, and admins can only update
+the company's `name` (column grant). See
+`supabase/migrations/20261023130000_account_settings.sql`.
+
+Changing the password in Settings asks for the current one first. A
+forgotten password is reset by email:
+
+1. `/forgot-password` asks Supabase Auth to send a reset link. The page
+   answers the same way whether or not the account exists.
+2. The link signs the user in through `/auth/callback`, which marks the
+   session as a password recovery for 15 minutes (an httpOnly cookie).
+3. `/reset-password` then lets them choose a new password without the old
+   one. Without that mark it sends signed-in users to Settings and
+   everyone else to request a new link.
+
+The link must be opened in the browser that requested it (Supabase uses
+PKCE). An expired, reused or foreign link lands on the login page with an
+explanation. Optionally, turn on "Secure password change" in Supabase Auth
+so Supabase itself requires a recent sign-in before a password change; both
+flows above sign in first, so they keep working.
 
 ### AI document extraction
 

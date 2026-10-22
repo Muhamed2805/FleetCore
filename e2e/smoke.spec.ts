@@ -53,8 +53,46 @@ test.describe("public pages", () => {
       ).toBeVisible();
       await expect(page.getByLabel(t(locale, "auth", "login.emailLabel"))).toBeVisible();
       await expect(page.getByLabel(t(locale, "auth", "login.passwordLabel"))).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: t(locale, "auth", "login.forgotPasswordLink") })
+      ).toHaveAttribute("href", localized(locale, "/forgot-password"));
+    });
+
+    test(`forgot password page renders in ${locale}`, async ({ page }) => {
+      const response = await page.goto(localized(locale, "/forgot-password"));
+      expect(response?.status()).toBe(200);
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect(
+        page.getByText(t(locale, "auth", "forgotPassword.title"), { exact: true })
+      ).toBeVisible();
+      await expect(
+        page.getByLabel(t(locale, "auth", "forgotPassword.emailLabel"))
+      ).toBeVisible();
+      await expect(
+        page.getByRole("button", { name: t(locale, "auth", "forgotPassword.submit") })
+      ).toBeVisible();
     });
   }
+
+  test("login explains an expired email link", async ({ page }) => {
+    await page.goto("/bs/login?error=link");
+    await expect(
+      page.getByText(t("bs", "auth", "login.linkError"), { exact: true })
+    ).toBeVisible();
+  });
+
+  test("reset password page without a session offers a new link", async ({ page }) => {
+    for (const locale of ["en", "bs"]) {
+      const response = await page.goto(localized(locale, "/reset-password"));
+      expect(response?.status()).toBe(200);
+      await expect(
+        page.getByText(t(locale, "auth", "resetPassword.expired.title"), { exact: true })
+      ).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: t(locale, "auth", "resetPassword.expired.action") })
+      ).toHaveAttribute("href", localized(locale, "/forgot-password"));
+    }
+  });
 
   test("signup page renders the form", async ({ page }) => {
     await page.goto("/signup");
@@ -105,6 +143,11 @@ test.describe("auth gate", () => {
     await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fteam$/);
   });
 
+  test("settings page redirects to login", async ({ page }) => {
+    await page.goto("/dashboard/settings");
+    await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fsettings$/);
+  });
+
   test("documents page redirects to login", async ({ page }) => {
     await page.goto("/dashboard/documents");
     await expect(page).toHaveURL(/\/login\?next=%2Fdashboard%2Fdocuments$/);
@@ -142,7 +185,16 @@ test.describe("route handlers", () => {
   test("auth callback without a code redirects to login", async ({ request }) => {
     const response = await request.get("/auth/callback", { maxRedirects: 0 });
     expect(response.status()).toBe(307);
-    expect(response.headers().location).toMatch(/\/login$/);
+    expect(response.headers().location).toMatch(/\/login\?error=link$/);
+  });
+
+  test("auth callback with a bad code keeps the link's locale", async ({ request }) => {
+    const response = await request.get(
+      "/auth/callback?code=not-a-code&next=%2Fbs%2Freset-password",
+      { maxRedirects: 0 }
+    );
+    expect(response.status()).toBe(307);
+    expect(response.headers().location).toMatch(/\/bs\/login\?error=link$/);
   });
 
   test("reminders cron rejects requests without the secret", async ({ request }) => {

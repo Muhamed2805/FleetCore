@@ -9,14 +9,16 @@
     "expenses": "Expenses",
     "reminders": "Reminders",
     "calendar": "Calendar",
-    "team": "Team"
+    "team": "Team",
+    "settings": "Settings"
   },
   "sidebar": {
     "openNavigation": "Open navigation"
   },
   "userMenu": {
     "openMenu": "Open user menu",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "settings": "Settings"
   },
   "notifications": {
     "srLabel": "Notifications",

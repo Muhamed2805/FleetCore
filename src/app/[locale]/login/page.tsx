@@ -34,6 +34,8 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  // Set by /auth/callback when an email link is expired or already used.
+  const linkError = searchParams.get("error") === "link";
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(event: FormEvent) {
@@ -76,6 +78,9 @@ function LoginForm() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            {linkError && !error ? (
+              <p className="text-sm text-destructive">{t("login.linkError")}</p>
+            ) : null}
             <div className="flex flex-col gap-2">
               <Label htmlFor="email">{t("login.emailLabel")}</Label>
               <Input
@@ -88,7 +93,15 @@ function LoginForm() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="password">{t("login.passwordLabel")}</Label>
+              <div className="flex items-center justify-between gap-2">
+                <Label htmlFor="password">{t("login.passwordLabel")}</Label>
+                <Link
+                  href="/forgot-password"
+                  className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                >
+                  {t("login.forgotPasswordLink")}
+                </Link>
+              </div>
               <Input
                 id="password"
                 type="password"
