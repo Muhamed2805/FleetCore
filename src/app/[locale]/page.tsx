@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
 export default async function Home() {
@@ -17,9 +17,9 @@ export default async function Home() {
           {t("header.brand")}
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" nativeButton={false} render={<Link href="/login" />}>
+          <Link href="/login" className={buttonVariants({ variant: "ghost" })}>
             {t("header.logIn")}
-          </Button>
+          </Link>
           <ThemeToggle />
         </div>
       </header>
@@ -29,9 +29,12 @@ export default async function Home() {
           {t("hero.title")}
         </h1>
         <p className="max-w-md text-muted-foreground">{t("hero.description")}</p>
-        <Button size="lg" className="mt-2" nativeButton={false} render={<Link href="/signup" />}>
+        <Link
+          href="/signup"
+          className={buttonVariants({ size: "lg", className: "mt-2" })}
+        >
           {t("hero.getStarted")}
-        </Button>
+        </Link>
       </main>
     </div>
   );

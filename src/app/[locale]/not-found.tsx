@@ -1,7 +1,7 @@
 import { Truck } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
 export default async function NotFound() {
@@ -19,9 +19,9 @@ export default async function NotFound() {
       <p className="max-w-sm text-muted-foreground">
         {t("appNotFound.description")}
       </p>
-      <Button nativeButton={false} render={<Link href="/" />}>
+      <Link href="/" className={buttonVariants()}>
         {t("appNotFound.goHome")}
-      </Button>
+      </Link>
     </div>
   );
 }
