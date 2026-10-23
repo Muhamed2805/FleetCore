@@ -7,7 +7,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { BrandMark } from "@/components/brand-mark";
 import { LanguageSelector } from "@/components/language-selector";
@@ -25,7 +25,11 @@ const features = [
   { key: "team", icon: Users },
 ] as const;
 
-export default async function Home() {
+export default async function Home({ params }: PageProps<"/[locale]">) {
+  // The root layout has already rejected unknown locales.
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const [t, tShell] = await Promise.all([
     getTranslations("landing"),
     getTranslations("dashboardShell"),

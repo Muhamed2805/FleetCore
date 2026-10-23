@@ -219,6 +219,8 @@ export function DamageReportDetailDialog({
                       <img
                         src={photo.url}
                         alt={photo.fileName}
+                        loading="lazy"
+                        decoding="async"
                         className="size-full object-cover"
                       />
                     </a>
