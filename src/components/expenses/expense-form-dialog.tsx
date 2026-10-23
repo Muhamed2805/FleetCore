@@ -29,6 +29,7 @@ import { getExpenseCategoryLabels } from "@/lib/expenses";
 import { extractInvoice, type ExtractedInvoice } from "@/lib/extraction";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, ExpenseCategory } from "@/lib/supabase/types";
+import { vehicleLabel } from "@/lib/vehicles";
 
 type Expense = Database["public"]["Tables"]["expenses"]["Row"];
 type VehicleOption = {
@@ -263,7 +264,7 @@ export function ExpenseFormDialog({
                   {(value: string | null) => {
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
-                      ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
+                      ? vehicleLabel(vehicle)
                       : t("form.vehicle.noVehicle");
                   }}
                 </SelectValue>

@@ -8,17 +8,11 @@
     "deleting": "Brisanje…",
     "edit": "Uredi",
     "add": "Dodaj",
-    "close": "Zatvori",
     "viewAll": "Prikaži sve",
     "view": "Prikaži",
-    "unlink": "Odspoji",
-    "confirm": "Potvrdi"
-  },
-  "status": {
-    "loading": "Učitavanje…"
+    "unlink": "Odspoji"
   },
   "confirmDelete": {
-    "defaultTitle": "Jeste li sigurni?",
     "cancel": "Otkaži",
     "delete": "Izbriši",
     "deleting": "Brisanje…"

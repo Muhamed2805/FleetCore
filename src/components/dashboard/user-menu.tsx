@@ -15,18 +15,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import type { UserRole } from "@/lib/supabase/types";
 import { getRoleLabels } from "@/lib/team";
-
-function initials(name: string | null, email: string | null | undefined) {
-  if (name) {
-    return name
-      .split(" ")
-      .map((part) => part[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase();
-  }
-  return (email ?? "?").slice(0, 2).toUpperCase();
-}
+import { initials } from "@/lib/utils";
 
 export async function UserMenu({
   fullName,

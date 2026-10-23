@@ -51,6 +51,15 @@ export function formatDate(date: string | null) {
   });
 }
 
+// "Make Model (PLATE)", how a vehicle is named in lists and pickers.
+export function vehicleLabel(vehicle: {
+  make: string;
+  model: string;
+  license_plate: string;
+}) {
+  return `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`;
+}
+
 // "all" (or nothing) means no filter. Used by the Vehicles table and the
 // CSV export, so both filter the same way.
 export type VehicleFilters = {

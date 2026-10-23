@@ -8,17 +8,11 @@
     "deleting": "Tar bort…",
     "edit": "Redigera",
     "add": "Lägg till",
-    "close": "Stäng",
     "viewAll": "Visa alla",
     "view": "Visa",
-    "unlink": "Koppla bort",
-    "confirm": "Bekräfta"
-  },
-  "status": {
-    "loading": "Laddar…"
+    "unlink": "Koppla bort"
   },
   "confirmDelete": {
-    "defaultTitle": "Är du säker?",
     "cancel": "Avbryt",
     "delete": "Ta bort",
     "deleting": "Tar bort…"

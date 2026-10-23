@@ -27,6 +27,7 @@ import { getDamageSeverityLabels } from "@/lib/damage-reports";
 import { DAMAGE_PHOTOS_BUCKET, storageSafeFileName } from "@/lib/storage";
 import { createClient } from "@/lib/supabase/client";
 import type { DamageSeverity } from "@/lib/supabase/types";
+import { vehicleLabel } from "@/lib/vehicles";
 
 type VehicleOption = {
   id: string;
@@ -178,7 +179,7 @@ export function DamageReportFormDialog({
                   {(value: string | null) => {
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
-                      ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
+                      ? vehicleLabel(vehicle)
                       : t("form.vehiclePlaceholder");
                   }}
                 </SelectValue>

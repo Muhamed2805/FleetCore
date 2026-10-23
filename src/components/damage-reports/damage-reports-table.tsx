@@ -32,7 +32,7 @@ import {
   getDamageStatusLabels,
 } from "@/lib/damage-reports";
 import { formatCurrency } from "@/lib/expenses";
-import { formatDate } from "@/lib/vehicles";
+import { formatDate, vehicleLabel } from "@/lib/vehicles";
 
 type VehicleOption = {
   id: string;
@@ -126,7 +126,7 @@ export function DamageReportsTable({
                   ? vehicles.find((v) => v.id === value)
                   : null;
                 return vehicle
-                  ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
+                  ? vehicleLabel(vehicle)
                   : t("filters.allVehicles");
               }}
             </SelectValue>

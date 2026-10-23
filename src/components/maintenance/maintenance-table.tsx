@@ -33,7 +33,7 @@ import {
 } from "@/lib/maintenance";
 import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/supabase/types";
-import { formatDate } from "@/lib/vehicles";
+import { formatDate, vehicleLabel } from "@/lib/vehicles";
 import { formatCurrency } from "@/lib/expenses";
 
 type MaintenanceRecord =
@@ -152,7 +152,7 @@ export function MaintenanceTable({
               {(value: string | null) => {
                 const vehicle = value ? vehicleById.get(value) : null;
                 return vehicle
-                  ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
+                  ? vehicleLabel(vehicle)
                   : t("table.filters.allVehicles");
               }}
             </SelectValue>

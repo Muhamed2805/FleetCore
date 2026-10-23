@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/client";
 import type { Database, NotificationCategory } from "@/lib/supabase/types";
-import { formatDate } from "@/lib/vehicles";
+import { formatDate, vehicleLabel } from "@/lib/vehicles";
 import { Bell } from "lucide-react";
 
 type NotificationWithVehicle =
@@ -65,7 +65,7 @@ export function RemindersList({
           <div className="flex flex-col gap-0.5">
             <span className="text-sm font-medium">
               {notification.vehicle
-                ? `${notification.vehicle.make} ${notification.vehicle.model} (${notification.vehicle.license_plate})`
+                ? vehicleLabel(notification.vehicle)
                 : t("list.unknownVehicle")}{" "}
               · {categoryLabels[notification.category]}
             </span>

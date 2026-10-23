@@ -38,13 +38,12 @@ import {
   documentCategories,
   getDocumentCategoryLabels,
   normalizePlate,
-  vehicleLabel,
   type DocumentVehicle,
   type ExpiringCategory,
 } from "@/lib/documents";
 import { createClient } from "@/lib/supabase/client";
 import type { DocumentCategory } from "@/lib/supabase/types";
-import { formatDate } from "@/lib/vehicles";
+import { formatDate, vehicleLabel } from "@/lib/vehicles";
 
 type VehicleSummary = {
   id: string;

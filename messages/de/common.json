@@ -8,17 +8,11 @@
     "deleting": "Wird gelöscht…",
     "edit": "Bearbeiten",
     "add": "Hinzufügen",
-    "close": "Schließen",
     "viewAll": "Alle anzeigen",
     "view": "Anzeigen",
-    "unlink": "Verknüpfung aufheben",
-    "confirm": "Bestätigen"
-  },
-  "status": {
-    "loading": "Wird geladen…"
+    "unlink": "Verknüpfung aufheben"
   },
   "confirmDelete": {
-    "defaultTitle": "Sind Sie sicher?",
     "cancel": "Abbrechen",
     "delete": "Löschen",
     "deleting": "Wird gelöscht…"
