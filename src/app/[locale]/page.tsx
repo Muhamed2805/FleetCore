@@ -47,9 +47,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             {t("header.brand")}
           </Link>
           <div className="flex items-center gap-1">
-            <div className="hidden sm:block">
-              <LanguageSelector variant="ghost" />
-            </div>
+            <LanguageSelector variant="ghost" compact="sm" />
             <ThemeToggle variant="ghost" />
             <Link
               href="/login"
@@ -82,7 +80,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               <span className="size-1.5 rounded-full bg-emerald-500" />
               {t("hero.badge")}
             </span>
-            <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+            <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-balance wrap-break-word sm:text-6xl">
               {t("hero.title")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-pretty text-muted-foreground">

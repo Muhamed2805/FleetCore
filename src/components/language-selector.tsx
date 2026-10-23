@@ -16,10 +16,30 @@ import { localeLabels, routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
+// On narrow screens, a square icon-only trigger for headers that have no
+// room for the language name: "sm" below 640 px, "xs" below 360 px. The
+// name stays for screen readers; sr-only rather than hidden, because the
+// trigger forces its value to display:flex with a more specific selector.
+// The last svg is the chevron.
+const compactClasses = {
+  sm: {
+    trigger:
+      "max-sm:size-9 max-sm:justify-center max-sm:px-0 max-sm:[&>svg:last-child]:hidden",
+    value: "max-sm:sr-only",
+  },
+  xs: {
+    trigger:
+      "max-[22.5rem]:size-9 max-[22.5rem]:justify-center max-[22.5rem]:px-0 max-[22.5rem]:[&>svg:last-child]:hidden",
+    value: "max-[22.5rem]:sr-only",
+  },
+};
+
 export function LanguageSelector({
   variant = "outline",
+  compact,
 }: {
   variant?: "outline" | "ghost";
+  compact?: keyof typeof compactClasses;
 }) {
   const locale = useLocale();
   const router = useRouter();
@@ -43,11 +63,12 @@ export function LanguageSelector({
         className={cn(
           "w-auto",
           variant === "ghost" &&
-            "border-transparent bg-transparent text-muted-foreground shadow-none hover:bg-muted hover:text-foreground dark:bg-transparent dark:hover:bg-muted/60"
+            "border-transparent bg-transparent text-muted-foreground shadow-none hover:bg-muted hover:text-foreground dark:bg-transparent dark:hover:bg-muted/60",
+          compact && compactClasses[compact].trigger
         )}
       >
         <Languages className="size-4" />
-        <SelectValue>
+        <SelectValue className={cn(compact && compactClasses[compact].value)}>
           {() => localeLabels[locale as Locale]}
         </SelectValue>
       </SelectTrigger>
