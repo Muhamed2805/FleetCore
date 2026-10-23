@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
           <CardContent>
             <Link
               href="/login"
-              className="text-sm font-medium text-foreground underline underline-offset-4"
+              className="py-1 text-sm font-medium text-foreground underline underline-offset-4"
             >
               {t("forgotPassword.backToLogin")}
             </Link>
@@ -104,7 +104,7 @@ export default function ForgotPasswordPage() {
           <p className="mt-6 text-center text-sm text-muted-foreground">
             <Link
               href="/login"
-              className="font-medium text-foreground underline underline-offset-4"
+              className="py-1 font-medium text-foreground underline underline-offset-4"
             >
               {t("forgotPassword.backToLogin")}
             </Link>

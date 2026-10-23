@@ -103,7 +103,7 @@ export default function LoginPage() {
                 <Label htmlFor="password">{t("login.passwordLabel")}</Label>
                 <Link
                   href="/forgot-password"
-                  className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                  className="-my-1 py-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
                 >
                   {t("login.forgotPasswordLink")}
                 </Link>

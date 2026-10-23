@@ -64,7 +64,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
             {t("header.brand")}
           </Link>
           <div className="flex items-center gap-1">
-            <LanguageSelector variant="ghost" />
+            <LanguageSelector variant="ghost" compact="xs" />
             <ThemeToggle variant="ghost" />
           </div>
         </div>
