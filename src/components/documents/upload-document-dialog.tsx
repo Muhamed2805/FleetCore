@@ -39,7 +39,6 @@ import {
   normalizePlate,
   uploadVehicleDocument,
   vehicleExpiry,
-  vehicleLabel,
   type DocumentVehicle,
 } from "@/lib/documents";
 import {
@@ -48,6 +47,7 @@ import {
 } from "@/lib/extraction";
 import { createClient } from "@/lib/supabase/client";
 import type { DocumentCategory } from "@/lib/supabase/types";
+import { vehicleLabel } from "@/lib/vehicles";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 

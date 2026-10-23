@@ -8,17 +8,11 @@
     "deleting": "Deleting…",
     "edit": "Edit",
     "add": "Add",
-    "close": "Close",
     "viewAll": "View all",
     "view": "View",
-    "unlink": "Unlink",
-    "confirm": "Confirm"
-  },
-  "status": {
-    "loading": "Loading…"
+    "unlink": "Unlink"
   },
   "confirmDelete": {
-    "defaultTitle": "Are you sure?",
     "cancel": "Cancel",
     "delete": "Delete",
     "deleting": "Deleting…"

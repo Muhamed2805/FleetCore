@@ -27,6 +27,7 @@ import {
 import { useRouter } from "@/i18n/navigation";
 import type { UserRole } from "@/lib/supabase/types";
 import { getRoleLabels } from "@/lib/team";
+import { initials } from "@/lib/utils";
 import { formatDate } from "@/lib/vehicles";
 
 export type TeamMember = {
@@ -36,18 +37,6 @@ export type TeamMember = {
   role: UserRole;
   created_at: string;
 };
-
-function initials(name: string | null, email: string) {
-  if (name) {
-    return name
-      .split(" ")
-      .map((part) => part[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase();
-  }
-  return email.slice(0, 2).toUpperCase();
-}
 
 export function MembersTable({
   members,

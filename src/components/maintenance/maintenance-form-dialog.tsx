@@ -34,6 +34,7 @@ import type {
   MaintenanceStatus,
   MaintenanceType,
 } from "@/lib/supabase/types";
+import { vehicleLabel } from "@/lib/vehicles";
 
 type MaintenanceRecord =
   Database["public"]["Tables"]["maintenance_records"]["Row"];
@@ -183,7 +184,7 @@ export function MaintenanceFormDialog({
                   {(value: string | null) => {
                     const vehicle = value ? vehiclesById.get(value) : null;
                     return vehicle
-                      ? `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`
+                      ? vehicleLabel(vehicle)
                       : t("form.vehicle.placeholder");
                   }}
                 </SelectValue>

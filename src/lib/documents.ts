@@ -43,14 +43,6 @@ export type DocumentVehicle = VehicleExpiries & {
   license_plate: string;
 };
 
-export function vehicleLabel(vehicle: {
-  make: string;
-  model: string;
-  license_plate: string;
-}) {
-  return `${vehicle.make} ${vehicle.model} (${vehicle.license_plate})`;
-}
-
 export function isExpiringCategory(
   category: DocumentCategory
 ): category is ExpiringCategory {

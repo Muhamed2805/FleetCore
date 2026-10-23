@@ -8,17 +8,11 @@
     "deleting": "Verwijderen…",
     "edit": "Bewerken",
     "add": "Toevoegen",
-    "close": "Sluiten",
     "viewAll": "Alles bekijken",
     "view": "Bekijken",
-    "unlink": "Ontkoppelen",
-    "confirm": "Bevestigen"
-  },
-  "status": {
-    "loading": "Laden…"
+    "unlink": "Ontkoppelen"
   },
   "confirmDelete": {
-    "defaultTitle": "Weet je het zeker?",
     "cancel": "Annuleren",
     "delete": "Verwijderen",
     "deleting": "Verwijderen…"
