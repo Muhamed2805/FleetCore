@@ -19,24 +19,24 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { safeNextPath } from "@/lib/safe-redirect";
 import { createClient } from "@/lib/supabase/client";
 
-export default function LoginPage() {
-  return (
-    <Suspense>
-      <LoginForm />
-    </Suspense>
-  );
+// Reading the URL during render makes everything up to the nearest
+// Suspense boundary render only in the browser, so only this notice reads
+// it. The rest of the page stays in the prerendered HTML.
+function LinkErrorNotice() {
+  const t = useTranslations("auth");
+  const searchParams = useSearchParams();
+  // Set by /auth/callback when an email link is expired or already used.
+  if (searchParams.get("error") !== "link") return null;
+  return <p className="text-sm text-destructive">{t("login.linkError")}</p>;
 }
 
-function LoginForm() {
+export default function LoginPage() {
   const t = useTranslations("auth");
   const router = useRouter();
   const appRouter = useAppRouter();
-  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  // Set by /auth/callback when an email link is expired or already used.
-  const linkError = searchParams.get("error") === "link";
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(event: FormEvent) {
@@ -61,7 +61,10 @@ function LoginForm() {
     // ("/bs/dashboard/vehicles"), so it goes to the plain router; the
     // localized one would prefix it again. Without it, the localized router
     // picks the current locale's dashboard.
-    const next = safeNextPath(searchParams.get("next"), "");
+    const next = safeNextPath(
+      new URLSearchParams(window.location.search).get("next"),
+      ""
+    );
     if (next) {
       appRouter.push(next);
     } else {
@@ -79,8 +82,10 @@ function LoginForm() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {linkError && !error ? (
-              <p className="text-sm text-destructive">{t("login.linkError")}</p>
+            {!error ? (
+              <Suspense>
+                <LinkErrorNotice />
+              </Suspense>
             ) : null}
             <div className="flex flex-col gap-2">
               <Label htmlFor="email">{t("login.emailLabel")}</Label>

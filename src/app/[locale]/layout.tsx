@@ -8,20 +8,28 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 
 // latin-ext covers č, ć, đ, š, ž and å, ä, ö.
+// Not preloaded: the browser then fetches only the subsets a page uses
+// (unicode-range), so latin-ext loads for bs/hr/sr text but not for en,
+// de, sv or nl, instead of every page downloading both.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
   axes: ["opsz"],
+  preload: false,
 });
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin", "latin-ext"],
+  preload: false,
 });
 
+// Only the invite link uses it, so it loads when shown instead of being
+// preloaded on every page.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {

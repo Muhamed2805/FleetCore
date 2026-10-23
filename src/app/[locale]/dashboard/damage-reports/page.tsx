@@ -45,18 +45,18 @@ export default async function DamageReportsPage() {
     .map((report) => report.expense_id)
     .filter((id): id is string => Boolean(id));
 
-  const { data: expenses } =
-    expenseIds.length > 0
-      ? await supabase.from("expenses").select("*").in("id", expenseIds)
-      : { data: [] as Expense[] };
-
   const photoPaths = (photos ?? []).map((photo) => photo.file_path);
-  const { data: signedUrls } =
+
+  const [{ data: expenses }, { data: signedUrls }] = await Promise.all([
+    expenseIds.length > 0
+      ? supabase.from("expenses").select("*").in("id", expenseIds)
+      : { data: [] as Expense[] },
     photoPaths.length > 0
-      ? await supabase.storage
+      ? supabase.storage
           .from(DAMAGE_PHOTOS_BUCKET)
           .createSignedUrls(photoPaths, 3600)
-      : { data: [] as { path: string | null; signedUrl: string }[] };
+      : { data: [] as { path: string | null; signedUrl: string }[] },
+  ]);
 
   const urlByPath = new Map(
     (signedUrls ?? []).map((entry) => [entry.path, entry.signedUrl])
