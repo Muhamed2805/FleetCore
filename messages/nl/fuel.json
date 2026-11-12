@@ -1,0 +1,98 @@
+{
+  "table": {
+    "heading": "Brandstof",
+    "summary": "{count, plural, one {# tankbeurt} other {# tankbeurten}} · {liters} · {total}",
+    "addButton": "Tankbeurt registreren",
+    "partial": "Gedeeltelijk",
+    "filters": {
+      "allVehicles": "Alle voertuigen"
+    },
+    "emptyState": {
+      "noEntriesTitle": "Nog geen tankbeurten",
+      "noMatchTitle": "Geen tankbeurten voor dit voertuig",
+      "logFillUps": "Registreer tankbeurten om brandstofkosten en verbruik bij te houden.",
+      "tryDifferentVehicle": "Probeer een ander voertuig."
+    },
+    "columns": {
+      "date": "Datum",
+      "vehicle": "Voertuig",
+      "odometer": "Kilometerstand",
+      "liters": "Liter",
+      "pricePerLiter": "Prijs/L",
+      "total": "Totaal",
+      "consumption": "Verbruik"
+    },
+    "deleteDialog": {
+      "title": "Deze tankbeurt verwijderen?",
+      "description": "De bijbehorende brandstofuitgave wordt ook verwijderd. Dit kan niet ongedaan worden gemaakt."
+    }
+  },
+  "stats": {
+    "averageConsumption": "Gem. verbruik",
+    "measuredOver": "Gemeten over {distance}",
+    "needsTwoFullTanks": "Vereist twee volle tankbeurten",
+    "averagePrice": "Gem. brandstofprijs",
+    "perLiter": "Per liter",
+    "totalLiters": "Getankt",
+    "totalCost": "{total} totaal"
+  },
+  "form": {
+    "addTitle": "Tankbeurt registreren",
+    "editTitle": "Tankbeurt bewerken",
+    "dialogDescription": "Elke tankbeurt verschijnt ook als brandstof bij de uitgaven.",
+    "vehicle": {
+      "label": "Voertuig",
+      "placeholder": "Selecteer voertuig"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "odometer": {
+      "label": "Kilometerstand (km)",
+      "current": "Huidige stand: {value}"
+    },
+    "liters": {
+      "label": "Liter"
+    },
+    "totalCost": {
+      "label": "Totaalbedrag"
+    },
+    "pricePerLiter": "{price} per liter",
+    "fullTank": {
+      "label": "Volgetankt",
+      "hint": "Het verbruik wordt gemeten tussen volle tanks."
+    },
+    "station": {
+      "label": "Tankstation"
+    },
+    "notes": {
+      "label": "Notities"
+    },
+    "errors": {
+      "vehicleRequired": "Selecteer een voertuig.",
+      "invalidOdometer": "Voer de kilometerstand in hele km in.",
+      "invalidLiters": "Voer in hoeveel liter er getankt is.",
+      "invalidCost": "Voer een geldig totaalbedrag in."
+    },
+    "submit": {
+      "add": "Tankbeurt registreren"
+    }
+  },
+  "vehicleCard": {
+    "title": "Brandstof",
+    "empty": "Nog geen tankbeurten geregistreerd.",
+    "viewAll": "Alles bekijken",
+    "logButton": "Tankbeurt registreren",
+    "averageConsumption": "Gem. verbruik",
+    "noConsumption": "Vereist twee volle tankbeurten",
+    "lastFillUp": "Laatste tankbeurt"
+  },
+  "odometer": {
+    "title": "Kilometerstandgeschiedenis",
+    "empty": "Nog geen kilometerstanden. Ze komen van tankbeurten en afgerond onderhoud.",
+    "sources": {
+      "fuel": "Tankbeurt",
+      "maintenance": "Onderhoud"
+    }
+  }
+}

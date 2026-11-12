@@ -1,13 +1,13 @@
 "use client";
 
-import { Pencil, Plus, Receipt, Trash2 } from "lucide-react";
+import { Fuel, Pencil, Plus, Receipt, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { ExportButton } from "@/components/dashboard/export-button";
 import { ExpenseFormDialog } from "@/components/expenses/expense-form-dialog";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ConfirmDeleteDialog } from "@/components/ui/confirm-delete-dialog";
 import {
@@ -30,6 +30,7 @@ import {
   formatCurrency,
   getExpenseCategoryLabels,
 } from "@/lib/expenses";
+import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/vehicles";
@@ -45,11 +46,14 @@ type VehicleOption = {
 export function ExpensesTable({
   expenses,
   vehicles,
+  fuelExpenseIds,
   companyId,
   canManage,
 }: {
   expenses: Expense[];
   vehicles: VehicleOption[];
+  // Expenses owned by a fill-up; the fuel log keeps them in sync.
+  fuelExpenseIds: string[];
   companyId: string;
   canManage: boolean;
 }) {
@@ -57,6 +61,10 @@ export function ExpensesTable({
   const tCommon = useTranslations("common");
   const expenseCategoryLabels = getExpenseCategoryLabels(t);
   const [categoryFilter, setCategoryFilter] = useState("all");
+  const fuelExpenseIdSet = useMemo(
+    () => new Set(fuelExpenseIds),
+    [fuelExpenseIds]
+  );
 
   const vehicleById = useMemo(
     () => new Map(vehicles.map((vehicle) => [vehicle.id, vehicle])),
@@ -190,7 +198,30 @@ export function ExpensesTable({
                     <TableCell className="font-medium">
                       {formatCurrency(expense.amount)}
                     </TableCell>
-                    {canManage ? (
+                    {canManage && fuelExpenseIdSet.has(expense.id) ? (
+                      <TableCell>
+                        <Link
+                          href={
+                            expense.vehicle_id
+                              ? {
+                                  pathname: "/dashboard/fuel",
+                                  query: { vehicle: expense.vehicle_id },
+                                }
+                              : "/dashboard/fuel"
+                          }
+                          title={t("table.fromFuelLogHint")}
+                          className={buttonVariants({
+                            variant: "ghost",
+                            size: "icon-sm",
+                          })}
+                        >
+                          <Fuel className="size-4" />
+                          <span className="sr-only">
+                            {t("table.fromFuelLog")}
+                          </span>
+                        </Link>
+                      </TableCell>
+                    ) : canManage ? (
                       <TableCell>
                         <div className="flex items-center gap-1">
                           <ExpenseFormDialog

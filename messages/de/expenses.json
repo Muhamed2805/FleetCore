@@ -63,6 +63,8 @@
     "deleteDialog": {
       "title": "Diese Ausgabe löschen?",
       "description": "Dies kann nicht rückgängig gemacht werden."
-    }
+    },
+    "fromFuelLog": "Tankbuch",
+    "fromFuelLogHint": "Wird im Tankbuch bearbeitet"
   }
 }

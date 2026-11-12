@@ -63,6 +63,8 @@
     "deleteDialog": {
       "title": "Delete this expense?",
       "description": "This can't be undone."
-    }
+    },
+    "fromFuelLog": "Fuel log",
+    "fromFuelLogHint": "Edit it in the fuel log"
   }
 }

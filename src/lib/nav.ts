@@ -2,6 +2,7 @@ import {
   Bell,
   Calendar,
   FileText,
+  Fuel,
   LayoutDashboard,
   Receipt,
   Settings,
@@ -41,6 +42,7 @@ export function getNavGroups(t: Translate): NavGroup[] {
       title: t("navGroups.fleet"),
       items: [
         { title: t("nav.vehicles"), href: "/dashboard/vehicles", icon: Truck },
+        { title: t("nav.fuel"), href: "/dashboard/fuel", icon: Fuel },
         {
           title: t("nav.maintenance"),
           href: "/dashboard/maintenance",

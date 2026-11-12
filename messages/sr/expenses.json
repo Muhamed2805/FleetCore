@@ -63,6 +63,8 @@
     "deleteDialog": {
       "title": "Obrisati ovaj trošak?",
       "description": "Ovo se ne može poništiti."
-    }
+    },
+    "fromFuelLog": "Evidencija goriva",
+    "fromFuelLogHint": "Menja se u evidenciji goriva"
   }
 }

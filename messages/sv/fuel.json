@@ -1,0 +1,98 @@
+{
+  "table": {
+    "heading": "Bränsle",
+    "summary": "{count, plural, one {# tankning} other {# tankningar}} · {liters} · {total}",
+    "addButton": "Registrera tankning",
+    "partial": "Delvis",
+    "filters": {
+      "allVehicles": "Alla fordon"
+    },
+    "emptyState": {
+      "noEntriesTitle": "Inga tankningar än",
+      "noMatchTitle": "Inga tankningar för det här fordonet",
+      "logFillUps": "Registrera tankningar för att följa bränslekostnader och förbrukning.",
+      "tryDifferentVehicle": "Prova ett annat fordon."
+    },
+    "columns": {
+      "date": "Datum",
+      "vehicle": "Fordon",
+      "odometer": "Mätarställning",
+      "liters": "Liter",
+      "pricePerLiter": "Pris/L",
+      "total": "Totalt",
+      "consumption": "Förbrukning"
+    },
+    "deleteDialog": {
+      "title": "Ta bort den här tankningen?",
+      "description": "Dess bränsleutgift tas också bort. Det här går inte att ångra."
+    }
+  },
+  "stats": {
+    "averageConsumption": "Snittförbrukning",
+    "measuredOver": "Mätt över {distance}",
+    "needsTwoFullTanks": "Kräver två fulltankningar",
+    "averagePrice": "Snittpris på bränsle",
+    "perLiter": "Per liter",
+    "totalLiters": "Tankad mängd",
+    "totalCost": "{total} totalt"
+  },
+  "form": {
+    "addTitle": "Registrera tankning",
+    "editTitle": "Redigera tankning",
+    "dialogDescription": "Varje tankning syns också bland utgifterna som bränsle.",
+    "vehicle": {
+      "label": "Fordon",
+      "placeholder": "Välj fordon"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "odometer": {
+      "label": "Mätarställning (km)",
+      "current": "Nuvarande: {value}"
+    },
+    "liters": {
+      "label": "Liter"
+    },
+    "totalCost": {
+      "label": "Totalbelopp"
+    },
+    "pricePerLiter": "{price} per liter",
+    "fullTank": {
+      "label": "Tankade fullt",
+      "hint": "Förbrukningen mäts mellan fulltankningar."
+    },
+    "station": {
+      "label": "Bensinstation"
+    },
+    "notes": {
+      "label": "Anteckningar"
+    },
+    "errors": {
+      "vehicleRequired": "Välj ett fordon.",
+      "invalidOdometer": "Ange mätarställningen i hela km.",
+      "invalidLiters": "Ange hur många liter som tankades.",
+      "invalidCost": "Ange ett giltigt totalbelopp."
+    },
+    "submit": {
+      "add": "Registrera tankning"
+    }
+  },
+  "vehicleCard": {
+    "title": "Bränsle",
+    "empty": "Inga tankningar registrerade än.",
+    "viewAll": "Visa alla",
+    "logButton": "Registrera tankning",
+    "averageConsumption": "Snittförbrukning",
+    "noConsumption": "Kräver två fulltankningar",
+    "lastFillUp": "Senaste tankning"
+  },
+  "odometer": {
+    "title": "Mätarställningshistorik",
+    "empty": "Inga mätarställningar än. De kommer från tankningar och avslutat underhåll.",
+    "sources": {
+      "fuel": "Tankning",
+      "maintenance": "Underhåll"
+    }
+  }
+}

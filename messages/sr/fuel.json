@@ -1,0 +1,98 @@
+{
+  "table": {
+    "heading": "Gorivo",
+    "summary": "{count, plural, one {# točenje} few {# točenja} many {# točenja} other {# točenja}} · {liters} · {total}",
+    "addButton": "Unesi točenje",
+    "partial": "Delimično",
+    "filters": {
+      "allVehicles": "Sva vozila"
+    },
+    "emptyState": {
+      "noEntriesTitle": "Još nema točenja",
+      "noMatchTitle": "Nema točenja za ovo vozilo",
+      "logFillUps": "Unosite točenja da biste pratili troškove i potrošnju goriva.",
+      "tryDifferentVehicle": "Pokušajte sa drugim vozilom."
+    },
+    "columns": {
+      "date": "Datum",
+      "vehicle": "Vozilo",
+      "odometer": "Kilometraža",
+      "liters": "Litri",
+      "pricePerLiter": "Cena/L",
+      "total": "Ukupno",
+      "consumption": "Potrošnja"
+    },
+    "deleteDialog": {
+      "title": "Obrisati ovo točenje?",
+      "description": "Briše se i njegov trošak goriva. Ovo se ne može poništiti."
+    }
+  },
+  "stats": {
+    "averageConsumption": "Prosečna potrošnja",
+    "measuredOver": "Mereno na {distance}",
+    "needsTwoFullTanks": "Potrebna su dva točenja do punog rezervoara",
+    "averagePrice": "Prosečna cena goriva",
+    "perLiter": "Po litru",
+    "totalLiters": "Kupljeno goriva",
+    "totalCost": "Ukupno {total}"
+  },
+  "form": {
+    "addTitle": "Unesi točenje",
+    "editTitle": "Izmeni točenje",
+    "dialogDescription": "Svako točenje se pojavljuje i u troškovima kao gorivo.",
+    "vehicle": {
+      "label": "Vozilo",
+      "placeholder": "Izaberite vozilo"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "odometer": {
+      "label": "Kilometraža (km)",
+      "current": "Trenutno stanje: {value}"
+    },
+    "liters": {
+      "label": "Litri"
+    },
+    "totalCost": {
+      "label": "Ukupan iznos"
+    },
+    "pricePerLiter": "{price} po litru",
+    "fullTank": {
+      "label": "Napunjen pun rezervoar",
+      "hint": "Potrošnja se meri između punih rezervoara."
+    },
+    "station": {
+      "label": "Benzinska pumpa"
+    },
+    "notes": {
+      "label": "Napomene"
+    },
+    "errors": {
+      "vehicleRequired": "Izaberite vozilo.",
+      "invalidOdometer": "Unesite kilometražu u celim kilometrima.",
+      "invalidLiters": "Unesite koliko je litara natočeno.",
+      "invalidCost": "Unesite ispravan ukupan iznos."
+    },
+    "submit": {
+      "add": "Unesi točenje"
+    }
+  },
+  "vehicleCard": {
+    "title": "Gorivo",
+    "empty": "Još nema unetih točenja.",
+    "viewAll": "Prikaži sve",
+    "logButton": "Unesi točenje",
+    "averageConsumption": "Prosečna potrošnja",
+    "noConsumption": "Potrebna su dva točenja do punog rezervoara",
+    "lastFillUp": "Poslednje točenje"
+  },
+  "odometer": {
+    "title": "Istorija kilometraže",
+    "empty": "Još nema očitavanja kilometraže. Dolaze iz točenja i završenih servisa.",
+    "sources": {
+      "fuel": "Točenje",
+      "maintenance": "Održavanje"
+    }
+  }
+}

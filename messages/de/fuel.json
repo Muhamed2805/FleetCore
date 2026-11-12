@@ -1,0 +1,98 @@
+{
+  "table": {
+    "heading": "Kraftstoff",
+    "summary": "{count, plural, one {# Tankvorgang} other {# Tankvorgänge}} · {liters} · {total}",
+    "addButton": "Tankvorgang erfassen",
+    "partial": "Teilbetankung",
+    "filters": {
+      "allVehicles": "Alle Fahrzeuge"
+    },
+    "emptyState": {
+      "noEntriesTitle": "Noch keine Tankvorgänge",
+      "noMatchTitle": "Keine Tankvorgänge für dieses Fahrzeug",
+      "logFillUps": "Erfassen Sie Tankvorgänge, um Kraftstoffkosten und Verbrauch zu verfolgen.",
+      "tryDifferentVehicle": "Versuchen Sie ein anderes Fahrzeug."
+    },
+    "columns": {
+      "date": "Datum",
+      "vehicle": "Fahrzeug",
+      "odometer": "Kilometerstand",
+      "liters": "Liter",
+      "pricePerLiter": "Preis/L",
+      "total": "Gesamt",
+      "consumption": "Verbrauch"
+    },
+    "deleteDialog": {
+      "title": "Diesen Tankvorgang löschen?",
+      "description": "Die zugehörige Kraftstoffausgabe wird ebenfalls gelöscht. Dies kann nicht rückgängig gemacht werden."
+    }
+  },
+  "stats": {
+    "averageConsumption": "Ø Verbrauch",
+    "measuredOver": "Gemessen über {distance}",
+    "needsTwoFullTanks": "Benötigt zwei Volltankungen",
+    "averagePrice": "Ø Kraftstoffpreis",
+    "perLiter": "Pro Liter",
+    "totalLiters": "Getankte Menge",
+    "totalCost": "{total} insgesamt"
+  },
+  "form": {
+    "addTitle": "Tankvorgang erfassen",
+    "editTitle": "Tankvorgang bearbeiten",
+    "dialogDescription": "Jeder Tankvorgang erscheint auch als Kraftstoff unter den Ausgaben.",
+    "vehicle": {
+      "label": "Fahrzeug",
+      "placeholder": "Fahrzeug auswählen"
+    },
+    "date": {
+      "label": "Datum"
+    },
+    "odometer": {
+      "label": "Kilometerstand (km)",
+      "current": "Aktueller Stand: {value}"
+    },
+    "liters": {
+      "label": "Liter"
+    },
+    "totalCost": {
+      "label": "Gesamtbetrag"
+    },
+    "pricePerLiter": "{price} pro Liter",
+    "fullTank": {
+      "label": "Vollgetankt",
+      "hint": "Der Verbrauch wird zwischen Volltankungen gemessen."
+    },
+    "station": {
+      "label": "Tankstelle"
+    },
+    "notes": {
+      "label": "Notizen"
+    },
+    "errors": {
+      "vehicleRequired": "Wählen Sie ein Fahrzeug.",
+      "invalidOdometer": "Geben Sie den Kilometerstand in ganzen km ein.",
+      "invalidLiters": "Geben Sie die getankte Menge in Litern ein.",
+      "invalidCost": "Geben Sie einen gültigen Gesamtbetrag ein."
+    },
+    "submit": {
+      "add": "Tankvorgang erfassen"
+    }
+  },
+  "vehicleCard": {
+    "title": "Kraftstoff",
+    "empty": "Noch keine Tankvorgänge erfasst.",
+    "viewAll": "Alle anzeigen",
+    "logButton": "Tankvorgang erfassen",
+    "averageConsumption": "Ø Verbrauch",
+    "noConsumption": "Benötigt zwei Volltankungen",
+    "lastFillUp": "Letzter Tankvorgang"
+  },
+  "odometer": {
+    "title": "Kilometerstand-Verlauf",
+    "empty": "Noch keine Kilometerstände. Sie stammen aus Tankvorgängen und abgeschlossenen Wartungen.",
+    "sources": {
+      "fuel": "Tankvorgang",
+      "maintenance": "Wartung"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "table": {
+    "heading": "Fuel",
+    "summary": "{count, plural, one {# fill-up} other {# fill-ups}} · {liters} · {total}",
+    "addButton": "Log fill-up",
+    "partial": "Partial",
+    "filters": {
+      "allVehicles": "All vehicles"
+    },
+    "emptyState": {
+      "noEntriesTitle": "No fill-ups yet",
+      "noMatchTitle": "No fill-ups for this vehicle",
+      "logFillUps": "Log fill-ups to track fuel costs and consumption.",
+      "tryDifferentVehicle": "Try a different vehicle."
+    },
+    "columns": {
+      "date": "Date",
+      "vehicle": "Vehicle",
+      "odometer": "Odometer",
+      "liters": "Liters",
+      "pricePerLiter": "Price/L",
+      "total": "Total",
+      "consumption": "Consumption"
+    },
+    "deleteDialog": {
+      "title": "Delete this fill-up?",
+      "description": "Its fuel expense is deleted too. This can't be undone."
+    }
+  },
+  "stats": {
+    "averageConsumption": "Avg. consumption",
+    "measuredOver": "Measured over {distance}",
+    "needsTwoFullTanks": "Needs two full-tank fill-ups",
+    "averagePrice": "Avg. fuel price",
+    "perLiter": "Per liter",
+    "totalLiters": "Fuel bought",
+    "totalCost": "{total} in total"
+  },
+  "form": {
+    "addTitle": "Log fill-up",
+    "editTitle": "Edit fill-up",
+    "dialogDescription": "Each fill-up also appears in expenses as fuel.",
+    "vehicle": {
+      "label": "Vehicle",
+      "placeholder": "Select vehicle"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "odometer": {
+      "label": "Odometer (km)",
+      "current": "Current reading: {value}"
+    },
+    "liters": {
+      "label": "Liters"
+    },
+    "totalCost": {
+      "label": "Total cost"
+    },
+    "pricePerLiter": "{price} per liter",
+    "fullTank": {
+      "label": "Filled the tank up",
+      "hint": "Consumption is measured between full tanks."
+    },
+    "station": {
+      "label": "Station"
+    },
+    "notes": {
+      "label": "Notes"
+    },
+    "errors": {
+      "vehicleRequired": "Select a vehicle.",
+      "invalidOdometer": "Enter the odometer reading in whole km.",
+      "invalidLiters": "Enter how many liters were filled.",
+      "invalidCost": "Enter a valid total cost."
+    },
+    "submit": {
+      "add": "Log fill-up"
+    }
+  },
+  "vehicleCard": {
+    "title": "Fuel",
+    "empty": "No fill-ups logged yet.",
+    "viewAll": "View all",
+    "logButton": "Log fill-up",
+    "averageConsumption": "Avg. consumption",
+    "noConsumption": "Needs two full-tank fill-ups",
+    "lastFillUp": "Last fill-up"
+  },
+  "odometer": {
+    "title": "Odometer history",
+    "empty": "No odometer readings yet. They come from fill-ups and completed maintenance.",
+    "sources": {
+      "fuel": "Fill-up",
+      "maintenance": "Maintenance"
+    }
+  }
+}

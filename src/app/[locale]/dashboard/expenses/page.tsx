@@ -17,7 +17,8 @@ export default async function ExpensesPage() {
 
   const supabase = await createClient();
 
-  const [{ data: expenses }, { data: vehicles }] = await Promise.all([
+  const [{ data: expenses }, { data: vehicles }, { data: fuelLinks }] =
+    await Promise.all([
     supabase
       .from("expenses")
       .select("*")
@@ -26,6 +27,11 @@ export default async function ExpensesPage() {
       .from("vehicles")
       .select("id, make, model, license_plate")
       .order("make"),
+    // Expenses created by fill-ups are edited in the fuel log instead.
+    supabase
+      .from("fuel_entries")
+      .select("expense_id")
+      .not("expense_id", "is", null),
   ]);
 
   const canManage = profile.role === "admin" || profile.role === "fleet_manager";
@@ -34,6 +40,9 @@ export default async function ExpensesPage() {
     <ExpensesTable
       expenses={expenses ?? []}
       vehicles={vehicles ?? []}
+      fuelExpenseIds={(fuelLinks ?? []).flatMap((link) =>
+        link.expense_id ? [link.expense_id] : []
+      )}
       companyId={profile.company_id}
       canManage={canManage}
     />

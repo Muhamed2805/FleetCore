@@ -63,6 +63,8 @@
     "deleteDialog": {
       "title": "Deze uitgave verwijderen?",
       "description": "Dit kan niet ongedaan worden gemaakt."
-    }
+    },
+    "fromFuelLog": "Tanklogboek",
+    "fromFuelLogHint": "Bewerken in het tanklogboek"
   }
 }

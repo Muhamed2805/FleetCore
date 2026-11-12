@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DamageReportFormDialog } from "@/components/damage-reports/damage-report-form-dialog";
+import { FuelEntryFormDialog } from "@/components/fuel/fuel-entry-form-dialog";
 import { DeleteVehicleDialog } from "@/components/vehicles/delete-vehicle-dialog";
 import { ExpiryBadge } from "@/components/vehicles/expiry-badge";
 import { VehicleDocuments } from "@/components/vehicles/vehicle-documents";
@@ -23,6 +24,13 @@ import {
   damageStatusLabels,
 } from "@/lib/damage-reports";
 import { formatCurrency } from "@/lib/expenses";
+import {
+  computeConsumption,
+  formatConsumption,
+  formatKm,
+  formatLiters,
+  getOdometerReadings,
+} from "@/lib/fuel";
 import {
   getMaintenanceStatusLabels,
   maintenanceStatusBadgeVariant,
@@ -46,6 +54,7 @@ export default async function VehicleDetailPage({
   const t = await getTranslations("vehicles");
   const tCommon = await getTranslations("common");
   const tMaintenance = await getTranslations("maintenance");
+  const tFuel = await getTranslations("fuel");
   const vehicleTypeLabels = getVehicleTypeLabels(t);
   const vehicleStatusLabels = getVehicleStatusLabels(t);
   const maintenanceStatusLabels = getMaintenanceStatusLabels(tMaintenance);
@@ -63,6 +72,7 @@ export default async function VehicleDetailPage({
     { data: drivers },
     { data: maintenanceRecords },
     { data: damageReports },
+    { data: fuelEntries },
   ] = await Promise.all([
     supabase.from("vehicles").select("*").eq("id", id).single(),
     supabase
@@ -81,6 +91,12 @@ export default async function VehicleDetailPage({
       .select("*")
       .eq("vehicle_id", id)
       .order("reported_at", { ascending: false }),
+    supabase
+      .from("fuel_entries")
+      .select("*")
+      .eq("vehicle_id", id)
+      .order("filled_on", { ascending: false })
+      .order("odometer", { ascending: false }),
   ]);
 
   if (!vehicle) {
@@ -104,6 +120,13 @@ export default async function VehicleDetailPage({
   }));
 
   const canManage = profile.role === "admin" || profile.role === "fleet_manager";
+  // Mirrors the insert policy on fuel_entries.
+  const canLogFuel = canManage || vehicle.assigned_driver_id === profile.id;
+  const fuelConsumption = computeConsumption(fuelEntries ?? []);
+  const odometerReadings = getOdometerReadings(
+    fuelEntries ?? [],
+    maintenanceRecords ?? []
+  ).slice(0, 8);
   const driver = vehicle.assigned_driver_id
     ? (drivers ?? []).find((d) => d.id === vehicle.assigned_driver_id)
     : null;
@@ -235,6 +258,135 @@ export default async function VehicleDetailPage({
         documents={documentsWithUrl}
         canManage={canManage}
       />
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader className="flex-row flex-wrap items-center justify-between gap-2 space-y-0">
+            <CardTitle className="text-sm text-muted-foreground">
+              {tFuel("vehicleCard.title")}
+            </CardTitle>
+            <div className="flex items-center gap-2">
+              {canLogFuel ? (
+                <FuelEntryFormDialog
+                  companyId={profile.company_id}
+                  createdBy={profile.id}
+                  vehicles={[
+                    {
+                      id: vehicle.id,
+                      make: vehicle.make,
+                      model: vehicle.model,
+                      license_plate: vehicle.license_plate,
+                      odometer: vehicle.odometer,
+                    },
+                  ]}
+                  defaultVehicleId={vehicle.id}
+                  trigger={
+                    <Button variant="ghost" size="sm">
+                      <Plus className="size-4" />
+                      {tFuel("vehicleCard.logButton")}
+                    </Button>
+                  }
+                />
+              ) : null}
+              <Link
+                href={{
+                  pathname: "/dashboard/fuel",
+                  query: { vehicle: vehicle.id },
+                }}
+                className={buttonVariants({ variant: "ghost", size: "sm" })}
+              >
+                {tFuel("vehicleCard.viewAll")}
+              </Link>
+            </div>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            {!fuelEntries?.length ? (
+              <p className="text-sm text-muted-foreground">
+                {tFuel("vehicleCard.empty")}
+              </p>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">
+                    {tFuel("vehicleCard.averageConsumption")}
+                  </span>
+                  <span className="font-medium tabular-nums">
+                    {fuelConsumption.average != null
+                      ? formatConsumption(fuelConsumption.average)
+                      : tFuel("vehicleCard.noConsumption")}
+                  </span>
+                  <span className="text-muted-foreground">
+                    {tFuel("vehicleCard.lastFillUp")}
+                  </span>
+                  <span>{formatDate(fuelEntries[0].filled_on)}</span>
+                </div>
+                <ul className="flex flex-col divide-y">
+                  {fuelEntries.slice(0, 5).map((entry) => {
+                    const consumption = fuelConsumption.byEntry.get(entry.id);
+                    return (
+                      <li
+                        key={entry.id}
+                        className="flex items-center justify-between gap-3 py-2.5"
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium">
+                            {formatDate(entry.filled_on)}
+                          </span>
+                          <span className="text-xs text-muted-foreground tabular-nums">
+                            {formatKm(entry.odometer)} · {formatLiters(entry.liters)}
+                            {consumption != null
+                              ? ` · ${formatConsumption(consumption)}`
+                              : ""}
+                          </span>
+                        </div>
+                        <span className="text-sm font-medium tabular-nums">
+                          {formatCurrency(entry.total_cost)}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm text-muted-foreground">
+              {tFuel("odometer.title")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {odometerReadings.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                {tFuel("odometer.empty")}
+              </p>
+            ) : (
+              <ul className="flex flex-col divide-y">
+                {odometerReadings.map((reading) => (
+                  <li
+                    key={`${reading.source}-${reading.id}`}
+                    className="flex items-center justify-between gap-3 py-2.5"
+                  >
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium tabular-nums">
+                        {formatKm(reading.odometer)}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        {formatDate(reading.date)}
+                      </span>
+                    </div>
+                    <Badge variant="outline">
+                      {tFuel(`odometer.sources.${reading.source}`)}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CardContent>
+        </Card>
+      </div>
 
       <Card>
         <CardHeader className="flex-row items-center justify-between space-y-0">

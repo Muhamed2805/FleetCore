@@ -354,6 +354,108 @@ export type Database = {
           },
         ];
       };
+      fuel_entries: {
+        Row: {
+          company_id: string;
+          created_at: string;
+          created_by: string | null;
+          expense_id: string | null;
+          filled_on: string;
+          full_tank: boolean;
+          id: string;
+          liters: number;
+          notes: string | null;
+          odometer: number;
+          station: string | null;
+          total_cost: number;
+          updated_at: string;
+          vehicle_id: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          company_id: string;
+          created_at?: string;
+          created_by?: string | null;
+          expense_id?: string | null;
+          filled_on?: string;
+          full_tank?: boolean;
+          id?: string;
+          liters: number;
+          notes?: string | null;
+          odometer: number;
+          station?: string | null;
+          total_cost: number;
+          updated_at?: string;
+          vehicle_id: string;
+        };
+        Update: {
+          company_id?: string;
+          created_at?: string;
+          created_by?: string | null;
+          expense_id?: string | null;
+          filled_on?: string;
+          full_tank?: boolean;
+          id?: string;
+          liters?: number;
+          notes?: string | null;
+          odometer?: number;
+          station?: string | null;
+          total_cost?: number;
+          updated_at?: string;
+          vehicle_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "fuel_entries_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_created_by_company_fkey";
+            columns: ["created_by", "company_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id", "company_id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_created_by_fkey";
+            columns: ["created_by"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_expense_company_fkey";
+            columns: ["expense_id", "company_id"];
+            isOneToOne: false;
+            referencedRelation: "expenses";
+            referencedColumns: ["id", "company_id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_expense_id_fkey";
+            columns: ["expense_id"];
+            isOneToOne: true;
+            referencedRelation: "expenses";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_vehicle_company_fkey";
+            columns: ["vehicle_id", "company_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id", "company_id"];
+          },
+          {
+            foreignKeyName: "fuel_entries_vehicle_id_fkey";
+            columns: ["vehicle_id"];
+            isOneToOne: false;
+            referencedRelation: "vehicles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       maintenance_records: {
         Row: {
           company_id: string;

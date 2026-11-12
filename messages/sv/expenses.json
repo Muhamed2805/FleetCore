@@ -63,6 +63,8 @@
     "deleteDialog": {
       "title": "Ta bort den här utgiften?",
       "description": "Det här går inte att ångra."
-    }
+    },
+    "fromFuelLog": "Tankningslogg",
+    "fromFuelLogHint": "Redigeras i tankningsloggen"
   }
 }
